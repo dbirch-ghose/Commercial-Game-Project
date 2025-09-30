@@ -5,8 +5,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
     private float vertical;
-    private float speed = 6f;
-    private float jumpForce = 7f;
+    private float horizontalSpeed = 5f;
+    private float verticalSpeed = 8.5f;
+    private float jumpForce = 5f;
     private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody rb;
@@ -36,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         //rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         //rb.linearVelocity = new Vector2(vertical* speed, rb.linearVelocity.y);
 
-        rb.linearVelocity = new Vector3(horizontal * speed, rb.linearVelocity.y, vertical * speed);
+        rb.linearVelocity = new Vector3(horizontal * horizontalSpeed, rb.linearVelocity.y, vertical * verticalSpeed);
 
     }
 
