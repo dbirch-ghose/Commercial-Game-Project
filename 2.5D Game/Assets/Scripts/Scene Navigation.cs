@@ -30,25 +30,19 @@ public class SceneNavigation : MonoBehaviour
         }
     }
 
-    public bool IsCurrentScene(string sceneName)
+    public bool IsCurrentScene(string sceneName) //stores the scene so it can be used in the next function
     {
-        return SceneManager.GetActiveScene().name == sceneName; //means any scene can be used
+        return SceneManager.GetActiveScene().name == sceneName; 
     }
 
   
 
-    public void ChangeScene()
+    public void ChangeScene() //to be tweaked in the future
     {
         if (IsCurrentScene("Scene 2"))
         {
             SceneManager.LoadScene("Scene 3");
         }
-
-
-
-
-        //SceneManager.LoadScene(NextScene);
-
     }
 
 }
