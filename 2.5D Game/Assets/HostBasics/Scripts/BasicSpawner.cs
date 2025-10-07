@@ -54,7 +54,10 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     }
 
     [SerializeField]
-    private NetworkPrefabRef _playerPrefab; // Character to spawn for a joining player
+    private NetworkPrefabRef _playerPrefab;
+
+    [SerializeField]
+    private NetworkPrefabRef _player2Prefab;// Character to spawn for a joining player
 
     private Dictionary<PlayerRef, NetworkObject> _spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
@@ -63,9 +66,18 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         {
             // Create a unique position for the player
             Vector3 spawnPosition = new Vector3((player.RawEncoded % runner.Config.Simulation.PlayerCount) * 3, 1, 0);
-            NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
-            // Keep track of the player avatars for easy access
-            _spawnedCharacters.Add(player, networkPlayerObject);
+            if (_spawnedCharacters.Count == 0)
+            {
+                NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
+                _spawnedCharacters.Add(player, networkPlayerObject);
+            }
+            else
+            {
+                NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
+                _spawnedCharacters.Add(player, networkPlayerObject);
+            }
+                // Keep track of the player avatars for easy access
+                
         }
     }
 
@@ -102,6 +114,9 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
         if (Input.GetKey(KeyCode.D))
             data.direction += Vector3.right;
+
+        if (Input.GetKey(KeyCode.Space))
+            data.direction += Vector3.up*20;
         
         data.buttons.Set(NetworkInputData.MOUSEBUTTON0, _mouseButton0);
         _mouseButton0 = false;
