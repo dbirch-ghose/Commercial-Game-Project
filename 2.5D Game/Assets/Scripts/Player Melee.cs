@@ -7,6 +7,8 @@ public class PlayerMelee : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
+    public SlimeBehaviour slimeBehaviour;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -26,6 +28,7 @@ public class PlayerMelee : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             Debug.Log(enemy.name + "has been hit");
+            slimeBehaviour.TakeDamage();
         }
     }
 

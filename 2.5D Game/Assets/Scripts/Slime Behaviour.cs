@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class SlimeBehaviour : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float health = 1;
+
     void Start()
     {
         
@@ -11,6 +12,14 @@ public class SlimeBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage()
+    {
+        health -= 1;
     }
 }
