@@ -26,6 +26,8 @@ public class Player : NetworkBehaviour
     private Vector3 _forward = Vector3.forward;
     private ChangeDetector _changeDetector;
 
+    public Camera Camera;
+
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
@@ -35,6 +37,11 @@ public class Player : NetworkBehaviour
     public override void Spawned()
     {
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
+        if (HasStateAuthority)
+        {
+            Camera = Camera.main;
+            Camera.GetComponent<CameraBehaviour>().target = transform;
+        }
     }
 
     public override void FixedUpdateNetwork()

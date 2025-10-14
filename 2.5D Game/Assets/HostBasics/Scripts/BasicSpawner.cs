@@ -116,8 +116,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         if (Input.GetKey(KeyCode.D))
             data.direction += Vector3.right;
 
-        if (Input.GetKey(KeyCode.Space))
-            data.direction += Vector3.up*20;
         
         data.buttons.Set(NetworkInputData.MOUSEBUTTON0, _mouseButton0);
         _mouseButton0 = false;
