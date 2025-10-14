@@ -37,7 +37,7 @@ public class Player : NetworkBehaviour
     public override void Spawned()
     {
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
-        if (HasStateAuthority)
+        if (HasInputAuthority)
         {
             Camera = Camera.main;
             Camera.GetComponent<CameraBehaviour>().target = transform;
