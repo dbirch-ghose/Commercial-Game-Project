@@ -7,12 +7,16 @@ public class SlimeBehaviour : MonoBehaviour
     public float range;
     public Transform centerPoint;
 
+    public Transform player;
+    public bool isPatrolling = true;
 
     public float health = 1;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
+
     }
 
     // Update is called once per frame
@@ -23,17 +27,14 @@ public class SlimeBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (isPatrolling == true) //patrol is on by defualt
         {
-            Vector3 point;
-            if (RandomPoint(centerPoint.position, range, out point))
-            {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                agent.SetDestination(point);
-            }
+            Patrol();
         }
 
-        agent.updateRotation = false;
+        Chase();
+
+        agent.updateRotation = false; //locks rotation
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
@@ -50,7 +51,32 @@ public class SlimeBehaviour : MonoBehaviour
 
     }
 
+    void Patrol()
+    {
+        if (agent.remainingDistance <= agent.stoppingDistance) 
+        {
+            Vector3 point;
+            if (RandomPoint(centerPoint.position, range, out point)) 
+            {
+                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                agent.SetDestination(point); //sets agent destination to the random point everytime it reaches it
+            }
+        }
+    }
 
+    void Chase()
+    {
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        if (distance <= 5)
+        {
+            agent.SetDestination(player.position); //sets the agent destination to the player
+            isPatrolling = false;
+        }
+        else if (distance > 5 )
+        {
+            isPatrolling = true;
+        }
+    }
 
     public void TakeDamage()
     {
