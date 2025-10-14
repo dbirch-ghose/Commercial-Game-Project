@@ -10,6 +10,15 @@ public class PlayerMovement8D : MonoBehaviour
 
     private Vector2 inputDirection;
 
+    public Animator animator;
+    public SpriteRenderer sr;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+    }
+
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -23,10 +32,21 @@ public class PlayerMovement8D : MonoBehaviour
 
         rb.linearVelocity = new Vector3(moveDir.x * moveSpeed, rb.linearVelocity.y, moveDir.z * moveSpeed);
 
-        if (moveDir.sqrMagnitude > 0.01f) // only rotate when moving
+        //if (moveDir.sqrMagnitude > 0.01f) // only rotate when moving
+        //{
+        //    Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+        //    model.rotation = Quaternion.Lerp(model.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        //}
+
+        if (rb.linearVelocity.x < 0)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDir);
-            model.rotation = Quaternion.Lerp(model.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+           animator.SetBool("isWalking", true);
+            sr.flipX = false;
+        }
+        else if(rb.linearVelocity.x > 0)
+        {
+            animator.SetBool("isWalking", true);
+            sr.flipX = true;
         }
     }
 }
