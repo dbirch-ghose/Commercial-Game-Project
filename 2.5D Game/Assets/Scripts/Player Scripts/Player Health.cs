@@ -26,4 +26,12 @@ public class PlayerHealth : MonoBehaviour
         health -= damage; //decreases health based on damage
     }
 
+    public void Downed()
+    {
+        if (health >= 0)
+        {
+            //set down state
+        }
+    }
+
 }
