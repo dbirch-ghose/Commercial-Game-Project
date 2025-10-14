@@ -19,6 +19,9 @@ public class Player : NetworkBehaviour
     [Networked]
     public bool spawnedProjectile { get; set; }
 
+    [Networked]
+    private NetworkButtons PreviousButtons { get; set; }
+
     private NetworkCharacterController _cc;
     private Vector3 _forward = Vector3.forward;
     private ChangeDetector _changeDetector;
