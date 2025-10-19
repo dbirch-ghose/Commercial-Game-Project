@@ -172,7 +172,7 @@ MonoBehaviour:
   agent: {fileID: 72549139}
   range: 20
   centerPoint: {fileID: 213509937}
-  player: {fileID: 0}
+  player: {fileID: 1228519432}
   isPatrolling: 1
   health: 1
 --- !u!114 &72549138

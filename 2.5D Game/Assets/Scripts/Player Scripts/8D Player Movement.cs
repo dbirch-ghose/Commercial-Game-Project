@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement8D : MonoBehaviour
@@ -10,6 +11,12 @@ public class PlayerMovement8D : MonoBehaviour
 
     private Vector2 inputDirection;
 
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 2f;
+    private float dashingTime = 0.2f;
+    private float dashingCooldown = 1f;
+
     public Animator animator;
     public SpriteRenderer sr;
 
@@ -21,13 +28,33 @@ public class PlayerMovement8D : MonoBehaviour
 
     void Update()
     {
+        //prevents movement while dashing
+        if(isDashing)
+        {
+            return;
+        }
+
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         inputDirection = new Vector2(horizontal, vertical).normalized;
+
+
+        //dash controller
+        if (Input.GetKeyDown(KeyCode.E) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     void FixedUpdate()
     {
+        //prevents movement while dashing
+        if (isDashing)
+        {
+            return;
+        }
+
         //sets input direction
         Vector3 moveDir = new Vector3(inputDirection.x, 0f, inputDirection.y);
         rb.linearVelocity = new Vector3(moveDir.x * moveSpeed, rb.linearVelocity.y, moveDir.z * moveSpeed);
@@ -42,8 +69,6 @@ public class PlayerMovement8D : MonoBehaviour
 
             //local space rotation
             Quaternion targetRotation = Quaternion.LookRotation(moveDir, Vector3.up);
-
-            // Make the hitbox's local rotation match that, relative to the player's transform
             attackHitBox.rotation = Quaternion.Lerp(attackHitBox.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             // Keep the hitbox in front of the player 
@@ -64,4 +89,16 @@ public class PlayerMovement8D : MonoBehaviour
             sr.flipX = true;
         }
     }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        rb.linearVelocity = new Vector3(transform.localScale.x * dashingPower, 0f, 0f); //creates dash force
+        yield return new WaitForSeconds(dashingTime); //duration
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown); //cooldwon
+        canDash = true;
+    }
+
 }
