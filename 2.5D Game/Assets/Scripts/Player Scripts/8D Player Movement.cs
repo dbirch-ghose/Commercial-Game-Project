@@ -4,21 +4,24 @@ using UnityEngine;
 public class PlayerMovement8D : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private Transform attackHitBox;  
+    [SerializeField] private Transform attackHitBox;
+
 
     public float moveSpeed = 5f;
     public float rotationSpeed = 10f;
 
     private Vector2 inputDirection;
 
+    private Vector3 lastMoveDir;
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 2f;
+    private float dashingPower = 10f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
 
     public Animator animator;
     public SpriteRenderer sr;
+    public TrailRenderer tr;
 
     private void Start()
     {
@@ -39,8 +42,13 @@ public class PlayerMovement8D : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         inputDirection = new Vector2(horizontal, vertical).normalized;
 
-
         //dash controller
+        Vector3 dashDir = new Vector3(horizontal, 0f, vertical);
+        if (dashDir != Vector3.zero)
+        {
+            lastMoveDir = dashDir.normalized;
+        }
+
         if (Input.GetKeyDown(KeyCode.E) && canDash)
         {
             StartCoroutine(Dash());
@@ -63,18 +71,12 @@ public class PlayerMovement8D : MonoBehaviour
         //hitbox rotation
         if (moveDir.sqrMagnitude > 0.01f) // only rotate when moving
         {
-            //global space rotation
-            //Quaternion targetRotation = Quaternion.LookRotation(moveDir);
-            //attackHitBox.rotation = Quaternion.Lerp(attackHitBox.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
             //local space rotation
             Quaternion targetRotation = Quaternion.LookRotation(moveDir, Vector3.up);
             attackHitBox.rotation = Quaternion.Lerp(attackHitBox.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
             // Keep the hitbox in front of the player 
             float distanceFromPlayer = 1f; 
             attackHitBox.position = transform.position + moveDir.normalized * distanceFromPlayer;
-
         }
 
         //sprite controller
@@ -94,10 +96,12 @@ public class PlayerMovement8D : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        rb.linearVelocity = new Vector3(transform.localScale.x * dashingPower, 0f, 0f); //creates dash force
+        rb.linearVelocity = lastMoveDir * dashingPower; //creates dash force
+        tr.emitting = true;
         yield return new WaitForSeconds(dashingTime); //duration
         isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown); //cooldwon
+        tr.emitting = false;
+        yield return new WaitForSeconds(dashingCooldown); //cooldown
         canDash = true;
     }
 
