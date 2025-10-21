@@ -233,14 +233,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 119269251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6284f8e0bc16df74facb2ed5ce79f79f, type: 3}
+  m_Script: {fileID: 11500000, guid: 56b705842955aa34a89466d5f9c3f230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 119269254}
-  groundCheck: {fileID: 2104564621}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  model: {fileID: 112431552}
+  moveSpeed: 5
+  rotationSpeed: 10
 --- !u!65 &119269253
 BoxCollider:
   m_ObjectHideFlags: 0
