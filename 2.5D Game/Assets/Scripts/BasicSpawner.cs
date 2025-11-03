@@ -87,6 +87,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
+        Vector2 move = new(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
     }
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
