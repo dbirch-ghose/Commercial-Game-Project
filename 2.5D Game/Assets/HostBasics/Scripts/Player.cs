@@ -89,10 +89,10 @@ public class Player : NetworkBehaviour
 
     public void Update()
     {
-        if (Object.HasInputAuthority && Input.GetKeyDown(KeyCode.R))
+        /*if (Object.HasInputAuthority && Input.GetKeyDown(KeyCode.R))
         {
             RPC_SendMessage("Hey Mate!");
-        }
+        }*/
     }
     void OnTriggerEnter(Collider other)
     {
