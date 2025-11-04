@@ -26,6 +26,11 @@ public class Player : NetworkBehaviour
     private Vector3 _forward = Vector3.forward;
     private ChangeDetector _changeDetector;
 
+    private bool canPossess = false;
+    private weakMind wm;
+    private GameObject enemy;
+    public NetworkObject thisDude;
+
     public Camera Camera;
 
     private void Awake()
@@ -70,6 +75,15 @@ public class Player : NetworkBehaviour
                     spawnedProjectile = !spawnedProjectile;
                 }
             }
+
+            if(HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
+            {
+                BasicSpawner BS = FindFirstObjectByType<BasicSpawner>();
+                NetworkPrefabRef creatureType = wm.creatureType;
+                Vector3 spawnPoint = enemy.transform.position;
+                Destroy(enemy);
+                BS.WMSpawn(thisDude, creatureType, spawnPoint);
+            }
         }
     }
 
@@ -84,13 +98,40 @@ public class Player : NetworkBehaviour
     {
         Debug.Log(other);
         // Check if the other object has the weakMind script
-        weakMind wm = other.gameObject.GetComponent<weakMind>();
+        enemy = other.gameObject;
+        wm = other.gameObject.GetComponent<weakMind>();
 
         if (wm != null)
         {
             // The object has the weakMind script
             Debug.Log("Collided with an object that has weakMind!");
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        wm = other.gameObject.GetComponent<weakMind>();
+        enemy = other.gameObject;
+
+        if (wm != null)
+        {
+            // The object has the weakMind script
+            Debug.Log("Collided with an object that has weakMind!");
+            canPossess = true;
+            Debug.Log("Can Possess!");
+
+        }
+        else
+        {
+            canPossess = false;
+            Debug.Log("Can no longer possess");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        canPossess = false;
+        wm = null;
     }
 
     private TMP_Text _messages;

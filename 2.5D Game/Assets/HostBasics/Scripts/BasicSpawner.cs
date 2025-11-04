@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
     private NetworkRunner _runner;
+    private PlayerRef Possessor;
 
     private void OnGUI()
     {
@@ -64,22 +65,32 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         if (runner.IsServer)
         {
+
             // Create a unique position for the player
             Vector3 spawnPosition = new Vector3((player.RawEncoded % runner.Config.Simulation.PlayerCount) * 3, 1, 0);
             
             if (_spawnedCharacters.Count == 0)
             {
+                Possessor = player;
                 NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
             }
             else
             {
+                Possessor = player;
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
             }
                 // Keep track of the player avatars for easy access
                 
         }
+    }
+
+    public void WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
+    {
+        Destroy(fallen);
+        NetworkObject networkPlayerObject = _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
+        
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
