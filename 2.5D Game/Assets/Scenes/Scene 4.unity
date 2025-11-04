@@ -1920,6 +1920,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1228519431}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD:2.5D Game/Assets/Scenes/Scene 1.unity
+=======
   m_Script: {fileID: 11500000, guid: ec65819ce5444974aad61a81d65465bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -1935,10 +1937,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1228519431}
   m_Enabled: 1
   m_EditorHideFlags: 0
+>>>>>>> Donovan-Development:2.5D Game/Assets/Scenes/Scene 4.unity
   m_Script: {fileID: 11500000, guid: 56b705842955aa34a89466d5f9c3f230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1228519434}
+<<<<<<< HEAD:2.5D Game/Assets/Scenes/Scene 1.unity
+  model: {fileID: 1370179142}
+  moveSpeed: 5
+  rotationSpeed: 10
+--- !u!1 &1354723472
+GameObject:
+=======
   attackHitBox: {fileID: 270231568}
   moveSpeed: 5
   rotationSpeed: 10
@@ -1947,6 +1957,7 @@ MonoBehaviour:
   tr: {fileID: 1228519442}
 --- !u!114 &1228519438
 MonoBehaviour:
+>>>>>>> Donovan-Development:2.5D Game/Assets/Scenes/Scene 4.unity
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
