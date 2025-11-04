@@ -1,14 +1,16 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMelee : MonoBehaviour
 {
 
     public Transform attackPoint;
+    //public GameObject attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
-
-    //public SlimeBehaviour slimeBehaviour;
+    //public float attackDuration = 0.2f;
+    //private bool isAttacking = false;
 
     private void Start()
     {
@@ -20,8 +22,32 @@ public class PlayerMelee : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
+            //StartCoroutine(Attack());
         }
     }
+
+
+    //private IEnumerator Attack()
+    //{
+    //    isAttacking = true;
+    //    GetComponent<Collider>().enabled = true; //enables trigger collider
+    //    yield return new WaitForSeconds(attackDuration);    
+    //    GetComponent<Collider>().enabled = false; //disables collider   
+    //    isAttacking =false;
+    //}
+
+    //private void OnTriggerEnter(Collider enemy)
+    //{
+    //    if (!isAttacking) return;
+    //    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    //    SlimeBehaviour slimeBehaviour = enemy.GetComponent<SlimeBehaviour>();
+    //    if (slimeBehaviour != null)
+    //    {
+    //        slimeBehaviour.TakeDamage();
+    //    }
+    //}
+
+
 
     void Attack()
     {
@@ -44,10 +70,10 @@ public class PlayerMelee : MonoBehaviour
             {
                 slimeBehaviour.TakeDamage();
             }
-            
+
         }
 
-        
+
     }
 
     private void OnDrawGizmosSelected()

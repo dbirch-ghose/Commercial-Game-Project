@@ -1,5 +1,5 @@
 using UnityEngine;
-
+ 
 public class PlayerHealth : MonoBehaviour
 {
     public int health;
@@ -24,6 +24,14 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage) //to be referenced in enemy damage scripts
     {
         health -= damage; //decreases health based on damage
+    }
+
+    public void Downed()
+    {
+        if (health >= 0)
+        {
+            //set down state
+        }
     }
 
 }
