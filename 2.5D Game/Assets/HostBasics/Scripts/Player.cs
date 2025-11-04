@@ -80,6 +80,18 @@ public class Player : NetworkBehaviour
             RPC_SendMessage("Hey Mate!");
         }
     }
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other);
+        // Check if the other object has the weakMind script
+        weakMind wm = other.gameObject.GetComponent<weakMind>();
+
+        if (wm != null)
+        {
+            // The object has the weakMind script
+            Debug.Log("Collided with an object that has weakMind!");
+        }
+    }
 
     private TMP_Text _messages;
 
