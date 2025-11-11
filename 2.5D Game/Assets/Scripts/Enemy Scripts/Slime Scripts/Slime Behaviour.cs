@@ -12,10 +12,14 @@ public class SlimeBehaviour : MonoBehaviour
 
     public float health = 1;
 
+    public SpriteRenderer sr;
+
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
+        sr = GetComponent<SpriteRenderer>();
 
     }
 
@@ -35,6 +39,15 @@ public class SlimeBehaviour : MonoBehaviour
         Chase();
 
         agent.updateRotation = false; //locks rotation
+
+        Vector3 velocity = agent.velocity;
+
+        //flip sprite based on movement direction
+        if (velocity.x > 0.1f)
+            sr.flipX = true;  
+        else if (velocity.x < -0.1f)
+            sr.flipX = false;   
+
     }
 
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
