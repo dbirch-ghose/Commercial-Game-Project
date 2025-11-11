@@ -70,8 +70,7 @@ public class Player : NetworkBehaviour
                 else if (data.buttons.IsSet(NetworkInputData.MOUSEBUTTON1))
                 {
                     delay = TickTimer.CreateFromSeconds(Runner, 0.5f);
-                    Runner.Spawn(_prefabPhysxBall, transform.position + _forward, Quaternion.LookRotation(_forward), Object.InputAuthority,
-                        (runner, o) => { o.GetComponent<PhysxBall>().Init(10 * _forward); });
+                    Runner.Spawn(_prefabPhysxBall, transform.position + _forward, Quaternion.LookRotation(_forward), Object.InputAuthority, (runner, o) => { o.GetComponent<PhysxBall>().Init(10 * _forward); });
                     spawnedProjectile = !spawnedProjectile;
                 }
             }
@@ -96,7 +95,6 @@ public class Player : NetworkBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
         // Check if the other object has the weakMind script
         enemy = other.gameObject;
         wm = other.gameObject.GetComponent<weakMind>();
@@ -124,12 +122,13 @@ public class Player : NetworkBehaviour
         else
         {
             canPossess = false;
-            Debug.Log("Can no longer possess");
+            
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("Can no longer possess");
         canPossess = false;
         wm = null;
     }

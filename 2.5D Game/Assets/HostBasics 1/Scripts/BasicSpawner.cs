@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
+    public Vector3 spawnPoint;
     private NetworkRunner _runner;
     private PlayerRef Possessor;
 
@@ -67,7 +68,9 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         {
 
             // Create a unique position for the player
-            Vector3 spawnPosition = new Vector3((player.RawEncoded % runner.Config.Simulation.PlayerCount) * 3, 1, 0);
+            //Vector3 spawnPosition = new Vector3((player.RawEncoded % runner.Config.Simulation.PlayerCount) * 3, 1, 0);
+            Vector3 spawnPosition = new Vector3(0, 3, 0);
+            spawnPosition = this.GetComponent<Transform>().position;
             
             if (_spawnedCharacters.Count == 0)
             {
@@ -109,6 +112,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         _mouseButton0 = _mouseButton0 || Input.GetMouseButton(0);
         _mouseButton1 = _mouseButton1 || Input.GetMouseButton(1);
+
     }
 
     public void OnInput(NetworkRunner runner, NetworkInput input)

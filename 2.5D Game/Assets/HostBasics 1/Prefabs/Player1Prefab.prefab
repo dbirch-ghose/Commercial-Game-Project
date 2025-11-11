@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7244116726312654196}
   - component: {fileID: 6500694627383336910}
   - component: {fileID: 7816548336608436930}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 7394674091041641335}
   - component: {fileID: 7803109543311893650}
   - component: {fileID: 3989495520375590899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SSofSister
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 8561923557830149222}
   - component: {fileID: 1812643053328506922}
   - component: {fileID: 3786709807387462274}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,9 +342,9 @@ GameObject:
   - component: {fileID: 2593762236717241754}
   - component: {fileID: 8687738513943168944}
   - component: {fileID: 6558399162251192628}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player1Prefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
