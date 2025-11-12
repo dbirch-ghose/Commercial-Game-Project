@@ -2285,7 +2285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729644277}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2301,7 +2301,7 @@ Transform:
   m_GameObject: {fileID: 1729644276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.29, y: 0, z: 0}
+  m_LocalPosition: {x: 0.29, y: 0, z: -0.242}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2579,9 +2579,11 @@ GameObject:
   - component: {fileID: 2071497512}
   - component: {fileID: 2071497511}
   - component: {fileID: 2071497513}
-  m_Layer: 0
+  - component: {fileID: 2071497514}
+  - component: {fileID: 2071497515}
+  m_Layer: 6
   m_Name: Akagaul
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2650,7 +2652,7 @@ Transform:
   m_GameObject: {fileID: 2071497510}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.75, y: -10.85, z: 22.48}
+  m_LocalPosition: {x: -3.75, y: -11.34, z: 22.48}
   m_LocalScale: {x: 2.1506, y: 5.018649, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2669,6 +2671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64869cd41fafefe4f9ccb6607976de8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyTakeDamage: {fileID: 0}
+  health: 0
   projectilePrefab: {fileID: 4473872611823807284, guid: 4f5ec8316d9d1f947a6068a122fc4b74, type: 3}
   firePoint: {fileID: 1729644277}
   player: {fileID: 1228519432}
@@ -2677,6 +2681,40 @@ MonoBehaviour:
   Horse: {fileID: 3451075773137403010, guid: 46f14e0a59673e74084dfdbc598fa16e, type: 3}
   arenaWidth: 20
   arenaHeight: 10
+--- !u!114 &2071497514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071497510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+--- !u!65 &2071497515
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071497510}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.64, y: 0.64000005, z: 0.2}
+  m_Center: {x: 0.00000023841858, y: 0.00000011920929, z: 0}
 --- !u!1 &2133641182
 GameObject:
   m_ObjectHideFlags: 0

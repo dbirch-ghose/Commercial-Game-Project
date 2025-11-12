@@ -3,8 +3,8 @@ using UnityEngine;
 public class AkagaulBehaviour : MonoBehaviour
 {
     //-------------------HEALTH--------------------
-    public int health = 20;
-
+    public EnemyTakeDamage enemyTakeDamage; //access health script
+    public int health;
 
     //-----------------PROJECTILE------------------
     public GameObject projectilePrefab;
@@ -20,6 +20,14 @@ public class AkagaulBehaviour : MonoBehaviour
     public float arenaHeight = 10f; //height of arena
     private bool horseActive = false;
 
+
+    private void Start()
+    {
+        if (enemyTakeDamage != null)
+        {
+            health = enemyTakeDamage.health;
+        }
+    }
 
     void SpawnHorse()
     {

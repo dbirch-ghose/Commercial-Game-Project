@@ -13,7 +13,7 @@ public class SlimeBehaviour : MonoBehaviour
 
     public SpriteRenderer sr;
 
-    public EnemyTakeDamage enemyTakeDamage;
+    public EnemyTakeDamage enemyTakeDamage; //access health script
     public int health;
 
     void Start()

@@ -65,7 +65,8 @@ public class PlayerMelee : MonoBehaviour
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             EnemyTakeDamage enemyTakeDamage = enemy.GetComponent<EnemyTakeDamage>();
 
-            //Damages the enemy
+            
+            //Damages the enemy using universal script
             if (enemyTakeDamage != null)
             {
                 enemyTakeDamage.TakeDamage();
