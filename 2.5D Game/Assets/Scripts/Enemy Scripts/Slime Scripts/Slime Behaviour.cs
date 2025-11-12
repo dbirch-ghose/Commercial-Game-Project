@@ -10,10 +10,11 @@ public class SlimeBehaviour : MonoBehaviour
     public Transform player;
     public bool isPatrolling = true;
 
-    public float health = 1;
 
     public SpriteRenderer sr;
 
+    public EnemyTakeDamage enemyTakeDamage;
+    public int health;
 
     void Start()
     {
@@ -21,15 +22,19 @@ public class SlimeBehaviour : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
         sr = GetComponent<SpriteRenderer>();
 
+        if (enemyTakeDamage != null)
+        {
+            health = enemyTakeDamage.health;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        //if (health <= 0)
+        //{
+        //    Destroy(gameObject);
+        //}
 
         if (isPatrolling == true) //patrol is on by defualt
         {
@@ -46,7 +51,11 @@ public class SlimeBehaviour : MonoBehaviour
         if (velocity.x > 0.1f)
             sr.flipX = true;  
         else if (velocity.x < -0.1f)
-            sr.flipX = false;   
+            sr.flipX = false;
+
+
+
+
 
     }
 
@@ -91,8 +100,10 @@ public class SlimeBehaviour : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
-    {
-        health -= 1;
-    }
+    
+
+    //public void TakeDamage()
+    //{
+    //    health -= 1;
+    //}
 }

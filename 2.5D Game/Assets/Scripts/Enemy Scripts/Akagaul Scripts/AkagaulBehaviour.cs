@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class AkagaulBehaviour : MonoBehaviour
 {
+    //-------------------HEALTH--------------------
+    public int health = 20;
+
+
     //-----------------PROJECTILE------------------
     public GameObject projectilePrefab;
     public Transform firePoint; //projectile spawnpoint

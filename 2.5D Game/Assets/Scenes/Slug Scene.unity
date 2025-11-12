@@ -1014,6 +1014,7 @@ GameObject:
   - component: {fileID: 388920647}
   - component: {fileID: 388920646}
   - component: {fileID: 388920648}
+  - component: {fileID: 388920649}
   m_Layer: 6
   m_Name: Slug
   m_TagString: Enemy
@@ -1053,8 +1054,9 @@ MonoBehaviour:
   centerPoint: {fileID: 213509937}
   player: {fileID: 1228519432}
   isPatrolling: 1
-  health: 1
   sr: {fileID: 388920646}
+  enemyTakeDamage: {fileID: 388920649}
+  health: 2
 --- !u!114 &388920643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,6 +1191,19 @@ NavMeshAgent:
   m_BaseOffset: 1.04
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &388920649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388920640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!1 &452838249
 GameObject:
   m_ObjectHideFlags: 0

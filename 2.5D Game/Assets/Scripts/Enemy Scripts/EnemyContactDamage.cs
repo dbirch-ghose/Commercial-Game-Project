@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyDamage : MonoBehaviour
+public class EnemyContactDamage : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public int damage = 1;
