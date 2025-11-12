@@ -1011,10 +1011,10 @@ GameObject:
   - component: {fileID: 388920645}
   - component: {fileID: 388920643}
   - component: {fileID: 388920642}
+  - component: {fileID: 388920649}
   - component: {fileID: 388920647}
   - component: {fileID: 388920646}
   - component: {fileID: 388920648}
-  - component: {fileID: 388920649}
   m_Layer: 6
   m_Name: Slug
   m_TagString: Enemy
@@ -1056,7 +1056,7 @@ MonoBehaviour:
   isPatrolling: 1
   sr: {fileID: 388920646}
   enemyTakeDamage: {fileID: 388920649}
-  health: 2
+  health: 1
 --- !u!114 &388920643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1203,7 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 2
 --- !u!1 &452838249
 GameObject:
   m_ObjectHideFlags: 0

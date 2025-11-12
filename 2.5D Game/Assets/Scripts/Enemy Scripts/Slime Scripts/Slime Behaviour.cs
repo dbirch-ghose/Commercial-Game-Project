@@ -31,10 +31,7 @@ public class SlimeBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (health <= 0)
-        //{
-        //    Destroy(gameObject);
-        //}
+        
 
         if (isPatrolling == true) //patrol is on by defualt
         {
