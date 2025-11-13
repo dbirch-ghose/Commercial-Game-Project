@@ -1691,7 +1691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1228519432
 Transform:
   m_ObjectHideFlags: 0
@@ -2671,16 +2671,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64869cd41fafefe4f9ccb6607976de8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTakeDamage: {fileID: 0}
+  enemyTakeDamage: {fileID: 2071497514}
   health: 0
   projectilePrefab: {fileID: 4473872611823807284, guid: 4f5ec8316d9d1f947a6068a122fc4b74, type: 3}
   firePoint: {fileID: 1729644277}
   player: {fileID: 1228519432}
   fireAngle: 45
   fireRate: 0.5
-  Horse: {fileID: 3451075773137403010, guid: 46f14e0a59673e74084dfdbc598fa16e, type: 3}
-  arenaWidth: 20
-  arenaHeight: 10
+  Horse: {fileID: 7452162337939041641, guid: 46f14e0a59673e74084dfdbc598fa16e, type: 3}
+  spawnZ: 2
+  moveSpeed: 12
+  leftBound: -20
+  rightSpawnX: 20
 --- !u!114 &2071497514
 MonoBehaviour:
   m_ObjectHideFlags: 0

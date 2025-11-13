@@ -2,23 +2,15 @@ using UnityEngine;
 
 public class HorseBehaviour : MonoBehaviour
 {
-    public float speed = 15f;
-    private Vector3 targetPos;
-
-    public void SetTarget(Vector3 target)
-    {
-        targetPos = target;
-        transform.LookAt(target); // face the right way
-    }
+    [SerializeField] float moveSpeed;
+    [SerializeField] float leftBound;
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
 
-        // destroy when it reaches the opposite side
-        if (Vector3.Distance(transform.position, targetPos) < 0.5f)
-        {
+        if (transform.position.x < leftBound)
             Destroy(gameObject);
-        }
     }
+
 }

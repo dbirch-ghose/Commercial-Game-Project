@@ -15,10 +15,12 @@ public class AkagaulBehaviour : MonoBehaviour
     private float nextFireTime;
 
     //-------------------HORSE----------------------
-    public GameObject Horse;  
-    public float arenaWidth = 20f;  //width of arena
-    public float arenaHeight = 10f; //height of arena
-    private bool horseActive = false;
+    public GameObject Horse;
+    public float spawnZ = 2f;       // where along Y to spawn (center)
+    public float moveSpeed = 12f;    // how fast it runs
+    public float leftBound = -20f;  // when to despawn
+    public float rightSpawnX = 20f; // where to spawn
+
 
 
     private void Start()
@@ -27,37 +29,15 @@ public class AkagaulBehaviour : MonoBehaviour
         {
             health = enemyTakeDamage.health;
         }
+
+        SpawnHorse();
+
     }
 
     void SpawnHorse()
     {
-        Vector3 spawnPos = Vector3.zero;
-        Vector3 targetPos = Vector3.zero;
-
-        int side = Random.Range(0, 4); // 0=left, 1=right, 2=top, 3=bottom
-
-        switch (side)
-        {
-            case 0: // Left
-                spawnPos = new Vector3(-arenaWidth / 2, 0, player.position.z);
-                targetPos = new Vector3(arenaWidth / 2, 0, player.position.z);
-                break;
-            case 1: // Right
-                spawnPos = new Vector3(arenaWidth / 2, 0, player.position.z);
-                targetPos = new Vector3(-arenaWidth / 2, 0, player.position.z);
-                break;
-            case 2: // Top
-                spawnPos = new Vector3(player.position.x, 0, arenaHeight / 2);
-                targetPos = new Vector3(player.position.x, 0, -arenaHeight / 2);
-                break;
-            case 3: // Bottom
-                spawnPos = new Vector3(player.position.x, 0, -arenaHeight / 2);
-                targetPos = new Vector3(player.position.x, 0, arenaHeight / 2);
-                break;
-        }
-
-        GameObject enemy = Instantiate(Horse, spawnPos, Quaternion.identity);
-        enemy.GetComponent<HorseBehaviour>().SetTarget(targetPos);
+        Vector3 spawnPos = new Vector3(rightSpawnX, 1.5f, spawnZ);
+        Instantiate(Horse, spawnPos, Quaternion.identity);
     }
 
 
@@ -71,12 +51,7 @@ public class AkagaulBehaviour : MonoBehaviour
             nextFireTime = Time.time + 1f / fireRate;
         }
 
-        if (horseActive == false)
-        {
-            Debug.Log("the horse is here");
-            SpawnHorse();   
-            horseActive = true;
-        }
+       
         
     }
 
