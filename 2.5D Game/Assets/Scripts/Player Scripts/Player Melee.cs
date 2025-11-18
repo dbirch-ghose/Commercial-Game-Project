@@ -63,12 +63,13 @@ public class PlayerMelee : MonoBehaviour
 
             //assigns the script to the hit enemy
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            SlimeBehaviour slimeBehaviour = enemy.GetComponent<SlimeBehaviour>();
+            EnemyTakeDamage enemyTakeDamage = enemy.GetComponent<EnemyTakeDamage>();
 
-            //Damages the enemy
-            if (slimeBehaviour != null)
+            
+            //Damages the enemy using universal script
+            if (enemyTakeDamage != null)
             {
-                slimeBehaviour.TakeDamage();
+                enemyTakeDamage.TakeDamage();
             }
 
         }
