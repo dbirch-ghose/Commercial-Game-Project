@@ -83,6 +83,12 @@ namespace PixelCrushers.DialogueSystem
         public bool useLinearGroupMode = false;
 
         /// <summary>
+        /// Update any actively-displayed conversations' text when current language changes.
+        /// </summary>
+        [Tooltip("Update any actively-displayed conversations' text when current language changes.")]
+        public bool updateActiveConversationTextWhenLanguageChanges = true;
+
+        /// <summary>
         /// Set <c>true</c> to include sim status for each dialogue entry.
         /// </summary>
         [Tooltip("Tick if your conversations reference Dialog[x].SimStatus.")]
@@ -604,7 +610,10 @@ namespace PixelCrushers.DialogueSystem
         private void OnLanguageChanged(string newLanguage)
         {
             displaySettings.localizationSettings.language = newLanguage;
-            UpdateLocalizationOnActiveConversations();
+            if (updateActiveConversationTextWhenLanguageChanges)
+            {
+                UpdateLocalizationOnActiveConversations();
+            }
             SendUpdateTracker();
         }
 
