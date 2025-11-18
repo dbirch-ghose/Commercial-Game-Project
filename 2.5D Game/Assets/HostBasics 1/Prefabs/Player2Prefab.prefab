@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7244116726312654196}
   - component: {fileID: 6500694627383336910}
   - component: {fileID: 7816548336608436930}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 8561923557830149222}
   - component: {fileID: 1812643053328506922}
   - component: {fileID: 3786709807387462274}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: -294991737701975640}
   - component: {fileID: 2593762236717241754}
   - component: {fileID: 8687738513943168944}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Player2Prefab
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3377345346655480717}
   - component: {fileID: 3962312288108220404}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SlimePlayerIdle (2)_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
