@@ -45,7 +45,7 @@ public class PlayerMovement8D : NetworkBehaviour
 
     public override void Spawned()
     {
-        _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
+        //_changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
         if (HasInputAuthority)
         {
             camera = Camera.main;
@@ -64,7 +64,23 @@ public class PlayerMovement8D : NetworkBehaviour
             if (data.direction.sqrMagnitude > 0)
                 _forward = data.direction;
 
+            //sprite controller
+                if (data.direction.x < 0)
+            {
+                animator.SetBool("isWalking", true);
+                sr.flipX = false;
+            }
+            else if (data.direction.x > 0)
+            {
+                animator.SetBool("isWalking", true);
+                sr.flipX = true;
+            }
+
+
+            transform.rotation = Quaternion.identity;
+
         }
+    }
 
 
 
@@ -170,4 +186,4 @@ public class PlayerMovement8D : NetworkBehaviour
     //    canDash = true;
     //}
 
-}
+

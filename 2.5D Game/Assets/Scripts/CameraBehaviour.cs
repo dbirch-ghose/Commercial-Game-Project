@@ -26,7 +26,7 @@ public class CameraBehaviour : MonoBehaviour
         {
             Vector3 desiredPosition = target.position + offset;
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-            transform.position = smoothedPosition;
+            transform.position = desiredPosition;
 
             // Optional: make the camera look at the target
             transform.LookAt(target);

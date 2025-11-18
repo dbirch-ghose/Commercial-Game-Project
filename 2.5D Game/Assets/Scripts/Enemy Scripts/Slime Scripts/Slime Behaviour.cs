@@ -19,7 +19,7 @@ public class SlimeBehaviour : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
+        //player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
         sr = GetComponent<SpriteRenderer>();
 
         if (enemyTakeDamage != null)
@@ -38,7 +38,7 @@ public class SlimeBehaviour : MonoBehaviour
             Patrol();
         }
 
-        Chase();
+        //Chase();
 
         agent.updateRotation = false; //locks rotation
 
