@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {x: -0.24, y: 0, z: 0}
   _playerPrefab:
-    RawGuidValue: ff89e8dd0944d084a807a101a9977365
+    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
   _player2Prefab:
     RawGuidValue: bfdf956ef9802c64cb8ff4183379ac5e
 --- !u!4 &17664354
