@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8986563161815181952}
   - component: {fileID: 1115934983492821399}
   - component: {fileID: 3640777073136275791}
-  - component: {fileID: 4430442892911529911}
   - component: {fileID: 7692100325543184012}
   - component: {fileID: 1393708222971823766}
+  - component: {fileID: -2212450164773895210}
   m_Layer: 0
   m_Name: Horse
   m_TagString: Untagged
@@ -113,20 +113,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4430442892911529911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7452162337939041641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a5e0916cd2ac0c48b010c4ef9bb1fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 12
-  leftBound: -20
 --- !u!65 &7692100325543184012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -162,3 +148,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 0}
   damage: 1
+--- !u!114 &-2212450164773895210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7452162337939041641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5e0916cd2ac0c48b010c4ef9bb1fef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 12
+  leftBound: -21
+  rightBound: 7
+  sr: {fileID: 0}

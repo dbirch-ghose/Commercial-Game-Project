@@ -24,18 +24,12 @@ public class AkagaulBehaviour : MonoBehaviour
     public GameObject Horse;
     //public float spawnZ = 2f;       // where along Y to spawn (center)
     public float targetPos;
-    
-    // where to despawn
-    public float leftBound = -20f;  
-    public float rightBound = 30f;
-
-    public float rightSpawnX = 20f; //right side spawn
-    public float leftSpawnX = -20f; //left side spawn
-    
-    public float moveSpeed = 12f;
-
-  
-
+    // where to despawn, THESE BOUNDS MUST BE CHANGED TO FIT THE SIZE OF THE ROOM
+    //public float leftBound = -20f;  
+    //public float rightBound = 30f;
+    public float rightSpawnX = 7f; //right side spawn
+    public float leftSpawnX = -21f; //left side spawn
+    //public float moveSpeed = 12f;
 
 
     private void Start()
@@ -75,12 +69,13 @@ public class AkagaulBehaviour : MonoBehaviour
                     //function to be added
                     attackFinished = true;
                 }
-
             }
             yield return null;
         }
     }
 
+
+    //needs to be tweaked, stop them from spawning in succession
     private IEnumerator LaunchProjectile()
     {
         attackFinished = false;

@@ -2485,7 +2485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -609.0001, y: 419}
+  m_AnchoredPosition: {x: -609.00006, y: 419}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016579782
@@ -2713,10 +2713,8 @@ MonoBehaviour:
   fireRate: 0.5
   Horse: {fileID: 7452162337939041641, guid: 46f14e0a59673e74084dfdbc598fa16e, type: 3}
   targetPos: 0
-  leftBound: -20
   rightSpawnX: 20
   leftSpawnX: -20
-  moveSpeed: 12
 --- !u!114 &2071497514
 MonoBehaviour:
   m_ObjectHideFlags: 0

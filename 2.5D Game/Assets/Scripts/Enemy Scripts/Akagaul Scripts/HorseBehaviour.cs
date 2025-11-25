@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class HorseBehaviour : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
-    [SerializeField] float leftBound;
-    [SerializeField] float rightBound;
+    [SerializeField] float moveSpeed = 12f;
+    [SerializeField] float leftBound = -20f;
+    [SerializeField] float rightBound = 20f;
 
     public SpriteRenderer sr;
 
