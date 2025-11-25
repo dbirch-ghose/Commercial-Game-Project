@@ -19,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
         {
             health = minHealth;
         }
+
+        Downed();
     }
 
     public void TakeDamage(int damage) //to be referenced in enemy damage scripts
@@ -32,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
         {
             //set down state
         }
+
     }
 
 }
