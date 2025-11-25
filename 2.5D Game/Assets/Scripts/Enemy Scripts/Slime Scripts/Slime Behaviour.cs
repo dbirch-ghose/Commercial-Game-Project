@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Fusion;
 
-public class SlimeBehaviour : MonoBehaviour
+public class SlimeBehaviour : NetworkBehaviour
 {
     public NavMeshAgent agent;
     public float range;
@@ -19,7 +20,7 @@ public class SlimeBehaviour : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        //player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
+        //player = NetworkObject.FindNetworkObjectWithTag("Player").transform; //assigns player to the player transform
         sr = GetComponent<SpriteRenderer>();
 
         if (enemyTakeDamage != null)
@@ -29,7 +30,7 @@ public class SlimeBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
         
 
@@ -38,7 +39,7 @@ public class SlimeBehaviour : MonoBehaviour
             Patrol();
         }
 
-        //Chase();
+        Chase();
 
         agent.updateRotation = false; //locks rotation
 
@@ -85,15 +86,18 @@ public class SlimeBehaviour : MonoBehaviour
 
     void Chase()
     {
-        float distance = Vector3.Distance(player.transform.position, transform.position);
-        if (distance <= 5)
+        if (player != null)
         {
-            agent.SetDestination(player.position); //sets the agent destination to the player
-            isPatrolling = false;
-        }
-        else if (distance > 5 )
-        {
-            isPatrolling = true;
+            float distance = Vector3.Distance(player.transform.position, transform.position);
+            if (distance <= 5)
+            {
+                agent.SetDestination(player.position); //sets the agent destination to the player
+                isPatrolling = false;
+            }
+            else if (distance > 5 )
+            {
+                isPatrolling = true;
+            }
         }
     }
 
