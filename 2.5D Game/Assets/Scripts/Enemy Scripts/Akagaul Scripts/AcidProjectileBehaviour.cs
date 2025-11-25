@@ -13,11 +13,11 @@ public class AcidProjectileBehaviour : MonoBehaviour
     
     void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject); //destroys vial
-        //glass breaking sound effect
-
         //instantiate particle effect
         StartCoroutine(SpawnParticles());
+
+        Destroy(gameObject); //destroys vial
+        //glass breaking sound effect
 
         //damage to player
         if (collision.gameObject.tag == "Player")
@@ -33,5 +33,6 @@ public class AcidProjectileBehaviour : MonoBehaviour
         contactPosition = gameObject.transform.position;
         particles = Instantiate(particlePrefab, contactPosition, Quaternion.Euler(70, 0, Random.Range(0f, 360f))); //spawns at contact position with a random Z rotation
         yield return new WaitForSeconds(2f);
+        Destroy(particles);//doesnt work
     }
 }

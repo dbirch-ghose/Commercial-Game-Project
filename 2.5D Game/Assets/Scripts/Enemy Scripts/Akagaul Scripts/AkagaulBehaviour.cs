@@ -22,10 +22,19 @@ public class AkagaulBehaviour : MonoBehaviour
 
     //-------------------HORSE----------------------
     public GameObject Horse;
-    public float spawnZ = 2f;       // where along Y to spawn (center)
-    public float moveSpeed = 12f;    // how fast it runs
-    public float leftBound = -20f;  // when to despawn
-    public float rightSpawnX = 20f; // where to spawn
+    //public float spawnZ = 2f;       // where along Y to spawn (center)
+    public float targetPos;
+    
+    // where to despawn
+    public float leftBound = -20f;  
+    public float rightBound = 30f;
+
+    public float rightSpawnX = 20f; //right side spawn
+    public float leftSpawnX = -20f; //left side spawn
+    
+    public float moveSpeed = 12f;
+
+  
 
 
 
@@ -112,10 +121,27 @@ public class AkagaulBehaviour : MonoBehaviour
 
     private IEnumerator SpawnHorse()
     {
-        Vector3 spawnPos = new Vector3(rightSpawnX, 1.5f, spawnZ);
-        Instantiate(Horse, spawnPos, Quaternion.identity);
+        attackFinished = false;
+        int horseCount= 0;
 
-        yield return new WaitForSeconds(2f); // duration of attack
+        while (horseCount < 2)
+        {
+            //targetPos = Random.Range(-15f, 15f); //random spawn height
+            targetPos = player.position.z; //gets the players z axis position
+
+            bool spawnLeft = Random.value > 0.5f; //randomly choose left or right spawn each time                
+
+            Vector3 spawnPos = spawnLeft ? new Vector3(leftSpawnX, 1.5f, targetPos) : new Vector3(rightSpawnX, 1.5f, targetPos);
+
+            //Vector3 spawnPos = new Vector3(rightSpawnX, 1.5f, targetPos); //spawn horse on the right
+
+            GameObject horse = Instantiate(Horse, spawnPos, Quaternion.identity);
+
+            horse.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
+
+            yield return new WaitForSeconds(2f); // duration of attack
+            horseCount ++;
+        }
         attackFinished = true;  
     }
 
@@ -138,7 +164,7 @@ public class AkagaulBehaviour : MonoBehaviour
         //if random 3
         //charge player
         Die();
-    }
+    } 
 
     void Die() 
     {
