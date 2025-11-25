@@ -1,4 +1,4 @@
-using System;
+//using System;
 using System.Collections;
 using UnityEngine;
 
@@ -80,7 +80,7 @@ public class AkagaulBehaviour : MonoBehaviour
         while (projectileCount < 3) //only throws 3 at a time
         {
             //creates projectile at the fire point
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, Random.Range(-70f, 70)));
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
             //calculates direction and distance to the player

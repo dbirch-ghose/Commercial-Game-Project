@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3640777073136275791}
   - component: {fileID: 4430442892911529911}
   - component: {fileID: 7692100325543184012}
+  - component: {fileID: 1393708222971823766}
   m_Layer: 0
   m_Name: Horse
   m_TagString: Untagged
@@ -147,3 +148,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7143979, y: 0.51485616, z: 0.2}
   m_Center: {x: -0.005533326, y: -0.028590227, z: 0}
+--- !u!114 &1393708222971823766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7452162337939041641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bbf5cccad4e4534fa3fc2c65588f8b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
+  damage: 1
