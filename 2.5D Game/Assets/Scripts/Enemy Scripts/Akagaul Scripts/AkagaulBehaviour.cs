@@ -6,7 +6,8 @@ using UnityEngine;
 public class AkagaulBehaviour : MonoBehaviour
 {
     //-------------------ATTACK-LOGIC--------------------
-    private bool attackFinished = true;    
+    private bool attackFinished = true;
+    private int attackCount;
 
 
     //-------------------HEALTH--------------------
@@ -50,7 +51,6 @@ public class AkagaulBehaviour : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transforms
 
-        StartCoroutine(AttackLoop());
     }
 
     private IEnumerator AttackLoop()
@@ -234,8 +234,26 @@ public class AkagaulBehaviour : MonoBehaviour
         //SpawnHorse();
         //if random 3
         //charge player
+
+        float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
+        
+        if (distance <= 2f)
+        {
+            //melee attack();
+        }
+        else
+        {
+            StartCoroutine(AttackLoop());
+        }
+
         Die();
     } 
+
+    void Melee()
+    {
+
+    }
+
 
     void Die() 
     {
