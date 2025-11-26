@@ -33,10 +33,12 @@ public class AkagaulBehaviour : MonoBehaviour
                                     //public float moveSpeed = 12f;
 
     //-------------------CHARGE----------------------
-    public float chargeTime = 2f; //time spent charging
+    //public float warmUpTime = 1f;
+    public float chargeTime = 1.5f; //time spent charging
     public float chargeSpeed = 10f;
     public float rotationSpeed = 5f;
     private bool hasHitPlayer = false;
+    private bool hasHitWall = false;
 
     private void Start()
     {
@@ -55,7 +57,7 @@ public class AkagaulBehaviour : MonoBehaviour
     {
         while (true) 
         {
-            if (attackFinished == true)
+            if (attackFinished == true) //only start a new attack when ready
             {
                 int randAttack = UnityEngine.Random.Range(0, 3); //possible attacks
                 attackFinished = false; //stops the loop from running everyframe
@@ -82,7 +84,6 @@ public class AkagaulBehaviour : MonoBehaviour
     }
 
 
-    //needs to be tweaked, stop them from spawning in succession
     private IEnumerator LaunchProjectile()
     {
         attackFinished = false;
@@ -151,17 +152,34 @@ public class AkagaulBehaviour : MonoBehaviour
     {
         attackFinished= false;
 
+        //float warmUpTimer = 0f;
+
+        //while (warmUpTimer < warmUpTime)
+        //{
+            float lockedY = transform.position.y; //stores starting y position
+
+            //calculate direction and rotation outside of the loop so it doesnt home mid charge
+            Vector3 direction = player.transform.position - transform.position;
+
+            //fallback to prevent no movement when the player and boss line  up
+            if (direction.sqrMagnitude < 0.01f)
+            {
+                direction = transform.up;
+            }
+            direction = direction.normalized;
+
+            Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
+            rotation *= Quaternion.Euler(0f, 0f, 180f);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        //}
+
+  
         float timer = 0f;
-
-        //calculate direction and rotation outside of the loop so it doesnt home mid charge
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
-        rotation *= Quaternion.Euler(0f, 0f, 180f);
-
         while (timer < chargeTime)
         {
-            if (hasHitPlayer) //stops attack when it hits the player
+            if (hasHitPlayer || hasHitWall) //stops attack when it hits the player or a wall
             {
+                Debug.Log("Charge was interrupted");
                 timer = chargeTime;
                 attackFinished = true;
             }
@@ -169,8 +187,13 @@ public class AkagaulBehaviour : MonoBehaviour
             float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
 
             transform.Translate(direction * Time.deltaTime * chargeSpeed); //move the enemy at a specified speed
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-                
+
+            //locks y position
+            Vector3 pos = transform.position;
+            pos.y = lockedY;
+            transform.position = pos;
+
+
             timer += Time.deltaTime;
             yield return null; //runs every frame 
         }
@@ -184,6 +207,12 @@ public class AkagaulBehaviour : MonoBehaviour
         {
             hasHitPlayer = true;
             Debug.Log("Player has been hit");
+        }
+
+        if (other.CompareTag("Wall"))
+        {
+            hasHitWall = true;
+            Debug.Log("A wall has been hit");
         }
     }
 
