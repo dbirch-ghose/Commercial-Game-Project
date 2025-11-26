@@ -15,7 +15,7 @@ public class PlayerMovement8D : MonoBehaviour
     private Vector3 lastMoveDir;
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 10f;
+    private float dashingPower = 20f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
 

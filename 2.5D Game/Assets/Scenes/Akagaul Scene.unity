@@ -2715,6 +2715,9 @@ MonoBehaviour:
   targetPos: 0
   rightSpawnX: 20
   leftSpawnX: -20
+  chargeTime: 3
+  chargeSpeed: 15
+  rotationSpeed: 5
 --- !u!114 &2071497514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2727,7 +2730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 5
 --- !u!65 &2071497515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2743,7 +2746,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

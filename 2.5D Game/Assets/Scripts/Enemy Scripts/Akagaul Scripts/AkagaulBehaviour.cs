@@ -1,5 +1,6 @@
 //using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AkagaulBehaviour : MonoBehaviour
@@ -29,8 +30,13 @@ public class AkagaulBehaviour : MonoBehaviour
     //public float rightBound = 30f;
     public float rightSpawnX = 7f; //right side spawn
     public float leftSpawnX = -21f; //left side spawn
-    //public float moveSpeed = 12f;
+                                    //public float moveSpeed = 12f;
 
+    //-------------------CHARGE----------------------
+    public float chargeTime = 2f; //time spent charging
+    public float chargeSpeed = 10f;
+    public float rotationSpeed = 5f;
+    private bool hasHitPlayer = false;
 
     private void Start()
     {
@@ -39,6 +45,8 @@ public class AkagaulBehaviour : MonoBehaviour
         {
             health = enemyTakeDamage.health;
         }
+
+        player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transforms
 
         StartCoroutine(AttackLoop());
     }
@@ -66,8 +74,7 @@ public class AkagaulBehaviour : MonoBehaviour
                 else if (randAttack == 2)
                 {
                     Debug.Log("charge");
-                    //function to be added
-                    attackFinished = true;
+                    yield return StartCoroutine(Charge());
                 }
             }
             yield return null;
@@ -138,6 +145,46 @@ public class AkagaulBehaviour : MonoBehaviour
             horseCount ++;
         }
         attackFinished = true;  
+    }
+
+    private IEnumerator Charge()
+    {
+        attackFinished= false;
+
+        float timer = 0f;
+
+        //calculate direction and rotation outside of the loop so it doesnt home mid charge
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        rotation *= Quaternion.Euler(0f, 0f, 180f);
+
+        while (timer < chargeTime)
+        {
+            if (hasHitPlayer) //stops attack when it hits the player
+            {
+                timer = chargeTime;
+                attackFinished = true;
+            }
+
+            float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
+
+            transform.Translate(direction * Time.deltaTime * chargeSpeed); //move the enemy at a specified speed
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+                
+            timer += Time.deltaTime;
+            yield return null; //runs every frame 
+        }
+            
+            attackFinished = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            hasHitPlayer = true;
+            Debug.Log("Player has been hit");
+        }
     }
 
 
