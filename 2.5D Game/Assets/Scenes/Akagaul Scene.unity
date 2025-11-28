@@ -833,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1228519436}
-  animator: {fileID: 0}
+  animator: {fileID: 260637330}
 --- !u!1 &270231567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,7 +1933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1228519434}
   attackHitBox: {fileID: 270231568}
-  moveSpeed: 5
+  moveSpeed: 7.5
   rotationSpeed: 10
   animator: {fileID: 1228519440}
   sr: {fileID: 1228519439}
@@ -2884,8 +2884,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTakeDamage: {fileID: 2071497514}
   health: 0
-  meleeDamage: {fileID: 0}
-  cane: {fileID: 0}
+  hasMeleed: 0
+  hasRepositioned: 0
+  meleeDamage: {fileID: 260637331}
+  cane: {fileID: 260637325}
+  ReposSpeed: 10
   projectilePrefab: {fileID: 4473872611823807284, guid: 4f5ec8316d9d1f947a6068a122fc4b74, type: 3}
   firePoint: {fileID: 1729644277}
   player: {fileID: 1228519432}

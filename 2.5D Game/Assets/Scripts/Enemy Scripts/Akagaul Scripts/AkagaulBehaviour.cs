@@ -2,6 +2,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class AkagaulBehaviour : MonoBehaviour
 {
@@ -69,12 +70,19 @@ public class AkagaulBehaviour : MonoBehaviour
         {
             if (attackFinished == true) //only start a new attack when ready
             {
-                int randAttack = UnityEngine.Random.Range(0, 3); //possible attacks
+                //Melee Logic
+                float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
+                if (distance <= 2f && !hasMeleed)
+                {
+                    Melee();
+                }
+
+                //attackloop logic
                 attackFinished = false; //stops the loop from running everyframe
+                int randAttack = UnityEngine.Random.Range(0, 3); //possible 
                 if (randAttack == 0)
                 {
                     Debug.Log("projectile");
-                    //StartCoroutine(LaunchProjectile());
                     yield return StartCoroutine(LaunchProjectile());
 
                 }
@@ -237,21 +245,20 @@ public class AkagaulBehaviour : MonoBehaviour
         //if player is close + previous attacks have finished
         //cane melee attack, then move position
 
-        float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
+        //float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
         
-        if (distance <= 2f && !hasMeleed)
-        {
-           
-            Melee();
-            if (!hasRepositioned)
-            {
-                Reposition();
-            }
-        }
-        else
-        {
-            hasMeleed = false;//allows for more melees once player is out of range
-        }
+        //if (distance <= 2f && !hasMeleed)
+        //{
+        //    Melee();
+        //    if (!hasRepositioned)
+        //    {
+        //        Reposition();
+        //    }
+        //}
+        //else
+        //{
+        //    hasMeleed = false;//allows for more melees once player is out of range
+        //}
 
         Die();
     } 
