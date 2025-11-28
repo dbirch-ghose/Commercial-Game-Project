@@ -7,12 +7,20 @@ public class AkagaulBehaviour : MonoBehaviour
 {
     //-------------------ATTACK-LOGIC--------------------
     private bool attackFinished = true;
+    private bool isAttacking = false;
     private int attackCount;
-
 
     //-------------------HEALTH--------------------
     public EnemyTakeDamage enemyTakeDamage; //access health script
     public int health;
+
+    //-------------------MELEE----------------------
+    public bool hasMeleed= false;
+    public bool hasRepositioned = false;
+    public MeleeDamage meleeDamage;
+    public GameObject cane;
+    public float ReposSpeed = 10f;
+    
 
     //-----------------PROJECTILE------------------
     public GameObject projectilePrefab;
@@ -35,8 +43,8 @@ public class AkagaulBehaviour : MonoBehaviour
 
     //-------------------CHARGE----------------------
     //public float warmUpTime = 1f;
-    public float chargeTime = 1.5f; //time spent charging
-    public float chargeSpeed = 10f;
+    public float chargeTime = 1f; //time spent charging
+    public float chargeSpeed = 15f;
     public float rotationSpeed = 5f;
     private bool hasHitPlayer = false;
     private bool hasHitWall = false;
@@ -55,6 +63,8 @@ public class AkagaulBehaviour : MonoBehaviour
 
     private IEnumerator AttackLoop()
     {
+        isAttacking = true; //marks that the attacks have started
+
         while (true) 
         {
             if (attackFinished == true) //only start a new attack when ready
@@ -184,7 +194,7 @@ public class AkagaulBehaviour : MonoBehaviour
                 attackFinished = true;
             }
 
-            float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
+            //float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
 
             transform.Translate(direction * Time.deltaTime * chargeSpeed); //move the enemy at a specified speed
 
@@ -219,41 +229,63 @@ public class AkagaulBehaviour : MonoBehaviour
 
     void Update()
     {
+        if (!isAttacking)
+        {
+            StartCoroutine(AttackLoop());
+        }
+        
         //if player is close + previous attacks have finished
         //cane melee attack, then move position
 
-        //choose randomly between 3 attacks
-        //if random 1
-        //-----------------PROJECTILE------------------
-        //if (Time.time >= nextFireTime) //controls when the next projectile is thrown
-        //{
-        //    LaunchProjectile();
-        //    nextFireTime = Time.time + 1f / fireRate;
-        //}
-        //if random 2
-        //SpawnHorse();
-        //if random 3
-        //charge player
-
         float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
         
-        if (distance <= 2f)
+        if (distance <= 2f && !hasMeleed)
         {
-            //melee attack();
+           
+            Melee();
+            if (!hasRepositioned)
+            {
+                Reposition();
+            }
         }
         else
         {
-            StartCoroutine(AttackLoop());
+            hasMeleed = false;//allows for more melees once player is out of range
         }
 
         Die();
     } 
 
     void Melee()
-    {
-
+    {   
+        Debug.Log("boss melee");
+        meleeDamage.MeleeAnim();
+        //collider logic handled in melee damage script
+        hasMeleed = true; //prevents more melees
+        hasRepositioned = false; //allows the boss to reposition again
     }
 
+    void Reposition()
+    {
+        Debug.Log("boss is repositioning");
+        float lockedY = transform.position.y; //stores starting y position
+  
+        //create a random direction vector
+        //Vector3 randDirection = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(-5.0f, 5.0f)).normalized;
+
+        float radius = 5f;
+        Vector2 ring = Random.insideUnitCircle.normalized * radius; //random value normalised so its always on the outside
+        Vector3 randomPos = new Vector3(ring.x, transform.position.y, ring.y);
+
+        transform.Translate(randomPos * Time.deltaTime *ReposSpeed);      
+
+        //locks y position
+        Vector3 pos = transform.position;
+        pos.y = lockedY;
+        transform.position = pos;
+
+        hasRepositioned = true; //stops it happening everyframe
+    }
 
     void Die() 
     {
