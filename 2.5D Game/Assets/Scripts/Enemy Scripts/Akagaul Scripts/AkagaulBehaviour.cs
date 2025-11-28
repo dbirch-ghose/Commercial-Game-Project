@@ -75,6 +75,11 @@ public class AkagaulBehaviour : MonoBehaviour
                 if (distance <= 2f && !hasMeleed)
                 {
                     Melee();
+
+                    if (!hasRepositioned)
+                    {
+                        Reposition();
+                    }
                 }
 
                 //attackloop logic
