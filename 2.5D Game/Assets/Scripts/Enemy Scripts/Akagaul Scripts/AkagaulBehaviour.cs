@@ -16,7 +16,7 @@ public class AkagaulBehaviour : MonoBehaviour
     public int health;
 
     //-------------------MELEE----------------------
-    public bool hasMeleed= false;
+    public bool hasMeleed = false;
     public bool hasRepositioned = false;
     public MeleeDamage meleeDamage;
     public GameObject cane;
@@ -62,49 +62,46 @@ public class AkagaulBehaviour : MonoBehaviour
 
     }
 
-    private IEnumerator AttackLoop()
-    {
-        isAttacking = true; //marks that the attacks have started
+    //private IEnumerator AttackLoop()
+    //{
+    //    isAttacking = true; //marks that the attacks have started
 
-        while (true) 
-        {
-            if (attackFinished == true) //only start a new attack when ready
-            {
-                //Melee Logic
-                float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
-                if (distance <= 2f && !hasMeleed)
-                {
-                    Melee();
+    //    while (true) 
+    //    {
+    //        //Melee Logic --- Can melee during other attacks
+    //        float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player
+    //        if (distance <= 2f) 
+    //        {
+    //            Debug.Log("player is close enough to be hit");
+    //            yield return StartCoroutine(Melee());
+    //            yield return StartCoroutine(Reposition());
+    //        }
 
-                    if (!hasRepositioned)
-                    {
-                        Reposition();
-                    }
-                }
+    //        if (attackFinished == true) //only start a new attack when ready
+    //        {
+    //            //attackloop logic
+    //            attackFinished = false; //stops the loop from running everyframe
 
-                //attackloop logic
-                attackFinished = false; //stops the loop from running everyframe
-                int randAttack = UnityEngine.Random.Range(0, 3); //possible 
-                if (randAttack == 0)
-                {
-                    Debug.Log("projectile");
-                    yield return StartCoroutine(LaunchProjectile());
-
-                }
-                else if (randAttack == 1)
-                {
-                    Debug.Log("horse");
-                    yield return StartCoroutine(SpawnHorse());
-                }
-                else if (randAttack == 2)
-                {
-                    Debug.Log("charge");
-                    yield return StartCoroutine(Charge());
-                }
-            }
-            yield return null;
-        }
-    }
+    //            int randAttack = UnityEngine.Random.Range(0, 3); //possible 
+    //            if (randAttack == 0)
+    //            {
+    //                //Debug.Log("projectile");
+    //                yield return StartCoroutine(LaunchProjectile());
+    //            }
+    //            else if (randAttack == 1)
+    //            {
+    //                //Debug.Log("horse");
+    //                yield return StartCoroutine(SpawnHorse());
+    //            }
+    //            else if (randAttack == 2)
+    //            {
+    //                //Debug.Log("charge");
+    //                yield return StartCoroutine(Charge());
+    //            }
+    //        }
+    //        yield return null;
+    //    }
+    //}
 
 
     private IEnumerator LaunchProjectile()
@@ -143,7 +140,10 @@ public class AkagaulBehaviour : MonoBehaviour
             projectileCount++;
         }
         attackFinished = true; //ends the loop
+
     }
+
+   
 
     private IEnumerator SpawnHorse()
     {
@@ -168,44 +168,56 @@ public class AkagaulBehaviour : MonoBehaviour
             yield return new WaitForSeconds(2f); // duration of attack
             horseCount ++;
         }
-        attackFinished = true;  
+        attackFinished = true;
     }
 
     private IEnumerator Charge()
     {
-        attackFinished= false;
+        attackFinished = false;
+        hasHitPlayer = false;
 
-        //float warmUpTimer = 0f;
+        bool attackStart = false;
+        float startTime = 0.1f; //time where collider isn't checked
 
-        //while (warmUpTimer < warmUpTime)
-        //{
-            float lockedY = transform.position.y; //stores starting y position
+       
+        float lockedY = transform.position.y; //stores starting y position
 
-            //calculate direction and rotation outside of the loop so it doesnt home mid charge
-            Vector3 direction = player.transform.position - transform.position;
+        //calculate direction and rotation outside of the loop so it doesnt home mid charge
+        Vector3 direction = player.transform.position - transform.position;
 
-            //fallback to prevent no movement when the player and boss line  up
-            if (direction.sqrMagnitude < 0.01f)
-            {
-                direction = transform.up;
-            }
-            direction = direction.normalized;
+        //fallback to prevent no movement when the player and boss line  up
+        if (direction.sqrMagnitude < 0.01f)
+        {
+            direction = transform.up;
+        }
+        direction = direction.normalized;
 
-            Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
-            rotation *= Quaternion.Euler(0f, 0f, 180f);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        rotation *= Quaternion.Euler(0f, 0f, 180f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         //}
-
-  
         float timer = 0f;
         while (timer < chargeTime)
         {
-            if (hasHitPlayer || hasHitWall) //stops attack when it hits the player or a wall
+            if(timer > startTime)//after start time
             {
-                Debug.Log("Charge was interrupted");
+                Debug.Log("Attack was started");
+                attackStart = true;
+            }
+
+            if (hasHitPlayer) //stops attack when it hits the player or a wall
+            {
+                Debug.Log("Charge was interrupted by player");
                 timer = chargeTime;
                 attackFinished = true;
             }
+
+           if (CheckWallOverlap() && attackStart ){
+                Debug.Log("Charge was interrupted by wall");
+                //ends the attack
+                timer = chargeTime;
+                attackFinished = true;
+           }
 
             //float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
 
@@ -216,14 +228,13 @@ public class AkagaulBehaviour : MonoBehaviour
             pos.y = lockedY;
             transform.position = pos;
 
-
             timer += Time.deltaTime;
             yield return null; //runs every frame 
-        }
-            
-            attackFinished = true;
-    }
+         }
 
+            attackFinished = true;
+        }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -231,72 +242,73 @@ public class AkagaulBehaviour : MonoBehaviour
             hasHitPlayer = true;
             Debug.Log("Player has been hit");
         }
-
-        if (other.CompareTag("Wall"))
-        {
-            hasHitWall = true;
-            Debug.Log("A wall has been hit");
-        }
     }
 
+    private bool CheckWallOverlap()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, 0.2f);
+        foreach(var h in hits)
+        {
+            if (h.CompareTag("Wall"))
+            {
+                Debug.Log("hit wall");
+                return true;
+            }
+        }
+        return false;
+    }
 
     void Update()
     {
+        //to control when the attacks begin
         if (!isAttacking)
         {
-            StartCoroutine(AttackLoop());
+            //StartCoroutine(AttackLoop());
         }
-        
-        //if player is close + previous attacks have finished
-        //cane melee attack, then move position
 
-        //float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
-        
-        //if (distance <= 2f && !hasMeleed)
-        //{
-        //    Melee();
-        //    if (!hasRepositioned)
-        //    {
-        //        Reposition();
-        //    }
-        //}
-        //else
-        //{
-        //    hasMeleed = false;//allows for more melees once player is out of range
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //Debug.Log("charge");
+            StartCoroutine(Charge());
+        }
 
         Die();
-    } 
-
-    void Melee()
-    {   
-        Debug.Log("boss melee");
-        meleeDamage.MeleeAnim();
-        //collider logic handled in melee damage script
-        hasMeleed = true; //prevents more melees
-        hasRepositioned = false; //allows the boss to reposition again
     }
 
-    void Reposition()
+    private IEnumerator Melee()
     {
-        Debug.Log("boss is repositioning");
+        attackFinished = false;
+        Debug.Log("melee");
+        //meleeDamage.MeleeAnim();
+        //collider logic handled in melee damage script
+        yield return new WaitForSeconds(1f); // duration of attack
+        attackFinished = true;
+      
+    }
+
+    private IEnumerator Reposition()
+    {
+        attackFinished = false;
+
+        Debug.Log("repositioning");
         float lockedY = transform.position.y; //stores starting y position
   
         //create a random direction vector
         //Vector3 randDirection = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(-5.0f, 5.0f)).normalized;
 
-        float radius = 5f;
+        float radius = 10f;
         Vector2 ring = Random.insideUnitCircle.normalized * radius; //random value normalised so its always on the outside
         Vector3 randomPos = new Vector3(ring.x, transform.position.y, ring.y);
 
-        transform.Translate(randomPos * Time.deltaTime *ReposSpeed);      
+        transform.Translate(randomPos * Time.deltaTime *ReposSpeed);
 
-        //locks y position
-        Vector3 pos = transform.position;
-        pos.y = lockedY;
-        transform.position = pos;
+        ////locks y position
+        //Vector3 pos = transform.position;
+        //pos.y = lockedY;
+        //transform.position = pos;
 
-        hasRepositioned = true; //stops it happening everyframe
+        yield return new WaitForSeconds(1f); // duration of attack
+        attackFinished = true; //reset attack
     }
 
     void Die() 
