@@ -41,12 +41,13 @@ public class AkagaulBehaviour : MonoBehaviour
     //public float rightBound = 30f;
     public float rightSpawnX = 7f; //right side spawn
     public float leftSpawnX = -21f; //left side spawn
-                                    //public float moveSpeed = 12f;
+    //public float moveSpeed = 12f;
 
     //-------------------CHARGE----------------------
-    //public float warmUpTime = 1f;
     public float chargeTime = 1f; //time spent charging
     public float chargeSpeed = 15f;
+    public float currentSpeed = 0f;
+    public float acceleration = 5f;
     public float rotationSpeed = 5f;
     private bool hasHitPlayer = false;
     private bool hasHitWall = false;
@@ -78,28 +79,28 @@ public class AkagaulBehaviour : MonoBehaviour
                 yield return StartCoroutine(Reposition());
             }
 
-            //if (attackFinished == true) //only start a new attack when ready
-            //{
-            //    //attackloop logic
-            //    attackFinished = false; //stops the loop from running everyframe
+            if (attackFinished == true) //only start a new attack when ready
+            {
+                //attackloop logic
+                attackFinished = false; //stops the loop from running everyframe
 
-            //    int randAttack = UnityEngine.Random.Range(0, 3); //possible 
-            //    if (randAttack == 0)
-            //    {
-            //        //Debug.Log("projectile");
-            //        yield return StartCoroutine(LaunchProjectile());
-            //    }
-            //    else if (randAttack == 1)
-            //    {
-            //        //Debug.Log("horse");
-            //        yield return StartCoroutine(SpawnHorse());
-            //    }
-            //    else if (randAttack == 2)
-            //    {
-            //        //Debug.Log("charge");
-            //        yield return StartCoroutine(Charge());
-            //    }
-            //}
+                int randAttack = UnityEngine.Random.Range(0, 3); //possible 
+                if (randAttack == 0)
+                {
+                    //Debug.Log("projectile");
+                    yield return StartCoroutine(LaunchProjectile());
+                }
+                else if (randAttack == 1)
+                {
+                    //Debug.Log("horse");
+                    yield return StartCoroutine(SpawnHorse());
+                }
+                else if (randAttack == 2)
+                {
+                    //Debug.Log("charge");
+                    yield return StartCoroutine(Charge());
+                }
+            }
             yield return null;
         }
     }
@@ -178,7 +179,7 @@ public class AkagaulBehaviour : MonoBehaviour
         hasHitPlayer = false;
 
         bool attackStart = false;
-        float startTime = 0.1f; //time where collider isn't checked
+        float startTime = 0.1f; //time where collider isn't active
 
         float lockedY = transform.position.y; //stores starting y position
 
@@ -218,9 +219,11 @@ public class AkagaulBehaviour : MonoBehaviour
                 attackFinished = true;
            }
 
-            //float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player, used to decide what to do
+            currentSpeed += acceleration * Time.deltaTime;
+            currentSpeed = Mathf.Min(currentSpeed, chargeSpeed);
 
-            transform.Translate(direction * Time.deltaTime * chargeSpeed); //move the enemy at a specified speed
+            transform.Translate(direction * currentSpeed * Time.deltaTime, Space.World);
+            //transform.Translate(direction * Time.deltaTime * chargeSpeed); //move the enemy at a specified speed
 
             //locks y position
             Vector3 pos = transform.position;
