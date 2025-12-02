@@ -34,7 +34,7 @@ public class PlayerMovement8D : NetworkBehaviour
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
-        
+
     }
 
     private void Start()
@@ -65,7 +65,7 @@ public class PlayerMovement8D : NetworkBehaviour
                 _forward = data.direction;
 
             //sprite controller
-                if (data.direction.x < 0)
+            if (data.direction.x < 0)
             {
                 animator.SetBool("isWalking", true);
                 sr.flipX = false;
@@ -80,16 +80,12 @@ public class PlayerMovement8D : NetworkBehaviour
             transform.rotation = Quaternion.identity;
 
         }
-    }
 
-
-
-
-        ////prevents movement while dashing
-        //    if (isDashing)
-        //    {
-        //        return;
-        //    }
+        //prevents movement while dashing
+        if (isDashing)
+        {
+            return;
+        }
 
 
         //float horizontal = Input.GetAxisRaw("Horizontal");
@@ -103,11 +99,12 @@ public class PlayerMovement8D : NetworkBehaviour
         //    lastMoveDir = dashDir.normalized;
         //}
 
-        //if (Input.GetKeyDown(KeyCode.E) && canDash)
-        //{
-        //    StartCoroutine(Dash());
-        //}
+        if (Input.GetKeyDown(KeyCode.E) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
     }
+
 
 
     //void Update()
@@ -173,17 +170,18 @@ public class PlayerMovement8D : NetworkBehaviour
     //    }
     //}
 
-    //private IEnumerator Dash()
-    //{
-    //    canDash = false;
-    //    isDashing = true;
-    //    rb.linearVelocity = lastMoveDir * dashingPower; //creates dash force
-    //    tr.emitting = true;
-    //    yield return new WaitForSeconds(dashingTime); //duration
-    //    isDashing = false;
-    //    tr.emitting = false;
-    //    yield return new WaitForSeconds(dashingCooldown); //cooldown
-    //    canDash = true;
-    //}
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        rb.linearVelocity = _forward * dashingPower; //creates dash force
+        tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime); //duration
+        isDashing = false;
+        tr.emitting = false;
+        yield return new WaitForSeconds(dashingCooldown); //cooldown
+        canDash = true;
+    }
+}
 
 

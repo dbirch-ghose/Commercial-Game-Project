@@ -101,10 +101,10 @@ public class SlimeBehaviour : NetworkBehaviour
         }
     }
 
-    
 
-    //public void TakeDamage()
-    //{
-    //    health -= 1;
-    //}
+
+    public void TakeDamage()
+    {
+        health -= 1;
+    }
 }

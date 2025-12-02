@@ -9,8 +9,8 @@ public class PlayerMelee : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
-    //public float attackDuration = 0.2f;
-    //private bool isAttacking = false;
+    public float attackDuration = 0.2f;
+    private bool isAttacking = false;
 
     private void Start()
     {
@@ -27,55 +27,55 @@ public class PlayerMelee : MonoBehaviour
     }
 
 
-    //private IEnumerator Attack()
-    //{
-    //    isAttacking = true;
-    //    GetComponent<Collider>().enabled = true; //enables trigger collider
-    //    yield return new WaitForSeconds(attackDuration);    
-    //    GetComponent<Collider>().enabled = false; //disables collider   
-    //    isAttacking =false;
-    //}
-
-    //private void OnTriggerEnter(Collider enemy)
-    //{
-    //    if (!isAttacking) return;
-    //    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-    //    SlimeBehaviour slimeBehaviour = enemy.GetComponent<SlimeBehaviour>();
-    //    if (slimeBehaviour != null)
-    //    {
-    //        slimeBehaviour.TakeDamage();
-    //    }
-    //}
-
-
-
-    void Attack()
+    private IEnumerator Attack()
     {
-        //play animation
+        isAttacking = true;
+        GetComponent<Collider>().enabled = true; //enables trigger collider
+        yield return new WaitForSeconds(attackDuration);
+        GetComponent<Collider>().enabled = false; //disables collider   
+        isAttacking = false;
+    }
 
-        //detect enemies
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers); //creates a hitbox for the weapon
-
-        //apply damage
-        foreach (Collider enemy in hitEnemies)
+    private void OnTriggerEnter(Collider enemy)
+    {
+        if (!isAttacking) return;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        SlimeBehaviour slimeBehaviour = enemy.GetComponent<SlimeBehaviour>();
+        if (slimeBehaviour != null)
         {
-            Debug.Log(enemy.name + "has been hit");
+            slimeBehaviour.TakeDamage();
+        }
+    }
 
-            //assigns the script to the hit enemy
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            EnemyTakeDamage enemyTakeDamage = enemy.GetComponent<EnemyTakeDamage>();
+
+
+    //public void Attack()
+    //{
+    //    //play animation
+
+    //    //detect enemies
+    //    Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers); //creates a hitbox for the weapon
+
+    //    //apply damage
+    //    foreach (Collider enemy in hitEnemies)
+    //    {
+    //        Debug.Log(enemy.name + "has been hit");
+
+    //        //assigns the script to the hit enemy
+    //        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    //        EnemyTakeDamage enemyTakeDamage = enemy.GetComponent<EnemyTakeDamage>();
 
             
-            //Damages the enemy using universal script
-            if (enemyTakeDamage != null)
-            {
-                enemyTakeDamage.TakeDamage();
-            }
+    //        //Damages the enemy using universal script
+    //        if (enemyTakeDamage != null)
+    //        {
+    //            enemyTakeDamage.TakeDamage();
+    //        }
 
-        }
+    //    }
 
 
-    }
+    //}
 
     private void OnDrawGizmosSelected()
     {
