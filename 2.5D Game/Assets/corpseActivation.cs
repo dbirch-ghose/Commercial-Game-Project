@@ -5,6 +5,10 @@ public class corpseActivation : NetworkBehaviour
 {
     public NetworkObject Hanger;
     public bool activate = false;
+
+    public Transform cubeStart;
+    public Transform cubeEnd;
+    private int framesElapsed = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
