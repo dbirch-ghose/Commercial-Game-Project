@@ -43,7 +43,7 @@ public class PlayerMelee : MonoBehaviour
         SlimeBehaviour slimeBehaviour = enemy.GetComponent<SlimeBehaviour>();
         if (slimeBehaviour != null)
         {
-            slimeBehaviour.TakeDamage();
+            //slimeBehaviour.TakeDamage();
         }
     }
 
