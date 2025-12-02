@@ -1,0 +1,91 @@
+{
+  "name": "Specimen - Brother",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "format": "Harlowe",
+  "format-version": "3.3.3",
+  "ifid": "F49D98A8-8847-43AA-B340-FC5D3FDDD653",
+  "passages": [
+    {
+      "pid": "1",
+      "name": "Line 1",
+      "tags": "",
+      "position": "400,200",
+      "size": "100,100",
+      "text": "Wilfred: Hey Meone! Whatever is the matter? You've been following me nicely till now.\n[[Line 2]]"
+    },
+    {
+      "pid": "2",
+      "name": "Line 2",
+      "tags": "",
+      "position": "575,200",
+      "size": "100,100",
+      "text": "Wilfred: Meone! Get back here you useless cat!\n[[Line 3]]"
+    },
+    {
+      "pid": "3",
+      "name": "Line 3",
+      "tags": "",
+      "position": "750,200",
+      "size": "100,100",
+      "text": "Wilfred: Uh oh... what is that thing!? Ugh... fine! Meone stay over there! I'll fight it off!\n[[Line 4]]"
+    },
+    {
+      "pid": "4",
+      "name": "Line 4",
+      "tags": "",
+      "position": "925,200",
+      "size": "100,100",
+      "text": "Wilfred: My attacks... they aren't doing anything! It's like I'm poking him with a feather!\n[[Line 5]]"
+    },
+    {
+      "pid": "5",
+      "name": "Line 5",
+      "tags": "",
+      "position": "925,325",
+      "size": "100,100",
+      "text": "Wilfred: He's ignoring me too! How dare you! Don't just walk past me! You should be dead by now!\n[[Line 6]]"
+    },
+    {
+      "pid": "6",
+      "name": "Line 6",
+      "tags": "",
+      "position": "750,325",
+      "size": "100,100",
+      "text": "Wilfred: Wait what is he doing? Is he lifting the rubble? Wait it's going to-\n[[Line 7]]"
+    },
+    {
+      "pid": "7",
+      "name": "Line 7",
+      "tags": "",
+      "position": "575,325",
+      "size": "100,100",
+      "text": "Meone: Meow!\n[[Line 8]]"
+    },
+    {
+      "pid": "8",
+      "name": "Line 8",
+      "tags": "",
+      "position": "400,325",
+      "size": "100,100",
+      "text": "Wilfred: Oh. Nice of you to come back Meone. Don't you dare run off again!\n[[Line 9]]"
+    },
+    {
+      "pid": "9",
+      "name": "Line 9",
+      "tags": "",
+      "position": "400,450",
+      "size": "100,100",
+      "text": "Wilfred: (I can't let Meone die. She's all that remains of mother...)\n[[Line 10]]"
+    },
+    {
+      "pid": "10",
+      "name": "Line 10",
+      "tags": "",
+      "position": "575,450",
+      "size": "100,100",
+      "text": "Meone: Meow..."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "name": "Cage - Brother",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "format": "Harlowe",
+  "format-version": "3.3.3",
+  "ifid": "405DF9D0-F3F0-4528-A47B-BE7BE465FE84",
+  "passages": [
+    {
+      "pid": "1",
+      "name": "Line 1",
+      "tags": "",
+      "position": "400,100",
+      "size": "100,100",
+      "text": "Wilfred: Brilliant. Now I am stuck in a cage that is glued to the ceiling.\n[[Line 2]]"
+    },
+    {
+      "pid": "2",
+      "name": "Line 2",
+      "tags": "",
+      "position": "575,100",
+      "size": "100,100",
+      "text": "Wilfred: (How is Meone handling this!? She is the more skittish one.)\n[[Line 3]]"
+    },
+    {
+      "pid": "3",
+      "name": "Line 3",
+      "tags": "",
+      "position": "750,100",
+      "size": "100,100",
+      "text": "Wilfred: (And here I am, losing my cool! I must look pathetic right now... but it's not my fault.)\n[[Line 4]]"
+    },
+    {
+      "pid": "4",
+      "name": "Line 4",
+      "tags": "",
+      "position": "925,100",
+      "size": "100,100",
+      "text": "Wilfred: This is all Wini's fault! She fell for such an obvious trap!\n[[Line 5]]"
+    },
+    {
+      "pid": "5",
+      "name": "Line 5",
+      "tags": "",
+      "position": "925,225",
+      "size": "100,100",
+      "text": "Wilfred: Wini was always hopeless on her own. Always needed me around to stop her from getting into messes such as these.\n[[Line 6]]"
+    },
+    {
+      "pid": "6",
+      "name": "Line 6",
+      "tags": "",
+      "position": "750,225",
+      "size": "100,100",
+      "text": "Wilfred: (Why did she get the witch powers? She has never used them for anything good...)\n[[Line 7]]"
+    },
+    {
+      "pid": "7",
+      "name": "Line 7",
+      "tags": "",
+      "position": "575,225",
+      "size": "100,100",
+      "text": "Wilfred: (But, I don't want her to die! So I have to get out of this cage and find her!)\n[[Line 8]]"
+    },
+    {
+      "pid": "8",
+      "name": "Line 8",
+      "tags": "",
+      "position": "400,225",
+      "size": "100,100",
+      "text": "Wilfred: Well... it looks like Wilfred has to save the day again. I'll get us out of here Meone!\n[[Line 9]]"
+    },
+    {
+      "pid": "9",
+      "name": "Line 9",
+      "tags": "",
+      "position": "400,350",
+      "size": "100,100",
+      "text": "Wilfred: You'll forgive Wini when we find her, right Meone? Even if she did kill mo- AAAH!\n[[Line 10]]"
+    },
+    {
+      "pid": "10",
+      "name": "Line 10",
+      "tags": "",
+      "position": "575,350",
+      "size": "100,100",
+      "text": "Wilfred: What a stroke of luck! Come on Meone! Let us be off before that crazy doctor comes back!"
+    }
+  ]
+}

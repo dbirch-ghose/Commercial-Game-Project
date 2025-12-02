@@ -1,0 +1,171 @@
+{
+  "name": "Before Ackergaul Fight",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "format": "Harlowe",
+  "format-version": "3.3.3",
+  "ifid": "5C7FAFED-9F2B-4D7B-8ACF-4D45F3205CA9",
+  "passages": [
+    {
+      "pid": "1",
+      "name": "Line 1",
+      "tags": "",
+      "position": "700,100",
+      "size": "100,100",
+      "text": "Ackergaul: Who dares interrupt me and my work!?\n\n[[Line 2]]"
+    },
+    {
+      "pid": "2",
+      "name": "Line 2",
+      "tags": "",
+      "position": "875,100",
+      "size": "100,100",
+      "text": "Ackergaul: This Kelpie is a fine specimen to add to my many, and I shan't let you interrupt me!\n\n[[Line 3]]"
+    },
+    {
+      "pid": "3",
+      "name": "Line 3",
+      "tags": "",
+      "position": "1050,100",
+      "size": "100,100",
+      "text": "Wilfred: Yeah... I don't think so. I don't think I like your way of treating these creatures. Or witches.\n\n[[Line 4]]"
+    },
+    {
+      "pid": "4",
+      "name": "Line 4",
+      "tags": "",
+      "position": "1225,100",
+      "size": "100,100",
+      "text": "Wilfred: And I especially don't like the way you treated my mother!\n\n[[Line 5]]"
+    },
+    {
+      "pid": "5",
+      "name": "Line 5",
+      "tags": "",
+      "position": "1225,225",
+      "size": "100,100",
+      "text": "Ackergaul: I am doing them a favour! I am purging them from the demonic entities that possess them!\n\n[[Line 6]]"
+    },
+    {
+      "pid": "6",
+      "name": "Line 6",
+      "tags": "",
+      "position": "1050,225",
+      "size": "100,100",
+      "text": "Wilfred: I think we both have a different definition of a favour! \n\n[[Line 7]]"
+    },
+    {
+      "pid": "7",
+      "name": "Line 7",
+      "tags": "",
+      "position": "875,225",
+      "size": "100,100",
+      "text": "Wilfred: You are not the decider of what is right and what is wrong!\n\n[[Line 8]]"
+    },
+    {
+      "pid": "8",
+      "name": "Line 8",
+      "tags": "",
+      "position": "700,225",
+      "size": "100,100",
+      "text": "Ackergaul: I certainly have more power to decide that than you! The people trust my research!\n\n[[Line 9]]"
+    },
+    {
+      "pid": "9",
+      "name": "Line 9",
+      "tags": "",
+      "position": "700,350",
+      "size": "100,100",
+      "text": "Wilfred: Oh? Because you are a \"respectable doctor\"? You are nothing but a murderer! Your morals mean nothing here!\n\n[[Line 10]]"
+    },
+    {
+      "pid": "10",
+      "name": "Line 10",
+      "tags": "",
+      "position": "875,350",
+      "size": "100,100",
+      "text": "Meone: Meow!\n\n[[Line 11]]"
+    },
+    {
+      "pid": "11",
+      "name": "Line 11",
+      "tags": "",
+      "position": "1050,350",
+      "size": "100,100",
+      "text": "Ackergaul: I knew I could sense something! A demonic entity has attached itself to that cat!\n\n[[Line 12]]"
+    },
+    {
+      "pid": "12",
+      "name": "Line 12",
+      "tags": "",
+      "position": "1225,350",
+      "size": "100,100",
+      "text": "Ackergaul: It must be cleansed immediately! Hand the fiend over at once!\n\n[[Line 13]]"
+    },
+    {
+      "pid": "13",
+      "name": "Line 13",
+      "tags": "",
+      "position": "1225,475",
+      "size": "100,100",
+      "text": "Meone: MEOW!\n\n[[Line 14]]"
+    },
+    {
+      "pid": "14",
+      "name": "Line 14",
+      "tags": "",
+      "position": "1050,475",
+      "size": "100,100",
+      "text": "Wilfred: Don't worry Meone! I won't let him hurt you! Stay behind me. This guy is mine.\n\n[[Line 15]]"
+    },
+    {
+      "pid": "15",
+      "name": "Line 15",
+      "tags": "",
+      "position": "875,475",
+      "size": "100,100",
+      "text": "Meone: Meow...\n\n[[Line 16]]"
+    },
+    {
+      "pid": "16",
+      "name": "Line 16",
+      "tags": "",
+      "position": "700,475",
+      "size": "100,100",
+      "text": "Ackergaul: This cat is flawed. Possessed by evil. I can fix it! I can make it better!\n\n[[Line 17]]"
+    },
+    {
+      "pid": "17",
+      "name": "Line 17",
+      "tags": "",
+      "position": "700,600",
+      "size": "100,100",
+      "text": "Wilfred: Meone is fine as she is. Possessed!? She is just a cat!\n\n[[Line 18]]"
+    },
+    {
+      "pid": "18",
+      "name": "Line 18",
+      "tags": "",
+      "position": "875,600",
+      "size": "100,100",
+      "text": "Ackergaul: You wouldn't understand! Fine. Have it your way. I'll have to take it by force!\n\n[[Line 19]]"
+    },
+    {
+      "pid": "19",
+      "name": "Line 19",
+      "tags": "",
+      "position": "1050,600",
+      "size": "100,100",
+      "text": "Wilfred: (This doctor is insane! Why is he so convinced that he is a saviour to the people!?)\n\n[[Line 20]]"
+    },
+    {
+      "pid": "20",
+      "name": "Line 20",
+      "tags": "",
+      "position": "1225,600",
+      "size": "100,100",
+      "text": "Wilfred: (...a saviour...? No! I am NOT like Ackergaul!)"
+    }
+  ]
+}

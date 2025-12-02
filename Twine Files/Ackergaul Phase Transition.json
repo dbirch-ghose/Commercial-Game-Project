@@ -1,0 +1,155 @@
+{
+  "name": "Ackergaul Phase Transition",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "format": "Harlowe",
+  "format-version": "3.3.3",
+  "ifid": "19896BAB-F0E9-49FF-9B88-773475719BB8",
+  "passages": [
+    {
+      "pid": "1",
+      "name": "Line 1",
+      "tags": "",
+      "position": "700,100",
+      "size": "100,100",
+      "text": "Ackergaul: This is not working! These specimens are flawed! Useless!\n\n[[Line 2]]"
+    },
+    {
+      "pid": "2",
+      "name": "Line 2",
+      "tags": "",
+      "position": "875,100",
+      "size": "100,100",
+      "text": "Wilfred: Finally... those horse specimens are gone... just...a...little...more\n\n[[Line 3]]"
+    },
+    {
+      "pid": "3",
+      "name": "Line 3",
+      "tags": "",
+      "position": "1050,100",
+      "size": "100,100",
+      "text": "Meone: Meow... Meow?\n\n[[Line 4]]"
+    },
+    {
+      "pid": "4",
+      "name": "Line 4",
+      "tags": "",
+      "position": "1225,100",
+      "size": "100,100",
+      "text": "Ackergaul: The reason this isn't working is because the specimens are flawed! I have done nothing wrong!\n\n[[Line 5]]"
+    },
+    {
+      "pid": "5",
+      "name": "Line 5",
+      "tags": "",
+      "position": "1225,225",
+      "size": "100,100",
+      "text": "Ackergaul: The specimens were already weak! Already beyond saving!\n\n[[Line 6]]"
+    },
+    {
+      "pid": "6",
+      "name": "Line 6",
+      "tags": "",
+      "position": "1050,225",
+      "size": "100,100",
+      "text": "Ackergaul: But maybe...hahaha... I am what is needed!\n\n[[Line 7]]"
+    },
+    {
+      "pid": "7",
+      "name": "Line 7",
+      "tags": "",
+      "position": "875,225",
+      "size": "100,100",
+      "text": "Wilfred: Huh? No... he wouldn't!\n\n[[Line 8]]"
+    },
+    {
+      "pid": "8",
+      "name": "Line 8",
+      "tags": "",
+      "position": "700,225",
+      "size": "100,100",
+      "text": "Meone: Meow!!!\n\n[[Line 9]]"
+    },
+    {
+      "pid": "9",
+      "name": "Line 9",
+      "tags": "",
+      "position": "700,350",
+      "size": "100,100",
+      "text": "Ackergaul: I... will become the perfect specimen... hahahahaha! An entity entirely removed from the demonic!\n\n[[Line 10]]"
+    },
+    {
+      "pid": "10",
+      "name": "Line 10",
+      "tags": "",
+      "position": "875,350",
+      "size": "100,100",
+      "text": "Wilfred: Wait wait wait wait wait! Don't do it!\n\n[[Line 11]]"
+    },
+    {
+      "pid": "11",
+      "name": "Line 11",
+      "tags": "",
+      "position": "1050,350",
+      "size": "100,100",
+      "text": "Meone: MEOW!!!\n\n[[Line 12]]"
+    },
+    {
+      "pid": "12",
+      "name": "Line 12",
+      "tags": "",
+      "position": "1225,350",
+      "size": "100,100",
+      "text": "Ackergaul: I will stop you... you WILL NOT get in the way of my work! I will save the people from demonic entities like you!\n\n[[Line 13]]"
+    },
+    {
+      "pid": "13",
+      "name": "Line 13",
+      "tags": "",
+      "position": "1225,475",
+      "size": "100,100",
+      "text": "Wilfred: Meone!? No no! Meone! You were fine up until this point! Come back I can't fight him alone!\n\n[[Line 14]]"
+    },
+    {
+      "pid": "14",
+      "name": "Line 14",
+      "tags": "",
+      "position": "1050,475",
+      "size": "100,100",
+      "text": "???: URRRRRRRRRRRRGGGGGHHHHH\n\n[[Line 15]]"
+    },
+    {
+      "pid": "15",
+      "name": "Line 15",
+      "tags": "",
+      "position": "875,475",
+      "size": "100,100",
+      "text": "Wilfred: Huh!? What is that thing!?\n\n[[Line 16]]"
+    },
+    {
+      "pid": "16",
+      "name": "Line 16",
+      "tags": "",
+      "position": "700,475",
+      "size": "100,100",
+      "text": "Buff Specimen: URRRRRRRRRRRRRRRGGGGHHH *spark*\n\n[[Line 17]]"
+    },
+    {
+      "pid": "17",
+      "name": "Line 17",
+      "tags": "",
+      "position": "700,600",
+      "size": "100,100",
+      "text": "Wilfred: Is this thing... helping me? Wait... it needs more electricity!\n\n[[Line 18]]"
+    },
+    {
+      "pid": "18",
+      "name": "Line 18",
+      "tags": "",
+      "position": "875,600",
+      "size": "100,100",
+      "text": "Wilfred: But where do I get electricity to!?"
+    }
+  ]
+}

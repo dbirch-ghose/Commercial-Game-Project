@@ -1,0 +1,139 @@
+{
+  "name": "Meeting Ackergaul",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "format": "Harlowe",
+  "format-version": "3.3.3",
+  "ifid": "71175F72-73D6-43C3-857A-35B2E060E31F",
+  "passages": [
+    {
+      "pid": "1",
+      "name": "Line 1",
+      "tags": "",
+      "position": "100,100",
+      "size": "100,100",
+      "text": "Wilfred: Hey Meone! Wait up! Stop running off, it is too dangerous for a cat like you!\n\n[[Line 2]]"
+    },
+    {
+      "pid": "2",
+      "name": "Line 2",
+      "tags": "",
+      "position": "275,100",
+      "size": "100,100",
+      "text": "Meone: Meow?\n[[Line 3]]"
+    },
+    {
+      "pid": "3",
+      "name": "Line 3",
+      "tags": "",
+      "position": "450,100",
+      "size": "100,100",
+      "text": "Wilfred: Huh? Meone? Did you step on something?\n[[Line 4]]"
+    },
+    {
+      "pid": "4",
+      "name": "Line 4",
+      "tags": "",
+      "position": "625,100",
+      "size": "100,100",
+      "text": "Wilfred: Wait... What's that noise?\n[[Line 5]]"
+    },
+    {
+      "pid": "5",
+      "name": "Line 5",
+      "tags": "",
+      "position": "625,225",
+      "size": "100,100",
+      "text": "Wilfred: Oh Meone for the love of- AAAH!\n[[Line 6]]"
+    },
+    {
+      "pid": "6",
+      "name": "Line 6",
+      "tags": "",
+      "position": "450,225",
+      "size": "100,100",
+      "text": "Ackergaul: My my, that is convenient. I was looking all over for this vile furball everywhere.\n[[Line 7]]"
+    },
+    {
+      "pid": "7",
+      "name": "Line 7",
+      "tags": "",
+      "position": "275,225",
+      "size": "100,100",
+      "text": "Wilfred: Wait... you were looking for Meone!? Why was Meone here in the first place!?\n[[Line 8]]"
+    },
+    {
+      "pid": "8",
+      "name": "Line 8",
+      "tags": "",
+      "position": "100,225",
+      "size": "100,100",
+      "text": "Meone: Meow...\n[[Line 9]]"
+    },
+    {
+      "pid": "9",
+      "name": "Line 9",
+      "tags": "",
+      "position": "100,350",
+      "size": "100,100",
+      "text": "Ackergaul: Never you mind, brat!\n[[Line 10]]"
+    },
+    {
+      "pid": "10",
+      "name": "Line 10",
+      "tags": "",
+      "position": "275,350",
+      "size": "100,100",
+      "text": "Ackergaul: Didn't your father ever tell you to mind your business?\n[[Line 11]]"
+    },
+    {
+      "pid": "11",
+      "name": "Line 11",
+      "tags": "",
+      "position": "450,350",
+      "size": "100,100",
+      "text": "Wilfred: Huh!? Do you think my father would let you lock me up like this?\n[[Line 12]]"
+    },
+    {
+      "pid": "12",
+      "name": "Line 12",
+      "tags": "",
+      "position": "625,350",
+      "size": "100,100",
+      "text": "Ackergaul: I honestly do not think he would care much for your state. \n[[Line 13]]"
+    },
+    {
+      "pid": "13",
+      "name": "Line 13",
+      "tags": "",
+      "position": "625,475",
+      "size": "100,100",
+      "text": "Ackergaul: Nor do I, to be frank. A new shipment has come from Beatrix, I must get to work\n[[Line 14]]"
+    },
+    {
+      "pid": "14",
+      "name": "Line 14",
+      "tags": "",
+      "position": "450,475",
+      "size": "100,100",
+      "text": "Wilfred: Hey! Get back here! I'm not done asking questions!\n[[Line 15]]"
+    },
+    {
+      "pid": "15",
+      "name": "Line 15",
+      "tags": "",
+      "position": "275,475",
+      "size": "100,100",
+      "text": "Meone: Meow...\n[[Line 16]]"
+    },
+    {
+      "pid": "16",
+      "name": "Line 16",
+      "tags": "",
+      "position": "100,475",
+      "size": "100,100",
+      "text": "Meone: Meow...?"
+    }
+  ]
+}
