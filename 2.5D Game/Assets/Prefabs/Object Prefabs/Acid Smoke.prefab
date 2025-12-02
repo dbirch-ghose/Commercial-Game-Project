@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5428677645142876481}
   - component: {fileID: 6644367547669024010}
   - component: {fileID: 3789769204681956025}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Acid Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
