@@ -16,12 +16,8 @@ public class cageDropper : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnExectute()
     {
-        if (other.CompareTag("Player"))
-        {
-            cage.GetComponent<Rigidbody>().useGravity = true;
-            
-        }
+        cage.GetComponent<Rigidbody>().useGravity = true;
     }
 }
