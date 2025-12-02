@@ -64,17 +64,39 @@ public class PlayerMovement8D : NetworkBehaviour
             if (data.direction.sqrMagnitude > 0)
                 _forward = data.direction;
 
+
             //sprite controller
-            if (data.direction.x < 0)
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalkingSide", false);
+            animator.SetBool("isWalkingDown", false);
+
+            if (data.direction.sqrMagnitude <= 0)
             {
-                animator.SetBool("isWalking", true);
+                animator.SetBool("isIdle", true);
+            }
+            else
+            {
+                animator.SetBool("isIdle", false);
+            }
+
+            if (data.direction.x < 0) //left
+            {
+                Debug.Log("Left");
+                animator.SetBool("isWalkingSide", true);
                 sr.flipX = false;
             }
-            else if (data.direction.x > 0)
+            else if (data.direction.x > 0) //right
             {
-                animator.SetBool("isWalking", true);
+                Debug.Log("right");
+                animator.SetBool("isWalkingSide", true);
                 sr.flipX = true;
             }
+            else if (data.direction.z < 0) //down
+            {
+                Debug.Log("down");
+                animator.SetBool("isWalkingDown", true);
+            }
+
 
 
             transform.rotation = Quaternion.identity;

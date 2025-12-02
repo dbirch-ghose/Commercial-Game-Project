@@ -437,8 +437,7 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 4839098949262485984}
+  NetworkedBehaviours: []
   ForceRemoteRenderTimeframe: 0
 --- !u!65 &1803031302837872324
 BoxCollider:
