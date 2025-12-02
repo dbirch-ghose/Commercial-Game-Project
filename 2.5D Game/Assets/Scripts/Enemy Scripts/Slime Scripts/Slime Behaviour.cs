@@ -97,10 +97,10 @@ public class SlimeBehaviour : MonoBehaviour
         }
     }
 
-    
 
-    //public void TakeDamage()
-    //{
-    //    health -= 1;
-    //}
+
+    public void TakeDamage()
+    {
+        health -= 1;
+    }
 }
