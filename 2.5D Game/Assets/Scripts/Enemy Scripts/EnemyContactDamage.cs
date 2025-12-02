@@ -10,7 +10,9 @@ public class EnemyContactDamage : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>(); //reference to the players health
+
             playerHealth.TakeDamage(damage);
-        }
+        } 
     }
 }
