@@ -259,9 +259,9 @@ MonoBehaviour:
   spawnPoint: {x: -0.24, y: 0, z: 0}
   starter: {fileID: 140605429}
   _playerPrefab:
-    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
+    RawGuidValue: 5797adf09924c5441991408ae90d941f
   _player2Prefab:
-    RawGuidValue: bfdf956ef9802c64cb8ff4183379ac5e
+    RawGuidValue: 5797adf09924c5441991408ae90d941f
 --- !u!4 &17664354
 Transform:
   m_ObjectHideFlags: 0
@@ -5192,7 +5192,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &659281099
