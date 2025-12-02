@@ -8,7 +8,9 @@ public class corpseActivation : NetworkBehaviour
 
     public Transform cubeStart;
     public Transform cubeEnd;
-    private int framesElapsed = 0;
+    private float framesElapsed = 0;
+    private bool start = false;
+    public float totalFrames = 60;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +22,18 @@ public class corpseActivation : NetworkBehaviour
     {
         if (activate == true)
         {
-
+            if (!start)
+            {
+                framesElapsed = 0;
+                start = true;
+            }
+            float ratio = framesElapsed / totalFrames;
+            if (ratio > 1)
+            {
+                ratio = 1;
+            }
+            Hanger.transform.position=Vector3.Lerp(cubeStart.position, cubeEnd.position, ratio);
+            framesElapsed += 1;
         }
     }
 
