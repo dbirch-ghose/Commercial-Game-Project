@@ -12,6 +12,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     public Vector3 spawnPoint;
     private NetworkRunner _runner;
     private PlayerRef Possessor;
+    public GameObject starter;
 
     private void OnGUI()
     {
@@ -20,11 +21,13 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
             {
                 StartGame(GameMode.Host);
+                starter.SetActive(true);
             }
 
             if (GUI.Button(new Rect(0, 40, 200, 40), "Join"))
             {
                 StartGame(GameMode.Client);
+                starter.SetActive(true);
             }
         }
     }
@@ -77,12 +80,14 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 Possessor = player;
                 NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
+                
             }
             else
             {
                 Possessor = player;
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
+                
             }
                 // Keep track of the player avatars for easy access
                 
