@@ -20,6 +20,7 @@ public class AkagaulBehaviour : MonoBehaviour
     public bool hasRepositioned = false;
     public MeleeDamage meleeDamage;
     public GameObject cane;
+    public float reposTime = 0.4f;
     public float ReposSpeed = 10f;
     
 
@@ -62,46 +63,46 @@ public class AkagaulBehaviour : MonoBehaviour
 
     }
 
-    //private IEnumerator AttackLoop()
-    //{
-    //    isAttacking = true; //marks that the attacks have started
+    private IEnumerator AttackLoop()
+    {
+        isAttacking = true; //marks that the attacks have started
 
-    //    while (true) 
-    //    {
-    //        //Melee Logic --- Can melee during other attacks
-    //        float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player
-    //        if (distance <= 2f) 
-    //        {
-    //            Debug.Log("player is close enough to be hit");
-    //            yield return StartCoroutine(Melee());
-    //            yield return StartCoroutine(Reposition());
-    //        }
+        while (true)
+        {
+            //Melee Logic --- Can melee during other attacks
+            float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player
+            if (distance <= 2f)
+            {
+                Debug.Log("player is close enough to be hit");
+                yield return StartCoroutine(Melee());
+                yield return StartCoroutine(Reposition());
+            }
 
-    //        if (attackFinished == true) //only start a new attack when ready
-    //        {
-    //            //attackloop logic
-    //            attackFinished = false; //stops the loop from running everyframe
+            //if (attackFinished == true) //only start a new attack when ready
+            //{
+            //    //attackloop logic
+            //    attackFinished = false; //stops the loop from running everyframe
 
-    //            int randAttack = UnityEngine.Random.Range(0, 3); //possible 
-    //            if (randAttack == 0)
-    //            {
-    //                //Debug.Log("projectile");
-    //                yield return StartCoroutine(LaunchProjectile());
-    //            }
-    //            else if (randAttack == 1)
-    //            {
-    //                //Debug.Log("horse");
-    //                yield return StartCoroutine(SpawnHorse());
-    //            }
-    //            else if (randAttack == 2)
-    //            {
-    //                //Debug.Log("charge");
-    //                yield return StartCoroutine(Charge());
-    //            }
-    //        }
-    //        yield return null;
-    //    }
-    //}
+            //    int randAttack = UnityEngine.Random.Range(0, 3); //possible 
+            //    if (randAttack == 0)
+            //    {
+            //        //Debug.Log("projectile");
+            //        yield return StartCoroutine(LaunchProjectile());
+            //    }
+            //    else if (randAttack == 1)
+            //    {
+            //        //Debug.Log("horse");
+            //        yield return StartCoroutine(SpawnHorse());
+            //    }
+            //    else if (randAttack == 2)
+            //    {
+            //        //Debug.Log("charge");
+            //        yield return StartCoroutine(Charge());
+            //    }
+            //}
+            yield return null;
+        }
+    }
 
 
     private IEnumerator LaunchProjectile()
@@ -179,7 +180,6 @@ public class AkagaulBehaviour : MonoBehaviour
         bool attackStart = false;
         float startTime = 0.1f; //time where collider isn't checked
 
-       
         float lockedY = transform.position.y; //stores starting y position
 
         //calculate direction and rotation outside of the loop so it doesnt home mid charge
@@ -201,7 +201,6 @@ public class AkagaulBehaviour : MonoBehaviour
         {
             if(timer > startTime)//after start time
             {
-                Debug.Log("Attack was started");
                 attackStart = true;
             }
 
@@ -230,11 +229,63 @@ public class AkagaulBehaviour : MonoBehaviour
 
             timer += Time.deltaTime;
             yield return null; //runs every frame 
-         }
-
+        }
             attackFinished = true;
         }
-    
+
+    private IEnumerator Melee()
+    {
+        attackFinished = false;
+        Debug.Log("melee");
+        //meleeDamage.MeleeAnim();
+        //collider logic handled in melee damage script
+        yield return new WaitForSeconds(1f); // duration of attack
+        attackFinished = true;
+    }
+
+    private IEnumerator Reposition()
+    {
+        attackFinished = false;
+
+        Debug.Log("repositioning");
+        float lockedY = transform.position.y; //stores starting y position
+
+        //create a random direction vector
+        //Vector3 randDirection = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(-5.0f, 5.0f)).normalized;
+
+        float radius = 2f;
+        Vector2 ring = Random.insideUnitCircle.normalized * radius; //random value normalised so its always on the outside
+        Vector3 randomPos = new Vector3(ring.x, transform.position.y, ring.y);
+         
+        float timer = 0f;
+        while (timer < reposTime)
+        {
+            if (CheckWallOverlap()) //if it hits a wall, repos again
+            {
+                Debug.Log("reposition was interrupted by wall");
+                //yield return StartCoroutine(Reposition());
+            }
+            else
+            {
+                transform.Translate(randomPos * Time.deltaTime * ReposSpeed); //moves to a random pos
+
+                //locks y position
+                Vector3 pos = transform.position;
+                pos.y = lockedY;
+                transform.position = pos;
+            }
+            timer += Time.deltaTime;
+            yield return null; // wait 1 frame
+
+        }
+
+        
+
+        yield return new WaitForSeconds(1f); // duration of attack
+        attackFinished = true; //reset attack
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -263,53 +314,19 @@ public class AkagaulBehaviour : MonoBehaviour
         //to control when the attacks begin
         if (!isAttacking)
         {
-            //StartCoroutine(AttackLoop());
+            StartCoroutine(AttackLoop());
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //Debug.Log("charge");
-            StartCoroutine(Charge());
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    //Debug.Log("charge");
+        //    StartCoroutine(Charge());
+        //}
 
         Die();
     }
 
-    private IEnumerator Melee()
-    {
-        attackFinished = false;
-        Debug.Log("melee");
-        //meleeDamage.MeleeAnim();
-        //collider logic handled in melee damage script
-        yield return new WaitForSeconds(1f); // duration of attack
-        attackFinished = true;
-      
-    }
-
-    private IEnumerator Reposition()
-    {
-        attackFinished = false;
-
-        Debug.Log("repositioning");
-        float lockedY = transform.position.y; //stores starting y position
   
-        //create a random direction vector
-        //Vector3 randDirection = new Vector3(Random.Range(-5.0f, 5.0f), 0, Random.Range(-5.0f, 5.0f)).normalized;
-
-        float radius = 10f;
-        Vector2 ring = Random.insideUnitCircle.normalized * radius; //random value normalised so its always on the outside
-        Vector3 randomPos = new Vector3(ring.x, transform.position.y, ring.y);
-
-        transform.Translate(randomPos * Time.deltaTime *ReposSpeed);
-
-        ////locks y position
-        //Vector3 pos = transform.position;
-        //pos.y = lockedY;
-        //transform.position = pos;
-
-        yield return new WaitForSeconds(1f); // duration of attack
-        attackFinished = true; //reset attack
-    }
 
     void Die() 
     {
