@@ -1,0 +1,307 @@
+{
+  "name": "After Ackergaul Fight",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.11.1",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "ifid": "3CCC61BA-D3F3-438F-8083-249479BE9F87",
+  "passages": [
+    {
+      "pid": "1",
+      "name": "Line 1",
+      "tags": "",
+      "position": "400,100",
+      "size": "100,100",
+      "text": "Wilfred: Well... I'm glad we're done with that Meone. But there's no sign of Wini here.\n\n[[Line 2]]"
+    },
+    {
+      "pid": "2",
+      "name": "Line 2",
+      "tags": "",
+      "position": "575,100",
+      "size": "100,100",
+      "text": "Wilfred: If Wini was going to be anywhere it was here, even mother was here.\n\n[[Line 3]]"
+    },
+    {
+      "pid": "3",
+      "name": "Line 3",
+      "tags": "",
+      "position": "750,100",
+      "size": "100,100",
+      "text": "Meone: Meow? ...Meow...Meow!\n\n[[Line 4]]"
+    },
+    {
+      "pid": "4",
+      "name": "Line 4",
+      "tags": "",
+      "position": "925,100",
+      "size": "100,100",
+      "text": "Wilfred: Meone? You're noisier than usual. Whatever is the matter? Wait, is that Ackergaul's mask?\n\n[[Line 5]]"
+    },
+    {
+      "pid": "5",
+      "name": "Line 5",
+      "tags": "",
+      "position": "925,225",
+      "size": "100,100",
+      "text": "Wilfred: Are you trying to put the mask on? I mean, it does suit you Meone. Here let me help.\n\n[[Line 6]]"
+    },
+    {
+      "pid": "6",
+      "name": "Line 6",
+      "tags": "",
+      "position": "750,225",
+      "size": "100,100",
+      "text": "Meone: Meow!\n\n[[Line 7]]"
+    },
+    {
+      "pid": "7",
+      "name": "Line 7",
+      "tags": "",
+      "position": "575,225",
+      "size": "100,100",
+      "text": "Wilfred: Well, I don't know why you wanted the mask on, but it oddly suits you Meone.\n\n[[Line 8]]"
+    },
+    {
+      "pid": "8",
+      "name": "Line 8",
+      "tags": "",
+      "position": "400,225",
+      "size": "100,100",
+      "text": "Wilfred: Still no sign of Wini though. This was a nice distraction, but we need to find her Meone.\n\n[[Line 9]]"
+    },
+    {
+      "pid": "9",
+      "name": "Line 9",
+      "tags": "",
+      "position": "400,350",
+      "size": "100,100",
+      "text": "Meone?: Maybe I could help you with that? Wow, it's good to be able to talk again.\n\n[[Line 10]]"
+    },
+    {
+      "pid": "10",
+      "name": "Line 10",
+      "tags": "",
+      "position": "575,350",
+      "size": "100,100",
+      "text": "Wilfred: Wait... HUH!?\n\n[[Line 11]]"
+    },
+    {
+      "pid": "11",
+      "name": "Line 11",
+      "tags": "",
+      "position": "750,350",
+      "size": "100,100",
+      "text": "Wilfred: Is that you Wini!? Have you become Meone!?\n\n[[Line 12]]"
+    },
+    {
+      "pid": "12",
+      "name": "Line 12",
+      "tags": "",
+      "position": "925,350",
+      "size": "100,100",
+      "text": "Winifred: It's my possession magic brother. Don't you remember?\n\n[[Line 13]]"
+    },
+    {
+      "pid": "13",
+      "name": "Line 13",
+      "tags": "",
+      "position": "925,475",
+      "size": "100,100",
+      "text": "Winifred: I haven't been gone that long. Or have I? I've lost track of time.\n\n[[Line 14]]"
+    },
+    {
+      "pid": "14",
+      "name": "Line 14",
+      "tags": "",
+      "position": "750,475",
+      "size": "100,100",
+      "text": "Wilfred: Wait, if you're possessing Meone, then you have to be in this place right?\n\n[[Line 15]]"
+    },
+    {
+      "pid": "15",
+      "name": "Line 15",
+      "tags": "",
+      "position": "575,475",
+      "size": "100,100",
+      "text": "Winifred: I don't believe I am, I've made quite the journey to get here you know?\n\n[[Line 16]]"
+    },
+    {
+      "pid": "16",
+      "name": "Line 16",
+      "tags": "",
+      "position": "400,475",
+      "size": "100,100",
+      "text": "Wilfred: But if you aren't here, then where are you?\n\n[[Line 17]]"
+    },
+    {
+      "pid": "17",
+      "name": "Line 17",
+      "tags": "",
+      "position": "400,600",
+      "size": "100,100",
+      "text": "Winifred: I don't know. I can see that I'm in a room. It's quite a lovely room. Very comfortable.\n\n[[Line 18]]"
+    },
+    {
+      "pid": "18",
+      "name": "Line 18",
+      "tags": "",
+      "position": "575,600",
+      "size": "100,100",
+      "text": "Wilfred: That's great Winifred, but you're going to be killed if I don't find you. Comfortable room or not.\n\n[[Line 19]]"
+    },
+    {
+      "pid": "19",
+      "name": "Line 19",
+      "tags": "",
+      "position": "750,600",
+      "size": "100,100",
+      "text": "Winifred: Hmmm... let me try to retrace my steps for you.\n\n[[Line 20]]"
+    },
+    {
+      "pid": "20",
+      "name": "Line 20",
+      "tags": "",
+      "position": "925,600",
+      "size": "100,100",
+      "text": "Winifred: I found Meone in the room I was stuffed in. I don't know why she was there or how she got there.\n\n[[Line 21]]"
+    },
+    {
+      "pid": "21",
+      "name": "Line 21",
+      "tags": "",
+      "position": "925,725",
+      "size": "100,100",
+      "text": "Winifred: But I remember mother possessing her all the time to pull tricks on us. So I thought to do the same.\n\n[[Line 22]]"
+    },
+    {
+      "pid": "22",
+      "name": "Line 22",
+      "tags": "",
+      "position": "750,725",
+      "size": "100,100",
+      "text": "Winifred: Minus the tricks of course.\n\n[[Line 23]]"
+    },
+    {
+      "pid": "23",
+      "name": "Line 23",
+      "tags": "",
+      "position": "575,725",
+      "size": "100,100",
+      "text": "Wilfred: Ugh... Wini. You always tell these long stories. Just tell me the important bits!\n\n[[Line 24]]"
+    },
+    {
+      "pid": "24",
+      "name": "Line 24",
+      "tags": "",
+      "position": "400,725",
+      "size": "100,100",
+      "text": "Winifred: Ah... I'm sorry. So, I got caught as Meone and stuffed in a box. \n\n[[Line 25]]"
+    },
+    {
+      "pid": "25",
+      "name": "Line 25",
+      "tags": "",
+      "position": "400,850",
+      "size": "100,100",
+      "text": "Winifred: There were some voices, and a lot of rattling. I think I was being transported.\n\n[[Line 26]]"
+    },
+    {
+      "pid": "26",
+      "name": "Line 26",
+      "tags": "",
+      "position": "575,850",
+      "size": "100,100",
+      "text": "Wilfred: Oh! So you don't know where you are or how you got here? Great, just what I need.\n\n[[Line 27]]"
+    },
+    {
+      "pid": "27",
+      "name": "Line 27",
+      "tags": "",
+      "position": "750,850",
+      "size": "100,100",
+      "text": "Winifred: I'm sorry Wilfred. If I knew more, I would tell you. \n\n[[Line 28]]"
+    },
+    {
+      "pid": "28",
+      "name": "Line 28",
+      "tags": "",
+      "position": "925,850",
+      "size": "100,100",
+      "text": "Winifred: Oh wait! I did come out of that room over there.\n\n[[Line 29]]"
+    },
+    {
+      "pid": "29",
+      "name": "Line 29",
+      "tags": "",
+      "position": "925,975",
+      "size": "100,100",
+      "text": "Wilfred: Which room? You mean the one where those horse specimens came out of?\n\n[[Line 30]]"
+    },
+    {
+      "pid": "30",
+      "name": "Line 30",
+      "tags": "",
+      "position": "750,975",
+      "size": "100,100",
+      "text": "Winifred: Yes. I remember there being lots of boxes. Perhaps there's a clue in there?\n\n[[Line 31]]"
+    },
+    {
+      "pid": "31",
+      "name": "Line 31",
+      "tags": "",
+      "position": "575,975",
+      "size": "100,100",
+      "text": "Wilfred: Easy! I've got this Wini. Just don't get in my way.\n\n[[Line 32]]"
+    },
+    {
+      "pid": "32",
+      "name": "Line 32",
+      "tags": "",
+      "position": "400,975",
+      "size": "100,100",
+      "text": "Winifred: Ah... I mean have I been in the way at all?\n\n[[Line 33]]"
+    },
+    {
+      "pid": "33",
+      "name": "Line 33",
+      "tags": "",
+      "position": "400,1100",
+      "size": "100,100",
+      "text": "Wilfred: Uh... not really. But it goes without saying, I'll be the one to save you!\n\n[[Line 34]]"
+    },
+    {
+      "pid": "34",
+      "name": "Line 34",
+      "tags": "",
+      "position": "575,1100",
+      "size": "100,100",
+      "text": "Winifred: You couldn't have beaten Ackergaul if I hadn't possessed that specimen.\n\n[[Line 35]]"
+    },
+    {
+      "pid": "35",
+      "name": "Line 35",
+      "tags": "",
+      "position": "750,1100",
+      "size": "100,100",
+      "text": "Wilfred: ...\n\n[[Line 36]]"
+    },
+    {
+      "pid": "36",
+      "name": "Line 36",
+      "tags": "",
+      "position": "925,1100",
+      "size": "100,100",
+      "text": "Wilfred: (She's not wrong. I couldn't even scratch him on my own.)\n\n[[Line 37]]"
+    },
+    {
+      "pid": "37",
+      "name": "Line 37",
+      "tags": "",
+      "position": "925,1225",
+      "size": "100,100",
+      "text": "Wilfred: (But even then, I need to be the one to do this. But I could use her help a little...)"
+    }
+  ]
+}

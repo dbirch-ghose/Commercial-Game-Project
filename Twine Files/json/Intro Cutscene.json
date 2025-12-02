@@ -1,0 +1,123 @@
+{
+  "name": "Intro Cutscene",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.5.1",
+  "format": "Harlowe",
+  "format-version": "3.3.3",
+  "ifid": "27664BC4-C01C-4DD8-8462-7703AA924DA7",
+  "passages": [
+    {
+      "pid": "1",
+      "name": "Line 1",
+      "tags": "",
+      "position": "425,225",
+      "size": "100,100",
+      "text": "Wilfred: A little further now… that creepy doctor’s place should be around here.\n\n[[Line 2]]"
+    },
+    {
+      "pid": "2",
+      "name": "Line 2",
+      "tags": "",
+      "position": "600,225",
+      "size": "100,100",
+      "text": "Wilfred: Why did Father ever associate himself with that man? And why is his place so damn far from the village!?\n\n[[Line 3]]"
+    },
+    {
+      "pid": "3",
+      "name": "Line 3",
+      "tags": "",
+      "position": "750,225",
+      "size": "100,100",
+      "text": "Wilfred: No no, it’s quite alright. The village WANTS me to save Winifred. They’re relying on me.\n\n[[Line 4]]"
+    },
+    {
+      "pid": "4",
+      "name": "Line 4",
+      "tags": "",
+      "position": "925,225",
+      "size": "100,100",
+      "text": "Wilfred: (I’ll be a hero!)\n\n[[Line 5]]"
+    },
+    {
+      "pid": "5",
+      "name": "Line 5",
+      "tags": "",
+      "position": "925,350",
+      "size": "100,100",
+      "text": "Wilfred: What is that fur-ball in the the middle of the road? Is that a cat? Wait the collar! Is that…?\n\n[[Line 6]]"
+    },
+    {
+      "pid": "6",
+      "name": "Line 6",
+      "tags": "",
+      "position": "750,350",
+      "size": "100,100",
+      "text": "Wilfred: Meone!? What are you doing in a place like this!?\n\n[[Line 7]]"
+    },
+    {
+      "pid": "7",
+      "name": "Line 7",
+      "tags": "",
+      "position": "600,350",
+      "size": "100,100",
+      "text": "Meone: Meow!\n\n[[Line 8]]"
+    },
+    {
+      "pid": "8",
+      "name": "Line 8",
+      "tags": "",
+      "position": "425,350",
+      "size": "100,100",
+      "text": "Wilfred: Did you not vanish after mother…?\n\n[[Line 9]]"
+    },
+    {
+      "pid": "9",
+      "name": "Line 9",
+      "tags": "",
+      "position": "425,475",
+      "size": "100,100",
+      "text": "Meone: Meow…\n\n[[Line 10]]"
+    },
+    {
+      "pid": "10",
+      "name": "Line 10",
+      "tags": "",
+      "position": "600,475",
+      "size": "100,100",
+      "text": "Wilfred: So many questions but Winifred cannot save herself. Many apologise Meone, but I must hurry.\n\n[[Line 11]]"
+    },
+    {
+      "pid": "11",
+      "name": "Line 11",
+      "tags": "",
+      "position": "750,475",
+      "size": "100,100",
+      "text": "Wilfred: Head home Meone. It’s too dangerous out here.\n\n\n[[Line 12]]"
+    },
+    {
+      "pid": "12",
+      "name": "Line 12",
+      "tags": "",
+      "position": "925,475",
+      "size": "100,100",
+      "text": "Meone: MEOW!\n\n[[Line 13]]"
+    },
+    {
+      "pid": "13",
+      "name": "Line 13",
+      "tags": "",
+      "position": "925,600",
+      "size": "100,100",
+      "text": "Wilfred: Wait! Meone! Come back!\n\n[[Line 14]]"
+    },
+    {
+      "pid": "14",
+      "name": "Line 14",
+      "tags": "",
+      "position": "750,600",
+      "size": "100,100",
+      "text": "Wilfred: It is too dangerous for you. you cannot fight! Come back please!"
+    }
+  ]
+}

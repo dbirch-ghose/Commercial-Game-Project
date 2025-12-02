@@ -1,0 +1,123 @@
+{
+  "name": "Final Cutscene",
+  "startnode": "1",
+  "creator": "Twine",
+  "creator-version": "2.11.1",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "ifid": "CD19E086-4D1B-42AD-93AE-70F2A7FE5966",
+  "passages": [
+    {
+      "pid": "1",
+      "name": "Line 1",
+      "tags": "",
+      "position": "500,100",
+      "size": "100,100",
+      "text": "Wilfred: So, it was this Beatrix lady that gave Ackergaul our mother.\n\n[[Line 2]]"
+    },
+    {
+      "pid": "2",
+      "name": "Line 2",
+      "tags": "",
+      "position": "675,100",
+      "size": "100,100",
+      "text": "Winifred: She must've been the one to transport me as well. She seems to be in charge of the cargo.\n\n[[Line 3]]"
+    },
+    {
+      "pid": "3",
+      "name": "Line 3",
+      "tags": "",
+      "position": "850,100",
+      "size": "100,100",
+      "text": "Wilfred: But Beatrix wasn't the one that took you? She's just another henchman.\n\n[[Line 4]]"
+    },
+    {
+      "pid": "4",
+      "name": "Line 4",
+      "tags": "",
+      "position": "1025,100",
+      "size": "100,100",
+      "text": "Winifred: Yes. Lionel is the real culprit. Although, I haven't seen or heard from him on my side.\n\n[[Line 5]]"
+    },
+    {
+      "pid": "5",
+      "name": "Line 5",
+      "tags": "",
+      "position": "1025,225",
+      "size": "100,100",
+      "text": "Wilfred: Did he just vanish!?\n\n[[Line 6]]"
+    },
+    {
+      "pid": "6",
+      "name": "Line 6",
+      "tags": "",
+      "position": "850,225",
+      "size": "100,100",
+      "text": "Wilfred: And even if we do know where this Beatrix lady is, you aren't there! There's no point!\n\n[[Line 7]]"
+    },
+    {
+      "pid": "7",
+      "name": "Line 7",
+      "tags": "",
+      "position": "675,225",
+      "size": "100,100",
+      "text": "Winifred: Maybe Beatrix will know where Lionel is? Best to check no?\n\n[[Line 8]]"
+    },
+    {
+      "pid": "8",
+      "name": "Line 8",
+      "tags": "",
+      "position": "500,225",
+      "size": "100,100",
+      "text": "Winifred: Unless you have any better suggestions brother.\n\n[[Line 9]]"
+    },
+    {
+      "pid": "9",
+      "name": "Line 9",
+      "tags": "",
+      "position": "500,350",
+      "size": "100,100",
+      "text": "Wilfred: *sigh* No. No I don't. Fine! We'll pay Beatrix a little visit.\n\n[[Line 10]]"
+    },
+    {
+      "pid": "10",
+      "name": "Line 10",
+      "tags": "",
+      "position": "675,350",
+      "size": "100,100",
+      "text": "Winifred: I'm very sorry I don't have any other suggestions for you, but I guess on the positive side...\n\n[[Line 11]]"
+    },
+    {
+      "pid": "11",
+      "name": "Line 11",
+      "tags": "",
+      "position": "850,350",
+      "size": "100,100",
+      "text": "Winifred: If we stop Beatrix, we could prevent a lot of innocent people being killed and transported.\n\n[[Line 12]]"
+    },
+    {
+      "pid": "12",
+      "name": "Line 12",
+      "tags": "",
+      "position": "1025,350",
+      "size": "100,100",
+      "text": "Wilfred: ...Hmm. You have a point Wini. We've lost a lot of good people to Lionel's group.\n\n[[Line 13]]"
+    },
+    {
+      "pid": "13",
+      "name": "Line 13",
+      "tags": "",
+      "position": "1025,475",
+      "size": "100,100",
+      "text": "Winifred: Yes. So let's go and stop Beatrix. To find more information on where I am...\n\n[[Line 14]]"
+    },
+    {
+      "pid": "14",
+      "name": "Line 14",
+      "tags": "",
+      "position": "850,475",
+      "size": "100,100",
+      "text": "Wilfred: And to stop this witch hunting scheme! "
+    }
+  ]
+}
