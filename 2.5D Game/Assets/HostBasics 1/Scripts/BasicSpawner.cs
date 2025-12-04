@@ -13,7 +13,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkRunner _runner;
     private PlayerRef Possessor;
     public GameObject starter;
-
+    //public NetworkObject networkPlayerObject;
     private void OnGUI()
     {
         if (_runner == null)
@@ -80,7 +80,9 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 Possessor = player;
                 NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
-                
+                //FindObjectOfType<AkagaulBehaviour>().SetPlayer(networkPlayerObject.transform);
+
+
             }
             else
             {

@@ -1,4 +1,3 @@
-//using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,7 +21,7 @@ public class AkagaulBehaviour : MonoBehaviour
     public GameObject cane;
     public float reposTime = 0.4f;
     public float ReposSpeed = 10f;
-    
+
 
     //-----------------PROJECTILE------------------
     public GameObject projectilePrefab;
@@ -50,7 +49,9 @@ public class AkagaulBehaviour : MonoBehaviour
     public float acceleration = 5f;
     public float rotationSpeed = 5f;
     private bool hasHitPlayer = false;
-    private bool hasHitWall = false;
+
+
+    public BasicSpawner basicSpawner;
 
     private void Start()
     {
@@ -60,16 +61,86 @@ public class AkagaulBehaviour : MonoBehaviour
             health = enemyTakeDamage.health;
         }
 
-        player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transforms
-
+        StartCoroutine(WaitForPlayer()); //waits for player ref
     }
 
-    private IEnumerator AttackLoop()
+
+    IEnumerator WaitForPlayer()
+    {
+        while (player == null)
+        {
+            var p = GameObject.FindGameObjectWithTag("Player");
+            if (p != null)
+            {
+                player = p.transform;
+                Debug.Log("Boss found player");
+                yield break;
+            }
+            yield return null;
+        }
+    }
+
+    void Update()
+    {
+        if (player == null) //check for player 
+        {
+            Debug.Log("waiting for player to be assigned");
+            return;
+        }
+        //to control when the attacks begin
+
+
+        //if (!isAttacking)
+        //{
+        //    StartCoroutine(AttackLoop());
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    //Debug.Log("charge");
+        //    StartCoroutine(Charge());
+        //}
+
+        Die();
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            hasHitPlayer = true;
+            Debug.Log("Player has been hit");
+        }
+    }
+
+    private bool CheckWallOverlap()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, 0.2f);
+        foreach (var h in hits)
+        {
+            if (h.CompareTag("Wall"))
+            {
+                Debug.Log("hit wall");
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public IEnumerator AttackLoop()
     {
         isAttacking = true; //marks that the attacks have started
 
         while (true)
         {
+            if (player == null)
+            {
+                yield return null;
+                continue;
+            }
+
             //Melee Logic --- Can melee during other attacks
             float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player
             if (distance <= 2f)
@@ -145,7 +216,6 @@ public class AkagaulBehaviour : MonoBehaviour
 
     }
 
-   
 
     private IEnumerator SpawnHorse()
     {
@@ -279,57 +349,10 @@ public class AkagaulBehaviour : MonoBehaviour
             }
             timer += Time.deltaTime;
             yield return null; // wait 1 frame
-
         }
-
-        
-
         yield return new WaitForSeconds(1f); // duration of attack
         attackFinished = true; //reset attack
     }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            hasHitPlayer = true;
-            Debug.Log("Player has been hit");
-        }
-    }
-
-    private bool CheckWallOverlap()
-    {
-        Collider[] hits = Physics.OverlapSphere(transform.position, 0.2f);
-        foreach(var h in hits)
-        {
-            if (h.CompareTag("Wall"))
-            {
-                Debug.Log("hit wall");
-                return true;
-            }
-        }
-        return false;
-    }
-
-    void Update()
-    {
-        //to control when the attacks begin
-        if (!isAttacking)
-        {
-            StartCoroutine(AttackLoop());
-        }
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    //Debug.Log("charge");
-        //    StartCoroutine(Charge());
-        //}
-
-        Die();
-    }
-
-  
 
     void Die() 
     {
