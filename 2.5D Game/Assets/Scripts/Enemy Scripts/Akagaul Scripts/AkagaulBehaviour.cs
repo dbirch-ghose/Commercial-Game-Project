@@ -131,6 +131,7 @@ public class AkagaulBehaviour : MonoBehaviour
 
     public IEnumerator AttackLoop()
     {
+        Debug.Log("Attacks have started");
         isAttacking = true; //marks that the attacks have started
 
         while (true)
@@ -138,6 +139,7 @@ public class AkagaulBehaviour : MonoBehaviour
             if (player == null)
             {
                 yield return null;
+                Debug.Log("there is no player");
                 continue;
             }
 

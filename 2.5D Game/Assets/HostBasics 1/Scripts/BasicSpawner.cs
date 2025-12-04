@@ -72,7 +72,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
             // Create a unique position for the player
             //Vector3 spawnPosition = new Vector3((player.RawEncoded % runner.Config.Simulation.PlayerCount) * 3, 1, 0);
-            Vector3 spawnPosition = new Vector3(0, 3, 0);
+            Vector3 spawnPosition = new Vector3();
             spawnPosition = this.GetComponent<Transform>().position;
             
             if (_spawnedCharacters.Count == 0)
