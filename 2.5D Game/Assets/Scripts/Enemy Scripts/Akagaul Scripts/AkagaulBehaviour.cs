@@ -1,9 +1,10 @@
+using Fusion;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
-public class AkagaulBehaviour : MonoBehaviour
+public class AkagaulBehaviour : NetworkBehaviour
 {
     //-------------------ATTACK-LOGIC--------------------
     private bool attackFinished = true;

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -3921618908225072615}
   - component: {fileID: 1514160580775609239}
   m_Layer: 8
-  m_Name: Slug 1
+  m_Name: Fly
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

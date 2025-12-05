@@ -1,7 +1,11 @@
 using UnityEngine;
-using UnityEngine.AI;
+using System.Collections;
 
-public class SlimeBehaviour : MonoBehaviour
+using UnityEngine.AI;
+using Fusion;
+
+
+public class SlimeBehaviour : NetworkBehaviour
 {
     public NavMeshAgent agent;
     public float range;
@@ -19,12 +23,30 @@ public class SlimeBehaviour : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
+        //player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
         sr = GetComponent<SpriteRenderer>();
 
         if (enemyTakeDamage != null)
         {
             health = enemyTakeDamage.health;
+        }
+
+        StartCoroutine(WaitForPlayer()); //waits for player ref
+
+    }
+
+    IEnumerator WaitForPlayer()
+    {
+        while (player == null)
+        {
+            var p = GameObject.FindGameObjectWithTag("Player");
+            if (p != null)
+            {
+                player = p.transform;
+                Debug.Log("Boss found player");
+                yield break;
+            }
+            yield return null;
         }
     }
 
@@ -49,10 +71,6 @@ public class SlimeBehaviour : MonoBehaviour
             sr.flipX = true;  
         else if (velocity.x < -0.1f)
             sr.flipX = false;
-
-
-
-
 
     }
 
@@ -85,6 +103,8 @@ public class SlimeBehaviour : MonoBehaviour
 
     void Chase()
     {
+        if (player == null) return;  //checks for player 
+
         float distance = Vector3.Distance(player.transform.position, transform.position);
         if (distance <= 5)
         {
@@ -96,8 +116,6 @@ public class SlimeBehaviour : MonoBehaviour
             isPatrolling = true;
         }
     }
-
-
 
     public void TakeDamage()
     {
