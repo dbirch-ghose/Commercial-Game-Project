@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AkagaulBehaviour : NetworkBehaviour
 {
+    public BasicSpawner spawner;
+
     //-------------------ATTACK-LOGIC--------------------
     [Networked] public bool attackFinished { get; set; }
     [Networked] public bool isAttacking { get; set; }
@@ -52,23 +54,12 @@ public class AkagaulBehaviour : NetworkBehaviour
 
     public override void Spawned()
     {
-        if (!Object.HasStateAuthority)
-        {
-            //sets up health
-            if (enemyTakeDamage != null)
-            {
-                health = enemyTakeDamage.health;
-                StartCoroutine(WaitForPlayer()); //waits for player ref
-            }
-            else
-            {
-                StartCoroutine(WaitForPlayer()); //waits for player ref 
-            }
-        }
+       
     }
 
     public void StartAttackLoop()
     {
+        isAttacking = false;
         if (!Object.HasStateAuthority) return;
         if (!isAttacking)
         {
@@ -76,20 +67,10 @@ public class AkagaulBehaviour : NetworkBehaviour
         }
     }
 
-    public void RunAttackLoopRPC()
-    {
-        // This will be executed on the authoritative instance
-        Runner.Enqueue(() =>
-        {
-            if (!isAttacking)
-                StartCoroutine(AttackLoop());
-        });
-    }
     IEnumerator WaitForPlayer()
     {
-        while (player == null)
-        {
-            var p = GameObject.FindGameObjectWithTag("Player");
+
+            var p = basicSpawner.players[0]; 
             if (p != null)
             {
                 player = p.transform;
@@ -97,19 +78,33 @@ public class AkagaulBehaviour : NetworkBehaviour
                 yield break;
             }
             yield return null;
-        }
+        
     }
 
     public override void FixedUpdateNetwork()
     {
-        if (!Object.HasStateAuthority) return;
-        
-            if (player == null) //check for player 
+        if (Object.HasStateAuthority)
+        {
+            StartCoroutine(WaitForPlayer()); //waits for player ref
+
+        }
+
+
+
+        if (player == null) //check for player there
             {
                 Debug.Log("waiting for player to be assigned");
                 return;
             }
-        //to control when the attacks begin
+        Debug.Log(player);
+
+
+        //sets up health
+        if (enemyTakeDamage != null)
+        {
+            health = enemyTakeDamage.health;
+        }
+        //to control when the attacks begins
 
 
         //if (!isAttacking)
@@ -157,51 +152,57 @@ public class AkagaulBehaviour : NetworkBehaviour
     {
         if (!Object.HasStateAuthority) yield break;
 
-        Debug.Log("Attacks have started");
-        isAttacking = true; //marks that the attacks have started
-
-        while (true)
+        if (Object.HasStateAuthority)
         {
-            if (player == null)
+            attackFinished = true;
+            Debug.Log("Attacks have started");
+            isAttacking = true; //marks that the attacks have started
+
+            while (true)
             {
+                if (player == null)
+                {
+                    yield return null;
+                    Debug.Log("there is no player");
+                    continue;
+                }
+
+                //Melee Logic --- Can melee during other attacks
+                float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player
+                if (distance <= 2f)
+                {
+                    Debug.Log("player is close enough to be hit");
+                    yield return StartCoroutine(Melee());
+                    yield return StartCoroutine(Reposition());
+                }
+
+                if (attackFinished == true) //only start a new attack when ready
+                {
+                    //attackloop logic
+                    attackFinished = false; //stops the loop from running everyframe
+
+                    int randAttack = UnityEngine.Random.Range(0, 3); //possible 
+                    if (randAttack == 0)
+                    {
+                        //Debug.Log("projectile");
+                        yield return StartCoroutine(LaunchProjectile());
+                    }
+                    else if (randAttack == 1)
+                    {
+                        //Debug.Log("horse");
+                        yield return StartCoroutine(SpawnHorse());
+                    }
+                    else if (randAttack == 2)
+                    {
+                        //Debug.Log("charge");
+                        yield return StartCoroutine(Charge());
+                    }
+                }
                 yield return null;
-                Debug.Log("there is no player");
-                continue;
             }
-
-            //Melee Logic --- Can melee during other attacks
-            float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player
-            if (distance <= 2f)
-            {
-                Debug.Log("player is close enough to be hit");
-                yield return StartCoroutine(Melee());
-                yield return StartCoroutine(Reposition());
-            }
-
-            if (attackFinished == true) //only start a new attack when ready
-            {
-                //attackloop logic
-                attackFinished = false; //stops the loop from running everyframe
-
-                int randAttack = UnityEngine.Random.Range(0, 3); //possible 
-                if (randAttack == 0)
-                {
-                    //Debug.Log("projectile");
-                    yield return StartCoroutine(LaunchProjectile());
-                }
-                else if (randAttack == 1)
-                {
-                    //Debug.Log("horse");
-                    yield return StartCoroutine(SpawnHorse());
-                }
-                else if (randAttack == 2)
-                {
-                    //Debug.Log("charge");
-                    yield return StartCoroutine(Charge());
-                }
-            }
-            yield return null;
         }
+        
+
     }
 
 

@@ -262,6 +262,7 @@ MonoBehaviour:
     RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
   _player2Prefab:
     RawGuidValue: 5797adf09924c5441991408ae90d941f
+  players: []
 --- !u!4 &17664354
 Transform:
   m_ObjectHideFlags: 0
@@ -8228,6 +8229,7 @@ GameObject:
   - component: {fileID: 938646783}
   - component: {fileID: 938646782}
   - component: {fileID: 938646784}
+  - component: {fileID: 938646785}
   m_Layer: 0
   m_Name: Akagaul
   m_TagString: Untagged
@@ -8319,20 +8321,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64869cd41fafefe4f9ccb6607976de8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
   _attackFinished: 0
   _isAttacking: 0
   enemyTakeDamage: {fileID: 0}
-  _health: 0
+  _health: 20
   meleeDamage: {fileID: 0}
   cane: {fileID: 0}
   reposTime: 0.4
   ReposSpeed: 10
-  projectilePrefab: {fileID: 4473872611823807284, guid: 4f5ec8316d9d1f947a6068a122fc4b74, type: 3}
+  projectilePrefab: {fileID: 5864833308063250820, guid: 4f5ec8316d9d1f947a6068a122fc4b74, type: 3}
   firePoint: {fileID: 97202215}
   player: {fileID: 0}
   fireAngle: 45
   fireRate: 2
-  Horse: {fileID: 7452162337939041641, guid: f25a443256c712d4989cc269a88ed0f6, type: 3}
+  Horse: {fileID: -66073819647077524, guid: f25a443256c712d4989cc269a88ed0f6, type: 3}
   targetPos: 0
   rightSpawnX: 7
   leftSpawnX: -21
@@ -8342,6 +8345,26 @@ MonoBehaviour:
   acceleration: 5
   rotationSpeed: 5
   basicSpawner: {fileID: 17664353}
+--- !u!114 &938646785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938646781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 4012832249
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects:
+  - {fileID: 723870842}
+  NetworkedBehaviours:
+  - {fileID: 938646784}
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &967073887
 GameObject:
   m_ObjectHideFlags: 0

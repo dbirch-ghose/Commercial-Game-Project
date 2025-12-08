@@ -64,7 +64,9 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField]
     private NetworkPrefabRef _player2Prefab;// Character to spawn for a joining player
 
-    private Dictionary<PlayerRef, NetworkObject> _spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
+    public Dictionary<PlayerRef, NetworkObject> _spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
+    public List<NetworkObject> players =  new List<NetworkObject>();
+
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         if (runner.IsServer)
@@ -80,19 +82,17 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 Possessor = player;
                 NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
-                //FindObjectOfType<AkagaulBehaviour>().SetPlayer(networkPlayerObject.transform);
-
-
+                players.Add(networkPlayerObject);
             }
             else
             {
                 Possessor = player;
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
-                
+                players.Add(networkPlayerObject);
             }
-                // Keep track of the player avatars for easy access
-                
+            // Keep track of the player avatars for easy access
+
         }
     }
 
