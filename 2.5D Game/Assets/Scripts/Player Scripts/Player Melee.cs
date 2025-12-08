@@ -1,84 +1,70 @@
 using System.Collections;
 using UnityEngine;
+using Fusion;
 
-public class PlayerMelee : MonoBehaviour
+public class PlayerMelee : NetworkBehaviour
 {
-
     public Transform attackPoint;
-    //public GameObject attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-
     public float attackDuration = 0.2f;
+
     private bool isAttacking = false;
+
+    private Collider meleeCollider;
 
     private void Start()
     {
-        
+        // Assumes the attack collider is attached to the same GameObject
+        meleeCollider = GetComponent<Collider>();
+        if (meleeCollider != null)
+            meleeCollider.enabled = false;
     }
 
-    void Update()
+    private void Update()
     {
+        // Only the authoritative player handles input for network-safe attacks
+        if (!Object.HasInputAuthority) return;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Attack();
-            //StartCoroutine(Attack());
+            StartCoroutine(Attack());
         }
     }
-
 
     private IEnumerator Attack()
     {
         isAttacking = true;
-        GetComponent<Collider>().enabled = true; //enables trigger collider
+
+        if (meleeCollider != null)
+            meleeCollider.enabled = true;
+
+        // Detect enemies immediately
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+
+        foreach (Collider enemy in hitEnemies)
+        {
+            // Apply damage only if the enemy has a Networked health component
+            EnemyTakeDamage enemyTakeDamage = enemy.GetComponent<EnemyTakeDamage>();
+            NetworkObject enemyNetObj = enemy.GetComponent<NetworkObject>();
+
+            if (enemyTakeDamage != null && enemyNetObj != null && enemyNetObj.HasStateAuthority)
+            {
+                enemyTakeDamage.TakeDamage(2); // or whatever damage value
+            }
+        }
+
         yield return new WaitForSeconds(attackDuration);
-        GetComponent<Collider>().enabled = false; //disables collider   
+
+        if (meleeCollider != null)
+            meleeCollider.enabled = false;
+
         isAttacking = false;
     }
 
-    private void OnTriggerEnter(Collider enemy)
-    {
-        if (!isAttacking) return;
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        SlimeBehaviour slimeBehaviour = enemy.GetComponent<SlimeBehaviour>();
-        if (slimeBehaviour != null)
-        {
-            //slimeBehaviour.TakeDamage();
-        }
-    }
-
-
-
-    //public void Attack()
-    //{
-    //    //play animation
-
-    //    //detect enemies
-    //    Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers); //creates a hitbox for the weapon
-
-    //    //apply damage
-    //    foreach (Collider enemy in hitEnemies)
-    //    {
-    //        Debug.Log(enemy.name + "has been hit");
-
-    //        //assigns the script to the hit enemy
-    //        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-    //        EnemyTakeDamage enemyTakeDamage = enemy.GetComponent<EnemyTakeDamage>();
-
-            
-    //        //Damages the enemy using universal script
-    //        if (enemyTakeDamage != null)
-    //        {
-    //            enemyTakeDamage.TakeDamage();
-    //        }
-
-    //    }
-
-
-    //}
-
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawSphere(attackPoint.position, attackRange);
+        if (attackPoint != null)
+            Gizmos.DrawSphere(attackPoint.position, attackRange);
     }
 }

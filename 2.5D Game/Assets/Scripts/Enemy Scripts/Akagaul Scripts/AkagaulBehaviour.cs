@@ -1,39 +1,35 @@
 using Fusion;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class AkagaulBehaviour : NetworkBehaviour
 {
     //-------------------ATTACK-LOGIC--------------------
-    private bool attackFinished = true;
-    private bool isAttacking = false;
-    private int attackCount;
+    [Networked] public bool attackFinished { get; set; }
+    [Networked] public bool isAttacking { get; set; }
+
 
     //-------------------HEALTH--------------------
     public EnemyTakeDamage enemyTakeDamage; //access health script
-    public int health;
+    [Networked] public int health { get; set; }
 
     //-------------------MELEE----------------------
-    public bool hasMeleed = false;
-    public bool hasRepositioned = false;
     public MeleeDamage meleeDamage;
-    public GameObject cane;
+    public NetworkObject cane;
     public float reposTime = 0.4f;
     public float ReposSpeed = 10f;
 
 
     //-----------------PROJECTILE------------------
-    public GameObject projectilePrefab;
+    public NetworkObject projectilePrefab;
     public Transform firePoint; //projectile spawnpoint
     public Transform player; //target
     public float fireAngle = 45f; //height of arc
     public float fireRate = 2f;
-    private float nextFireTime;
+
 
     //-------------------HORSE----------------------
-    public GameObject Horse;
+    public NetworkObject Horse;
     //public float spawnZ = 2f;       // where along Y to spawn (center)
     public float targetPos;
     // where to despawn, THESE BOUNDS MUST BE CHANGED TO FIT THE SIZE OF THE ROOM
@@ -54,18 +50,41 @@ public class AkagaulBehaviour : NetworkBehaviour
 
     public BasicSpawner basicSpawner;
 
-    private void Start()
+    public override void Spawned()
     {
-        //sets up health
-        if (enemyTakeDamage != null)
+        if (!Object.HasStateAuthority)
         {
-            health = enemyTakeDamage.health;
+            //sets up health
+            if (enemyTakeDamage != null)
+            {
+                health = enemyTakeDamage.health;
+                StartCoroutine(WaitForPlayer()); //waits for player ref
+            }
+            else
+            {
+                StartCoroutine(WaitForPlayer()); //waits for player ref 
+            }
         }
-
-        StartCoroutine(WaitForPlayer()); //waits for player ref
     }
 
+    public void StartAttackLoop()
+    {
+        if (!Object.HasStateAuthority) return;
+        if (!isAttacking)
+        {
+            StartCoroutine(AttackLoop());
+        }
+    }
 
+    public void RunAttackLoopRPC()
+    {
+        // This will be executed on the authoritative instance
+        Runner.Enqueue(() =>
+        {
+            if (!isAttacking)
+                StartCoroutine(AttackLoop());
+        });
+    }
     IEnumerator WaitForPlayer()
     {
         while (player == null)
@@ -81,13 +100,15 @@ public class AkagaulBehaviour : NetworkBehaviour
         }
     }
 
-    void Update()
+    public override void FixedUpdateNetwork()
     {
-        if (player == null) //check for player 
-        {
-            Debug.Log("waiting for player to be assigned");
-            return;
-        }
+        if (!Object.HasStateAuthority) return;
+        
+            if (player == null) //check for player 
+            {
+                Debug.Log("waiting for player to be assigned");
+                return;
+            }
         //to control when the attacks begin
 
 
@@ -108,6 +129,8 @@ public class AkagaulBehaviour : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!Object.HasStateAuthority) return;
+
         if (other.CompareTag("Player"))
         {
             hasHitPlayer = true;
@@ -132,6 +155,8 @@ public class AkagaulBehaviour : NetworkBehaviour
 
     public IEnumerator AttackLoop()
     {
+        if (!Object.HasStateAuthority) yield break;
+
         Debug.Log("Attacks have started");
         isAttacking = true; //marks that the attacks have started
 
@@ -180,7 +205,7 @@ public class AkagaulBehaviour : NetworkBehaviour
     }
 
 
-    private IEnumerator LaunchProjectile()
+    IEnumerator LaunchProjectile()
     {
         attackFinished = false;
         int projectileCount = 0;
@@ -188,7 +213,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         while (projectileCount < 3) //only throws 3 at a time
         {
             //creates projectile at the fire point
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, Random.Range(-70f, 70)));
+            NetworkObject projectile = Runner.Spawn(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, Random.Range(-70f, 70)));
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
             //calculates direction and distance to the player
@@ -216,7 +241,6 @@ public class AkagaulBehaviour : NetworkBehaviour
             projectileCount++;
         }
         attackFinished = true; //ends the loop
-
     }
 
 
@@ -236,7 +260,7 @@ public class AkagaulBehaviour : NetworkBehaviour
 
             //Vector3 spawnPos = new Vector3(rightSpawnX, 1.5f, targetPos); //spawn horse on the right
 
-            GameObject horse = Instantiate(Horse, spawnPos, Quaternion.identity);
+            NetworkObject horse = Runner.Spawn(Horse, spawnPos, Quaternion.identity);
 
             horse.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
 

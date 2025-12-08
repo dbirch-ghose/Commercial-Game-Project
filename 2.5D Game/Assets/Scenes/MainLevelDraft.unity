@@ -2709,6 +2709,7 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: 307007620}
   - {fileID: 307007618}
   ForceRemoteRenderTimeframe: 0
 --- !u!95 &307007622
@@ -6190,6 +6191,7 @@ GameObject:
   - component: {fileID: 723870840}
   - component: {fileID: 723870839}
   - component: {fileID: 723870841}
+  - component: {fileID: 723870842}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -6291,6 +6293,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   akagaulBehaviour: {fileID: 938646784}
+--- !u!114 &723870842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723870837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 2122803592
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 723870841}
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &730961773
 GameObject:
   m_ObjectHideFlags: 0
@@ -8298,10 +8319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64869cd41fafefe4f9ccb6607976de8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackFinished: 0
+  _isAttacking: 0
   enemyTakeDamage: {fileID: 0}
-  health: 20
-  hasMeleed: 0
-  hasRepositioned: 0
+  _health: 0
   meleeDamage: {fileID: 0}
   cane: {fileID: 0}
   reposTime: 0.4

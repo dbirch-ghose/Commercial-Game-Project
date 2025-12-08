@@ -1,8 +1,9 @@
+using Fusion;
 using UnityEngine;
  
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : NetworkBehaviour
 {
-    public int health;
+    [Networked] public int health { get; set; } = 0;
     public int maxHealth = 3;
     public int minHealth = 0;
 
@@ -15,14 +16,19 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health < minHealth)
+        if (Object.HasStateAuthority)
         {
-            health = minHealth;
+            if (health < minHealth)
+            {
+                health = minHealth;
+            }
         }
     }
 
     public void TakeDamage(int damage) //to be referenced in enemy damage scripts
     {
+        if (!Object.HasStateAuthority) return; 
+
         health -= damage; //decreases health based on damage
     }
 
