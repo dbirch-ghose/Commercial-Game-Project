@@ -478,8 +478,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 32
   buttonName: 
-  inputAction: {fileID: 0}
-  disableInputActionAfterClick: 0
   anyKeyOrButton: 0
   skipIfBeingClickedBySubmit: 1
   simulateButtonClick: 1
@@ -1243,8 +1241,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: 64
   m_MinHeight: 64
-  m_PreferredWidth: 64
-  m_PreferredHeight: 64
+  m_PreferredWidth: 100
+  m_PreferredHeight: 100
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -1972,8 +1970,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
-    m_FontStyle: 0
+    m_FontSize: 30
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40

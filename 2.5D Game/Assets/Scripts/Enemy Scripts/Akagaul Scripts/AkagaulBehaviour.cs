@@ -73,7 +73,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         if (p != null)
         {
             player = p.transform;
-            Debug.Log("Boss found player");
+            //Debug.Log("Boss found player");
             yield break;
         }
         yield return null;
@@ -91,7 +91,7 @@ public class AkagaulBehaviour : NetworkBehaviour
 
         if (player == null) //check for player there
             {
-                Debug.Log("waiting for player to be assigned");
+                //Debug.Log("waiting for player to be assigned");
                 return;
             }
         Debug.Log(player);
@@ -127,7 +127,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         if (other.CompareTag("Player"))
         {
             hasHitPlayer = true;
-            Debug.Log("Player has been hit");
+            //Debug.Log("Player has been hit");
         }
     }
 
@@ -153,7 +153,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         if (Object.HasStateAuthority)
         {
             attackFinished = true;
-            Debug.Log("Attacks have started");
+            //Debug.Log("Attacks have started");
             isAttacking = true; //marks that the attacks have started
 
             while (true)
@@ -161,7 +161,7 @@ public class AkagaulBehaviour : NetworkBehaviour
                 if (player == null)
                 {
                     yield return null;
-                    Debug.Log("there is no player");
+                    //Debug.Log("there is no player");
                     continue;
                 }
 
@@ -169,7 +169,7 @@ public class AkagaulBehaviour : NetworkBehaviour
                 float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player
                 if (distance <= 2f)
                 {
-                    Debug.Log("player is close enough to be hit");
+                    //Debug.Log("player is close enough to be hit");
                     yield return StartCoroutine(Melee());
                     yield return StartCoroutine(Reposition());
                 }
@@ -303,13 +303,13 @@ public class AkagaulBehaviour : NetworkBehaviour
 
             if (hasHitPlayer) //stops attack when it hits the player or a wall
             {
-                Debug.Log("Charge was interrupted by player");
+                //Debug.Log("Charge was interrupted by player");
                 timer = chargeTime;
                 attackFinished = true;
             }
 
            if (CheckWallOverlap() && attackStart ){
-                Debug.Log("Charge was interrupted by wall");
+                //Debug.Log("Charge was interrupted by wall");
                 //ends the attack
                 timer = chargeTime;
                 attackFinished = true;
@@ -335,7 +335,7 @@ public class AkagaulBehaviour : NetworkBehaviour
     private IEnumerator Melee()
     {
         attackFinished = false;
-        Debug.Log("melee");
+        //Debug.Log("melee");
         //meleeDamage.MeleeAnim();
         //collider logic handled in melee damage script
         yield return new WaitForSeconds(1f); // duration of attack
@@ -346,7 +346,7 @@ public class AkagaulBehaviour : NetworkBehaviour
     {
         attackFinished = false;
 
-        Debug.Log("repositioning");
+        //Debug.Log("repositioning");
         float lockedY = transform.position.y; //stores starting y position
 
         //create a random direction vector
@@ -361,7 +361,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         {
             if (CheckWallOverlap()) //if it hits a wall, repos again
             {
-                Debug.Log("reposition was interrupted by wall");
+                //Debug.Log("reposition was interrupted by wall");
                 //yield return StartCoroutine(Reposition());
             }
             else
@@ -386,7 +386,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         if (health <= 0)
         {
             //play death anim and and sound
-            Debug.Log("boss is dead");
+            //Debug.Log("boss is dead");
         }        
     }
 

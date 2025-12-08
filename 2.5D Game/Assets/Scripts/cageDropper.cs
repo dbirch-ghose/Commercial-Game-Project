@@ -3,7 +3,6 @@ using UnityEngine;
 public class cageDropper : MonoBehaviour
 {
     public GameObject cage;
-    private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,8 +15,8 @@ public class cageDropper : MonoBehaviour
         
     }
 
-    public void OnExectute()
+    public void OnExecute()
     {
-        cage.GetComponent<Rigidbody>().useGravity = true;
+        cage.GetComponent<Rigidbody>().useGravity = false;
     }
 }
