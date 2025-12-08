@@ -14,13 +14,14 @@ public class SlimeBehaviour : NetworkBehaviour
     public Transform player;
     public bool isPatrolling = true;
 
+    public BasicSpawner basicSpawner;
 
     public SpriteRenderer sr;
 
     public EnemyTakeDamage enemyTakeDamage; //access health script
     public int health;
 
-    void Start()
+    public override void Spawned()
     {
         agent = GetComponent<NavMeshAgent>();
         //player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
@@ -30,24 +31,26 @@ public class SlimeBehaviour : NetworkBehaviour
         {
             health = enemyTakeDamage.health;
         }
+        if (Object.HasStateAuthority)
+        {
+            StartCoroutine(WaitForPlayer()); //waits for player ref
 
-        StartCoroutine(WaitForPlayer()); //waits for player ref
+        }
+
 
     }
 
     IEnumerator WaitForPlayer()
     {
-        while (player == null)
+        var p = basicSpawner.players[0];
+        if (p != null)
         {
-            var p = GameObject.FindGameObjectWithTag("Player");
-            if (p != null)
-            {
-                player = p.transform;
-                Debug.Log("Boss found player");
-                yield break;
-            }
-            yield return null;
+            player = p.transform;
+            Debug.Log("Boss found player");
+            yield break;
         }
+        yield return null;
+        
     }
 
     // Update is called once per frame

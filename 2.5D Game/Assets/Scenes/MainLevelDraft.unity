@@ -272,7 +272,7 @@ Transform:
   m_GameObject: {fileID: 17664352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 7.05, z: 15.68}
+  m_LocalPosition: {x: -0.06, y: 2.07, z: -9.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2596,7 +2596,7 @@ Transform:
   m_GameObject: {fileID: 307007613}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4797122, y: 1.07, z: 39.96}
+  m_LocalPosition: {x: 1.4797122, y: 1.78, z: -0.65}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2663,6 +2663,7 @@ MonoBehaviour:
   centerPoint: {fileID: 1314527496}
   player: {fileID: 0}
   isPatrolling: 1
+  basicSpawner: {fileID: 0}
   sr: {fileID: 307007614}
   enemyTakeDamage: {fileID: 307007619}
   health: 0
