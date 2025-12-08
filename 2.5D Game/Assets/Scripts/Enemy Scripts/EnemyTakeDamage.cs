@@ -13,9 +13,9 @@ public class EnemyTakeDamage : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        health -= 1;
+        health -= damage;
         Debug.Log( "this enemy has been hit");
     }
 

@@ -81,19 +81,19 @@ public class BrotherBehaviour : NetworkBehaviour
 
             if (data.direction.x < 0) //left
             {
-                Debug.Log("Left");
+                //Debug.Log("Left");
                 animator.SetBool("isWalkingSide", true);
                 sr.flipX = false;
             }
             else if (data.direction.x > 0) //right
             {
-                Debug.Log("right");
+                //Debug.Log("right");
                 animator.SetBool("isWalkingSide", true);
                 sr.flipX = true;
             }
             else if (data.direction.z < 0) //down
             {
-                Debug.Log("down");
+                //Debug.Log("down");
                 animator.SetBool("isWalkingDown", true);
             }
 

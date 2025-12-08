@@ -1,7 +1,11 @@
 using UnityEngine;
-using UnityEngine.AI;
+using System.Collections;
 
-public class SlimeBehaviour : MonoBehaviour
+using UnityEngine.AI;
+using Fusion;
+
+
+public class SlimeBehaviour : NetworkBehaviour
 {
     public NavMeshAgent agent;
     public float range;
@@ -10,22 +14,43 @@ public class SlimeBehaviour : MonoBehaviour
     public Transform player;
     public bool isPatrolling = true;
 
+    public BasicSpawner basicSpawner;
 
     public SpriteRenderer sr;
 
     public EnemyTakeDamage enemyTakeDamage; //access health script
     public int health;
 
-    void Start()
+    public override void Spawned()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
+        //player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
         sr = GetComponent<SpriteRenderer>();
 
         if (enemyTakeDamage != null)
         {
             health = enemyTakeDamage.health;
         }
+        if (Object.HasStateAuthority)
+        {
+            StartCoroutine(WaitForPlayer()); //waits for player ref
+
+        }
+
+
+    }
+
+    IEnumerator WaitForPlayer()
+    {
+        var p = basicSpawner.players[0];
+        if (p != null)
+        {
+            player = p.transform;
+            Debug.Log("Boss found player");
+            yield break;
+        }
+        yield return null;
+        
     }
 
     // Update is called once per frame
@@ -49,10 +74,6 @@ public class SlimeBehaviour : MonoBehaviour
             sr.flipX = true;  
         else if (velocity.x < -0.1f)
             sr.flipX = false;
-
-
-
-
 
     }
 
@@ -85,6 +106,8 @@ public class SlimeBehaviour : MonoBehaviour
 
     void Chase()
     {
+        if (player == null) return;  //checks for player 
+
         float distance = Vector3.Distance(player.transform.position, transform.position);
         if (distance <= 5)
         {
@@ -96,8 +119,6 @@ public class SlimeBehaviour : MonoBehaviour
             isPatrolling = true;
         }
     }
-
-
 
     public void TakeDamage()
     {

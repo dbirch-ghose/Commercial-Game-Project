@@ -1,39 +1,37 @@
-//using System;
+using Fusion;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
-public class AkagaulBehaviour : MonoBehaviour
+public class AkagaulBehaviour : NetworkBehaviour
 {
+    public BasicSpawner spawner;
+
     //-------------------ATTACK-LOGIC--------------------
-    private bool attackFinished = true;
-    private bool isAttacking = false;
-    private int attackCount;
+    [Networked] public bool attackFinished { get; set; }
+    [Networked] public bool isAttacking { get; set; }
+
 
     //-------------------HEALTH--------------------
     public EnemyTakeDamage enemyTakeDamage; //access health script
-    public int health;
+    [Networked] public int health { get; set; }
 
     //-------------------MELEE----------------------
-    public bool hasMeleed = false;
-    public bool hasRepositioned = false;
     public MeleeDamage meleeDamage;
-    public GameObject cane;
+    public NetworkObject cane;
     public float reposTime = 0.4f;
     public float ReposSpeed = 10f;
-    
+
 
     //-----------------PROJECTILE------------------
-    public GameObject projectilePrefab;
+    public NetworkObject projectilePrefab;
     public Transform firePoint; //projectile spawnpoint
     public Transform player; //target
     public float fireAngle = 45f; //height of arc
     public float fireRate = 2f;
-    private float nextFireTime;
+
 
     //-------------------HORSE----------------------
-    public GameObject Horse;
+    public NetworkObject Horse;
     //public float spawnZ = 2f;       // where along Y to spawn (center)
     public float targetPos;
     // where to despawn, THESE BOUNDS MUST BE CHANGED TO FIT THE SIZE OF THE ROOM
@@ -50,63 +48,163 @@ public class AkagaulBehaviour : MonoBehaviour
     public float acceleration = 5f;
     public float rotationSpeed = 5f;
     private bool hasHitPlayer = false;
-    private bool hasHitWall = false;
 
-    private void Start()
+
+    public BasicSpawner basicSpawner;
+
+    public override void Spawned()
     {
+       
+    }
+
+    public void StartAttackLoop()
+    {
+        isAttacking = false;
+        if (!Object.HasStateAuthority) return;
+        if (!isAttacking)
+        {
+            StartCoroutine(AttackLoop());
+        }
+    }
+
+    IEnumerator WaitForPlayer()
+    {
+        var p = basicSpawner.players[0]; 
+        if (p != null)
+        {
+            player = p.transform;
+            Debug.Log("Boss found player");
+            yield break;
+        }
+        yield return null;
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+        if (Object.HasStateAuthority)
+        {
+            StartCoroutine(WaitForPlayer()); //waits for player ref
+
+        }
+
+
+
+        if (player == null) //check for player there
+            {
+                Debug.Log("waiting for player to be assigned");
+                return;
+            }
+        Debug.Log(player);
+
+
         //sets up health
         if (enemyTakeDamage != null)
         {
             health = enemyTakeDamage.health;
         }
+        //to control when the attacks begins
 
-        player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transforms
 
+        //if (!isAttacking)
+        //{
+        //    StartCoroutine(AttackLoop());
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    //Debug.Log("charge");
+        //    StartCoroutine(Charge());
+        //}
+
+        Die();
     }
 
-    private IEnumerator AttackLoop()
+
+    private void OnTriggerEnter(Collider other)
     {
-        isAttacking = true; //marks that the attacks have started
+        if (!Object.HasStateAuthority) return;
 
-        while (true)
+        if (other.CompareTag("Player"))
         {
-            //Melee Logic --- Can melee during other attacks
-            float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player
-            if (distance <= 2f)
-            {
-                Debug.Log("player is close enough to be hit");
-                yield return StartCoroutine(Melee());
-                yield return StartCoroutine(Reposition());
-            }
-
-            if (attackFinished == true) //only start a new attack when ready
-            {
-                //attackloop logic
-                attackFinished = false; //stops the loop from running everyframe
-
-                int randAttack = UnityEngine.Random.Range(0, 3); //possible 
-                if (randAttack == 0)
-                {
-                    //Debug.Log("projectile");
-                    yield return StartCoroutine(LaunchProjectile());
-                }
-                else if (randAttack == 1)
-                {
-                    //Debug.Log("horse");
-                    yield return StartCoroutine(SpawnHorse());
-                }
-                else if (randAttack == 2)
-                {
-                    //Debug.Log("charge");
-                    yield return StartCoroutine(Charge());
-                }
-            }
-            yield return null;
+            hasHitPlayer = true;
+            Debug.Log("Player has been hit");
         }
     }
 
+    private bool CheckWallOverlap()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, 0.2f);
+        foreach (var h in hits)
+        {
+            if (h.CompareTag("Wall"))
+            {
+                Debug.Log("hit wall");
+                return true;
+            }
+        }
+        return false;
+    }
 
-    private IEnumerator LaunchProjectile()
+
+    public IEnumerator AttackLoop()
+    {
+        if (!Object.HasStateAuthority) yield break;
+
+        if (Object.HasStateAuthority)
+        {
+            attackFinished = true;
+            Debug.Log("Attacks have started");
+            isAttacking = true; //marks that the attacks have started
+
+            while (true)
+            {
+                if (player == null)
+                {
+                    yield return null;
+                    Debug.Log("there is no player");
+                    continue;
+                }
+
+                //Melee Logic --- Can melee during other attacks
+                float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player
+                if (distance <= 2f)
+                {
+                    Debug.Log("player is close enough to be hit");
+                    yield return StartCoroutine(Melee());
+                    yield return StartCoroutine(Reposition());
+                }
+
+                if (attackFinished == true) //only start a new attack when ready
+                {
+                    //attackloop logic
+                    attackFinished = false; //stops the loop from running everyframe
+
+                    int randAttack = UnityEngine.Random.Range(0, 3); //possible 
+                    if (randAttack == 0)
+                    {
+                        //Debug.Log("projectile");
+                        yield return StartCoroutine(LaunchProjectile());
+                    }
+                    else if (randAttack == 1)
+                    {
+                        //Debug.Log("horse");
+                        yield return StartCoroutine(SpawnHorse());
+                    }
+                    else if (randAttack == 2)
+                    {
+                        //Debug.Log("charge");
+                        yield return StartCoroutine(Charge());
+                    }
+                }
+                yield return null;
+            }
+        }
+        
+
+    }
+
+
+    IEnumerator LaunchProjectile()
     {
         attackFinished = false;
         int projectileCount = 0;
@@ -114,7 +212,7 @@ public class AkagaulBehaviour : MonoBehaviour
         while (projectileCount < 3) //only throws 3 at a time
         {
             //creates projectile at the fire point
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, Random.Range(-70f, 70)));
+            NetworkObject projectile = Runner.Spawn(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, Random.Range(-70f, 70)));
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
             //calculates direction and distance to the player
@@ -142,10 +240,8 @@ public class AkagaulBehaviour : MonoBehaviour
             projectileCount++;
         }
         attackFinished = true; //ends the loop
-
     }
 
-   
 
     private IEnumerator SpawnHorse()
     {
@@ -163,7 +259,7 @@ public class AkagaulBehaviour : MonoBehaviour
 
             //Vector3 spawnPos = new Vector3(rightSpawnX, 1.5f, targetPos); //spawn horse on the right
 
-            GameObject horse = Instantiate(Horse, spawnPos, Quaternion.identity);
+            NetworkObject horse = Runner.Spawn(Horse, spawnPos, Quaternion.identity);
 
             horse.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
 
@@ -279,57 +375,10 @@ public class AkagaulBehaviour : MonoBehaviour
             }
             timer += Time.deltaTime;
             yield return null; // wait 1 frame
-
         }
-
-        
-
         yield return new WaitForSeconds(1f); // duration of attack
         attackFinished = true; //reset attack
     }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            hasHitPlayer = true;
-            Debug.Log("Player has been hit");
-        }
-    }
-
-    private bool CheckWallOverlap()
-    {
-        Collider[] hits = Physics.OverlapSphere(transform.position, 0.2f);
-        foreach(var h in hits)
-        {
-            if (h.CompareTag("Wall"))
-            {
-                Debug.Log("hit wall");
-                return true;
-            }
-        }
-        return false;
-    }
-
-    void Update()
-    {
-        //to control when the attacks begin
-        if (!isAttacking)
-        {
-            StartCoroutine(AttackLoop());
-        }
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    //Debug.Log("charge");
-        //    StartCoroutine(Charge());
-        //}
-
-        Die();
-    }
-
-  
 
     void Die() 
     {

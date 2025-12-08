@@ -13,7 +13,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkRunner _runner;
     private PlayerRef Possessor;
     public GameObject starter;
-
+    //public NetworkObject networkPlayerObject;
     private void OnGUI()
     {
         if (_runner == null)
@@ -64,7 +64,9 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField]
     private NetworkPrefabRef _player2Prefab;// Character to spawn for a joining player
 
-    private Dictionary<PlayerRef, NetworkObject> _spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
+    public Dictionary<PlayerRef, NetworkObject> _spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
+    public List<NetworkObject> players =  new List<NetworkObject>();
+
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         if (runner.IsServer)
@@ -72,7 +74,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
             // Create a unique position for the player
             //Vector3 spawnPosition = new Vector3((player.RawEncoded % runner.Config.Simulation.PlayerCount) * 3, 1, 0);
-            Vector3 spawnPosition = new Vector3(0, 3, 0);
+            Vector3 spawnPosition = new Vector3();
             spawnPosition = this.GetComponent<Transform>().position;
             
             if (_spawnedCharacters.Count == 0)
@@ -80,17 +82,17 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 Possessor = player;
                 NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
-                
+                players.Add(networkPlayerObject);
             }
             else
             {
                 Possessor = player;
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
-                
+                players.Add(networkPlayerObject);
             }
-                // Keep track of the player avatars for easy access
-                
+            // Keep track of the player avatars for easy access
+
         }
     }
 
