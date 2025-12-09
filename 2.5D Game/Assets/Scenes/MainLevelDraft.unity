@@ -4058,6 +4058,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6314097962258518314, guid: 9173e56a144b69748acb4201056c3a9a, type: 3}
+      propertyPath: centerPoint
+      value: 
+      objectReference: {fileID: 1710415688}
     - target: {fileID: 8882153741331912455, guid: 9173e56a144b69748acb4201056c3a9a, type: 3}
       propertyPath: SortKey
       value: 470472830
@@ -13581,6 +13585,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+--- !u!1 &1710415687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1710415688}
+  m_Layer: 0
+  m_Name: fbyisf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1710415688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710415687}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.67, y: 2.42, z: 28.72}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1730325533
 GameObject:
   m_ObjectHideFlags: 0
@@ -16670,3 +16705,4 @@ SceneRoots:
   - {fileID: 1931923394}
   - {fileID: 1175725623}
   - {fileID: 473560728}
+  - {fileID: 1710415688}
