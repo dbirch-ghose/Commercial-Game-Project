@@ -1,11 +1,10 @@
 using UnityEngine;
 using System.Collections;
-
 using UnityEngine.AI;
 using Fusion;
 
 
-public class SlimeBehaviour : NetworkBehaviour
+public class SlugBehaviour : NetworkBehaviour
 {
     public NavMeshAgent agent;
     public float range;
@@ -24,19 +23,18 @@ public class SlimeBehaviour : NetworkBehaviour
     public override void Spawned()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.enabled = Object.HasStateAuthority; //allows nav mesh to work with fusion
+
+
         //player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
+
+
         sr = GetComponent<SpriteRenderer>();
 
         if (enemyTakeDamage != null)
         {
             health = enemyTakeDamage.health;
         }
-        if (Object.HasStateAuthority)
-        {
-            StartCoroutine(WaitForPlayer()); //waits for player ref
-
-        }
-
 
     }
 
@@ -46,17 +44,19 @@ public class SlimeBehaviour : NetworkBehaviour
         if (p != null)
         {
             player = p.transform;
-            Debug.Log("Boss found player");
+            Debug.Log("slime found player");
             yield break;
         }
         yield return null;
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
-        
+
+        if (Object.HasStateAuthority)
+        {
+            StartCoroutine(WaitForPlayer()); //waits for player ref
+        }
 
         if (isPatrolling == true) //patrol is on by defualt
         {
@@ -106,7 +106,11 @@ public class SlimeBehaviour : NetworkBehaviour
 
     void Chase()
     {
-        if (player == null) return;  //checks for player 
+        if (player == null)
+        {
+            Debug.Log("no player for slime");
+            return;
+        }  //checks for player 
 
         float distance = Vector3.Distance(player.transform.position, transform.position);
         if (distance <= 5)
@@ -120,8 +124,5 @@ public class SlimeBehaviour : NetworkBehaviour
         }
     }
 
-    public void TakeDamage()
-    {
-        health -= 1;
-    }
+    
 }
