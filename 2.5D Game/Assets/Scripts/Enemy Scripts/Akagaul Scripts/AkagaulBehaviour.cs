@@ -69,14 +69,20 @@ public class AkagaulBehaviour : NetworkBehaviour
 
     IEnumerator WaitForPlayer()
     {
-        var p = basicSpawner.players[0]; 
-        if (p != null)
+        //var p = basicSpawner.players[0]; 
+        //if (p != null)
+        //{
+        //    player = p.transform;
+        //    //Debug.Log("Boss found player");
+        //    yield break;
+        //}
+        //yield return null;
+
+        while (basicSpawner.players.Count == 0)
         {
-            player = p.transform;
-            //Debug.Log("Boss found player");
-            yield break;
+            yield return null;
         }
-        yield return null;
+        player = basicSpawner.players[0].transform;
     }
 
     public override void FixedUpdateNetwork()
