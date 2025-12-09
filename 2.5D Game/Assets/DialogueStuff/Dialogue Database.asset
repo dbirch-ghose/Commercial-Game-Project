@@ -8638,7 +8638,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: CageDrop()
+        value: 'CageDrop();
+
+          Shake()'
         type: 0
         typeString: 
       - title: Response Menu Sequence
@@ -9286,7 +9288,7 @@ MonoBehaviour:
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.97
+    canvasZoom: 0.8800001
   - id: 11
     fields:
     - title: Title
