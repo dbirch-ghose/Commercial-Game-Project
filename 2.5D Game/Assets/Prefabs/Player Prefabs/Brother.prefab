@@ -208,6 +208,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackDuration: 0.2
+  animator: {fileID: 0}
 --- !u!95 &2801503880117492055
 Animator:
   serializedVersion: 7
@@ -274,7 +275,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 18e6f69e8273593479c3e5c97949b77a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b8c62d8336af4314e8e03c223035f659, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
