@@ -8630,6 +8630,8 @@ GameObject:
   - component: {fileID: 938646785}
   - component: {fileID: 938646786}
   - component: {fileID: 938646787}
+  - component: {fileID: 938646789}
+  - component: {fileID: 938646788}
   m_Layer: 6
   m_Name: Akagaul
   m_TagString: Enemy
@@ -8771,6 +8773,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 938646784}
   - {fileID: 938646787}
+  - {fileID: 938646788}
   ForceRemoteRenderTimeframe: 0
 --- !u!95 &938646786
 Animator:
@@ -8812,6 +8815,56 @@ MonoBehaviour:
   StateHashes: 000000002b1a167c79406955d52d0810cfbc32fa132b555809ba6fb26bd5a32d398fdc04
   TriggerHashes: 00000000
   TotalWords: 4
+--- !u!114 &938646788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938646781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a591d221a634417e9827eb58e17de84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 1
+  _interpolationTarget: {fileID: 0}
+  UsePreciseRotation: 0
+  UseRenderSleepThresholds: 1
+  RenderThresholds:
+    UseEnergy: 1
+    Position: 0.01
+    Rotation: 0.01
+    Scale: 0.01
+--- !u!54 &938646789
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938646781}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &967073887
 GameObject:
   m_ObjectHideFlags: 0
