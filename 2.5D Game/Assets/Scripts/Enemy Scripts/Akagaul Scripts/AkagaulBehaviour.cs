@@ -248,7 +248,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         {
             animator.SetBool("isThrowing", true);
             //creates projectile at the fire point
-            NetworkObject projectile = Runner.Spawn(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, Random.Range(-70f, 70)));
+            NetworkObject projectile = Runner.Spawn(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, Random.Range(-70f, 70)), Object.InputAuthority);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
             //calculates direction and distance to the player
