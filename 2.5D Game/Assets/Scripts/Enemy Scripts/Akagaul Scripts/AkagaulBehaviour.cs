@@ -155,11 +155,11 @@ public class AkagaulBehaviour : NetworkBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (!Object.HasStateAuthority) return;
 
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             hasHitPlayer = true;
             //Debug.Log("Player has been hit");
