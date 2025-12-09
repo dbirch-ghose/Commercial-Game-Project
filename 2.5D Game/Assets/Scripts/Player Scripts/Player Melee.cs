@@ -7,14 +7,18 @@ public class PlayerMelee : NetworkBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public float attackDuration = 0.2f;
+    public float attackDuration = 0.6f;
 
     private bool isAttacking;
 
     private Collider meleeCollider;
+    public Animator animator;
+
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
+
         // Assumes the attack collider is attached to the same GameObject
         meleeCollider = GetComponent<Collider>();
         if (meleeCollider != null)
@@ -35,6 +39,7 @@ public class PlayerMelee : NetworkBehaviour
     private IEnumerator Attack()
     {
         isAttacking = true;
+        animator.SetBool("isHitting", true);
 
         if (meleeCollider != null)
             meleeCollider.enabled = true;
@@ -55,7 +60,7 @@ public class PlayerMelee : NetworkBehaviour
         }
 
         yield return new WaitForSeconds(attackDuration);
-
+        animator.SetBool("isHitting", false);
         if (meleeCollider != null)
             meleeCollider.enabled = false;
 
