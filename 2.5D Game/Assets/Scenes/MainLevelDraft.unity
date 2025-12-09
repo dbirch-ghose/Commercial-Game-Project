@@ -8629,6 +8629,7 @@ GameObject:
   - component: {fileID: 938646784}
   - component: {fileID: 938646785}
   - component: {fileID: 938646786}
+  - component: {fileID: 938646787}
   m_Layer: 6
   m_Name: Akagaul
   m_TagString: Enemy
@@ -8735,7 +8736,7 @@ MonoBehaviour:
   fireAngle: 45
   fireRate: 2
   Horse: {fileID: -66073819647077524, guid: f25a443256c712d4989cc269a88ed0f6, type: 3}
-  Horse2: {fileID: 0}
+  Horse2: {fileID: -66073819647077524, guid: 28c8f84a660d06c46a017c45da3c87bc, type: 3}
   targetPos: 0
   rightSpawnX: 7
   leftSpawnX: -21
@@ -8769,6 +8770,7 @@ MonoBehaviour:
   - {fileID: 723870842}
   NetworkedBehaviours:
   - {fileID: 938646784}
+  - {fileID: 938646787}
   ForceRemoteRenderTimeframe: 0
 --- !u!95 &938646786
 Animator:
@@ -8792,6 +8794,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &938646787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938646781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 938646786}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 000000002b1a167c79406955d52d0810cfbc32fa132b555809ba6fb26bd5a32d398fdc04
+  TriggerHashes: 00000000
+  TotalWords: 4
 --- !u!1 &967073887
 GameObject:
   m_ObjectHideFlags: 0

@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 2711720695803682713}
   - component: {fileID: 5570596403354127645}
   - component: {fileID: 4026150392290727815}
+  - component: {fileID: 1582468450323258006}
   m_Layer: 7
   m_Name: Brother
   m_TagString: Player
@@ -444,6 +445,7 @@ MonoBehaviour:
   - {fileID: 3695285539236546572}
   - {fileID: 3164364208155221034}
   - {fileID: 2711720695803682713}
+  - {fileID: 1582468450323258006}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &2561638298929355857
 CharacterController:
@@ -552,6 +554,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 1
+--- !u!114 &1582468450323258006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 2801503880117492055}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 000000005cf06304f9b484bbe339287afe3eef3d6db2564570b59102d0c53fc0f3753c66
+  TriggerHashes: 00000000
+  TotalWords: 1
 --- !u!1 &6118444919685330054
 GameObject:
   m_ObjectHideFlags: 0
