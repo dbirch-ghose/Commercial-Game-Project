@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using Fusion;
 
 
-public class SlimeBehaviour : NetworkBehaviour
+public class SlugBehaviour : NetworkBehaviour
 {
     public NavMeshAgent agent;
     public float range;
@@ -35,8 +35,6 @@ public class SlimeBehaviour : NetworkBehaviour
         {
             health = enemyTakeDamage.health;
         }
-
-       
 
     }
 
