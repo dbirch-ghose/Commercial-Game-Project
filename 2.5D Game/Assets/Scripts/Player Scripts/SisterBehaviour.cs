@@ -62,7 +62,7 @@ public class SisterBehaviour : NetworkBehaviour
             //sprite controller
             animator.SetBool("isIdle", false);
             animator.SetBool("isWalkingSide", false);
-            animator.SetBool("isWalkingDown", false);
+            //animator.SetBool("isWalkingDown", false);
 
             if (data.direction.sqrMagnitude <= 0)
             {

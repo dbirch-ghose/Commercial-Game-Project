@@ -9,7 +9,7 @@ public class PlayerMelee : NetworkBehaviour
     public LayerMask enemyLayers;
     public float attackDuration = 0.2f;
 
-    private bool isAttacking = false;
+    private bool isAttacking;
 
     private Collider meleeCollider;
 
