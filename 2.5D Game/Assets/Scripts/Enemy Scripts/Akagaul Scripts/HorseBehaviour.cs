@@ -1,8 +1,8 @@
 using UnityEngine;
-
-public class HorseBehaviour : MonoBehaviour
+using Fusion;
+public class HorseBehaviour : NetworkBehaviour
 {
-    [SerializeField] float moveSpeed = 12f;
+    [SerializeField] float moveSpeed = 30f;
     [SerializeField] float leftBound = -20f;
     [SerializeField] float rightBound = 20f;
 
@@ -21,8 +21,11 @@ public class HorseBehaviour : MonoBehaviour
         moveDir = direction;
     }
 
-    void Update()
+    public override void FixedUpdateNetwork()
     {
+
+        if (!Object.HasStateAuthority) return;
+
         //sets move direction based on whether it's positive or negative, which is generated in the coroutine in akagaulBehaviour
         transform.position += Vector3.right * moveDir * moveSpeed * Time.deltaTime; 
 

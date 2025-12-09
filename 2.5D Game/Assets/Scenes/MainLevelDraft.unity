@@ -8808,7 +8808,7 @@ MonoBehaviour:
   player: {fileID: 0}
   fireAngle: 45
   fireRate: 2
-  Horse: {fileID: -66073819647077524, guid: f25a443256c712d4989cc269a88ed0f6, type: 3}
+  Horse: {fileID: -128657655983114073, guid: f25a443256c712d4989cc269a88ed0f6, type: 3}
   Horse2: {fileID: -66073819647077524, guid: 28c8f84a660d06c46a017c45da3c87bc, type: 3}
   targetPos: 0
   rightSpawnX: 7

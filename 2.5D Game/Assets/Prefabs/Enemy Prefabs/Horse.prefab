@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7692100325543184012}
   - component: {fileID: 1393708222971823766}
   - component: {fileID: -2212450164773895210}
-  - component: {fileID: -66073819647077524}
-  - component: {fileID: 3947834862445993731}
+  - component: {fileID: -128657655983114073}
+  - component: {fileID: -885638837788171560}
   m_Layer: 6
   m_Name: Horse
   m_TagString: Enemy
@@ -162,11 +162,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a5e0916cd2ac0c48b010c4ef9bb1fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 12
+  moveSpeed: 45
   leftBound: -21
   rightBound: 7
   sr: {fileID: 1115934983492821399}
---- !u!114 &-66073819647077524
+--- !u!114 &-128657655983114073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,15 +178,16 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 340193228
+  SortKey: 2925710944
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1393708222971823766}
-  - {fileID: 3947834862445993731}
+  - {fileID: -2212450164773895210}
+  - {fileID: -885638837788171560}
   ForceRemoteRenderTimeframe: 0
---- !u!114 &3947834862445993731
+--- !u!114 &-885638837788171560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

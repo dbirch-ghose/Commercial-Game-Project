@@ -300,18 +300,19 @@ public class AkagaulBehaviour : NetworkBehaviour
             //Vector3 spawnPos = new Vector3(rightSpawnX, 1.5f, targetPos); //spawn horse on the right
 
             NetworkObject horse = Runner.Spawn(Horse, spawnPos, Quaternion.identity);
-            NetworkObject horse2 = Runner.Spawn(Horse2, spawnPos, Quaternion.identity);
+            //NetworkObject horse2 = Runner.Spawn(Horse2, spawnPos, Quaternion.identity);
+            horse.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
 
-            int randHorse = UnityEngine.Random.Range(0, 2);  
-            if (randHorse == 0)
-            {
-                horse.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
-            }
-            else if (randHorse == 1) 
-            {
-                horse2.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
+            //int randHorse = UnityEngine.Random.Range(0, 2);  
+            //if (randHorse == 0)
+            //{
+            //    horse.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
+            //}
+            //else if (randHorse == 1) 
+            //{
+            //    horse2.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
 
-            }
+            //}
             yield return new WaitForSeconds(2f); // duration of attack
             horseCount ++;
         }
