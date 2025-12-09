@@ -6392,12 +6392,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723870837}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.896, z: -0.37}
-  m_LocalScale: {x: 11.2489, y: 3.1292, z: -0.0071277977}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.62, y: 6.6800003, z: 40.88}
+  m_LocalScale: {x: 44.9956, y: 15.646, z: -0.0071277977}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 938646783}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &723870839
 BoxCollider:
@@ -8703,12 +8703,11 @@ Transform:
   m_GameObject: {fileID: 938646781}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.62, y: 2.2, z: 41.25}
+  m_LocalPosition: {x: 0.62, y: 1.98, z: 41.25}
   m_LocalScale: {x: 4, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 97202215}
-  - {fileID: 723870838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &938646784
@@ -8768,8 +8767,7 @@ MonoBehaviour:
   SortKey: 4012832249
   ObjectInterest: 1
   Flags: 786433
-  NestedObjects:
-  - {fileID: 723870842}
+  NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 938646784}
   - {fileID: 938646787}
@@ -8860,7 +8858,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -16639,6 +16637,7 @@ SceneRoots:
   - {fileID: 613552697}
   - {fileID: 1505657829}
   - {fileID: 771024568}
+  - {fileID: 723870838}
   - {fileID: 938646783}
   - {fileID: 1055563655}
   - {fileID: 1931923394}
