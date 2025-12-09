@@ -10,9 +10,12 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
     public class SequencerCommandShake : SequencerCommand
     {
         public MMF_Player player;
+        private CameraBehaviour CamBeh;
         private float time = 0;
         public void Awake()
         {
+            CamBeh = Camera.main.GetComponent<CameraBehaviour>();
+            CamBeh.enabled = false;
             player = FindFirstObjectByType<MMF_Player>();
             Debug.Log("Found player");
             player.PlayFeedbacks();
@@ -23,8 +26,9 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
         public void Update()
         {
             time += Time.deltaTime;
-            if (time > 4)
+            if (time > 10)
             {
+                CamBeh.enabled = true;
                 Stop();
             }
             // Add any update code here. When the command is done, call Stop().
