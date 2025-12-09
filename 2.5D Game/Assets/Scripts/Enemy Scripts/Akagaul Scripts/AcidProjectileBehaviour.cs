@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
-
-public class AcidProjectileBehaviour : MonoBehaviour
+using Fusion;
+public class AcidProjectileBehaviour : NetworkBehaviour
 {
     public GameObject particlePrefab;
     private GameObject particles;
