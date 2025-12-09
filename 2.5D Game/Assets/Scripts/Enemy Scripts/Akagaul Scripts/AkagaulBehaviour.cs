@@ -51,10 +51,19 @@ public class AkagaulBehaviour : NetworkBehaviour
 
 
     public BasicSpawner basicSpawner;
+    public Animator animator;
+    public SpriteRenderer sr;
+
+    public float moveX;
+    public float moveY;
+    public float speed;
+    private Vector3 lastPos;
+
 
     public override void Spawned()
     {
-       
+       animator = GetComponent<Animator>();
+       sr = GetComponent<SpriteRenderer>();
     }
 
     public void StartAttackLoop()
@@ -93,8 +102,6 @@ public class AkagaulBehaviour : NetworkBehaviour
 
         }
 
-
-
         if (player == null) //check for player there
             {
                 //Debug.Log("waiting for player to be assigned");
@@ -111,16 +118,37 @@ public class AkagaulBehaviour : NetworkBehaviour
         //to control when the attacks begins
 
 
-        //if (!isAttacking)
-        //{
-        //    StartCoroutine(AttackLoop());
-        //}
-
         //if (Input.GetKeyDown(KeyCode.Space))
         //{
         //    //Debug.Log("charge");
         //    StartCoroutine(Charge());
         //}
+
+
+        //animator controller
+        //access speed
+        Vector3 vel = (transform.position - lastPos) / Runner.DeltaTime;
+        lastPos = transform.position;
+
+
+        //sets direction
+        moveX = vel.x;
+        moveY = vel.z;  // Z = forward/back in 3D world
+        speed = vel.magnitude;
+
+        //flips sprite
+        if (moveX > 0.1f) sr.flipX = false;
+        if (moveX < -0.1f) sr.flipX = true;
+
+        bool isWalking = speed > 0.1f;
+        animator.SetBool("isWalking", isWalking);
+
+        animator.SetFloat("moveX", moveX);
+        animator.SetFloat("moveY", moveY);
+
+
+
+
 
         Die();
     }
