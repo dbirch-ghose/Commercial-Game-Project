@@ -245,6 +245,7 @@ public class AkagaulBehaviour : NetworkBehaviour
 
         while (projectileCount < 3) //only throws 3 at a time
         {
+            animator.SetBool("isThrowing", true);
             //creates projectile at the fire point
             NetworkObject projectile = Runner.Spawn(projectilePrefab, firePoint.position, Quaternion.Euler(0, 0, Random.Range(-70f, 70)));
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
@@ -268,12 +269,16 @@ public class AkagaulBehaviour : NetworkBehaviour
 
             //fires projectile
             rb.linearVelocity = velocityVector;
+            
+
 
             yield return new WaitForSeconds(1f); //time between shots
-
+            animator.SetBool("isThrowing", false);
             projectileCount++;
         }
         attackFinished = true; //ends the loop
+        
+
     }
 
 
@@ -370,10 +375,12 @@ public class AkagaulBehaviour : NetworkBehaviour
     {
         attackFinished = false;
         //Debug.Log("melee");
-        //meleeDamage.MeleeAnim();
+        animator.SetBool("isSlashing", true);
         //collider logic handled in melee damage script
         yield return new WaitForSeconds(1f); // duration of attack
         attackFinished = true;
+        animator.SetBool("isSlashing", false);
+
     }
 
     private IEnumerator Reposition()
