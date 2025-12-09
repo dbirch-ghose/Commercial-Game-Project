@@ -307,7 +307,7 @@ public class AkagaulBehaviour : NetworkBehaviour
             {
                 horse.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
             }
-            else
+            else if (randHorse == 1) 
             {
                 horse2.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
 
