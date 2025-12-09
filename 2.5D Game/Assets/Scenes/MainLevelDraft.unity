@@ -4014,6 +4014,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1541001278457078663, guid: 9173e56a144b69748acb4201056c3a9a, type: 3}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3352748462949674729, guid: 9173e56a144b69748acb4201056c3a9a, type: 3}
       propertyPath: m_Name
       value: Zombie 1
@@ -4062,6 +4066,10 @@ PrefabInstance:
       propertyPath: centerPoint
       value: 
       objectReference: {fileID: 1710415688}
+    - target: {fileID: 6314097962258518314, guid: 9173e56a144b69748acb4201056c3a9a, type: 3}
+      propertyPath: basicSpawner
+      value: 
+      objectReference: {fileID: 17664353}
     - target: {fileID: 8882153741331912455, guid: 9173e56a144b69748acb4201056c3a9a, type: 3}
       propertyPath: SortKey
       value: 470472830
