@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6644367547669024010}
   - component: {fileID: 3789769204681956025}
   - component: {fileID: -7732987504934751961}
+  - component: {fileID: 8110998908092729103}
   m_Layer: 6
   m_Name: Acid Smoke
   m_TagString: Untagged
@@ -127,5 +128,23 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 8110998908092729103}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &8110998908092729103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623762904242906951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1393708222971823766}
   - component: {fileID: -2212450164773895210}
   - component: {fileID: -66073819647077524}
+  - component: {fileID: 3947834862445993731}
   m_Layer: 6
   m_Name: Horse
   m_TagString: Enemy
@@ -183,4 +184,22 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1393708222971823766}
+  - {fileID: 3947834862445993731}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &3947834862445993731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7452162337939041641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
