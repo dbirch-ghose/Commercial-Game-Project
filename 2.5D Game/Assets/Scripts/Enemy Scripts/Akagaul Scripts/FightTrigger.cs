@@ -18,6 +18,7 @@ public class FightTrigger : NetworkBehaviour
             if (bossNetObj != null && bossNetObj.HasStateAuthority)
             {
                 akagaulBehaviour.StartAttackLoop();
+                Debug.Log("starting start attack loop");
             }
         }
     

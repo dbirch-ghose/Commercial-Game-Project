@@ -28,12 +28,15 @@ public class PlayerMelee : NetworkBehaviour
     private void Update()
     {
         // Only the authoritative player handles input for network-safe attacks
-        if (!Object.HasInputAuthority) return;
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Object.HasInputAuthority)
         {
-            StartCoroutine(Attack());
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartCoroutine(Attack());
+            }
         }
+
+        
     }
 
     private IEnumerator Attack()

@@ -5,6 +5,10 @@ using UnityEngine;
 public class AkagaulBehaviour : NetworkBehaviour
 {
     public BasicSpawner spawner;
+    public Transform player1;
+    public Transform player2;
+    public Transform closestPlayer; //target
+
 
     //-------------------ATTACK-LOGIC--------------------
     [Networked] public bool attackFinished { get; set; }
@@ -16,8 +20,11 @@ public class AkagaulBehaviour : NetworkBehaviour
     [Networked] public int health { get; set; }
 
     //-------------------MELEE----------------------
-    public MeleeDamage meleeDamage;
-    public NetworkObject cane;
+    //public MeleeDamage meleeDamage;
+    private Collider meleeCollider;
+    public Transform meleePoint;
+    public LayerMask playerLayers;
+    public float attackRange = 0.5f;
     public float reposTime = 0.4f;
     public float ReposSpeed = 10f;
 
@@ -25,7 +32,6 @@ public class AkagaulBehaviour : NetworkBehaviour
     //-----------------PROJECTILE------------------
     public NetworkObject projectilePrefab;
     public Transform firePoint; //projectile spawnpoint
-    public Transform player; //target
     public float fireAngle = 45f; //height of arc
     public float fireRate = 2f;
 
@@ -65,6 +71,10 @@ public class AkagaulBehaviour : NetworkBehaviour
     {
        animator = GetComponent<Animator>();
        sr = GetComponent<SpriteRenderer>();
+
+        meleeCollider = GetComponent<Collider>();
+        if (meleeCollider != null)
+            meleeCollider.enabled = false;
     }
 
     public void StartAttackLoop()
@@ -74,6 +84,8 @@ public class AkagaulBehaviour : NetworkBehaviour
         if (!isAttacking)
         {
             StartCoroutine(AttackLoop());
+            Debug.Log("starting attack loop");
+
         }
     }
 
@@ -92,7 +104,16 @@ public class AkagaulBehaviour : NetworkBehaviour
         {
             yield return null;
         }
-        player = basicSpawner.players[0].transform;
+
+        //temp
+        closestPlayer = basicSpawner.players[0].transform;
+
+
+        //player1 = basicSpawner.players[0].transform;
+        //player2 = basicSpawner.players[1].transform;
+
+
+
     }
 
     public override void FixedUpdateNetwork()
@@ -100,16 +121,29 @@ public class AkagaulBehaviour : NetworkBehaviour
         if (Object.HasStateAuthority)
         {
             StartCoroutine(WaitForPlayer()); //waits for player ref
-
         }
 
-        if (player == null) //check for player there
-            {
-                //Debug.Log("waiting for player to be assigned");
-                return;
+        //if (player1 == null) //check for player 
+        if (closestPlayer == null) //check for player //temp 
+        {
+            Debug.Log("waiting for player to be assigned");
+            return;
             }
-        Debug.Log(player);
+        Debug.Log(closestPlayer);
+        
 
+        //float p1Distance = Vector3.Distance(player1.transform.position, transform.position); //calculates distance from the player
+        //float p2Distance = Vector3.Distance(player2.transform.position, transform.position); //calculates distance from the player
+
+        //if (p1Distance < p2Distance)
+        //{
+        //    player1= closestPlayer;
+        //}
+        //else if (p1Distance > p2Distance) 
+        //{
+
+        //    player2 = closestPlayer;   
+        //}
 
         //sets up health
         if (enemyTakeDamage != null)
@@ -146,9 +180,6 @@ public class AkagaulBehaviour : NetworkBehaviour
 
         animator.SetFloat("moveX", moveX);
         animator.SetFloat("moveY", moveY);
-
-
-
 
 
         Die();
@@ -193,15 +224,15 @@ public class AkagaulBehaviour : NetworkBehaviour
 
             while (true)
             {
-                if (player == null)
+                if (closestPlayer == null)
                 {
                     yield return null;
-                    //Debug.Log("there is no player");
+                    Debug.Log("there is no player");
                     continue;
                 }
 
                 //Melee Logic --- Can melee during other attacks
-                float distance = Vector3.Distance(player.transform.position, transform.position); //calculates distance from the player
+                float distance = Vector3.Distance(closestPlayer.transform.position, transform.position); //calculates distance from the player
                 if (distance <= 2f)
                 {
                     //Debug.Log("player is close enough to be hit");
@@ -252,7 +283,7 @@ public class AkagaulBehaviour : NetworkBehaviour
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
             //calculates direction and distance to the player
-            Vector3 targetPos = player.position;
+            Vector3 targetPos = closestPlayer.position;
             Vector3 direction = targetPos - firePoint.position;
             float yDiff = direction.y; //saves vertical diff seperately
             direction.y = 0; //allows direction to just be on x axis
@@ -291,7 +322,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         while (horseCount < 2)
         {
             //targetPos = Random.Range(-15f, 15f); //random spawn height
-            targetPos = player.position.z; //gets the players z axis position
+            targetPos = closestPlayer.position.z; //gets the players z axis position
 
             bool spawnLeft = Random.value > 0.5f; //randomly choose left or right spawn each time                
 
@@ -330,7 +361,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         float lockedY = transform.position.y; //stores starting y position
 
         //calculate direction and rotation outside of the loop so it doesnt home mid charge
-        Vector3 direction = player.transform.position - transform.position;
+        Vector3 direction = closestPlayer.transform.position - transform.position;
 
         //fallback to prevent no movement when the player and boss line  up
         if (direction.sqrMagnitude < 0.01f)
@@ -387,12 +418,67 @@ public class AkagaulBehaviour : NetworkBehaviour
         attackFinished = false;
         //Debug.Log("melee");
         animator.SetBool("isSlashing", true);
-        //collider logic handled in melee damage script
+
+        if (meleeCollider != null)
+        meleeCollider.enabled = true;
+
+        Collider[] hitPlayers = Physics.OverlapSphere(meleePoint.position, attackRange, playerLayers);
+
+        foreach (Collider player in hitPlayers)
+        {
+            // Apply damage only if the enemy has a Networked health component
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+
+            if (playerHealth != null && closestPlayer != null)
+            {
+                playerHealth.TakeDamage(1); // or whatever damage value
+            }
+        }
+
         yield return new WaitForSeconds(1f); // duration of attack
+        if (meleeCollider != null)
+        meleeCollider.enabled = false;
         attackFinished = true;
         animator.SetBool("isSlashing", false);
 
     }
+
+    //private IEnumerator Attack()
+    //{
+    //    isAttacking = true;
+    //    animator.SetBool("isHitting", true);
+
+    //    if (meleeCollider != null)
+    //        meleeCollider.enabled = true;
+
+    //    // Detect enemies immediately
+    //    Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+
+    //    foreach (Collider enemy in hitEnemies)
+    //    {
+    //        // Apply damage only if the enemy has a Networked health component
+    //        EnemyTakeDamage enemyTakeDamage = enemy.GetComponent<EnemyTakeDamage>();
+    //        NetworkObject enemyNetObj = enemy.GetComponent<NetworkObject>();
+
+    //        if (enemyTakeDamage != null && enemyNetObj != null && enemyNetObj.HasStateAuthority)
+    //        {
+    //            enemyTakeDamage.TakeDamage(2); // or whatever damage value
+    //        }
+    //    }
+
+    //    yield return new WaitForSeconds(attackDuration);
+    //    animator.SetBool("isHitting", false);
+    //    if (meleeCollider != null)
+    //        meleeCollider.enabled = false;
+
+    //    isAttacking = false;
+    //}
+
+    //private void OnDrawGizmosSelected()
+    //{
+    //    if (attackPoint != null)
+    //        Gizmos.DrawSphere(attackPoint.position, attackRange);
+    //}
 
     private IEnumerator Reposition()
     {
