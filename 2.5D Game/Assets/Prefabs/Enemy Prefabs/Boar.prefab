@@ -17,10 +17,9 @@ GameObject:
   - component: {fileID: 956760553528268707}
   - component: {fileID: 8997859700591429814}
   - component: {fileID: 3294868153412658875}
-  - component: {fileID: 5448600382608189726}
   m_Layer: 6
   m_Name: Boar
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +72,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbf5cccad4e4534fa3fc2c65588f8b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
   damage: 3
 --- !u!114 &691075917069041342
 MonoBehaviour:
@@ -229,17 +227,3 @@ MonoBehaviour:
   animator: {fileID: 956760553528268707}
   enemyTakeDamage: {fileID: 8997859700591429814}
   health: 0
---- !u!114 &5448600382608189726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2632556834967718471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1541381998, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Guid:
-    RawGuidValue: a6916f9e6c27f5e46b07f93c7a98458a

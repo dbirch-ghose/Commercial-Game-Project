@@ -3,18 +3,19 @@ using UnityEngine;
  
 public class PlayerHealth : NetworkBehaviour
 {
-    [Networked] public int health { get; set; }
+    //[Networked] public int health { get; set; }
+    public int health;
     public int maxHealth = 3;
     public int minHealth = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Spawned ()
     {
         health = maxHealth; //sets health at the start of the game
     }
 
     // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
         if (Object.HasStateAuthority)
         {

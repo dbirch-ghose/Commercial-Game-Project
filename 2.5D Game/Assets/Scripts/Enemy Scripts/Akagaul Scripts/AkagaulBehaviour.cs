@@ -106,11 +106,11 @@ public class AkagaulBehaviour : NetworkBehaviour
         }
 
         //temp
-        closestPlayer = basicSpawner.players[0].transform;
+        //closestPlayer = basicSpawner.players[0].transform;
 
 
-        //player1 = basicSpawner.players[0].transform;
-        //player2 = basicSpawner.players[1].transform;
+        player1 = basicSpawner.players[0].transform;
+        player2 = basicSpawner.players[1].transform;
 
 
 
@@ -130,20 +130,20 @@ public class AkagaulBehaviour : NetworkBehaviour
             return;
             }
         Debug.Log(closestPlayer);
-        
 
-        //float p1Distance = Vector3.Distance(player1.transform.position, transform.position); //calculates distance from the player
-        //float p2Distance = Vector3.Distance(player2.transform.position, transform.position); //calculates distance from the player
 
-        //if (p1Distance < p2Distance)
-        //{
-        //    player1= closestPlayer;
-        //}
-        //else if (p1Distance > p2Distance) 
-        //{
+        float p1Distance = Vector3.Distance(player1.transform.position, transform.position); //calculates distance from the player
+        float p2Distance = Vector3.Distance(player2.transform.position, transform.position); //calculates distance from the player
 
-        //    player2 = closestPlayer;   
-        //}
+        if (p1Distance < p2Distance)
+        {
+            player1 = closestPlayer;
+        }
+        else if (p1Distance > p2Distance)
+        {
+
+            player2 = closestPlayer;
+        }
 
         //sets up health
         if (enemyTakeDamage != null)

@@ -1,9 +1,11 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Fusion;
 
 public class HealthDisplay : MonoBehaviour
 {
+    
     public PlayerHealth playerHealth;
 
     public Image fullHeart;
@@ -11,9 +13,8 @@ public class HealthDisplay : MonoBehaviour
     public Image oneHeart;
     public Image deadHeart;
 
-    public Canvas canvas;
 
-    private int lastHealth = -1;
+    private int lastHealth = 3;
 
     private void Start()
     {
@@ -30,6 +31,9 @@ public class HealthDisplay : MonoBehaviour
 
     private void Update()
     {
+        if (!playerHealth.Object.HasInputAuthority) return; 
+
+
         // Only update when health changes
         if (playerHealth.health != lastHealth)
         {

@@ -119,12 +119,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2345808246448839495}
-  - component: {fileID: 7096440744150042362}
   - component: {fileID: 3695285539236546572}
   - component: {fileID: 3164364208155221034}
   - component: {fileID: 2801503880117492055}
   - component: {fileID: 6952026797092074400}
-  - component: {fileID: 8965971359665793801}
   - component: {fileID: 1370922366899988754}
   - component: {fileID: 3890313211348492213}
   - component: {fileID: 2561638298929355857}
@@ -132,6 +130,8 @@ GameObject:
   - component: {fileID: 5570596403354127645}
   - component: {fileID: 4026150392290727815}
   - component: {fileID: 1582468450323258006}
+  - component: {fileID: -6873496900376562824}
+  - component: {fileID: 987132642229862964}
   m_Layer: 7
   m_Name: Brother
   m_TagString: Player
@@ -156,21 +156,6 @@ Transform:
   - {fileID: 390501854585536572}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7096440744150042362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2538751722601739453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec65819ce5444974aad61a81d65465bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 0
-  maxHealth: 3
-  minHealth: 0
 --- !u!114 &3695285539236546572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,26 +272,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8965971359665793801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2538751722601739453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13092589aa9928342845e478b993e726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 7096440744150042362}
-  health: 0
-  maxHealth: 0
-  fullHeart: {fileID: 1725816795982357513, guid: c7524ffb8f467d540b9f4aa1e5d5e538, type: 3}
-  twoHeart: {fileID: 8912361707542088639, guid: 75d7b5e1a023e62469ed56a47e94cd60, type: 3}
-  oneHeart: {fileID: 8599950890867852676, guid: a62165119837f8d4290019d80930cbbd, type: 3}
-  deadHeart: {fileID: 3912757324640727553, guid: 5cfe20f2d67be954cb1f70982652d3a7, type: 3}
-  hearts: {fileID: 1725816795982357513, guid: c7524ffb8f467d540b9f4aa1e5d5e538, type: 3}
 --- !u!96 &1370922366899988754
 TrailRenderer:
   serializedVersion: 3
@@ -440,11 +405,11 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 7096440744150042362}
   - {fileID: 3695285539236546572}
   - {fileID: 3164364208155221034}
   - {fileID: 2711720695803682713}
   - {fileID: 1582468450323258006}
+  - {fileID: -6873496900376562824}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &2561638298929355857
 CharacterController:
@@ -571,6 +536,38 @@ MonoBehaviour:
   StateHashes: 000000005cf06304f9b484bbe339287afe3eef3d6db2564570b59102d0c53fc0f3753c66
   TriggerHashes: 00000000
   TotalWords: 1
+--- !u!114 &-6873496900376562824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec65819ce5444974aad61a81d65465bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
+  maxHealth: 3
+  minHealth: 0
+--- !u!114 &987132642229862964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13092589aa9928342845e478b993e726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: -6873496900376562824}
+  fullHeart: {fileID: 1725816795982357513, guid: c7524ffb8f467d540b9f4aa1e5d5e538, type: 3}
+  twoHeart: {fileID: 8912361707542088639, guid: 75d7b5e1a023e62469ed56a47e94cd60, type: 3}
+  oneHeart: {fileID: 8599950890867852676, guid: a62165119837f8d4290019d80930cbbd, type: 3}
+  deadHeart: {fileID: 3912757324640727553, guid: 5cfe20f2d67be954cb1f70982652d3a7, type: 3}
 --- !u!1 &6118444919685330054
 GameObject:
   m_ObjectHideFlags: 0

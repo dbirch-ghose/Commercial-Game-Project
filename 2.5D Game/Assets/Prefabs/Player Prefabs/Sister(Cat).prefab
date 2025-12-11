@@ -259,14 +259,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 7096440744150042362}
-  health: 0
-  maxHealth: 0
-  emptyHeart: {fileID: -475148676, guid: 9c927e536ead6fc4b8686ee2a0770f01, type: 3}
   fullHeart: {fileID: 469860500, guid: 9c927e536ead6fc4b8686ee2a0770f01, type: 3}
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  twoHeart: {fileID: 0}
+  oneHeart: {fileID: 0}
+  deadHeart: {fileID: 0}
 --- !u!114 &3890313211348492213
 MonoBehaviour:
   m_ObjectHideFlags: 0

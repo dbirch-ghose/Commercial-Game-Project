@@ -1,21 +1,42 @@
-using Fusion;
+//using Fusion;
+//using UnityEngine;
+
+//public class EnemyContactDamage : NetworkBehaviour
+//{
+//    public PlayerHealth playerHealth;
+//    public int damage = 1;
+
+
+//    void OnCollisionEnter(Collision collision)
+//    {
+
+//        if (collision.gameObject.tag == "Player")
+//        {
+//            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>(); //reference to the players health
+
+//            playerHealth.TakeDamage(damage);
+//        } 
+//    }
+//}
 using UnityEngine;
+using Fusion;
 
 public class EnemyContactDamage : NetworkBehaviour
 {
-    public PlayerHealth playerHealth;
     public int damage = 1;
 
-
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        if (!Object.HasStateAuthority) return; // Only the host runs damage logic
-
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>(); //reference to the players health
+            // Get the PlayerHealth component
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(damage);
-        } 
+            if (playerHealth != null)
+            {
+                // Directly apply damage like the acid vial does
+                playerHealth.TakeDamage(damage);
+            }
+        }
     }
 }

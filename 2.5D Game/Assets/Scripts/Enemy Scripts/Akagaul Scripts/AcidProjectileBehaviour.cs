@@ -15,7 +15,6 @@ public class AcidProjectileBehaviour : NetworkBehaviour
     {
         //instantiate particle effect
         SpawnParticles();
-
         Destroy(gameObject); //destroys vial
         //glass breaking sound effect
 
