@@ -136,12 +136,12 @@ public class AkagaulBehaviour : NetworkBehaviour
             float p2Distance = Vector3.Distance(player2.transform.position, transform.position); //calculates distance from the player
             if (p1Distance < p2Distance)
             {
-                player1 = closestPlayer;
+                closestPlayer = player1;
             }
             else if (p1Distance > p2Distance)
             {
 
-                player2 = closestPlayer;
+                closestPlayer = player2;
             }
         }
 
