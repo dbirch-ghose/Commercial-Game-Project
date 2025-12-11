@@ -28,7 +28,7 @@ public class BrotherBehaviour : NetworkBehaviour
 
     private NetworkCharacterController _cc;
     private Vector3 _forward = Vector3.forward;
-    private ChangeDetector _changeDetector;
+    //private ChangeDetector _changeDetector;
 
 
     private void Awake()
@@ -58,11 +58,15 @@ public class BrotherBehaviour : NetworkBehaviour
     {
         if (GetInput(out NetworkInputData data))
         {
-            data.direction.Normalize();
-            _cc.Move(5 * data.direction * Runner.DeltaTime);
+            //data.direction.Normalize();
+            //_cc.Move(5 * data.direction * Runner.DeltaTime);
 
-            if (data.direction.sqrMagnitude > 0)
-                _forward = data.direction;
+            //if (data.direction.sqrMagnitude > 0)
+            //    _forward = data.direction;
+
+            Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
+            _cc.Move(move * moveSpeed * Runner.DeltaTime);
+
         }
 
         //sprite controller
@@ -99,6 +103,34 @@ public class BrotherBehaviour : NetworkBehaviour
        
 
         }
+
+        ////hitbox rotation
+        //if (data.direction.sqrMagnitude > 0.01f) // only rotate when moving
+        //{
+
+        //    // Keep the hitbox in front of the player             
+        //    attackHitBox.position = transform.position + data.direction.normalized;
+        //}
+
+
+        ////hitbox rotation
+        if (data.direction.sqrMagnitude > 0.01f)
+        {
+            // Convert 2D input - 3D world direction
+            Vector3 moveDir = new Vector3(data.direction.x, 0, data.direction.z);
+
+            // Ensure it isn't a zero vector when moving on Z axis
+            moveDir.Normalize();
+
+            // Position hitbox in front of the player
+            attackHitBox.position = transform.position + moveDir;
+
+            // Rotate hitbox to face the direction
+            attackHitBox.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
+        }
+
+
+
 
         //prevents movement while dashing
         if (isDashing)

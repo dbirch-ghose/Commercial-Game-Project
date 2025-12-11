@@ -5,7 +5,7 @@ using Fusion;
 public class PlayerMelee : NetworkBehaviour
 {
     public Transform attackPoint;
-    public float attackRange = 0.5f;
+    public float attackRange = 1f;
     public LayerMask enemyLayers;
     public float attackDuration = 0.6f;
 
