@@ -1,6 +1,8 @@
 using Fusion;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AkagaulBehaviour : NetworkBehaviour
 {
@@ -91,59 +93,60 @@ public class AkagaulBehaviour : NetworkBehaviour
 
     IEnumerator WaitForPlayer()
     {
-        //var p = basicSpawner.players[0]; 
-        //if (p != null)
-        //{
-        //    player = p.transform;
-        //    //Debug.Log("Boss found player");
-        //    yield break;
-        //}
-        //yield return null;
-
         while (basicSpawner.players.Count == 0)
         {
             yield return null;
         }
 
-        //temp
         //closestPlayer = basicSpawner.players[0].transform;
 
-
         player1 = basicSpawner.players[0].transform;
-        player2 = basicSpawner.players[1].transform;
 
-
-
+        if (basicSpawner.players.Count > 1)
+        {
+            player2 = basicSpawner.players[1].transform;
+        }
     }
 
     public override void FixedUpdateNetwork()
     {
-        if (Object.HasStateAuthority)
+
+
+        if (Object.HasStateAuthority && basicSpawner.players.Count < 2)
         {
             StartCoroutine(WaitForPlayer()); //waits for player ref
         }
 
-        //if (player1 == null) //check for player 
-        if (closestPlayer == null) //check for player //temp 
+
+        if (player1 == null) //check for player 
         {
             Debug.Log("waiting for player to be assigned");
             return;
+        }
+        Debug.Log(closestPlayer); 
+        
+        if (player2 == null)
+        {
+            closestPlayer = player1;
+        }
+
+        if (player2 != null) 
+        {
+            float p1Distance = Vector3.Distance(player1.transform.position, transform.position); //calculates distance from the player
+            float p2Distance = Vector3.Distance(player2.transform.position, transform.position); //calculates distance from the player
+            if (p1Distance < p2Distance)
+            {
+                player1 = closestPlayer;
             }
-        Debug.Log(closestPlayer);
+            else if (p1Distance > p2Distance)
+            {
 
-
-        float p1Distance = Vector3.Distance(player1.transform.position, transform.position); //calculates distance from the player
-        float p2Distance = Vector3.Distance(player2.transform.position, transform.position); //calculates distance from the player
-
-        if (p1Distance < p2Distance)
-        {
-            player1 = closestPlayer;
+                player2 = closestPlayer;
+            }
         }
-        else if (p1Distance > p2Distance)
-        {
 
-            player2 = closestPlayer;
-        }
+       
+
 
         //sets up health
         if (enemyTakeDamage != null)
@@ -274,8 +277,6 @@ public class AkagaulBehaviour : NetworkBehaviour
                 yield return null;
             }
         }
-        
-
     }
 
 
