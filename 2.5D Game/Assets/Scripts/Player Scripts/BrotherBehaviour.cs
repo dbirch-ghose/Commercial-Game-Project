@@ -125,8 +125,6 @@ public class BrotherBehaviour : NetworkBehaviour
             // Position hitbox in front of the player
             attackHitBox.position = transform.position + moveDir;
 
-            // Rotate hitbox to face the direction
-            attackHitBox.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
         }
 
 

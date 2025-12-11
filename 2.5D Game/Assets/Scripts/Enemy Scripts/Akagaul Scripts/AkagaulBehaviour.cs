@@ -182,6 +182,15 @@ public class AkagaulBehaviour : NetworkBehaviour
         animator.SetFloat("moveY", moveY);
 
 
+        //update melee point pos every frame
+        Vector3 direction = (closestPlayer.position - meleePoint.position).normalized;
+        // Keep rotation only on the Y axis so it doesn't tilt up/down
+        direction.y = 0;
+        if (direction != Vector3.zero)
+        {
+            meleePoint.position = transform.position + direction;
+        }
+
         Die();
     }
 
@@ -421,9 +430,9 @@ public class AkagaulBehaviour : NetworkBehaviour
 
         if (meleeCollider != null)
         meleeCollider.enabled = true;
+ 
 
         Collider[] hitPlayers = Physics.OverlapSphere(meleePoint.position, attackRange, playerLayers);
-
         foreach (Collider player in hitPlayers)
         {
             // Apply damage only if the enemy has a Networked health component
@@ -448,37 +457,6 @@ public class AkagaulBehaviour : NetworkBehaviour
         if (meleePoint != null)
             Gizmos.DrawSphere(meleePoint.position, attackRange);
     }
-
-    //private IEnumerator Attack()
-    //{
-    //    isAttacking = true;
-    //    animator.SetBool("isHitting", true);
-
-    //    if (meleeCollider != null)
-    //        meleeCollider.enabled = true;
-
-    //    // Detect enemies immediately
-    //    Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
-
-    //    foreach (Collider enemy in hitEnemies)
-    //    {
-    //        // Apply damage only if the enemy has a Networked health component
-    //        EnemyTakeDamage enemyTakeDamage = enemy.GetComponent<EnemyTakeDamage>();
-    //        NetworkObject enemyNetObj = enemy.GetComponent<NetworkObject>();
-
-    //        if (enemyTakeDamage != null && enemyNetObj != null && enemyNetObj.HasStateAuthority)
-    //        {
-    //            enemyTakeDamage.TakeDamage(2); // or whatever damage value
-    //        }
-    //    }
-
-    //    yield return new WaitForSeconds(attackDuration);
-    //    animator.SetBool("isHitting", false);
-    //    if (meleeCollider != null)
-    //        meleeCollider.enabled = false;
-
-    //    isAttacking = false;
-    //}
 
 
 
