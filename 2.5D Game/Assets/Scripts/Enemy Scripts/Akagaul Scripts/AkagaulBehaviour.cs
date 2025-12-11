@@ -24,7 +24,7 @@ public class AkagaulBehaviour : NetworkBehaviour
     private Collider meleeCollider;
     public Transform meleePoint;
     public LayerMask playerLayers;
-    public float attackRange = 0.5f;
+    public float attackRange = 1f;
     public float reposTime = 0.4f;
     public float ReposSpeed = 10f;
 
@@ -443,6 +443,12 @@ public class AkagaulBehaviour : NetworkBehaviour
 
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (meleePoint != null)
+            Gizmos.DrawSphere(meleePoint.position, attackRange);
+    }
+
     //private IEnumerator Attack()
     //{
     //    isAttacking = true;
@@ -474,11 +480,7 @@ public class AkagaulBehaviour : NetworkBehaviour
     //    isAttacking = false;
     //}
 
-    //private void OnDrawGizmosSelected()
-    //{
-    //    if (attackPoint != null)
-    //        Gizmos.DrawSphere(attackPoint.position, attackRange);
-    //}
+
 
     private IEnumerator Reposition()
     {
