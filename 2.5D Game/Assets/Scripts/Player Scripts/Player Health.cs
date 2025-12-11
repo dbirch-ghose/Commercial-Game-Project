@@ -3,7 +3,7 @@ using UnityEngine;
  
 public class PlayerHealth : NetworkBehaviour
 {
-    [Networked] public int health { get; set; } = 0;
+    [Networked] public int health { get; set; }
     public int maxHealth = 3;
     public int minHealth = 0;
 

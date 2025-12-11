@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,41 +9,50 @@ public class HealthDisplay : MonoBehaviour
     public int health;
     public int maxHealth;
 
-    public Sprite emptyHeart;
-    public Sprite fullHeart;
-    public Image[] hearts; //unity UI
+    public Image fullHeart;
+    public Image twoHeart;
+    public Image oneHeart;
+    public Image deadHeart;
+    public Image hearts;
 
 
-    void Start()
+    private void Start()
     {
+        twoHeart.enabled = false;
+        oneHeart.enabled = false;
+        deadHeart.enabled = false;
 
     }
 
-    // Update is called once per frame
-    void Update() { }
-    //{
-    //    health = playerHealth.health;
-    //    maxHealth = playerHealth.maxHealth;
+    void Update()
+    {
 
-    //    for (int i = 0; i < hearts.Length; i++)
-    //    {
-    //        if (i < health)
-    //        {
-    //            hearts[i].sprite = fullHeart;
-    //        }
-    //        else 
-    //        {
-    //            hearts[i].sprite = emptyHeart;
-    //        }
+        health = playerHealth.health;
+        maxHealth = playerHealth.maxHealth;
 
-    //        if (i < maxHealth)
-    //        {
-    //            hearts[i].enabled = true; //turns on each heart in the UI
-    //        }
-    //        else
-    //        {
-    //            hearts[i].enabled = false; //turns off hearts that shouldn't be active
-    //        }
-    //    }
-    //}
+        fullHeart.enabled = (playerHealth.health == 3);
+        twoHeart.enabled = (playerHealth.health == 2);
+        oneHeart.enabled = (playerHealth.health == 1);
+        deadHeart.enabled = (playerHealth.health <= 0);
+
+
+        
+
+        //if (playerHealth.health == 3)
+        //{
+        //    hearts = fullHeart;
+        //}
+        //else if (playerHealth.health == 2)
+        //{
+        //    hearts = twoHeart;
+        //}
+        //else if (playerHealth.health == 1)
+        //{
+        //    hearts = oneHeart;
+        //}
+        //else if (playerHealth.health <= 0)
+        //{
+        //    hearts = deadHeart;
+        //}
+    }
 }

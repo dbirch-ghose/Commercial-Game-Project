@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec65819ce5444974aad61a81d65465bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 10
+  _health: 0
   maxHealth: 3
   minHealth: 0
 --- !u!114 &3695285539236546572
@@ -302,12 +302,11 @@ MonoBehaviour:
   playerHealth: {fileID: 7096440744150042362}
   health: 0
   maxHealth: 0
-  emptyHeart: {fileID: -475148676, guid: 9c927e536ead6fc4b8686ee2a0770f01, type: 3}
-  fullHeart: {fileID: 469860500, guid: 9c927e536ead6fc4b8686ee2a0770f01, type: 3}
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  fullHeart: {fileID: 1725816795982357513, guid: c7524ffb8f467d540b9f4aa1e5d5e538, type: 3}
+  twoHeart: {fileID: 8912361707542088639, guid: 75d7b5e1a023e62469ed56a47e94cd60, type: 3}
+  oneHeart: {fileID: 8599950890867852676, guid: a62165119837f8d4290019d80930cbbd, type: 3}
+  deadHeart: {fileID: 3912757324640727553, guid: 5cfe20f2d67be954cb1f70982652d3a7, type: 3}
+  hearts: {fileID: 1725816795982357513, guid: c7524ffb8f467d540b9f4aa1e5d5e538, type: 3}
 --- !u!96 &1370922366899988754
 TrailRenderer:
   serializedVersion: 3
