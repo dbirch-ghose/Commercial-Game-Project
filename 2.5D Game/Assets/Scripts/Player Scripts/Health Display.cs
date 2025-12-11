@@ -6,53 +6,43 @@ public class HealthDisplay : MonoBehaviour
 {
     public PlayerHealth playerHealth;
 
-    public int health;
-    public int maxHealth;
-
     public Image fullHeart;
     public Image twoHeart;
     public Image oneHeart;
     public Image deadHeart;
-    public Image hearts;
 
+    public Canvas canvas;
+
+    private int lastHealth = -1;
 
     private void Start()
     {
+        // Disable all hearts at the start
+        fullHeart.enabled = false;
         twoHeart.enabled = false;
         oneHeart.enabled = false;
         deadHeart.enabled = false;
 
+        // Show the correct heart based on current health
+        UpdateHearts(playerHealth.health);
+        lastHealth = playerHealth.health;
     }
 
-    void Update()
+    private void Update()
     {
+        // Only update when health changes
+        if (playerHealth.health != lastHealth)
+        {
+            UpdateHearts(playerHealth.health);
+            lastHealth = playerHealth.health;
+        }
+    }
 
-        health = playerHealth.health;
-        maxHealth = playerHealth.maxHealth;
-
-        fullHeart.enabled = (playerHealth.health == 3);
-        twoHeart.enabled = (playerHealth.health == 2);
-        oneHeart.enabled = (playerHealth.health == 1);
-        deadHeart.enabled = (playerHealth.health <= 0);
-
-
-        
-
-        //if (playerHealth.health == 3)
-        //{
-        //    hearts = fullHeart;
-        //}
-        //else if (playerHealth.health == 2)
-        //{
-        //    hearts = twoHeart;
-        //}
-        //else if (playerHealth.health == 1)
-        //{
-        //    hearts = oneHeart;
-        //}
-        //else if (playerHealth.health <= 0)
-        //{
-        //    hearts = deadHeart;
-        //}
+    private void UpdateHearts(int health)
+    {
+        fullHeart.enabled = (health == 3);
+        twoHeart.enabled = (health == 2);
+        oneHeart.enabled = (health == 1);
+        deadHeart.enabled = (health <= 0);
     }
 }
