@@ -8418,7 +8418,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
+<<<<<<< Updated upstream
         value: AudioWait(zombie/zombie)
+=======
+        value: AudioWait(brother/meeting ackergaul 1-1)
+>>>>>>> Stashed changes
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 10
@@ -8473,7 +8477,11 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
+<<<<<<< Updated upstream
         value: WaitAudio(zombie)
+=======
+        value: AudioWait(brother/meeting ackergaul 1-cat1)
+>>>>>>> Stashed changes
         type: 0
         typeString: 
       conversationID: 10
@@ -8528,7 +8536,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/meeting ackergaul 1-2)
         type: 0
         typeString: 
       conversationID: 10
@@ -8536,7 +8544,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 10
@@ -8583,7 +8591,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/meeting ackergaul 1-3)
         type: 0
         typeString: 
       conversationID: 10
@@ -8591,7 +8599,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 10
@@ -8640,7 +8648,10 @@ MonoBehaviour:
       - title: Sequence
         value: 'CageDrop();
 
-          Shake()'
+          Shake();
+
+          AudioWait(brother/meeting
+          ackergaul 1-4)'
         type: 0
         typeString: 
       - title: Response Menu Sequence
@@ -8712,7 +8723,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(ackergaul/ackergaul voice1)
         type: 0
         typeString: 
       conversationID: 10
@@ -8776,7 +8787,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 10
@@ -8878,7 +8889,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(ackergaul/cutackergaul2)
         type: 0
         typeString: 
       conversationID: 10
@@ -8886,7 +8897,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 10
@@ -8933,7 +8944,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(ackergaul/cutackergaul3)
         type: 0
         typeString: 
       conversationID: 10
@@ -8941,7 +8952,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 10
@@ -8996,7 +9007,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 10
@@ -9043,7 +9054,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(ackergaul/cutackergaul4)
         type: 0
         typeString: 
       conversationID: 10
@@ -9051,7 +9062,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 10
@@ -9099,7 +9110,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(ackergaul/cutackergaul5)
         type: 0
         typeString: 
       conversationID: 10
@@ -9107,7 +9118,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 10
@@ -9287,8 +9298,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.7600002
+    canvasScrollPosition: {x: 0, y: 665.46124}
+    canvasZoom: 0.48999998
   - id: 11
     fields:
     - title: Title
