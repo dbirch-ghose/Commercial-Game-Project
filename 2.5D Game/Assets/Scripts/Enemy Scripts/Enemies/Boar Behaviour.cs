@@ -18,8 +18,7 @@ public class BoarBehaviour : NetworkBehaviour
     public SpriteRenderer sr;
     public Animator animator;
 
-    public EnemyTakeDamage enemyTakeDamage; //access health script
-    public int health;
+ 
 
     public override void Spawned()
     {
@@ -34,10 +33,7 @@ public class BoarBehaviour : NetworkBehaviour
         animator = GetComponent<Animator>();
 
 
-        if (enemyTakeDamage != null)
-        {
-            health = enemyTakeDamage.health;
-        }
+        
 
     }
 
