@@ -8418,11 +8418,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-<<<<<<< Updated upstream
-        value: AudioWait(zombie/zombie)
-=======
         value: AudioWait(brother/meeting ackergaul 1-1)
->>>>>>> Stashed changes
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 10
@@ -8477,11 +8473,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-<<<<<<< Updated upstream
-        value: WaitAudio(zombie)
-=======
         value: AudioWait(brother/meeting ackergaul 1-cat1)
->>>>>>> Stashed changes
         type: 0
         typeString: 
       conversationID: 10
