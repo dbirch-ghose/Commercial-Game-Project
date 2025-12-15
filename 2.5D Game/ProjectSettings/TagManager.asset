@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Runner
   - Wall
+  - player1canvas
   layers:
   - Default
   - TransparentFX

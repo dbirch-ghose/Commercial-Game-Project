@@ -1,52 +1,69 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Fusion;
+using System;
 
 public class HealthDisplay : MonoBehaviour
 {
-    
     public PlayerHealth playerHealth;
 
-    public Image fullHeart;
-    public Image twoHeart;
-    public Image oneHeart;
-    public Image deadHeart;
+    // Assign prefab references in the player prefab
+    public GameObject fullHeartPrefab;
+    public GameObject twoHeartPrefab;
+    public GameObject oneHeartPrefab;
+    public GameObject deadHeartPrefab;
 
+    private GameObject fullHeart;
+    private GameObject twoHeart;
+    private GameObject oneHeart;
+    private GameObject deadHeart;
 
-    private int lastHealth = 3;
+    private int lastHealth = -1;
+
+    public Transform canvasTransform;
 
     private void Start()
     {
-        // Disable all hearts at the start
-        fullHeart.enabled = false;
-        twoHeart.enabled = false;
-        oneHeart.enabled = false;
-        deadHeart.enabled = false;
-
-        // Show the correct heart based on current health
-        UpdateHearts(playerHealth.health);
-        lastHealth = playerHealth.health;
-    }
-
-    private void Update()
-    {
-        if (!playerHealth.Object.HasInputAuthority) return; 
+        canvasTransform = GameObject.FindWithTag("player1canvas").transform;
 
 
-        // Only update when health changes
-        if (playerHealth.health != lastHealth)
+        // Instantiate heart prefabs under the Canvas
+        fullHeart = Instantiate(fullHeartPrefab, canvasTransform);
+        twoHeart = Instantiate(twoHeartPrefab, canvasTransform);
+        oneHeart = Instantiate(oneHeartPrefab, canvasTransform);
+        deadHeart = Instantiate(deadHeartPrefab, canvasTransform);
+
+        // Disable all hearts at start
+        fullHeart.SetActive(false);
+        twoHeart.SetActive(false);
+        oneHeart.SetActive(false);
+        deadHeart.SetActive(false);
+
+        // Show initial health
+        if (playerHealth != null)
         {
             UpdateHearts(playerHealth.health);
             lastHealth = playerHealth.health;
         }
     }
 
+    private void Update()
+    {
+        if (playerHealth == null || playerHealth.Object == null) return;
+
+        int currentHealth = playerHealth.health;
+
+        if (currentHealth != lastHealth)
+        {
+            UpdateHearts(currentHealth);
+            lastHealth = currentHealth;
+        }
+    }
+
     private void UpdateHearts(int health)
     {
-        fullHeart.enabled = (health == 3);
-        twoHeart.enabled = (health == 2);
-        oneHeart.enabled = (health == 1);
-        deadHeart.enabled = (health <= 0);
+        fullHeart.SetActive(health == 3);
+        twoHeart.SetActive(health == 2);
+        oneHeart.SetActive(health == 1);
+        deadHeart.SetActive(health <= 0);
     }
 }
