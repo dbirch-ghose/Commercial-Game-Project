@@ -13,6 +13,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkRunner _runner;
     private PlayerRef Possessor;
     public GameObject starter;
+    public NetworkObject introDialogue;
     //public NetworkObject networkPlayerObject;
     private void OnGUI()
     {
@@ -90,6 +91,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
+                introDialogue.enabled = true;
             }
             // Keep track of the player avatars for easy access
 
