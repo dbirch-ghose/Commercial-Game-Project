@@ -1,13 +1,15 @@
-using UnityEngine;
-using Fusion;
 using DG.Tweening;
+using Fusion;
+using Unity.VisualScripting;
+using UnityEngine;
+
 
 public class corpseActivation : NetworkBehaviour
 {
     public NetworkObject Hanger;
-    public NetworkObject mother;
     public bool activate = false;
-    public Animator Swinger;
+    private float counter = 0;
+    private Vector3 leftMove;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,19 +22,21 @@ public class corpseActivation : NetworkBehaviour
     {
         if (activate == true)
         {
-            Swinger.SetBool("activated", true);
-            Swinger.GetComponent<Transform>().position = new Vector3(15, 0, 8);
-            mother.GetComponent<Transform>().position = new Vector3(15, 0, 8);
-            
+            if (counter < 100 && activate)
+            {
+                leftMove = Hanger.GetComponent<Rigidbody>().position;
+                Debug.Log("Running update");
+                leftMove = new Vector3(leftMove.x-0.25f, leftMove.y, leftMove.z);
+                Hanger.GetComponent<Rigidbody>().MovePosition(leftMove);
+
+                counter += 1;
+            }
 
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void activated()
     {
-        if (other.CompareTag("Player"))
-        {
-            activate = true;
-        }
+        activate = true;
     }
 }

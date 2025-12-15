@@ -8,15 +8,15 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
 
     public class SequencerCommandCorpseSwing : SequencerCommand
     {
-        private NetworkObject cage;
-        private cageOpen referenceBlock;
+        
+        private corpseActivation referenceBlock;
         
         public void Awake()
         {
             Debug.Log("Running awake");
-            referenceBlock = FindFirstObjectByType<cageOpen>();
-            referenceBlock.openCage();
-            
+            referenceBlock = FindFirstObjectByType<corpseActivation>();
+            referenceBlock.activated();
+            Stop();
             
             
         }
