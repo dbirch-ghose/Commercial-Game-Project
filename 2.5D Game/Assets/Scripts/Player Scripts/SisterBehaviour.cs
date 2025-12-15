@@ -52,15 +52,19 @@ public class SisterBehaviour : NetworkBehaviour
     {
         if (GetInput(out NetworkInputData data))
         {
-            data.direction.Normalize();
-            _cc.Move(5 * data.direction * Runner.DeltaTime);
+            //data.direction.Normalize();
+            //_cc.Move(5 * data.direction * Runner.DeltaTime);
 
-            if (data.direction.sqrMagnitude > 0)
-                _forward = data.direction;
+            //if (data.direction.sqrMagnitude > 0)
+            //    _forward = data.direction;
 
+            Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
+            _cc.Move(move * moveSpeed * Runner.DeltaTime);
 
-            //sprite controller
-            animator.SetBool("isIdle", false);
+        }
+
+        //sprite controller
+        animator.SetBool("isIdle", false);
             animator.SetBool("isWalkingSide", false);
             //animator.SetBool("isWalkingDown", false);
 

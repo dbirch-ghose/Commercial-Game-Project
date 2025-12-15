@@ -23,7 +23,12 @@ public class HealthDisplay : MonoBehaviour
 
     private void Start()
     {
-        canvasTransform = GameObject.FindWithTag("player1canvas").transform;
+        canvasTransform = GameObject.FindWithTag("player1Canvas")?.transform;
+        if (canvasTransform == null)
+        {
+            Debug.LogError("No Canvas found with tag 'player1Canvas'");
+            return;
+        }
 
 
         // Instantiate heart prefabs under the Canvas

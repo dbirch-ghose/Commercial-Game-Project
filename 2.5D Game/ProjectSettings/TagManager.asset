@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - pp
   - player1Canvas
+  - player2Canvas
   layers:
   - Default
   - TransparentFX
