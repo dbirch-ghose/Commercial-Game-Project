@@ -99,9 +99,11 @@ public class BrotherBehaviour : NetworkBehaviour
         {
             //Debug.Log("down");
             animator.SetBool("isWalkingDown", true);
-
-       
-
+        }
+        else if (data.direction.z > 0) //up
+        {
+            //Debug.Log("up");
+            animator.SetBool("isWalkingUp", true);
         }
 
         ////hitbox rotation
