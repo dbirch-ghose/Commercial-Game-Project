@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {x: -0.24, y: 0, z: 0}
   starter: {fileID: 140605429}
-  introCutscene: {fileID: 1849415708}
+  introDialogue: {fileID: 95840289}
   _playerPrefab:
     RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
   _player2Prefab:
@@ -7027,6 +7027,10 @@ PrefabInstance:
       propertyPath: initialDatabase
       value: 
       objectReference: {fileID: 11400000, guid: 37bc1d982197d19469cfcd1883584259, type: 2}
+    - target: {fileID: 22325660, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11405,6 +11409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cage: {fileID: 1755719850}
+  cutscene: {fileID: 1849415708}
 --- !u!4 &1175725623
 Transform:
   m_ObjectHideFlags: 0
@@ -18839,7 +18844,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 255096106}
-  - {fileID: 695025703}
   - {fileID: 17664354}
   - {fileID: 140605434}
   - {fileID: 1395976218}
@@ -18861,3 +18865,4 @@ SceneRoots:
   - {fileID: 837794184}
   - {fileID: 704648628}
   - {fileID: 1849415707}
+  - {fileID: 695025703}

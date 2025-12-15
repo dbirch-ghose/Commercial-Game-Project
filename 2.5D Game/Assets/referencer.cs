@@ -5,6 +5,7 @@ public class referencer : MonoBehaviour
 {
 
     public NetworkObject cage;
+    public NetworkObject cutscene;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
