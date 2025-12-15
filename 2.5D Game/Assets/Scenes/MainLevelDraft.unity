@@ -4874,7 +4874,7 @@ GameObject:
   - component: {fileID: 613552698}
   m_Layer: 0
   m_Name: PostProcessingGO
-  m_TagString: Untagged
+  m_TagString: pp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9544,7 +9544,7 @@ GameObject:
   - component: {fileID: 1089573302}
   m_Layer: 5
   m_Name: Brother Canvas
-  m_TagString: player1canvas
+  m_TagString: player1Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

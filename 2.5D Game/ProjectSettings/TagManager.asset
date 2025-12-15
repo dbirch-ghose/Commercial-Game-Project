@@ -8,6 +8,7 @@ TagManager:
   - Runner
   - Wall
   - pp
+  - player1Canvas
   layers:
   - Default
   - TransparentFX
