@@ -23,7 +23,7 @@ public class AcidProjectileBehaviour : NetworkBehaviour
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(damage);
+            playerHealth.RPC_TakeDamage(1);
         }
     }
 

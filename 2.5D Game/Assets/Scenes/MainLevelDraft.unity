@@ -8407,6 +8407,10 @@ PrefabInstance:
       propertyPath: basicSpawner
       value: 
       objectReference: {fileID: 17664353}
+    - target: {fileID: 8997859700591429814, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: _Health
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

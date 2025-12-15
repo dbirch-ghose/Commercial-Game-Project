@@ -35,7 +35,7 @@ public class EnemyContactDamage : NetworkBehaviour
             if (playerHealth != null)
             {
                 // Directly apply damage like the acid vial does
-                playerHealth.TakeDamage(damage);
+                playerHealth.RPC_TakeDamage(1);
             }
         }
     }

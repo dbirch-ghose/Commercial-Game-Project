@@ -1,44 +1,34 @@
 using Fusion;
 using UnityEngine;
- 
+
 public class PlayerHealth : NetworkBehaviour
 {
-    //[Networked] public int health { get; set; }
-    public int health;
+    [Networked] public int health { get; set; }
     public int maxHealth = 3;
-    public int minHealth = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public override void Spawned ()
-    {
-        health = maxHealth; //sets health at the start of the game
-    }
-
-    // Update is called once per frame
-    public override void FixedUpdateNetwork()
+    public override void Spawned()
     {
         if (Object.HasStateAuthority)
-        {
-            if (health < minHealth)
-            {
-                health = minHealth;
-            }
-        }
+            health = maxHealth;
     }
 
-    public void TakeDamage(int damage) //to be referenced in enemy damage scripts
+    public override void FixedUpdateNetwork()
     {
-        if (!Object.HasStateAuthority) return; 
+        if (!Object.HasStateAuthority)
+            return;
 
-        health -= damage; //decreases health based on damage
+        if (health < 0)
+            health = 0;
     }
 
-    public void Downed()
+    // Enemy / server requests damage
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_TakeDamage(int damage)
     {
-        if (health >= 0)
-        {
-            //set down state
-        }
-    }
+        if (health <= 0)
+            return;
 
+        health -= damage;
+        Debug.Log($"Player took {damage} damage. Health now {health}");
+    }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyTakeDamage : NetworkBehaviour
 {
-    [Networked] public int Health { get; set; } = 10;
+    [Networked] public int Health { get; set; }
     [Networked] private bool IsDead { get; set; }
 
     public override void FixedUpdateNetwork()

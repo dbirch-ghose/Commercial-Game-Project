@@ -433,7 +433,7 @@ public class AkagaulBehaviour : NetworkBehaviour
 
             if (playerHealth != null && closestPlayer != null)
             {
-                playerHealth.TakeDamage(1); // or whatever damage value
+                playerHealth.RPC_TakeDamage(1);
             }
         }
 

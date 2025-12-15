@@ -17,8 +17,8 @@ public class MeleeDamage : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("player has been hit by cane"); 
-            playerHealth.TakeDamage(damage);
+            Debug.Log("player has been hit by cane");
+            playerHealth.RPC_TakeDamage(1);
         }
 
     }
