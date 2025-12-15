@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Runner
   - Wall
+  - pp
   layers:
   - Default
   - TransparentFX
