@@ -1,6 +1,7 @@
 using UnityEngine;
+using Fusion;
 
-public class AudioPlay : MonoBehaviour
+public class AudioPlay : NetworkBehaviour
 {
    
     private AudioSource audioSource;

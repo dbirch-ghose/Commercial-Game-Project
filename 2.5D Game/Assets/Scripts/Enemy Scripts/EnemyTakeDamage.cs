@@ -1,26 +1,30 @@
-using Unity.VisualScripting;
+using Fusion;
 using UnityEngine;
 
-public class EnemyTakeDamage : MonoBehaviour
+public class EnemyTakeDamage : NetworkBehaviour
 {
-    public int health; //health variable to be changed for each enemies in inspector
+    [Networked] public int Health { get; set; } = 10;
+    [Networked] private bool IsDead { get; set; }
 
-    private void Update()
+    public override void FixedUpdateNetwork()
     {
-        if (health <= 0)
+        if (!Object.HasStateAuthority || IsDead)
+            return;
+
+        if (Health <= 0)
         {
-            Die();
+            IsDead = true;
+            Runner.Despawn(Object);
         }
     }
 
-    public void TakeDamage(int damage)
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_TakeDamage(int damage)
     {
-        health -= damage;
-        Debug.Log( "this enemy has been hit");
-    }
+        if (IsDead)
+            return;
 
-    public void Die()
-    {
-        Destroy(gameObject);
+        Health -= damage;
+        Debug.Log($"Enemy took {damage} damage. Health now {Health}");
     }
 }

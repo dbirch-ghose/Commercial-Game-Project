@@ -8,71 +8,61 @@ public class PlayerMelee : NetworkBehaviour
     public float attackRange = 1f;
     public LayerMask enemyLayers;
     public float attackDuration = 0.6f;
+    public int damage = 2;
 
     private bool isAttacking;
 
-    private Collider meleeCollider;
     public Animator animator;
 
-
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
-
-        // Assumes the attack collider is attached to the same GameObject
-        meleeCollider = GetComponent<Collider>();
-        if (meleeCollider != null)
-            meleeCollider.enabled = false;
     }
 
     private void Update()
     {
-        // Only the authoritative player handles input for network-safe attacks
-        if (Object.HasInputAuthority)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                StartCoroutine(Attack());
-            }
-        }
+        // Only the player with input authority handles input
+        if (!Object.HasInputAuthority)
+            return;
 
-        
+        if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
+        {
+            StartCoroutine(Attack());
+        }
     }
 
     private IEnumerator Attack()
     {
         isAttacking = true;
+
         animator.SetBool("isHitting", true);
 
-        if (meleeCollider != null)
-            meleeCollider.enabled = true;
-
-        // Detect enemies immediately
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+        // Client-side hit detection
+        Collider[] hitEnemies = Physics.OverlapSphere(
+            attackPoint.position,
+            attackRange,
+            enemyLayers
+        );
 
         foreach (Collider enemy in hitEnemies)
         {
-            // Apply damage only if the enemy has a Networked health component
-            EnemyTakeDamage enemyTakeDamage = enemy.GetComponent<EnemyTakeDamage>();
-            NetworkObject enemyNetObj = enemy.GetComponent<NetworkObject>();
-
-            if (enemyTakeDamage != null && enemyNetObj != null && enemyNetObj.HasStateAuthority)
+            EnemyTakeDamage etd = enemy.GetComponent<EnemyTakeDamage>();
+            if (etd != null)
             {
-                enemyTakeDamage.TakeDamage(2); // or whatever damage value
+                // Call RPC directly on the enemy
+                etd.RPC_TakeDamage(damage);
             }
         }
 
         yield return new WaitForSeconds(attackDuration);
-        animator.SetBool("isHitting", false);
-        if (meleeCollider != null)
-            meleeCollider.enabled = false;
 
+        animator.SetBool("isHitting", false);
         isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()
     {
         if (attackPoint != null)
-            Gizmos.DrawSphere(attackPoint.position, attackRange);
+            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

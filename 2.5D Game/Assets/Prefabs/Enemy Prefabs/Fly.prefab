@@ -180,6 +180,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: -3921618908225072615}
   - {fileID: 1514160580775609239}
+  - {fileID: -7376015283599137009}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &3377594143333031267
 CharacterController:

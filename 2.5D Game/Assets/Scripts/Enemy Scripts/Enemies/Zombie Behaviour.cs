@@ -17,9 +17,7 @@ public class ZombieBehaviour : NetworkBehaviour
 
     public SpriteRenderer sr;
 
-    public EnemyTakeDamage enemyTakeDamage; //access health script
-    public int health;
-
+ 
     public override void Spawned()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -31,10 +29,7 @@ public class ZombieBehaviour : NetworkBehaviour
 
         sr = GetComponent<SpriteRenderer>();
 
-        if (enemyTakeDamage != null)
-        {
-            health = enemyTakeDamage.health;
-        }
+        
 
     }
 

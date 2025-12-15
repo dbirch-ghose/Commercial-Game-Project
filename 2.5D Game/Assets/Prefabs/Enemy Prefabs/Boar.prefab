@@ -93,7 +93,9 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 4070723270344646432}
+  - {fileID: 8997859700591429814}
   - {fileID: 3294868153412658875}
+  - {fileID: 7726629685439152115}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &6765918275768450128
 SpriteRenderer:

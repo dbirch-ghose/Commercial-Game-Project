@@ -17,10 +17,6 @@ public class AkagaulBehaviour : NetworkBehaviour
     [Networked] public bool isAttacking { get; set; }
 
 
-    //-------------------HEALTH--------------------
-    public EnemyTakeDamage enemyTakeDamage; //access health script
-    [Networked] public int health { get; set; }
-
     //-------------------MELEE----------------------
     //public MeleeDamage meleeDamage;
     private Collider meleeCollider;
@@ -148,11 +144,7 @@ public class AkagaulBehaviour : NetworkBehaviour
        
 
 
-        //sets up health
-        if (enemyTakeDamage != null)
-        {
-            health = enemyTakeDamage.health;
-        }
+       
         //to control when the attacks begins
 
 
@@ -501,12 +493,7 @@ public class AkagaulBehaviour : NetworkBehaviour
 
     void Die() 
     {
-        //object is destroyed in enemyTakeDamage script
-        if (health <= 0)
-        {
-            //play death anim and and sound
-            //Debug.Log("boss is dead");
-        }        
+               
     }
 
 }
