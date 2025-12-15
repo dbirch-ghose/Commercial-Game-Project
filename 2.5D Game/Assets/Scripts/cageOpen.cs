@@ -1,54 +1,37 @@
+using Fusion;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Fusion;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class cageOpen : NetworkBehaviour
 {
-    public GameObject cage;
-    private bool pressable = false;
+    public NetworkObject cage;
+    public Vector3 upMove;
+    public float counter = 10;
+    public bool running = false;
 
     InputAction fireAction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        fireAction = InputSystem.actions.FindAction("Fire1");
+        cage.GetComponent<Rigidbody>().useGravity = false;
     }
 
     // Update is called once per frame
     public override void FixedUpdateNetwork()
     {
-        if (GetInput(out NetworkInputData data))
+        if (counter < 100 && running)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("Button Pressed");
-            }
-            if (pressable)
-            {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    Debug.Log("Button Pressed and activated");
-                }
-            }
-        }
+            Debug.Log("Running update");
+            upMove = new Vector3(upMove.x, counter, upMove.z);
+            cage.GetComponent<Rigidbody>().MovePosition(upMove);
 
-        if (pressable == true && fireAction.IsPressed())
-        {
-            Debug.Log("button pressed");
+            counter += 0.01f;
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    public void openCage()
     {
-        if (CompareTag("Player"))
-        {
-            pressable = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (CompareTag("Player"))
-        {
-            pressable = false;
-        }
+        running = true;
     }
 }
