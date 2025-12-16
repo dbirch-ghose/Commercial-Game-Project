@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 3378423682505254725}
   - component: {fileID: 3443311366889073432}
   - component: {fileID: 6933172009770337401}
-  - component: {fileID: 9110576131537785926}
   - component: {fileID: 2271178870682218403}
   - component: {fileID: 6101299508309229860}
   - component: {fileID: 2088879997604715137}
   - component: {fileID: -8731542473731624577}
   - component: {fileID: 7373937643840129729}
+  - component: {fileID: 6462875856168443481}
   m_Layer: 6
   m_Name: Eyeball 1
   m_TagString: Enemy
@@ -94,9 +94,9 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 3378423682505254725}
-  - {fileID: 9110576131537785926}
   - {fileID: 2088879997604715137}
   - {fileID: 7373937643840129729}
+  - {fileID: 6462875856168443481}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &6933172009770337401
 SpriteRenderer:
@@ -153,28 +153,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9110576131537785926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5776901087203519325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd26e8aaf4c3d84a9de56e46029394b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 2271178870682218403}
-  range: 0
-  centerPoint: {fileID: 0}
-  player: {fileID: 0}
-  isPatrolling: 1
-  player1: {fileID: 0}
-  player2: {fileID: 0}
-  closestPlayer: {fileID: 0}
-  basicSpawner: {fileID: 0}
-  sr: {fileID: 6933172009770337401}
 --- !u!195 &2271178870682218403
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -341,3 +319,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6462875856168443481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5776901087203519325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f77e1dda73d3b4d895c970336aa3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 2271178870682218403}
+  range: 0
+  player: {fileID: 0}
+  isPatrolling: 0
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  closestPlayer: {fileID: 0}
+  basicSpawner: {fileID: 0}
+  sr: {fileID: 0}

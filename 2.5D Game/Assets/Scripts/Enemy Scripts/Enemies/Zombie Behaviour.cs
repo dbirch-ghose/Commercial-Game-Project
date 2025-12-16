@@ -52,7 +52,7 @@ public class ZombieBehaviour : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
 
-        if (Object.HasStateAuthority)
+        if (Object.HasStateAuthority && player1 == null && player2 == null)
         {
             StartCoroutine(WaitForPlayer()); //waits for player ref
         }
@@ -144,7 +144,7 @@ public class ZombieBehaviour : NetworkBehaviour
             agent.SetDestination(closestPlayer.position); //sets the agent destination to the player
             isPatrolling = false;
         }
-        else if (distance > 5 )
+        else if (distance > 15 )
         {
             isPatrolling = true;
         }
