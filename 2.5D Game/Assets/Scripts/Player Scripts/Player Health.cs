@@ -57,8 +57,12 @@ public class PlayerHealth : NetworkBehaviour
         if (health <= 0)
             return;
         Debug.Log("take damage");
-        vignetteActivate = true;
-        firstFrame = true;
+        if (damage > 0)
+        {
+            vignetteActivate = true;
+            firstFrame = true;
+        }
+       
         health -= damage;
         Debug.Log($"Player took {damage} damage. Health now {health}");
     }
