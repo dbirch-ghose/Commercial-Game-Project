@@ -443,7 +443,7 @@ MonoBehaviour:
   introDialogue: {fileID: 95840289}
   referencer: {fileID: 1175725626}
   bookSpawner: {fileID: 0}
-  blockers: {fileID: 0}
+  blockers: {fileID: 1515801563}
   _playerPrefab:
     RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
   _player2Prefab:
