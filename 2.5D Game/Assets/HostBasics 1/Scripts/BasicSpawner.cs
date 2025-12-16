@@ -113,10 +113,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
-                if (introDialogue.HasStateAuthority)
-                {
-                    introDialogue.gameObject.SetActive(true);
-                }
+                
 
             }
             else
