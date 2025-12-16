@@ -8213,7 +8213,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: AudoWait(brother/introcut82)
+        value: 'AudoWait(brother/introcut82);
+
+          EndIntro()'
         type: 0
         typeString: 
       conversationID: 9
