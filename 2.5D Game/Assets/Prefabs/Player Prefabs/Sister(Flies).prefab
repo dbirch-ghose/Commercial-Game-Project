@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4069135933926206253}
   - component: {fileID: 4862918219070313513}
   - component: {fileID: 52167688731618949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shadows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,9 +131,8 @@ GameObject:
   - component: {fileID: 8135002595893628874}
   - component: {fileID: 1924123746650476238}
   - component: {fileID: 5254509116522753159}
-  - component: {fileID: 4067070153167360791}
-  m_Layer: 7
-  m_Name: Sister(Cat)
+  m_Layer: 8
+  m_Name: Sister(Flies)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +180,7 @@ Animator:
   m_GameObject: {fileID: 2538751722601739453}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c6e3dbc19e7ede948a3b6e8cfa124f04, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7ea3bb825d376d940875614e66871da7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -237,7 +236,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e9d16af30b88194788966e6f3a00e44, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d56224741eb85a4a99b551ed45f751f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -278,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 91563310
+  SortKey: 1645480377
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
@@ -415,7 +414,6 @@ MonoBehaviour:
   animator: {fileID: 2801503880117492055}
   sr: {fileID: 6952026797092074400}
   camera: {fileID: 0}
-  thisDude: {fileID: 0}
 --- !u!82 &1924123746650476238
 AudioSource:
   m_ObjectHideFlags: 0
@@ -525,20 +523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4067070153167360791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2538751722601739453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa0f0a0c9c8a38428df87c04906065d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creatureType:
-    RawGuidValue: 5797adf09924c5441991408ae90d941f
 --- !u!1 &6118444919685330054
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5552352203215606465}
   - component: {fileID: 6366594090855544593}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Attack Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

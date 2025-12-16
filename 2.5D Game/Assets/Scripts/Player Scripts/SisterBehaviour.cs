@@ -1,5 +1,5 @@
 using Fusion;
-using System.Collections;
+
 using UnityEngine;
 
 public class SisterBehaviour : NetworkBehaviour
@@ -23,6 +23,11 @@ public class SisterBehaviour : NetworkBehaviour
     private NetworkCharacterController _cc;
     private Vector3 _forward = Vector3.forward;
     private ChangeDetector _changeDetector;
+
+    private bool canPossess = false;
+    private weakMind wm;
+    private GameObject enemy;
+    public NetworkObject thisDude;
 
 
     private void Awake()
@@ -65,60 +70,100 @@ public class SisterBehaviour : NetworkBehaviour
 
         //sprite controller
         animator.SetBool("isIdle", false);
-            animator.SetBool("isWalkingSide", false);
-            //animator.SetBool("isWalkingDown", false);
+        animator.SetBool("isWalkingSide", false);
+        //animator.SetBool("isWalkingDown", false);
 
-            if (data.direction.sqrMagnitude <= 0)
-            {
-                animator.SetBool("isIdle", true);
-            }
-            else
-            {
-                animator.SetBool("isIdle", false);
-            }
-
-            if (data.direction.x < 0) //left
-            {
-                Debug.Log("Left");
-                animator.SetBool("isWalkingSide", true);
-                sr.flipX = true;
-            }
-            else if (data.direction.x > 0) //right
-            {
-                Debug.Log("right");
-                animator.SetBool("isWalkingSide", true);
-                sr.flipX = false;
-            }
-            else if (data.direction.z < 0) //down
-            {
-                Debug.Log("down");
-                animator.SetBool("isWalkingDown", true);
-            }
-
-
-
-            transform.rotation = Quaternion.identity;
-
+        if (data.direction.sqrMagnitude <= 0)
+        {
+            animator.SetBool("isIdle", true);
+        }
+        else
+        {
+            animator.SetBool("isIdle", false);
         }
 
+        if (data.direction.x < 0) //left
+        {
+            Debug.Log("Left");
+            animator.SetBool("isWalkingSide", true);
+            sr.flipX = true;
+        }
+        else if (data.direction.x > 0) //right
+        {
+            Debug.Log("right");
+            animator.SetBool("isWalkingSide", true);
+            sr.flipX = false;
+        }
+        else if (data.direction.z < 0) //down
+        {
+            Debug.Log("down");
+            animator.SetBool("isWalkingDown", true);
+        }
 
+        if (HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            BasicSpawner BS = FindFirstObjectByType<BasicSpawner>();
+            NetworkPrefabRef creatureType = wm.creatureType;
+            Vector3 spawnPoint = enemy.transform.position;
+            Destroy(enemy);
+            BS.WMSpawn(thisDude, creatureType, spawnPoint);
+        }
 
-        //float horizontal = Input.GetAxisRaw("Horizontal");
-        //float vertical = Input.GetAxisRaw("Vertical");
-        //inputDirection = new Vector2(horizontal, vertical).normalized;
-
-        ////dash controller
-        //Vector3 dashDir = new Vector3(horizontal, 0f, vertical);
-        //if (dashDir != Vector3.zero)
-        //{
-        //    lastMoveDir = dashDir.normalized;
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.E) && canDash)
-        //{
-        //    StartCoroutine(Dash());
-        //}
+        transform.rotation = Quaternion.identity;
     }
+
+
+
+        void OnTriggerEnter(Collider other)
+        {
+            // Check if the other object has the weakMind script
+            enemy = other.gameObject;
+            wm = other.gameObject.GetComponent<weakMind>();
+
+            if (wm != null)
+            {
+                // The object has the weakMind script
+                Debug.Log("Collided with an object that has weakMind!");
+            }
+        }
+
+    private void OnTriggerStay(Collider other)
+    {
+        wm = other.gameObject.GetComponent<weakMind>();
+        enemy = other.gameObject;
+
+        if (wm != null)
+        {
+            // The object has the weakMind script
+            Debug.Log("Collided with an object that has weakMind!");
+            canPossess = true;
+            Debug.Log("Can Possess!");
+
+        }
+        else
+        {
+            canPossess = false;
+
+        }
+    }
+}
+
+    //float horizontal = Input.GetAxisRaw("Horizontal");
+    //float vertical = Input.GetAxisRaw("Vertical");
+    //inputDirection = new Vector2(horizontal, vertical).normalized;
+
+    ////dash controller
+    //Vector3 dashDir = new Vector3(horizontal, 0f, vertical);
+    //if (dashDir != Vector3.zero)
+    //{
+    //    lastMoveDir = dashDir.normalized;
+    //}
+
+    //if (Input.GetKeyDown(KeyCode.E) && canDash)
+    //{
+    //    StartCoroutine(Dash());
+    //}
+
 
 
 
