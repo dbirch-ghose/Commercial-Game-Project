@@ -9,6 +9,10 @@ using UnityEngine.SceneManagement;
 
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
+    [Header("Room Configuration")]
+    [Tooltip("Enable to read room name from RoomConfig.txt on desktop")]
+    public bool useRoomConfigFile = true;
+    
     public Vector3 spawnPoint;
     private NetworkRunner _runner;
     private PlayerRef Possessor;
@@ -16,10 +20,29 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     public NetworkObject introDialogue;
     public LuaChanger referencer;
     //public NetworkObject networkPlayerObject;
+    private string _currentRoomName;
+    
+    private void Awake()
+    {
+        // Load the configured room name when the scene starts
+        if (useRoomConfigFile)
+        {
+            _currentRoomName = RoomConfigReader.GetConfiguredRoomName();
+        }
+        else
+        {
+            _currentRoomName = "TestRoom";
+        }
+    }
+    
     private void OnGUI()
     {
         if (_runner == null)
         {
+            // Display the current room ID at the top
+            string roomLabel = useRoomConfigFile ? $"Room ID: {_currentRoomName}" : $"Room ID: {_currentRoomName} (Default)";
+            GUI.Label(new Rect(210, 10, 400, 30), roomLabel);
+            
             if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
             {
                 StartGame(GameMode.Host);
@@ -56,7 +79,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         await _runner.StartGame(new StartGameArgs()
         {
             GameMode = mode,
-            SessionName = "TestRoom",
+            SessionName = _currentRoomName,
             Scene = scene,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
