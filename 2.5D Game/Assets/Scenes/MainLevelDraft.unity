@@ -4760,7 +4760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: 32
+  trigger: 8
   delayOneFrame: 0
   condition:
     luaConditions: []
@@ -4779,7 +4779,7 @@ MonoBehaviour:
   anotherQuestEntryNumber: 1
   anotherQuestEntryState: 0
   luaCode: 
-  sequence: 
+  sequence: LuaChange(1)
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
   waitOneFrameOnStartOrEnable: 1
@@ -6495,8 +6495,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.4888237, y: 2.627278, z: 3.0476408}
-  m_Center: {x: -0.05523493, y: 1.5175657, z: -0.13776906}
+  m_Size: {x: 4.637602, y: 2.627278, z: 3.758824}
+  m_Center: {x: 0.5191565, y: 1.5175657, z: -0.49336183}
 --- !u!1 &642898898
 GameObject:
   m_ObjectHideFlags: 0

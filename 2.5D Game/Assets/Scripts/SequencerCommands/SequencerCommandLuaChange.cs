@@ -9,12 +9,14 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
     public class SequencerCommandLuaChange : SequencerCommand
     {
         private BasicSpawner bs;
+        private int num;
         
         
         public void Awake()
         {
             bs = FindFirstObjectByType<BasicSpawner>();
-            bs.RequestUnlock(1);
+            num = GetParameterAsInt(0);
+            bs.RequestUnlock(num);
             Stop();
             
         }
