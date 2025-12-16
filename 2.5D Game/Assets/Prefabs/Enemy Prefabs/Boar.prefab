@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1150989623919663906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7193586133695113123}
+  - component: {fileID: 4686526939183118334}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7193586133695113123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150989623919663906}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.42017, y: 0.42017, z: 0.42017}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 881072571462655927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4686526939183118334
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150989623919663906}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.97166884, z: 0.46774387}
+  m_Center: {x: 0, y: -0.15235329, z: 0.06182303}
 --- !u!1 &2632556834967718471
 GameObject:
   m_ObjectHideFlags: 0
@@ -38,7 +91,8 @@ Transform:
   m_LocalPosition: {x: 0.038, y: -0.61, z: -16.544512}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7193586133695113123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &753510621031380945
@@ -60,8 +114,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5786415, y: 0.37942186, z: 0.17207748}
-  m_Center: {x: -0.015188323, y: -0.08103028, z: -0.002021437}
+  m_Size: {x: 0.57864153, y: 0.3794219, z: 0.36789006}
+  m_Center: {x: -0.015188317, y: -0.081030294, z: 0.011618614}
 --- !u!114 &4070723270344646432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  _Health: 0
 --- !u!114 &3294868153412658875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,11 +280,11 @@ MonoBehaviour:
   centerPoint: {fileID: 0}
   player: {fileID: 0}
   isPatrolling: 1
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  closestPlayer: {fileID: 0}
   basicSpawner: {fileID: 0}
   sr: {fileID: 6765918275768450128}
-  animator: {fileID: 956760553528268707}
-  enemyTakeDamage: {fileID: 8997859700591429814}
-  health: 0
 --- !u!82 &-7819401095198963635
 AudioSource:
   m_ObjectHideFlags: 0
