@@ -76,13 +76,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 797399572320618241}
   range: 0
-  centerPoint: {fileID: 0}
   player: {fileID: 0}
   isPatrolling: 1
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  closestPlayer: {fileID: 0}
   basicSpawner: {fileID: 0}
   sr: {fileID: 5013367798785783401}
-  enemyTakeDamage: {fileID: 1996041960692863470}
-  health: 0
 --- !u!114 &7976917491856593578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  hitCooldown: 2
 --- !u!114 &3326551119122022315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  _Health: 6
 --- !u!82 &4819952080861113396
 AudioSource:
   m_ObjectHideFlags: 0

@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  hitCooldown: 2
 --- !u!114 &4162653654497708123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,10 +170,11 @@ MonoBehaviour:
   centerPoint: {fileID: 0}
   player: {fileID: 0}
   isPatrolling: 1
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  closestPlayer: {fileID: 0}
   basicSpawner: {fileID: 0}
   sr: {fileID: 2070143301672068571}
-  enemyTakeDamage: {fileID: 5916703040415248811}
-  health: 0
 --- !u!195 &1366102137546972831
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -229,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  _Health: 2
 --- !u!82 &2399235329619172737
 AudioSource:
   m_ObjectHideFlags: 0

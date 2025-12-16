@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5480677078266172031
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -7819401095198963635, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_Volume
+      value: 0.702
+      objectReference: {fileID: 0}
+    - target: {fileID: 691075917069041342, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: SortKey
+      value: 2666582578
+      objectReference: {fileID: 0}
+    - target: {fileID: 691075917069041342, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 691075917069041342, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[4]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 753510621031380945, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.4872189
+      objectReference: {fileID: 0}
+    - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6096319
+      objectReference: {fileID: 0}
+    - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.128481
+      objectReference: {fileID: 0}
+    - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632556834967718471, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_Name
+      value: Boar Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070723270344646432, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765918275768450128, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6272d24d13cb737468bfc0de6cf0b835, type: 3}
+    - target: {fileID: 8997859700591429814, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: _Health
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
