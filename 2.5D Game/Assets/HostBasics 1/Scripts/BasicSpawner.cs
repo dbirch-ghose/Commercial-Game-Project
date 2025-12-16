@@ -14,6 +14,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private PlayerRef Possessor;
     public GameObject starter;
     public NetworkObject introDialogue;
+    public LuaChanger referencer;
     //public NetworkObject networkPlayerObject;
     private void OnGUI()
     {
@@ -157,6 +158,24 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         _mouseButton1 = false;
         
         input.Set(data);
+    }
+
+    public void RequestUnlock(int unlockId)
+    {
+        Rpc_RequestUnlock(unlockId);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void Rpc_RequestUnlock(int unlockId)
+    {
+        // Authority tells everyone (including itself)
+        Rpc_ApplyUnlock(unlockId);
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void Rpc_ApplyUnlock(int unlockId)
+    {
+        referencer.luaChange(unlockId);
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
