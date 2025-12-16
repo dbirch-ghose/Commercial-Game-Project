@@ -17,6 +17,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkRunner _runner;
     private PlayerRef Possessor;
     public GameObject starter;
+    public GameObject books;
     public NetworkObject introDialogue;
     public LuaChanger referencer;
     //public NetworkObject networkPlayerObject;
@@ -125,6 +126,10 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 if (introDialogue.HasStateAuthority)
                 {
                     introDialogue.gameObject.SetActive(true);
+                }
+                if (!runner.IsServer)
+                {
+                    books.SetActive(true);
                 }
             }
             // Keep track of the player avatars for easy access
