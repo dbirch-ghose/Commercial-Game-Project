@@ -124,7 +124,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 players.Add(networkPlayerObject);
                 if (introDialogue.HasStateAuthority)
                 {
-                    introDialogue.gameObject.SetActive(true);
+                    Rpc_EnableIntroDialogue();
                 }
                 bookSpawner.spawnBooks();
             }
@@ -133,6 +133,11 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         }
     }
 
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    void Rpc_EnableIntroDialogue()
+    {
+        introDialogue.gameObject.SetActive(true);
+    }
     public void WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
     {
         Destroy(fallen);
