@@ -655,7 +655,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: KillBlocks()
         type: 0
         typeString: 
       conversationID: 1
@@ -1294,7 +1294,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 227.65953}
+    canvasScrollPosition: {x: 0, y: 107.09215}
     canvasZoom: 0.94000006
   - id: 2
     fields:

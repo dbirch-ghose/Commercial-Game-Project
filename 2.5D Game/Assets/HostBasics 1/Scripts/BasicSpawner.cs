@@ -23,6 +23,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     //public NetworkObject networkPlayerObject;
     private string _currentRoomName;
     public booksSpawner bookSpawner;
+    public NetworkObject blockers;
     
     private void Awake()
     {
@@ -202,6 +203,23 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private void Rpc_ApplyUnlock(int unlockId)
     {
         referencer.luaChange(unlockId);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void Rpc_RequestKillBlocks()
+    {
+        // Authority tells everyone (including itself)
+        Rpc_KillBlocks();
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void Rpc_KillBlocks()
+    {
+        if (blockers.HasInputAuthority)
+        {
+            blockers.gameObject.SetActive(false);
+        }
+        
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
