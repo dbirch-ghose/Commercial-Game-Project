@@ -24,7 +24,6 @@ public class BrotherBehaviour : NetworkBehaviour
     public SpriteRenderer sr;
     public TrailRenderer tr;
 
-    public Camera camera;
 
     private NetworkCharacterController _cc;
     private Vector3 _forward = Vector3.forward;
@@ -45,12 +44,12 @@ public class BrotherBehaviour : NetworkBehaviour
 
     public override void Spawned()
     {
-        //_changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
-        if (HasInputAuthority)
-        {
-            camera = Camera.main;
-            camera.GetComponent<CameraBehaviour>().target = transform;
-        }
+        ////_changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
+        //if (HasInputAuthority)
+        //{
+        //    camera = Camera.main;
+        //    camera.GetComponent<CameraBehaviour>().target = transform;
+        //}
     }
 
 
