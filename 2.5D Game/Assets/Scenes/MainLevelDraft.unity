@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: 64
-  delayOneFrame: 0
+  delayOneFrame: 1
   condition:
     luaConditions: []
     questConditions: []
