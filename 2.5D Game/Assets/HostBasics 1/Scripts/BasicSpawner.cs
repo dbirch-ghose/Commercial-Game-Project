@@ -13,6 +13,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkRunner _runner;
     private PlayerRef Possessor;
     public GameObject starter;
+    public NetworkObject introDialogue;
     //public NetworkObject networkPlayerObject;
     private void OnGUI()
     {
@@ -21,13 +22,15 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
             {
                 StartGame(GameMode.Host);
-                starter.SetActive(true);
+                //starter.SetActive(true);
+                
             }
 
             if (GUI.Button(new Rect(0, 40, 200, 40), "Join"))
             {
                 StartGame(GameMode.Client);
-                starter.SetActive(true);
+                //starter.SetActive(true);
+                
             }
         }
     }
@@ -83,6 +86,11 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
+                if (introDialogue.HasStateAuthority)
+                {
+                    introDialogue.gameObject.SetActive(true);
+                }
+
             }
             else
             {
@@ -90,6 +98,10 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
+                if (introDialogue.HasStateAuthority)
+                {
+                    introDialogue.gameObject.SetActive(true);
+                }
             }
             // Keep track of the player avatars for easy access
 
