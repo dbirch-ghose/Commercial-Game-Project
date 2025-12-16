@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 using Fusion;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class ZombieBehaviour : NetworkBehaviour
@@ -12,6 +13,10 @@ public class ZombieBehaviour : NetworkBehaviour
 
     public Transform player;
     public bool isPatrolling = false;
+
+    public Transform player1;
+    public Transform player2;
+    public Transform closestPlayer; //target
 
     public BasicSpawner basicSpawner;
 
@@ -35,14 +40,19 @@ public class ZombieBehaviour : NetworkBehaviour
 
     IEnumerator WaitForPlayer()
     {
-        var p = basicSpawner.players[0];
-        if (p != null)
+        while (basicSpawner.players.Count == 0)
         {
-            player = p.transform;
-            Debug.Log("zomb found player");
-            yield break;
+            yield return null;
         }
-        yield return null;
+
+        //closestPlayer = basicSpawner.players[0].transform;
+
+        player1 = basicSpawner.players[0].transform;
+
+        if (basicSpawner.players.Count > 1)
+        {
+            player2 = basicSpawner.players[1].transform;
+        }
     }
 
     public override void FixedUpdateNetwork()
@@ -52,6 +62,39 @@ public class ZombieBehaviour : NetworkBehaviour
         {
             StartCoroutine(WaitForPlayer()); //waits for player ref
         }
+
+
+        if (player1 == null) //check for player 
+        {
+            Debug.Log("waiting for player to be assigned");
+            return;
+        }
+
+        if (player2 == null)
+        {
+            closestPlayer = player1;
+        }
+
+        if (player2 != null)
+        {
+            float p1Distance = Vector3.Distance(player1.transform.position, transform.position); //calculates distance from the player
+            float p2Distance = Vector3.Distance(player2.transform.position, transform.position); //calculates distance from the player
+            if (p1Distance < p2Distance)
+            {
+                closestPlayer = player1;
+            }
+            else if (p1Distance > p2Distance)
+            {
+
+                closestPlayer = player2;
+            }
+        }
+
+
+
+
+
+
 
         if (isPatrolling == true) //patrol is on by defualt
         {
@@ -101,16 +144,16 @@ public class ZombieBehaviour : NetworkBehaviour
 
     void Chase()
     {
-        if (player == null)
+        if (closestPlayer == null)
         {
-            Debug.Log("no player for slime");
+            Debug.Log("no close player for slime");
             return;
         }  //checks for player 
 
-        float distance = Vector3.Distance(player.transform.position, transform.position);
+        float distance = Vector3.Distance(closestPlayer.transform.position, transform.position);
         if (distance <= 5)
         {
-            agent.SetDestination(player.position); //sets the agent destination to the player
+            agent.SetDestination(closestPlayer.position); //sets the agent destination to the player
             isPatrolling = false;
         }
         else if (distance > 5 )
