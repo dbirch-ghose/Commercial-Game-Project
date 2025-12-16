@@ -1,6 +1,5 @@
-using Fusion;
-using Unity.VisualScripting;
 using UnityEngine;
+using Fusion;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -8,6 +7,12 @@ public class PlayerHealth : NetworkBehaviour
 {
     [Networked] public int health { get; set; }
     public int maxHealth = 3;
+
+    public float hitCooldown = 2f; // seconds between hits
+
+    // Track cooldown per player
+    [Networked] private TickTimer hitCooldownTimer { get; set; }
+
     public Volume pp;
     private Vignette vignette;
     private float vignetteProgress;
@@ -19,6 +24,7 @@ public class PlayerHealth : NetworkBehaviour
     {
         if (Object.HasStateAuthority)
             health = maxHealth;
+
         pp = GameObject.FindWithTag("pp").GetComponent<Volume>();
         pp.profile = Instantiate(pp.profile);
 
@@ -32,15 +38,15 @@ public class PlayerHealth : NetworkBehaviour
     {
         if (!Object.HasStateAuthority)
             return;
+
         if (firstFrame)
         {
-            Debug.Log("First frame is true");
             vignetteProgress = 0;
             firstFrame = false;
         }
+
         if (vignetteActivate && vignetteProgress < 1)
         {
-            Debug.Log("running mathness");
             mathness = 0.35f * (-(2f * vignetteProgress - 1f) * (2f * vignetteProgress - 1f) + 1f);
             vignette.intensity.value = mathness;
             vignetteProgress += 0.02f;
@@ -50,21 +56,27 @@ public class PlayerHealth : NetworkBehaviour
             health = 0;
     }
 
-    // Enemy / server requests damage
+    // Enemy requests damage
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_TakeDamage(int damage)
     {
         if (health <= 0)
             return;
-        Debug.Log("take damage");
+
+        // If cooldown is running and NOT expired, ignore damage
+        if (hitCooldownTimer.IsRunning && !hitCooldownTimer.Expired(Runner))
+            return;
+
+        // Start/restart cooldown
+        hitCooldownTimer = TickTimer.CreateFromSeconds(Runner, hitCooldown);
+
         if (damage > 0)
         {
             vignetteActivate = true;
             firstFrame = true;
         }
-       
+
         health -= damage;
         Debug.Log($"Player took {damage} damage. Health now {health}");
     }
-
 }

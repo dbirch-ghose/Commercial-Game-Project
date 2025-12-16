@@ -1,7 +1,7 @@
 using UnityEngine;
 using Fusion;
 
-public class SpawnTrigger : NetworkBehaviour
+public class SpawnTrigger1 : NetworkBehaviour
 {
     public EnemySpawner enemySpawner;
     public bool hasTriggered = false;
@@ -23,17 +23,10 @@ public class SpawnTrigger : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     private void RPC_RequestSpawn()
     {
-        enemySpawner.SpawnEnemyAtPoint(5, 0);
-        enemySpawner.SpawnEnemyAtPoint(6, 0);
+        enemySpawner.SpawnEnemyAtPoint(1, 1);
+        enemySpawner.SpawnEnemyAtPoint(2, 1);
         Debug.Log("Enemy spawned on State Authority");
     }
 
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_RequestSpawnX(int i , int x)
-    {
-        enemySpawner.SpawnEnemyAtPoint(i, x);
-        Debug.Log("Enemy spawned on State Authority");
-
-    }
 }

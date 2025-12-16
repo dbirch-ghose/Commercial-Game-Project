@@ -150,10 +150,10 @@ public class BrotherBehaviour : NetworkBehaviour
         //    lastMoveDir = dashDir.normalized;
         //}
 
-        if (Input.GetKeyDown(KeyCode.E) && canDash)
-        {
-            StartCoroutine(Dash());
-        }
+        //if (Input.GetKeyDown(KeyCode.E) && canDash)
+        //{
+        //StartCoroutine(Dash());
+        //}
     }
 
 
@@ -221,18 +221,18 @@ public class BrotherBehaviour : NetworkBehaviour
     //    }
     //}
 
-    private IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-        rb.linearVelocity = _forward * dashingPower; //creates dash force
-        tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime); //duration
-        isDashing = false;
-        tr.emitting = false;
-        yield return new WaitForSeconds(dashingCooldown); //cooldown
-        canDash = true;
-    }
+    //private IEnumerator Dash()
+    //{
+    //    canDash = false;
+    //    isDashing = true;
+    //    rb.linearVelocity = _forward * dashingPower; //creates dash force
+    //    tr.emitting = true;
+    //    yield return new WaitForSeconds(dashingTime); //duration
+    //    isDashing = false;
+    //    tr.emitting = false;
+    //    yield return new WaitForSeconds(dashingCooldown); //cooldown
+    //    canDash = true;
+    //}
 }
 
 
