@@ -8,17 +8,23 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
 
     public class SequencerCommandEndIntro : SequencerCommand
     {
-        public referencer referencer;
+        private referencer referencer;
         private NetworkObject cutscene;
+        private NetworkObject starter;
         
         
         public void Awake()
         {
             referencer = FindFirstObjectByType<referencer>();
             cutscene = referencer.cutscene;
+            starter = referencer.starter;
             if (cutscene.HasStateAuthority)
             {
                 cutscene.gameObject.SetActive(false);
+            }
+            if (starter.HasStateAuthority)
+            {
+                starter.gameObject.SetActive(true);
             }
             Stop();
             
