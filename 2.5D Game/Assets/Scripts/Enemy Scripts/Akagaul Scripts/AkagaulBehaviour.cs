@@ -42,7 +42,7 @@ public class AkagaulBehaviour : NetworkBehaviour
     // where to despawn, THESE BOUNDS MUST BE CHANGED TO FIT THE SIZE OF THE ROOM
     //public float leftBound = -20f;  
     //public float rightBound = 30f;
-    public float rightSpawnX = 7f; //right side spawn
+    public float rightSpawnX = 21f; //right side spawn
     public float leftSpawnX = -21f; //left side spawn
     //public float moveSpeed = 12f;
 
@@ -119,7 +119,7 @@ public class AkagaulBehaviour : NetworkBehaviour
             Debug.Log("waiting for player to be assigned");
             return;
         }
-        Debug.Log(closestPlayer); 
+        Debug.Log("closest player is " + closestPlayer); 
         
         if (player2 == null)
         {

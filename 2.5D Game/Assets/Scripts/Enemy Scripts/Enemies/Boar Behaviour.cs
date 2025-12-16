@@ -11,7 +11,7 @@ public class BoarBehaviour : NetworkBehaviour
     public Transform centerPoint;
 
     public Transform player;
-    public bool isPatrolling = true;
+    public bool isPatrolling = false;
 
     public BasicSpawner basicSpawner;
 
@@ -43,7 +43,7 @@ public class BoarBehaviour : NetworkBehaviour
         if (p != null)
         {
             player = p.transform;
-            Debug.Log("slime found player");
+            //Debug.Log("boar found player");
             yield break;
         }
         yield return null;
