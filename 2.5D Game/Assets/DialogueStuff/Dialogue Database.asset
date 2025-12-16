@@ -9683,7 +9683,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/specimin cutscene1)
         type: 0
         typeString: 
       conversationID: 11
@@ -9691,7 +9691,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 11
@@ -9738,7 +9738,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/specimin cutscene2)
         type: 0
         typeString: 
       conversationID: 11
@@ -9746,7 +9746,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 11
@@ -9794,7 +9794,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/specimin cutscene3)
         type: 0
         typeString: 
       conversationID: 11
@@ -9802,7 +9802,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 11
@@ -9850,7 +9850,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/specimin cutscene4)
         type: 0
         typeString: 
       conversationID: 11
@@ -9858,7 +9858,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 11
@@ -9906,7 +9906,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/specimin cutscene5)
         type: 0
         typeString: 
       conversationID: 11
@@ -9914,7 +9914,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 11
@@ -9961,7 +9961,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/specimin cutscene6)
         type: 0
         typeString: 
       conversationID: 11
@@ -9969,7 +9969,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 11
@@ -10016,7 +10016,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/specimin cutscene cat1)
         type: 0
         typeString: 
       conversationID: 11
@@ -10024,7 +10024,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 11
@@ -10071,7 +10071,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/specimin cutscene7)
         type: 0
         typeString: 
       conversationID: 11
@@ -10079,7 +10079,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 11
@@ -10126,7 +10126,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/specimin cutscene8)
         type: 0
         typeString: 
       conversationID: 11
@@ -10134,7 +10134,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 11
@@ -10181,7 +10181,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(brother/specimin cutscene cat2)
         type: 0
         typeString: 
       conversationID: 11
@@ -10189,7 +10189,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
@@ -10199,12 +10199,12 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 80
+        x: 82
         y: 890
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 489}
+    canvasScrollPosition: {x: 0, y: 504}
     canvasZoom: 1
   - id: 12
     fields:
