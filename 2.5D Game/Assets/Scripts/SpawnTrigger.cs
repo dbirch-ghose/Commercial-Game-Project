@@ -4,16 +4,18 @@ using Fusion;
 public class SpawnTrigger : NetworkBehaviour
 {
     public EnemySpawner enemySpawner;
-    private bool triggered;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (triggered) return;
-        if (!other.CompareTag("Player")) return;
+        if (!Object.HasStateAuthority) return;
 
-        triggered = true;
-        RPC_RequestSpawn();
-        Debug.Log("player hit trigger wall");
+        if (other.CompareTag("Player"))
+        {
+            RPC_RequestSpawn();
+            Debug.Log("player hit trigger wall");
+        }
+
+      
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
