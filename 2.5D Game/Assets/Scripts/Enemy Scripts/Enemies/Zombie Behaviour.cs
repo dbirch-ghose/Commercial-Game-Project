@@ -28,6 +28,8 @@ public class ZombieBehaviour : NetworkBehaviour
         agent.enabled = Object.HasStateAuthority; //allows nav mesh to work with fusion
         //player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
         sr = GetComponent<SpriteRenderer>();
+
+        basicSpawner = FindFirstObjectByType<BasicSpawner>();
     }
 
     IEnumerator WaitForPlayer()

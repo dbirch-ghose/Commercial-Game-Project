@@ -1,18 +1,21 @@
 using UnityEngine;
 using Fusion;
+using Unity.VisualScripting;
 
 public class SpawnTrigger : NetworkBehaviour
 {
     public EnemySpawner enemySpawner;
+    public bool hasTriggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (!Object.HasStateAuthority) return;
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && hasTriggered == false)
         {
             RPC_RequestSpawn();
             Debug.Log("player hit trigger wall");
+            hasTriggered = true;
         }
 
       
@@ -23,5 +26,14 @@ public class SpawnTrigger : NetworkBehaviour
     {
         enemySpawner.SpawnEnemyAtPoint(5, 0);
         Debug.Log("Enemy spawned on State Authority");
+    }
+
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_RequestSpawnX(int i , int x)
+    {
+        enemySpawner.SpawnEnemyAtPoint(i, x);
+        Debug.Log("Enemy spawned on State Authority");
+
     }
 }

@@ -442,7 +442,7 @@ MonoBehaviour:
   introDialogue: {fileID: 95840289}
   referencer: {fileID: 1175725626}
   _playerPrefab:
-    RawGuidValue: 5797adf09924c5441991408ae90d941f
+    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
   _player2Prefab:
     RawGuidValue: 5797adf09924c5441991408ae90d941f
   players: []
@@ -455,7 +455,7 @@ Transform:
   m_GameObject: {fileID: 17664352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34, y: 1.89, z: 26.38}
+  m_LocalPosition: {x: 10.59, y: 1.89, z: 2.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19110,7 +19110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1849415704
 MonoBehaviour:
   m_ObjectHideFlags: 0
