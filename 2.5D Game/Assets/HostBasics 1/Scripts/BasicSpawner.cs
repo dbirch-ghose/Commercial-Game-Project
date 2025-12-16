@@ -22,6 +22,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     public LuaChanger referencer;
     //public NetworkObject networkPlayerObject;
     private string _currentRoomName;
+    public booksSpawner bookSpawner;
     
     private void Awake()
     {
@@ -127,10 +128,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 {
                     introDialogue.gameObject.SetActive(true);
                 }
-                if (!runner.IsServer)
-                {
-                    books.SetActive(true);
-                }
+                bookSpawner.spawnBooks();
             }
             // Keep track of the player avatars for easy access
 

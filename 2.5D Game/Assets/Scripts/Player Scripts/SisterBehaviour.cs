@@ -28,12 +28,13 @@ public class SisterBehaviour : NetworkBehaviour
     private weakMind wm;
     private GameObject enemy;
     public NetworkObject thisDude;
+    
 
 
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
-
+        
     }
 
     private void Start()
@@ -49,6 +50,7 @@ public class SisterBehaviour : NetworkBehaviour
         {
             camera = Camera.main;
             camera.GetComponent<CameraBehaviour>().target = transform;
+            
         }
     }
 
