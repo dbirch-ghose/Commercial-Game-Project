@@ -27,6 +27,7 @@ public class PlayerHealth : NetworkBehaviour
 
         pp = GameObject.FindWithTag("pp").GetComponent<Volume>();
         pp.profile = Instantiate(pp.profile);
+        
 
         if (pp.profile.TryGet(out vignette))
         {
