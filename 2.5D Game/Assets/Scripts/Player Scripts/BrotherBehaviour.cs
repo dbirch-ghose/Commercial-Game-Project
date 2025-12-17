@@ -72,6 +72,7 @@ public class BrotherBehaviour : NetworkBehaviour
         animator.SetBool("isIdle", false);
         animator.SetBool("isWalkingSide", false);
         animator.SetBool("isWalkingDown", false);
+        animator.SetBool("isWalkingUp", false);
 
         if (data.direction.sqrMagnitude <= 0)
         {
