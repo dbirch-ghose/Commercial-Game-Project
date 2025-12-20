@@ -671,9 +671,9 @@ MonoBehaviour:
   selectAt: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   distanceFrom: 2
-  maxSelectionDistance: 50
+  maxSelectionDistance: 48.9
   runRaycasts: 1
   raycastAll: 0
   selectBehindUIObjects: 0
