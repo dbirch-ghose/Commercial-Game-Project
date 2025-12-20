@@ -52,7 +52,14 @@ public class BrotherBehaviour : NetworkBehaviour
         //}
     }
 
-
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Exiting Trigger");
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Entering Trigger");
+    }
     public override void FixedUpdateNetwork()
     {
         if (GetInput(out NetworkInputData data))
