@@ -1,6 +1,6 @@
 using UnityEngine;
 using Fusion;
-public class FrontWallTrigger : NetworkBehaviour
+public class ReceptionTrigger : NetworkBehaviour
 {
     public SwitchCameraPosition switchCameraPosition;
     public GameObject FrontWall;
@@ -9,15 +9,20 @@ public class FrontWallTrigger : NetworkBehaviour
 
     public Transform CamPos;
 
+    public bool inReception = false;
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (Object.HasStateAuthority)
         {
             Runner.Despawn(FrontWall.GetComponent<NetworkObject>());
+            inReception = true;
         }
 
         if (other.gameObject.CompareTag("Player"))
         {
+            //if (!inReception) 
             switchCameraPosition.MoveCamera(CamPos); //move cam
             //Transform barrier1pos = barrier1.transform.position;
             //Runner.Spawn(barrier1, barrier1.position);

@@ -2,6 +2,9 @@ using UnityEngine;
 using Fusion;
 public class InfirmaryTrigger: NetworkBehaviour
 {
+    //public ReceptionTrigger receptionTrigger;
+
+
     public SwitchCameraPosition switchCameraPosition;
     //public GameObject FrontWall;
     //public NetworkPrefabRef barrier1;
@@ -13,14 +16,17 @@ public class InfirmaryTrigger: NetworkBehaviour
     {
         if (Object.HasStateAuthority)
         {
-            //Runner.Despawn(FrontWall.GetComponent<NetworkObject>());
         }
 
         if (other.gameObject.CompareTag("Player"))
         {
+            //if (receptionTrigger.inReception == true)
+            //{
+            //    switchCameraPosition.MoveCamera(CamPos); //move cam
+
+            //    receptionTrigger.inReception = false;
+            //}
             switchCameraPosition.MoveCamera(CamPos); //move cam
-            //Transform barrier1pos = barrier1.transform.position;
-            //Runner.Spawn(barrier1, barrier1.position);
         }
     }
     
