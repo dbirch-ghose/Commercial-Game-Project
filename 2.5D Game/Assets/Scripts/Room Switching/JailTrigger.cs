@@ -5,7 +5,7 @@ using System.Collections;
 public class JailTrigger : NetworkBehaviour
 {
     public InfirmaryTrigger infirmaryTrigger  ;
-    public SwitchCameraPosition switchCameraPosition;
+    public CameraBehaviour cameraBehaviour;
     public Transform CamPos1; //infirm
     public Transform CamPos2; //recepetion
     public bool inInfirmary = false;
@@ -29,13 +29,13 @@ public class JailTrigger : NetworkBehaviour
         {
             if (infirmaryTrigger.inInfirmary == true)
             {
-                switchCameraPosition.MoveCamera(CamPos1); //move cam
+                cameraBehaviour.MoveCamera(CamPos1); //move cam
                 infirmaryTrigger.inInfirmary = false;
                 inInfirmary = true;
             }
             else
             {
-                switchCameraPosition.MoveCamera(CamPos2); //move cam
+                cameraBehaviour.MoveCamera(CamPos2); //move cam
                 infirmaryTrigger.inInfirmary = true;
             }
         }
