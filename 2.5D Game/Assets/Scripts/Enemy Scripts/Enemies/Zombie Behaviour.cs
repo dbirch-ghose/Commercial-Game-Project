@@ -132,6 +132,9 @@ public class ZombieBehaviour : NetworkBehaviour
 
     void Chase()
     {
+        if (!Object.HasStateAuthority)
+            return;
+
         if (closestPlayer == null)
         {
             Debug.Log("no close player for slime");

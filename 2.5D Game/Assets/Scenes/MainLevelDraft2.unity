@@ -7838,9 +7838,9 @@ Transform:
   - {fileID: 448820454}
   - {fileID: 1901101832}
   - {fileID: 1807478055}
-  - {fileID: 1895657679}
   - {fileID: 1776155839}
   - {fileID: 980377557}
+  - {fileID: 1895657679}
   - {fileID: 465579238}
   - {fileID: 2062437212}
   m_Father: {fileID: 1039273693}
@@ -9833,7 +9833,7 @@ Transform:
   m_GameObject: {fileID: 2062437208}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.816, y: -0.347, z: 8.792998}
+  m_LocalPosition: {x: -3.816, y: -0.588, z: 10.501}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
