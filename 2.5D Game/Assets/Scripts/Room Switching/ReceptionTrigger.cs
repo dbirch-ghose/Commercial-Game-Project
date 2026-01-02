@@ -21,7 +21,7 @@ public class ReceptionTrigger : NetworkBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             switchCameraPosition.MoveCamera(CamPos); //move cam
-            //switchCameraPosition.ShowRoom(LayerMask.NameToLayer("Reception"));
+            switchCameraPosition.ShowRoom("Reception");
 
             //Transform barrier1pos = barrier1.transform.position;
             //Runner.Spawn(barrier1, barrier1.position);

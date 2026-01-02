@@ -13,4 +13,17 @@ public class SwitchCameraPosition : NetworkBehaviour
         cam.transform.position = CamPos.position;
     }
 
+   
+
+    //room visibility
+    public void ShowRoom(string activeRoom)
+    {
+        cam.cullingMask =
+        (1 << LayerMask.NameToLayer(activeRoom)) | // show active room
+
+        // always visible
+        (1 << LayerMask.NameToLayer("Player")) |            
+        (1 << LayerMask.NameToLayer("Enemy")) |             
+        (1 << LayerMask.NameToLayer("UI"));                 
+    }
 }

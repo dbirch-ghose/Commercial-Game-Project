@@ -32,11 +32,14 @@ public class InfirmaryTrigger: NetworkBehaviour
                 switchCameraPosition.MoveCamera(CamPos1); //move cam
                 receptionTrigger.inReception = false;
                 inInfirmary = true;
+                switchCameraPosition.ShowRoom("Infirmary"); //show infirmary and hide reception
             }
             else
             {
                 switchCameraPosition.MoveCamera(CamPos2); //move cam
                 receptionTrigger.inReception = true;
+                switchCameraPosition.ShowRoom("Reception"); //show reception again
+
             }
         }
     }
