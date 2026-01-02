@@ -3,7 +3,7 @@ using Fusion;
 using TMPro.Examples;
 public class ReceptionTrigger : NetworkBehaviour
 {
-    public CameraBehaviour cameraBehaviour;
+    public SwitchCameraPosition switchCameraPosition;
     public GameObject FrontWall;
     public Transform CamPos;
     public bool inReception = false;
@@ -20,8 +20,8 @@ public class ReceptionTrigger : NetworkBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            cameraBehaviour.MoveCamera(CamPos); //move cam
-            cameraBehaviour.ShowRoom(LayerMask.NameToLayer("Reception"));
+            switchCameraPosition.MoveCamera(CamPos); //move cam
+            //switchCameraPosition.ShowRoom(LayerMask.NameToLayer("Reception"));
 
             //Transform barrier1pos = barrier1.transform.position;
             //Runner.Spawn(barrier1, barrier1.position);

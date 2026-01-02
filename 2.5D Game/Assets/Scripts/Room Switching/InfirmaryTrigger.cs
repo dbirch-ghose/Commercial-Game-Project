@@ -4,8 +4,8 @@ using System.Collections;
 
 public class InfirmaryTrigger: NetworkBehaviour
 {
-    public ReceptionTrigger receptionTrigger; 
-    public CameraBehaviour cameraBehaviour; 
+    public ReceptionTrigger receptionTrigger;
+    public SwitchCameraPosition switchCameraPosition;
     public Transform CamPos1; //infirm
     public Transform CamPos2; //recepetion
     public bool inInfirmary = false;
@@ -29,13 +29,13 @@ public class InfirmaryTrigger: NetworkBehaviour
         {
             if (receptionTrigger.inReception == true)
             {
-                cameraBehaviour.MoveCamera(CamPos1); //move cam
+                switchCameraPosition.MoveCamera(CamPos1); //move cam
                 receptionTrigger.inReception = false;
                 inInfirmary = true;
             }
             else
             {
-                cameraBehaviour.MoveCamera(CamPos2); //move cam
+                switchCameraPosition.MoveCamera(CamPos2); //move cam
                 receptionTrigger.inReception = true;
             }
         }
