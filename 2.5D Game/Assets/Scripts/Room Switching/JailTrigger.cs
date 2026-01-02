@@ -1,34 +1,33 @@
 using UnityEngine;
 using Fusion;
-public class JailTrigger: NetworkBehaviour
+public class JailTrigger : NetworkBehaviour
 {
-    //public ReceptionTrigger receptionTrigger;
-
-
+    public InfirmaryTrigger infirmaryTrigger;
     public SwitchCameraPosition switchCameraPosition;
-    //public GameObject FrontWall;
-    //public NetworkPrefabRef barrier1;
-    //public NetworkPrefabRef barrier2;
-
-    public Transform CamPos;
+    public Transform CamPos1;
+    public Transform CamPos2;
 
     private void OnTriggerEnter(Collider other)
     {
         if (Object.HasStateAuthority)
         {
+            //destroy barrirer
         }
 
         if (other.gameObject.CompareTag("Player"))
         {
-            //if (receptionTrigger.inReception == true)
-            //{
-            //    switchCameraPosition.MoveCamera(CamPos); //move cam
-
-            //    receptionTrigger.inReception = false;
-            //}
-            switchCameraPosition.MoveCamera(CamPos); //move cam
+            if (infirmaryTrigger.inInfirmary == true)
+            {
+                switchCameraPosition.MoveCamera(CamPos1); //move cam to jail
+                infirmaryTrigger.inInfirmary = false;
+            }
+            else
+            {
+                switchCameraPosition.MoveCamera(CamPos2); //move cam back to infirmary
+                infirmaryTrigger.inInfirmary = true;
+            }
         }
     }
-    
+
 }
 
