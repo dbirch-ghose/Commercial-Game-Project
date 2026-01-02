@@ -1799,7 +1799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infirmaryTrigger: {fileID: 524962505}
-  cameraBehaviour: {fileID: 0}
+  switchCameraPosition: {fileID: 803771405}
   CamPos1: {fileID: 230388891}
   CamPos2: {fileID: 876650821}
   inInfirmary: 0
@@ -2341,7 +2341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptionTrigger: {fileID: 968298888}
-  cameraBehaviour: {fileID: 0}
+  switchCameraPosition: {fileID: 803771405}
   CamPos1: {fileID: 876650821}
   CamPos2: {fileID: 1935540299}
   inInfirmary: 0
@@ -4045,6 +4045,7 @@ GameObject:
   - component: {fileID: 803771402}
   - component: {fileID: 803771403}
   - component: {fileID: 803771404}
+  - component: {fileID: 803771405}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4185,8 +4186,6 @@ MonoBehaviour:
   target: {fileID: 0}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
-  cam: {fileID: 803771400}
-  position: {fileID: 0}
 --- !u!114 &803771404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4203,8 +4202,23 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 803771405}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &803771405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803771398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efce0ace0be408043929aeaf29e1f3d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 803771400}
+  position: {fileID: 0}
 --- !u!1001 &828075533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4959,11 +4973,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3511354bbc9cf45bbb541fb093e07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraBehaviour: {fileID: 0}
+  switchCameraPosition: {fileID: 803771405}
   FrontWall: {fileID: 882711708}
   CamPos: {fileID: 1935540299}
   inReception: 0
-  cam: {fileID: 0}
+  cam: {fileID: 803771400}
 --- !u!114 &968298889
 MonoBehaviour:
   m_ObjectHideFlags: 0
