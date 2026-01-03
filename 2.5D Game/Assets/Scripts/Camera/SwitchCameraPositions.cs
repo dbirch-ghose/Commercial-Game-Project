@@ -10,7 +10,8 @@ public class SwitchCameraPosition : NetworkBehaviour
     {
         if (cam == null || CamPos == null) return;
 
-        cam.transform.position = CamPos.position;
+        //cam.transform.position = CamPos.position;
+        cam.transform.SetPositionAndRotation(CamPos.position, CamPos.rotation);
     }
 
    
