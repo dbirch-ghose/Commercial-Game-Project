@@ -2404,6 +2404,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4696600137947487233, guid: 16b6b6af2175c2446a838fc8e10d108c, type: 3}
+      propertyPath: 'creatureType.RawGuidValue.Array.data[0]'
+      value: 3766485863469278195
+      objectReference: {fileID: 0}
+    - target: {fileID: -4696600137947487233, guid: 16b6b6af2175c2446a838fc8e10d108c, type: 3}
+      propertyPath: 'creatureType.RawGuidValue.Array.data[1]'
+      value: 6037953200234026074
+      objectReference: {fileID: 0}
     - target: {fileID: 691075917069041342, guid: 16b6b6af2175c2446a838fc8e10d108c, type: 3}
       propertyPath: SortKey
       value: 3403169300

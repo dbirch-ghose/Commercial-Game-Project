@@ -73,7 +73,8 @@ public class SisterBehaviour : NetworkBehaviour
         //sprite controller
         animator.SetBool("isIdle", false);
         animator.SetBool("isWalkingSide", false);
-        //animator.SetBool("isWalkingDown", false);
+        animator.SetBool("isWalkingDown", false);
+        animator.SetBool("isWalkingUp", false);
 
         if (data.direction.sqrMagnitude <= 0)
         {
@@ -86,20 +87,25 @@ public class SisterBehaviour : NetworkBehaviour
 
         if (data.direction.x < 0) //left
         {
-            Debug.Log("Left");
-            animator.SetBool("isWalkingSide", true);
-            sr.flipX = true;
-        }
-        else if (data.direction.x > 0) //right
-        {
-            Debug.Log("right");
+            //Debug.Log("Left");
             animator.SetBool("isWalkingSide", true);
             sr.flipX = false;
         }
+        else if (data.direction.x > 0) //right
+        {
+            //Debug.Log("right");
+            animator.SetBool("isWalkingSide", true);
+            sr.flipX = true;
+        }
         else if (data.direction.z < 0) //down
         {
-            Debug.Log("down");
+            //Debug.Log("down");
             animator.SetBool("isWalkingDown", true);
+        }
+        else if (data.direction.z > 0) //up
+        {
+            //Debug.Log("up");
+            animator.SetBool("isWalkingUp", true);
         }
 
         if (HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
