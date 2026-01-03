@@ -1,11 +1,17 @@
 using UnityEngine;
 using Fusion;
+using System.Collections;
+
 public class JailTrigger : NetworkBehaviour
 {
-    public InfirmaryTrigger infirmaryTrigger;
+    public InfirmaryTrigger infirmaryTrigger  ;
     public SwitchCameraPosition switchCameraPosition;
-    public Transform CamPos1;
-    public Transform CamPos2;
+    public Transform CamPos1; //infirm
+    public Transform CamPos2; //recepetion
+    public bool inInfirmary = false;
+
+    public float cooldown = 0.5f;
+    private bool onCooldown = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,20 +20,34 @@ public class JailTrigger : NetworkBehaviour
             //destroy barrirer
         }
 
+        if (onCooldown)
+            return;
+
+        StartCoroutine(Cooldown());
+
         if (other.gameObject.CompareTag("Player"))
         {
             if (infirmaryTrigger.inInfirmary == true)
             {
-                switchCameraPosition.MoveCamera(CamPos1); //move cam to jail
+                switchCameraPosition.MoveCamera(CamPos1); //move cam
                 infirmaryTrigger.inInfirmary = false;
+                inInfirmary = true;
+                switchCameraPosition.ShowRoom("Jail"); //show jail and infirmary reception
+
             }
             else
             {
-                switchCameraPosition.MoveCamera(CamPos2); //move cam back to infirmary
+                switchCameraPosition.MoveCamera(CamPos2); //move cam
                 infirmaryTrigger.inInfirmary = true;
+                switchCameraPosition.ShowRoom("Infirmary");
             }
         }
     }
-
+    private IEnumerator Cooldown()
+    {
+        onCooldown = true;
+        yield return new WaitForSeconds(cooldown);
+        onCooldown = false;
+    }
 }
 
