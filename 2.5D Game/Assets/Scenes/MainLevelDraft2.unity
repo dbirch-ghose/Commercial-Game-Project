@@ -2856,8 +2856,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 3.1880746, z: 1}
+  m_Center: {x: 2.0274034e-11, y: 1.0940564, z: -0.0076768277}
 --- !u!23 &637327063
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3239,7 +3239,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3248,8 +3248,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.3159475, y: 2.8775125, z: 4.193798}
-  m_Center: {x: -1.1579739, y: 1.3109208, z: -0.028462213}
+  m_Size: {x: 6.632167, y: 2.8775125, z: 4.193798}
+  m_Center: {x: -2.8160853, y: 1.3109208, z: -0.02846221}
 --- !u!114 &751685439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3281,7 +3281,7 @@ MonoBehaviour:
   anotherQuestEntryNumber: 1
   anotherQuestEntryState: 0
   luaCode: 
-  sequence: CageOpen();
+  sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
   waitOneFrameOnStartOrEnable: 1
@@ -3301,9 +3301,9 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: 
+  conversation: Library Riddles
   conversationConversant: {fileID: 0}
-  conversationActor: {fileID: 0}
+  conversationActor: {fileID: 751685441}
   startConversationEntryID: -1
   startConversationEntryTitle: 
   overrideDialogueUI: {fileID: 0}
@@ -3329,7 +3329,12 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: 37bc1d982197d19469cfcd1883584259, type: 2}
---- !u!114 &751685440
+--- !u!4 &751685441 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: badc6e104cfea9545884b4db21fa653a, type: 3}
+  m_PrefabInstance: {fileID: 828075533}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &751685442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3343,7 +3348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_overrideName: 
   m_overrideUseMessage: 
-  maxUseDistance: 5
+  maxUseDistance: 2
   events:
     onSelect:
       m_PersistentCalls:
@@ -3982,10 +3987,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: badc6e104cfea9545884b4db21fa653a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 751685440}
+      addedObject: {fileID: 751685439}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: badc6e104cfea9545884b4db21fa653a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 751685439}
+      addedObject: {fileID: 751685442}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: badc6e104cfea9545884b4db21fa653a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 751685438}
@@ -5676,8 +5681,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 19.52378, y: 9.966691, z: 31.94441}
-  m_Center: {x: 9.243113, y: 0.19298261, z: -4.0853143}
+  m_Size: {x: 14.783371, y: 9.966691, z: 10.41284}
+  m_Center: {x: 6.889601, y: 0.19298261, z: -0.45191422}
 --- !u!1 &1186916567
 GameObject:
   m_ObjectHideFlags: 0
@@ -7930,8 +7935,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 3.2642853, z: 1}
+  m_Center: {x: 0, y: 1.1321427, z: 0}
 --- !u!23 &1703178625
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8715,8 +8720,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.9307141, z: 1}
+  m_Center: {x: 0, y: 0.9653578, z: 0}
 --- !u!23 &1861829317
 MeshRenderer:
   m_ObjectHideFlags: 0

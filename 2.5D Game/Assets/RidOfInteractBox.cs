@@ -1,4 +1,5 @@
 using PixelCrushers.DialogueSystem;
+using System;
 using UnityEngine;
 
 
@@ -13,16 +14,23 @@ public class RidOfInteractBox : MonoBehaviour
         interactPrompt = FindFirstObjectByType<LiterallyJustHoldsAReferenceToThisText>(FindObjectsInactive.Include);
         prompt = interactPrompt.text;
         selector = GetComponent<Selector>();
+        selector.CustomPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("player position : " + transform.position);
+        selector.CustomPosition=transform.position;
+        //Debug.Log("Selector position: " + selector.CustomPosition);
         var usable = selector.CurrentUsable;
+        Debug.Log(usable);
+        
 
         if (usable == null)
         {
             prompt.SetActive(false);
+            Debug.Log("Running");
             return;
         }
 
@@ -30,6 +38,7 @@ public class RidOfInteractBox : MonoBehaviour
             selector.transform.position,
             usable.transform.position
         );
+        Debug.Log(distance);
 
         prompt.SetActive(distance <= usable.maxUseDistance);
     }
