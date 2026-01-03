@@ -63,16 +63,12 @@ GameObject:
   m_Component:
   - component: {fileID: 881072571462655927}
   - component: {fileID: 753510621031380945}
-  - component: {fileID: 4070723270344646432}
   - component: {fileID: 691075917069041342}
   - component: {fileID: 6765918275768450128}
-  - component: {fileID: 4478904888170107638}
-  - component: {fileID: 956760553528268707}
-  - component: {fileID: 8997859700591429814}
   - component: {fileID: -7819401095198963635}
   - component: {fileID: 7726629685439152115}
-  - component: {fileID: -8204167123913352204}
   - component: {fileID: 1852701822258074987}
+  - component: {fileID: -4696600137947487233}
   m_Layer: 6
   m_Name: Specimen
   m_TagString: Untagged
@@ -117,19 +113,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.57864153, y: 0.3794219, z: 0.36789006}
   m_Center: {x: -0.015188317, y: -0.081030294, z: 0.011618614}
---- !u!114 &4070723270344646432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2632556834967718471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bbf5cccad4e4534fa3fc2c65588f8b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!114 &691075917069041342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,10 +130,7 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 4070723270344646432}
-  - {fileID: 8997859700591429814}
   - {fileID: 7726629685439152115}
-  - {fileID: -8204167123913352204}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &6765918275768450128
 SpriteRenderer:
@@ -207,63 +187,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!195 &4478904888170107638
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2632556834967718471}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.31999996
-  m_Speed: 6
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.6399999
-  m_BaseOffset: 0.29
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!95 &956760553528268707
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2632556834967718471}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 436716d1df00ac648b6410ca8375bd3d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8997859700591429814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2632556834967718471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Health: 4
 --- !u!82 &-7819401095198963635
 AudioSource:
   m_ObjectHideFlags: 0
@@ -373,27 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8204167123913352204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2632556834967718471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f77e1dda73d3b4d895c970336aa3f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 4478904888170107638}
-  range: 0
-  player: {fileID: 0}
-  isPatrolling: 0
-  player1: {fileID: 0}
-  player2: {fileID: 0}
-  closestPlayer: {fileID: 0}
-  basicSpawner: {fileID: 0}
-  sr: {fileID: 0}
 --- !u!114 &1852701822258074987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,3 +315,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 384f73976dbb4664396a32e0f39ac7f7, type: 3}
   minInterval: 4
   maxInterval: 8
+--- !u!114 &-4696600137947487233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632556834967718471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa0f0a0c9c8a38428df87c04906065d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creatureType:
+    RawGuidValue: f3e39de7ef3e45345ad461f6711ecb53

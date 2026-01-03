@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 8135002595893628874}
   - component: {fileID: 1924123746650476238}
   - component: {fileID: 5254509116522753159}
-  - component: {fileID: 4067070153167360791}
   m_Layer: 7
   m_Name: Sister(Cat)
   m_TagString: Player
@@ -149,7 +148,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3524003, y: 2.0569518, z: 0.62523}
+  m_LocalScale: {x: 1.3127805, y: 1.1479025, z: 0.34891585}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5552352203215606465}
@@ -170,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 0
   maxHealth: 3
+  hitCooldown: 2
   pp: {fileID: 0}
 --- !u!95 &2801503880117492055
 Animator:
@@ -328,10 +328,10 @@ MonoBehaviour:
   _stateAuthorityChangeErrorCorrectionDelta: 0
   gravity: -20
   jumpImpulse: 8
-  acceleration: 25
-  braking: 50
-  maxSpeed: 8
-  rotationSpeed: 15
+  acceleration: 550
+  braking: 550
+  maxSpeed: 4
+  rotationSpeed: 0
 --- !u!114 &5570596403354127645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,20 +525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4067070153167360791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2538751722601739453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa0f0a0c9c8a38428df87c04906065d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creatureType:
-    RawGuidValue: 5797adf09924c5441991408ae90d941f
 --- !u!1 &6118444919685330054
 GameObject:
   m_ObjectHideFlags: 0

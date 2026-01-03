@@ -45,13 +45,13 @@ public class SisterBehaviour : NetworkBehaviour
 
     public override void Spawned()
     {
-        //_changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
-        if (HasInputAuthority)
-        {
-            camera = Camera.main;
-            camera.GetComponent<CameraBehaviour>().target = transform;
+        ////_changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
+        //if (HasInputAuthority)
+        //{
+        //    camera = Camera.main;
+        //    camera.GetComponent<CameraBehaviour>().target = transform;
             
-        }
+        //}
     }
 
 
