@@ -90,13 +90,13 @@ public class SisterBehaviour : NetworkBehaviour
         {
             //Debug.Log("Left");
             animator.SetBool("isWalkingSide", true);
-            sr.flipX = false;
+            sr.flipX = true;
         }
         else if (data.direction.x > 0) //right
         {
             //Debug.Log("right");
             animator.SetBool("isWalkingSide", true);
-            sr.flipX = true;
+            sr.flipX = false;
         }
         else if (data.direction.z < 0) //down
         {

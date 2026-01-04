@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4857177165160331855}
   - component: {fileID: 1465650794842612739}
   - component: {fileID: 7886319775716728494}
+  - component: {fileID: -3698399398944328315}
   m_Layer: 7
   m_Name: Sister(Specimen)
   m_TagString: Player
@@ -174,6 +175,7 @@ MonoBehaviour:
   - {fileID: 2215448814410213045}
   - {fileID: 8686070570334922551}
   - {fileID: 7886319775716728494}
+  - {fileID: -3698399398944328315}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &2502591570186614983
 CharacterController:
@@ -303,6 +305,21 @@ MonoBehaviour:
   sr: {fileID: 2949335425653236183}
   camera: {fileID: 0}
   thisDude: {fileID: 0}
+--- !u!114 &-3698399398944328315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667819388910292035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7495731e9d686f946a4e77b709b11e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Boulder: {fileID: 0}
+  animator: {fileID: 0}
+  sr: {fileID: 0}
 --- !u!1 &6568390071480116735
 GameObject:
   m_ObjectHideFlags: 0
