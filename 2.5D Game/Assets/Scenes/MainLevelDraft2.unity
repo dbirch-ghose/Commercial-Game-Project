@@ -10052,7 +10052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_overrideName: 
   m_overrideUseMessage: 
-  maxUseDistance: 2
+  maxUseDistance: 14.43
   events:
     onSelect:
       m_PersistentCalls:
@@ -10161,8 +10161,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 14.783371, y: 9.966691, z: 10.41284}
-  m_Center: {x: 6.889601, y: 0.19298261, z: -0.45191422}
+  m_Size: {x: 29.43802, y: 9.966691, z: 25.18412}
+  m_Center: {x: 14.2140665, y: 0.19298261, z: -1.0705351}
 --- !u!1 &1157735469
 GameObject:
   m_ObjectHideFlags: 0

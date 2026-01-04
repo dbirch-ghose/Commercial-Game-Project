@@ -20,9 +20,9 @@ public class RidOfInteractBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("player position : " + transform.position);
+        
         selector.CustomPosition=transform.position;
-        //Debug.Log("Selector position: " + selector.CustomPosition);
+        Debug.Log("Selector position: " + selector.CustomPosition);
         var usable = selector.CurrentUsable;
         Debug.Log(usable);
         
