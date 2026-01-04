@@ -22,15 +22,15 @@ public class RidOfInteractBox : MonoBehaviour
     {
         
         selector.CustomPosition=transform.position;
-        Debug.Log("Selector position: " + selector.CustomPosition);
+        //Debug.Log("Selector position: " + selector.CustomPosition);
         var usable = selector.CurrentUsable;
-        Debug.Log(usable);
+        //Debug.Log(usable);
         
 
         if (usable == null)
         {
             prompt.SetActive(false);
-            Debug.Log("Running");
+            //Debug.Log("Running");
             return;
         }
 
@@ -38,7 +38,7 @@ public class RidOfInteractBox : MonoBehaviour
             selector.transform.position,
             usable.transform.position
         );
-        Debug.Log(distance);
+        //Debug.Log(distance);
 
         prompt.SetActive(distance <= usable.maxUseDistance);
     }
