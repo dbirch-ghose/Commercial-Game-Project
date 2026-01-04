@@ -7182,6 +7182,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 803771400}
   position: {fileID: 0}
+--- !u!1 &803826564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 803826565}
+  m_Layer: 11
+  m_Name: FrontDoor Barrier Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &803826565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803826564}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -3.097, y: -0.4870996, z: 4.5699997}
+  m_LocalScale: {x: 0.10000002, y: 1, z: 5.030547}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2117965398}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &828075533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8454,6 +8485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchCameraPosition: {fileID: 803771405}
   FrontWall: {fileID: 882711708}
+  BarrierPos: {fileID: 803826565}
+  Barrier: {fileID: 4605030560135993855, guid: 1218136bf3834bb43bf7e6cf27867017, type: 3}
   CamPos: {fileID: 1935540299}
   inReception: 0
   cam: {fileID: 803771400}
@@ -15544,7 +15577,7 @@ MonoBehaviour:
   bookSpawner: {fileID: 0}
   blockers: {fileID: 0}
   _playerPrefab:
-    RawGuidValue: 5797adf09924c5441991408ae90d941f
+    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
   _player2Prefab:
     RawGuidValue: 5797adf09924c5441991408ae90d941f
   players: []
@@ -18379,6 +18412,7 @@ Transform:
   - {fileID: 1011456954}
   - {fileID: 585473344}
   - {fileID: 1509700943}
+  - {fileID: 803826565}
   - {fileID: 2116274156}
   - {fileID: 1045944727}
   - {fileID: 481186847}

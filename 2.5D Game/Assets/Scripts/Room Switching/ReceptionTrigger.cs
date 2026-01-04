@@ -4,7 +4,11 @@ using TMPro.Examples;
 public class ReceptionTrigger : NetworkBehaviour
 {
     public SwitchCameraPosition switchCameraPosition;
+
     public GameObject FrontWall;
+    public Transform BarrierPos;
+    public GameObject Barrier;
+
     public Transform CamPos;
     public bool inReception = false;
 
@@ -15,6 +19,7 @@ public class ReceptionTrigger : NetworkBehaviour
         if (Object.HasStateAuthority)
         {
             Runner.Despawn(FrontWall.GetComponent<NetworkObject>());
+            Runner.Spawn(Barrier, BarrierPos.position);
             inReception = true;
         }
 
