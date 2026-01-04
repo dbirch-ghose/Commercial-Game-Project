@@ -1,10 +1,11 @@
-using System;
-using System.Collections.Generic;
 using Fusion;
 using Fusion.Addons.Physics;
 using Fusion.Sockets;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Unity.Collections.Unicode;
 
 
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
@@ -140,7 +141,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     }
     public void WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
     {
-        Destroy(fallen);
+        _runner.Despawn(fallen);
         NetworkObject networkPlayerObject = _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
         
     }
@@ -187,6 +188,19 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         _mouseButton1 = false;
         
         input.Set(data);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_RequestDestroy(NetworkObject target)
+    {
+        if (target == null)
+            return;
+
+        // Safety check
+        if (!target.HasStateAuthority)
+            return;
+
+        _runner.Despawn(target);
     }
 
     public void RequestUnlock(int unlockId)

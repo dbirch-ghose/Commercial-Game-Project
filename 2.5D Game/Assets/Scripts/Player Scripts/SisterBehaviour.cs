@@ -28,14 +28,17 @@ public class SisterBehaviour : NetworkBehaviour
     private weakMind wm;
     private weakMind Twm;
     private GameObject enemy;
+    private NetworkObject enemyNO;
     public NetworkObject thisDude;
+
+    
 
 
 
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
-
+        thisDude = GetComponent<NetworkObject>();
     }
 
     private void Start()
@@ -130,8 +133,9 @@ public class SisterBehaviour : NetworkBehaviour
             BasicSpawner BS = FindFirstObjectByType<BasicSpawner>();
             NetworkPrefabRef creatureType = wm.creatureType;
             Vector3 spawnPoint = enemy.transform.position;
-            Destroy(enemy);
+            BS.RPC_RequestDestroy(enemyNO);
             BS.WMSpawn(thisDude, creatureType, spawnPoint);
+            canPossess = false;
         }
 
         transform.rotation = Quaternion.identity;
@@ -142,12 +146,14 @@ public class SisterBehaviour : NetworkBehaviour
     void OnTriggerEnter(Collider other)
     {
         // Check if the other object has the weakMind script
-        enemy = other.gameObject;
+        
         Twm = other.gameObject.GetComponent<weakMind>();
 
         if (Twm != null)
         {
             wm = Twm;
+            enemy = other.gameObject;
+            enemyNO = enemy.GetComponent<NetworkObject>();
             // The object has the weakMind script
             Debug.Log("Collided with an object that has weakMind!");
         }
@@ -162,6 +168,7 @@ public class SisterBehaviour : NetworkBehaviour
         {
             wm = Twm;
             enemy = other.gameObject;
+            enemyNO = enemy.GetComponent<NetworkObject>();
             // The object has the weakMind script
             Debug.Log("Collided with an object that has weakMind!");
             canPossess = true;
