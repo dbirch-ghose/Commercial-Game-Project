@@ -35,14 +35,29 @@ public class PlayerMelee : NetworkBehaviour
     {
         isAttacking = true;
 
-        animator.SetBool("isHitting", true);
+        //if (animator.GetBool("isWalkingSide"))
+        //{
+            animator.SetBool("isHitting", true);
+        //}
+        //else if (animator.GetBool("isWalkingDown"))
+        //{
+        //    animator.SetBool("isHittingDown", true);
+        //}
+        //else if (animator.GetBool("isWalkingUp"))
+        //{
+        //    animator.SetBool("isHittingUp", true);
+
+        //}
+
+
+
 
         // Client-side hit detection
         Collider[] hitEnemies = Physics.OverlapSphere(
-            attackPoint.position,
-            attackRange,
-            enemyLayers
-        );
+                attackPoint.position,
+                attackRange,
+                enemyLayers
+            );
 
         foreach (Collider enemy in hitEnemies)
         {

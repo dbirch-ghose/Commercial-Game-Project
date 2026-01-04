@@ -13,12 +13,15 @@ public class InfirmaryTrigger: NetworkBehaviour
     public float cooldown = 0.5f;
     private bool onCooldown = false;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (Object.HasStateAuthority)
+        if (!Object.HasStateAuthority)
         {
-            //destroy barrirer
+            return;
         }
+
+        if (!other.CompareTag("Player"))
+            return;
 
         if (onCooldown)
             return;
