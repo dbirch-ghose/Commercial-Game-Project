@@ -141,7 +141,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     }
     public void WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
     {
-        Destroy(fallen);
+        _runner.Despawn(fallen);
         NetworkObject networkPlayerObject = _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
         
     }

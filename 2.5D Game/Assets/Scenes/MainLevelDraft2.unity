@@ -5684,7 +5684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.811
+      value: 10.73
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15577,9 +15577,9 @@ MonoBehaviour:
   bookSpawner: {fileID: 0}
   blockers: {fileID: 0}
   _playerPrefab:
-    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
-  _player2Prefab:
     RawGuidValue: 5797adf09924c5441991408ae90d941f
+  _player2Prefab:
+    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
   players: []
 --- !u!4 &1837907120
 Transform:

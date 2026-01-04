@@ -38,7 +38,7 @@ public class SisterBehaviour : NetworkBehaviour
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
-
+        thisDude = GetComponent<NetworkObject>();
     }
 
     private void Start()
@@ -135,6 +135,7 @@ public class SisterBehaviour : NetworkBehaviour
             Vector3 spawnPoint = enemy.transform.position;
             BS.RPC_RequestDestroy(enemyNO);
             BS.WMSpawn(thisDude, creatureType, spawnPoint);
+            canPossess = false;
         }
 
         transform.rotation = Quaternion.identity;
