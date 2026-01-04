@@ -26,15 +26,16 @@ public class SisterBehaviour : NetworkBehaviour
 
     private bool canPossess = false;
     private weakMind wm;
+    private weakMind Twm;
     private GameObject enemy;
     public NetworkObject thisDude;
-    
+
 
 
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
-        
+
     }
 
     private void Start()
@@ -50,7 +51,7 @@ public class SisterBehaviour : NetworkBehaviour
         //{
         //    camera = Camera.main;
         //    camera.GetComponent<CameraBehaviour>().target = transform;
-            
+
         //}
     }
 
@@ -108,8 +109,24 @@ public class SisterBehaviour : NetworkBehaviour
             animator.SetBool("isWalkingUp", true);
         }
 
-        if (HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (wm == null)
+            {
+                Debug.Log("wm null");
+            }
+            if (wm != null)
+            {
+                Debug.Log("wm got something");
+            }
+            Debug.Log("Space Pressed");
+            Debug.Log("State authority: " + HasStateAuthority);
+            Debug.Log("canPossess: " + canPossess);
+        }
+        
+            if (HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("SA+canPosess+PressSpace");
             BasicSpawner BS = FindFirstObjectByType<BasicSpawner>();
             NetworkPrefabRef creatureType = wm.creatureType;
             Vector3 spawnPoint = enemy.transform.position;
@@ -122,37 +139,38 @@ public class SisterBehaviour : NetworkBehaviour
 
 
 
-        void OnTriggerEnter(Collider other)
-        {
-            // Check if the other object has the weakMind script
-            enemy = other.gameObject;
-            wm = other.gameObject.GetComponent<weakMind>();
+    void OnTriggerEnter(Collider other)
+    {
+        // Check if the other object has the weakMind script
+        enemy = other.gameObject;
+        Twm = other.gameObject.GetComponent<weakMind>();
 
-            if (wm != null)
-            {
-                // The object has the weakMind script
-                Debug.Log("Collided with an object that has weakMind!");
-            }
+        if (Twm != null)
+        {
+            wm = Twm;
+            // The object has the weakMind script
+            Debug.Log("Collided with an object that has weakMind!");
         }
+    }
 
     private void OnTriggerStay(Collider other)
     {
-        wm = other.gameObject.GetComponent<weakMind>();
-        enemy = other.gameObject;
+        Twm = other.gameObject.GetComponent<weakMind>();
 
-        if (wm != null)
+
+        if (Twm != null)
         {
+            wm = Twm;
+            enemy = other.gameObject;
             // The object has the weakMind script
             Debug.Log("Collided with an object that has weakMind!");
             canPossess = true;
             Debug.Log("Can Possess!");
+            
 
         }
-        else
-        {
-            canPossess = false;
+        
 
-        }
     }
 }
 
