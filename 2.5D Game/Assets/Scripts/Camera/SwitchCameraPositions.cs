@@ -25,6 +25,7 @@ public class SwitchCameraPosition : NetworkBehaviour
         // always visible
         (1 << LayerMask.NameToLayer("Player")) |            
         (1 << LayerMask.NameToLayer("Enemy")) |             
-        (1 << LayerMask.NameToLayer("UI"));                 
+        (1 << LayerMask.NameToLayer("UI")) |
+        (1 << LayerMask.NameToLayer("Fly"));
     }
 }
