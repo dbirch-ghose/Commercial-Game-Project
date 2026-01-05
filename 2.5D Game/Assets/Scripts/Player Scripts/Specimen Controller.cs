@@ -4,7 +4,7 @@ using Fusion;
 public class SpecimenController : NetworkBehaviour
 {
     //public GameObject boulder;
-
+    
     public Animator animator;
     public SpriteRenderer sr;
 

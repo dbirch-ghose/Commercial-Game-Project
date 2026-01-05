@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7295786447584201708}
   - component: {fileID: 4476700561490172347}
-  - component: {fileID: 3960207990117012470}
   - component: {fileID: 7669671476717919590}
   - component: {fileID: 1458775385567441961}
-  - component: {fileID: 2081582170870817187}
   - component: {fileID: 5311764507021847886}
   - component: {fileID: 2155730171528846476}
   - component: {fileID: 1277631781597559538}
@@ -38,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.35, y: -0.86, z: -16.544512}
-  m_LocalScale: {x: 4.785357, y: 4.785357, z: 4.785357}
+  m_LocalScale: {x: 1.909166, y: 1.909166, z: 1.909166}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7161950331861661141}
@@ -65,20 +63,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2996227, y: 0.1996805, z: 0.17207748}
   m_Center: {x: 0.0009865359, y: -0.020866714, z: -0.002021437}
---- !u!114 &3960207990117012470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725473329694757749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bbf5cccad4e4534fa3fc2c65588f8b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  hitCooldown: 2
 --- !u!114 &7669671476717919590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,8 +80,6 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 3960207990117012470}
-  - {fileID: 2081582170870817187}
   - {fileID: 1277631781597559538}
   - {fileID: -6695040329176390754}
   ForceRemoteRenderTimeframe: 0
@@ -156,28 +138,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2081582170870817187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725473329694757749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd26e8aaf4c3d84a9de56e46029394b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 5311764507021847886}
-  range: 0
-  centerPoint: {fileID: 0}
-  player: {fileID: 0}
-  isPatrolling: 1
-  player1: {fileID: 0}
-  player2: {fileID: 0}
-  closestPlayer: {fileID: 0}
-  basicSpawner: {fileID: 0}
-  sr: {fileID: 1458775385567441961}
 --- !u!195 &5311764507021847886
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -234,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Health: 2
+  _Health: 1
 --- !u!82 &-23946935443168101
 AudioSource:
   m_ObjectHideFlags: 0
