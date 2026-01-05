@@ -10,8 +10,16 @@ public class JailCageOpen : NetworkBehaviour
         animator = GetComponent<Animator>();
     }
 
+
+   
+
     public void Opencage()
     {
+        if (!HasStateAuthority)
+        {
+            return;
+        }
+
         animator.SetBool("open", true);
     }
 }
