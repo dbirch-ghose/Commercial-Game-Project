@@ -35,6 +35,7 @@ public class SpecimenController : NetworkBehaviour
         {
             pickup = true;
             animator.SetBool("isPickingUp", true);
+            Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + 1.5f); 
         } 
     }
 
