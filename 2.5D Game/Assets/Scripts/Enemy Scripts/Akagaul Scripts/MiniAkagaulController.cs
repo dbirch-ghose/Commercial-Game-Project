@@ -14,8 +14,10 @@ public class MiniAk : NetworkBehaviour
 
     private void EnterRoom()
     {
-
+        animator.SetBool("isEntering", true);
     }
-
-
+    private void LeaveRoom()
+    {
+        animator.SetBool("isLeaving", true);
+    }
 }

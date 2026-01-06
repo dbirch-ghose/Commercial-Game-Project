@@ -12763,6 +12763,7 @@ GameObject:
   - component: {fileID: 1163973225}
   - component: {fileID: 1163973224}
   - component: {fileID: 1163973223}
+  - component: {fileID: 1163973234}
   m_Layer: 6
   m_Name: Mini Ack
   m_TagString: Enemy
@@ -12932,7 +12933,7 @@ MonoBehaviour:
   Animator: {fileID: 1163973229}
   ApplyTiming: 2
   SyncSettings: 79
-  StateHashes: 000000002b1a167c79406955396709889c23ee372f52e9978a160e28
+  StateHashes: 000000002b1a167c79406955396709889c23ee37066a93b125da9017
   TriggerHashes: 00000000
   TotalWords: 1
 --- !u!95 &1163973229
@@ -12977,6 +12978,7 @@ MonoBehaviour:
   - {fileID: 1163973228}
   - {fileID: 1163973227}
   - {fileID: 1163973224}
+  - {fileID: 1163973234}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &1163973232
 SpriteRenderer:
@@ -13042,7 +13044,7 @@ Transform:
   m_GameObject: {fileID: 1163973222}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.776, y: 0.585, z: 36.573}
+  m_LocalPosition: {x: 0.776, y: 0.585, z: 36.39}
   m_LocalScale: {x: 2.240321, y: 2.800401, z: 0.56008023}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13050,6 +13052,20 @@ Transform:
   - {fileID: 1486920564}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1163973234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163973222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6daafe2b474c14cbd3018c8738a7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  sr: {fileID: 0}
 --- !u!1 &1186916567
 GameObject:
   m_ObjectHideFlags: 0
