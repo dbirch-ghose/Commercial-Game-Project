@@ -3,8 +3,9 @@ using Fusion;
 
 public class SpecimenController : NetworkBehaviour
 {
-    //public GameObject boulder;
-    
+    public bool pickup = false;
+
+
     public Animator animator;
     public SpriteRenderer sr;
 
@@ -13,7 +14,6 @@ public class SpecimenController : NetworkBehaviour
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
 
-        GameObject boulder = GameObject.Find("Big Boulder");
 
     }
 
@@ -31,6 +31,7 @@ public class SpecimenController : NetworkBehaviour
     {
         if (HasStateAuthority && Input.GetKeyDown(KeyCode.Space))
         {
+            pickup = true;
             animator.SetBool("isPickingUp", true);
         } 
     }

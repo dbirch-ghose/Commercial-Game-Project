@@ -236,7 +236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5392595}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1041,7 +1041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 117640290}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6537,6 +6537,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1987108725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &612160729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612160733}
+  - component: {fileID: 612160732}
+  - component: {fileID: 612160730}
+  m_Layer: 11
+  m_Name: Boulder Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &612160730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612160729}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &612160732
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612160729}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &612160733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612160729}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.009897, y: -0.95, z: 8.790998}
+  m_LocalScale: {x: 1, y: 0.32797465, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2117965398}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &627355124
 GameObject:
   m_ObjectHideFlags: 0
@@ -6829,6 +6891,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1508781100}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1508781101}
   m_SourcePrefab: {fileID: 100100000, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
 --- !u!1 &660412524
 GameObject:
@@ -9508,7 +9573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 920951035}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Ack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9523,14 +9588,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920951034}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2036511, y: 1.1893406, z: 34.323757}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.054246, y: 0.19484927, z: 11.724756}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1645406718}
   - {fileID: 1890547588}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2117965398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &927432671
 GameObject:
@@ -11570,7 +11635,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1042767525}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Melee Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12764,7 +12829,7 @@ GameObject:
   - component: {fileID: 1163973224}
   - component: {fileID: 1163973223}
   - component: {fileID: 1163973234}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Mini Ack
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -13044,13 +13109,13 @@ Transform:
   m_GameObject: {fileID: 1163973222}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.776, y: 0.585, z: 36.39}
+  m_LocalPosition: {x: -2.4818969, y: -0.40949136, z: 13.790998}
   m_LocalScale: {x: 2.240321, y: 2.800401, z: 0.56008023}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5392595}
   - {fileID: 1486920564}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2117965398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1163973234
 MonoBehaviour:
@@ -16694,7 +16759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1486920564}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Melee Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17176,6 +17241,28 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8552134717624371188, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
+--- !u!95 &1508781101
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508781097}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ea065c11e6c96e47b827bee3356762b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1509700942
 GameObject:
   m_ObjectHideFlags: 0
@@ -18637,7 +18724,7 @@ GameObject:
   - component: {fileID: 1645406721}
   - component: {fileID: 1645406720}
   - component: {fileID: 1645406719}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Akagaul
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -20827,15 +20914,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8068073526183931155, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -5568371526223589888, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -3215555783603854218, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -1461304994638716399, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -20843,7 +20930,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 940bd578efe56894a827a34774de9da3, type: 2}
     - target: {fileID: -516098083770646512, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -305091885687274788, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -20855,11 +20942,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4424396828587804706, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8100320773420232829, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -20867,11 +20954,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 940bd578efe56894a827a34774de9da3, type: 2}
     - target: {fileID: 8416272007918961125, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8513859187771203891, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21699,7 +21786,7 @@ GameObject:
   - component: {fileID: 1890547586}
   - component: {fileID: 1890547585}
   - component: {fileID: 1890547584}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Ack Spawn Trigger
   m_TagString: SpawnTrigger
   m_Icon: {fileID: 0}
@@ -25030,6 +25117,9 @@ Transform:
   - {fileID: 1417661064}
   - {fileID: 278330087}
   - {fileID: 1788272149}
+  - {fileID: 920951035}
+  - {fileID: 1163973233}
+  - {fileID: 612160733}
   m_Father: {fileID: 1039273693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2118666815
@@ -25706,5 +25796,3 @@ SceneRoots:
   - {fileID: 828075533}
   - {fileID: 771281320}
   - {fileID: 318930472}
-  - {fileID: 920951035}
-  - {fileID: 1163973233}
