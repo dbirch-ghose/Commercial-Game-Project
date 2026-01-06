@@ -3,6 +3,8 @@ using Fusion;
 
 public class SpecimenController : NetworkBehaviour
 {
+    public BoulderTrigger boulderTrigger;
+
     public bool pickup = false;
 
 
@@ -13,14 +15,14 @@ public class SpecimenController : NetworkBehaviour
     {
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
-
-
+        GameObject boulder = GameObject.FindGameObjectWithTag("Boulder");
+        boulderTrigger = boulder.GetComponent<BoulderTrigger>();
     }
 
 
     public override void FixedUpdateNetwork()
     {
-        if (HasStateAuthority)
+        if (HasStateAuthority && boulderTrigger != null && boulderTrigger.inRange)
         {
             PickUpBoulder();
         }

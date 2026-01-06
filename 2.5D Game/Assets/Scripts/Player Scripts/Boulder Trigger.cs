@@ -3,22 +3,22 @@ using Fusion;
 public class BoulderTrigger : NetworkBehaviour
 {
     public SpecimenController specController;
-    public GameObject boulder;
+    public BoulderController   boulderController;
 
-    public Animator animator;
-
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    public bool inRange = false;
+   
 
     private void OnTriggerEnter(Collider other)
     {
         if (HasStateAuthority && other.gameObject.CompareTag("Player"))
-        {
+        {                   
+            SpecimenController specController = other.GetComponentInParent<SpecimenController>();
+
+            inRange = true;
+
             if (specController.pickup)
             {
-
+                boulderController.BoulderAnim();
             }
         }
     }
