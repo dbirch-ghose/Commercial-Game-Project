@@ -9625,7 +9625,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: AudioWait(ackergaul/ackergaul voice1)
+        value: 'AkagulMove(0);
+
+          AudioWait(ackergaul/ackergaul voice1)'
         type: 0
         typeString: 
       conversationID: 10
@@ -10067,7 +10069,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: AudioWait(brother/meeting ackergaul 2-5)
+        value: 'AkagulMove(1);
+
+          AudioWait(brother/meeting ackergaul 2-5)'
         type: 0
         typeString: 
       conversationID: 10
@@ -10200,8 +10204,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 81.30907, y: 32.51546}
-    canvasZoom: 0.8199997
+    canvasScrollPosition: {x: 0, y: 921.0874}
+    canvasZoom: 0.75999975
   - id: 11
     fields:
     - title: Title

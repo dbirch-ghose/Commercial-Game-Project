@@ -12,12 +12,14 @@ public class MiniAk : NetworkBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    private void EnterRoom()
+    public void EnterRoom()
     {
+        Debug.Log("Aki enters");
         animator.SetBool("isEntering", true);
     }
-    private void LeaveRoom()
+    public void LeaveRoom()
     {
+        Debug.Log("Aki leaves");
         animator.SetBool("isLeaving", true);
     }
 }

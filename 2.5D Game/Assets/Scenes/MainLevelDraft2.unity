@@ -13187,7 +13187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5666451723920358500, guid: 9222980c014d2544389e831795a8257d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4296107
+      value: -2.443
       objectReference: {fileID: 0}
     - target: {fileID: 5666451723920358500, guid: 9222980c014d2544389e831795a8257d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13195,7 +13195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5666451723920358500, guid: 9222980c014d2544389e831795a8257d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.15
+      value: 8.503
       objectReference: {fileID: 0}
     - target: {fileID: 5666451723920358500, guid: 9222980c014d2544389e831795a8257d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17769,10 +17769,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!1 &1475133237
 GameObject:
