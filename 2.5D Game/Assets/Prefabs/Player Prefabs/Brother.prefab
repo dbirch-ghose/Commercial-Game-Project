@@ -175,6 +175,7 @@ MonoBehaviour:
   attackHitBox: {fileID: 5552352203215606465}
   moveSpeed: 5
   rotationSpeed: 10
+  melee: {fileID: 3164364208155221034}
   lastMoveDir: {x: 0, y: -1}
   animator: {fileID: 2801503880117492055}
   sr: {fileID: 6952026797092074400}
@@ -198,6 +199,7 @@ MonoBehaviour:
     m_Bits: 64
   attackDuration: 0.2
   damage: 2
+  isAttacking: 0
   brother: {fileID: 3695285539236546572}
   animator: {fileID: 0}
 --- !u!95 &2801503880117492055

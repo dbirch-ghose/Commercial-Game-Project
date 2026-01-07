@@ -11,9 +11,12 @@ public class BrotherBehaviour : NetworkBehaviour
     public float moveSpeed = 5f;
     public float rotationSpeed = 10f;
 
+    public PlayerMelee melee;
+
     private Vector2 inputDirection;
     public Vector2 lastMoveDir = Vector2.down;
-
+    public Vector2 LastMoveDir => lastMoveDir; // read-only
+    
 
     //private Vector3 lastMoveDir;
     private bool canDash = true;
@@ -59,6 +62,12 @@ public class BrotherBehaviour : NetworkBehaviour
         {
             return;
         }
+        if (melee.isAttacking)
+        {
+            if (Object.HasStateAuthority)
+                _cc.Move(Vector3.zero);
+            return; // stop movement during attack
+        }
 
       
         if (Object.HasStateAuthority)
@@ -69,6 +78,7 @@ public class BrotherBehaviour : NetworkBehaviour
         if (!Object.HasInputAuthority)
             return;
 
+        
 
         //blend tree animation controller
         Vector2 input = new Vector2(data.direction.x, data.direction.z);
