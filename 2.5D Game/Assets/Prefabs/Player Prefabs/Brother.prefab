@@ -172,10 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b705842955aa34a89466d5f9c3f230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   attackHitBox: {fileID: 5552352203215606465}
   moveSpeed: 5
   rotationSpeed: 10
+  lastMoveDir: {x: 0, y: -1}
   animator: {fileID: 2801503880117492055}
   sr: {fileID: 6952026797092074400}
   tr: {fileID: 1370922366899988754}
@@ -198,6 +198,7 @@ MonoBehaviour:
     m_Bits: 64
   attackDuration: 0.2
   damage: 2
+  brother: {fileID: 3695285539236546572}
   animator: {fileID: 0}
 --- !u!95 &2801503880117492055
 Animator:
@@ -475,9 +476,9 @@ MonoBehaviour:
   Animator: {fileID: 2801503880117492055}
   ApplyTiming: 2
   SyncSettings: 79
-  StateHashes: 000000005cf06304f9b484bbe339287afe3eef3d6db2564570b59102d0c53fc0f3753c66
-  TriggerHashes: 00000000
-  TotalWords: 1
+  StateHashes: 000000005cf06304f9b484bb46980c4f14c273660d286c404e865f43
+  TriggerHashes: 000000000d286c40
+  TotalWords: 3
 --- !u!114 &-6873496900376562824
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class PlayerMelee : NetworkBehaviour
     public int damage = 2;
 
     private bool isAttacking;
+    public BrotherBehaviour brother;
 
     public Animator animator;
 
@@ -34,22 +35,9 @@ public class PlayerMelee : NetworkBehaviour
     private IEnumerator Attack()
     {
         isAttacking = true;
-
-        //if (animator.GetBool("isWalkingSide"))
-        //{
-            animator.SetBool("isHitting", true);
-        //}
-        //else if (animator.GetBool("isWalkingDown"))
-        //{
-        //    animator.SetBool("isHittingDown", true);
-        //}
-        //else if (animator.GetBool("isWalkingUp"))
-        //{
-        //    animator.SetBool("isHittingUp", true);
-
-        //}
-
-
+        animator.SetFloat("MoveX", brother.lastMoveDir.x);
+        animator.SetFloat("MoveY", brother.lastMoveDir.y);
+        animator.SetTrigger("Attack");
 
 
         // Client-side hit detection
@@ -71,7 +59,6 @@ public class PlayerMelee : NetworkBehaviour
 
         yield return new WaitForSeconds(attackDuration);
 
-        animator.SetBool("isHitting", false);
         isAttacking = false;
     }
 

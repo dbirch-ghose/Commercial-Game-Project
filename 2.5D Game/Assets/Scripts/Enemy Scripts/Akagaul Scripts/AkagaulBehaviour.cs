@@ -1,8 +1,6 @@
 using Fusion;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class AkagaulBehaviour : NetworkBehaviour
 {

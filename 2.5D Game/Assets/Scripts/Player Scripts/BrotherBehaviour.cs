@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BrotherBehaviour : NetworkBehaviour
 {
-    [SerializeField] private Rigidbody rb;
+    //[SerializeField] private Rigidbody rb;
     [SerializeField] private Transform attackHitBox;
 
 
@@ -12,8 +12,10 @@ public class BrotherBehaviour : NetworkBehaviour
     public float rotationSpeed = 10f;
 
     private Vector2 inputDirection;
+    public Vector2 lastMoveDir = Vector2.down;
 
-    private Vector3 lastMoveDir;
+
+    //private Vector3 lastMoveDir;
     private bool canDash = true;
     private bool isDashing;
     private float dashingPower = 10f;
@@ -36,12 +38,7 @@ public class BrotherBehaviour : NetworkBehaviour
 
     }
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
-    }
-
+   
     public override void Spawned()
     {
         ////_changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
@@ -50,60 +47,89 @@ public class BrotherBehaviour : NetworkBehaviour
         //    camera = Camera.main;
         //    camera.GetComponent<CameraBehaviour>().target = transform;
         //}
+        animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public override void FixedUpdateNetwork()
     {
-        if (GetInput(out NetworkInputData data))
+        
+
+        if (!GetInput(out NetworkInputData data))
         {
-            //data.direction.Normalize();
-            //_cc.Move(5 * data.direction * Runner.DeltaTime);
+            return;
+        }
 
-            //if (data.direction.sqrMagnitude > 0)
-            //    _forward = data.direction;
-
+      
+        if (Object.HasStateAuthority)
+        {
             Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
             _cc.Move(move * moveSpeed * Runner.DeltaTime);
+        }
+        if (!Object.HasInputAuthority)
+            return;
 
-        }
 
-        //sprite controller
-        animator.SetBool("isIdle", false);
-        animator.SetBool("isWalkingSide", false);
-        animator.SetBool("isWalkingDown", false);
-        animator.SetBool("isWalkingUp", false);
+        //blend tree animation controller
+        Vector2 input = new Vector2(data.direction.x, data.direction.z);
 
-        if (data.direction.sqrMagnitude <= 0)
-        {
-            animator.SetBool("isIdle", true);
-        }
-        else
-        {
-            animator.SetBool("isIdle", false);
-        }
+        bool isMoving = input.sqrMagnitude > 0.01f;
+        animator.SetBool("isMoving", isMoving);
 
-        if (data.direction.x < 0) //left
-        {
-            //Debug.Log("Left");
-            animator.SetBool("isWalkingSide", true);
-            sr.flipX = false;
-        }
-        else if (data.direction.x > 0) //right
-        {
-            //Debug.Log("right");
-            animator.SetBool("isWalkingSide", true);
-            sr.flipX = true;
-        }
-        else if (data.direction.z < 0) //down
-        {
-            //Debug.Log("down");
-            animator.SetBool("isWalkingDown", true);
-        }
-        else if (data.direction.z > 0) //up
-        {
-            //Debug.Log("up");
-            animator.SetBool("isWalkingUp", true);
-        }
+        if (isMoving)
+            lastMoveDir = input.normalized;
+
+        animator.SetFloat("MoveX", lastMoveDir.x);
+        animator.SetFloat("MoveY", lastMoveDir.y);
+
+        if (lastMoveDir.x != 0)
+            sr.flipX = lastMoveDir.x > 0;
+
+        ////sprite controller
+        //animator.SetBool("isIdle", false);
+        //animator.SetBool("isWalkingSide", false);
+        //animator.SetBool("isWalkingDown", false);
+        //animator.SetBool("isWalkingUp", false);
+
+        //if (data.direction.sqrMagnitude <= 0)
+        //{
+        //    animator.SetBool("isIdle", true);
+        //}
+        //else
+        //{
+        //    animator.SetBool("isIdle", false);
+        //}
+
+        //if (data.direction.x < 0) //left
+        //{
+        //    //Debug.Log("Left");
+        //    animator.SetBool("isWalkingSide", true);
+        //    sr.flipX = false;
+        //}
+        //else if (data.direction.x > 0) //right
+        //{
+        //    //Debug.Log("right");
+        //    animator.SetBool("isWalkingSide", true);
+        //    sr.flipX = true;
+        //}
+        //else if (data.direction.z < 0) //down
+        //{
+        //    //Debug.Log("down");
+        //    animator.SetBool("isWalkingDown", true);
+        //}
+        //else if (data.direction.z > 0) //up
+        //{
+        //    //Debug.Log("up");
+        //    animator.SetBool("isWalkingUp", true);
+        //}
+
+
+
+
+
+
+
+
 
         ////hitbox rotation
         //if (data.direction.sqrMagnitude > 0.01f) // only rotate when moving
@@ -131,12 +157,14 @@ public class BrotherBehaviour : NetworkBehaviour
 
 
 
+
         //prevents movement while dashing
         if (isDashing)
         {
             return;
         }
-        transform.rotation = Quaternion.identity;
+
+        //transform.rotation = Quaternion.identity;
 
         //float horizontal = Input.GetAxisRaw("Horizontal");
         //float vertical = Input.GetAxisRaw("Vertical");
@@ -155,7 +183,12 @@ public class BrotherBehaviour : NetworkBehaviour
         //}
     }
 
+    //old movement
+    //data.direction.Normalize();
+    //_cc.Move(5 * data.direction * Runner.DeltaTime);
 
+    //if (data.direction.sqrMagnitude > 0)
+    //    _forward = data.direction;
 
     //void Update()
     //{
