@@ -15,15 +15,8 @@ public class InfirmaryTrigger: NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Object.HasStateAuthority)
-        {
-            //return;
-        }
-
-     
-
-        if (onCooldown)
-            return;
+        if (!Object.HasStateAuthority) return;
+        if (onCooldown) return;
 
         StartCoroutine(Cooldown());
 
@@ -45,6 +38,12 @@ public class InfirmaryTrigger: NetworkBehaviour
             }
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        
+    }
+
     private IEnumerator Cooldown()
     {
         onCooldown = true;
