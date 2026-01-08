@@ -1,11 +1,11 @@
 using UnityEngine;
 using Fusion;
 
-public class InfirmarySpawner : NetworkBehaviour
+public class StudySpawner : NetworkBehaviour
 {
     public Transform spawnPoint;
     public NetworkPrefabRef enemyPrefab1;
-    //public NetworkPrefabRef enemyPrefab2;
+    public NetworkPrefabRef enemyPrefab2;
     private bool hasTriggered = false;
     
     public override void Spawned()
@@ -40,6 +40,6 @@ public class InfirmarySpawner : NetworkBehaviour
         if (!Object.HasStateAuthority) return;
 
         Runner.Spawn(enemyPrefab1, spawnPoint.position, spawnPoint.rotation);
-        //Runner.Spawn(enemyPrefab2, spawnPoint.position, spawnPoint.rotation);
+        Runner.Spawn(enemyPrefab2, spawnPoint.position, spawnPoint.rotation);
     }
 }
