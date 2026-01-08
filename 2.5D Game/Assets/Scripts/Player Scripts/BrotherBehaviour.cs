@@ -7,6 +7,7 @@ public class BrotherBehaviour : NetworkBehaviour
     //[SerializeField] private Rigidbody rb;
     [SerializeField] private Transform attackHitBox;
 
+    public PlayerHealth playerHealth;
 
     public float moveSpeed = 5f;
     public float rotationSpeed = 10f;
@@ -52,6 +53,8 @@ public class BrotherBehaviour : NetworkBehaviour
         //}
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        if (playerHealth == null)
+            playerHealth = GetComponent<PlayerHealth>();
     }
 
     public override void FixedUpdateNetwork()
@@ -69,7 +72,21 @@ public class BrotherBehaviour : NetworkBehaviour
             return; // stop movement during attack
         }
 
-      
+        //prevents movement when dead
+        if (playerHealth.playerDead)
+        {
+            if (Object.HasInputAuthority)
+            {
+                animator.SetBool("isDead", true); //change sprite just for this player
+            }
+            if (Object.HasStateAuthority)
+            {
+                _cc.Move(Vector3.zero);
+                _cc.Velocity = Vector3.zero;
+            }
+            return;
+        }
+
         if (Object.HasStateAuthority)
         {
             Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
@@ -95,61 +112,7 @@ public class BrotherBehaviour : NetworkBehaviour
         if (lastMoveDir.x != 0)
             sr.flipX = lastMoveDir.x > 0;
 
-        ////sprite controller
-        //animator.SetBool("isIdle", false);
-        //animator.SetBool("isWalkingSide", false);
-        //animator.SetBool("isWalkingDown", false);
-        //animator.SetBool("isWalkingUp", false);
-
-        //if (data.direction.sqrMagnitude <= 0)
-        //{
-        //    animator.SetBool("isIdle", true);
-        //}
-        //else
-        //{
-        //    animator.SetBool("isIdle", false);
-        //}
-
-        //if (data.direction.x < 0) //left
-        //{
-        //    //Debug.Log("Left");
-        //    animator.SetBool("isWalkingSide", true);
-        //    sr.flipX = false;
-        //}
-        //else if (data.direction.x > 0) //right
-        //{
-        //    //Debug.Log("right");
-        //    animator.SetBool("isWalkingSide", true);
-        //    sr.flipX = true;
-        //}
-        //else if (data.direction.z < 0) //down
-        //{
-        //    //Debug.Log("down");
-        //    animator.SetBool("isWalkingDown", true);
-        //}
-        //else if (data.direction.z > 0) //up
-        //{
-        //    //Debug.Log("up");
-        //    animator.SetBool("isWalkingUp", true);
-        //}
-
-
-
-
-
-
-
-
-
-        ////hitbox rotation
-        //if (data.direction.sqrMagnitude > 0.01f) // only rotate when moving
-        //{
-
-        //    // Keep the hitbox in front of the player             
-        //    attackHitBox.position = transform.position + data.direction.normalized;
-        //}
-
-
+       
         ////hitbox rotation
         if (data.direction.sqrMagnitude > 0.01f)
         {
@@ -164,15 +127,15 @@ public class BrotherBehaviour : NetworkBehaviour
 
         }
 
-
+       
 
 
 
         //prevents movement while dashing
-        if (isDashing)
-        {
-            return;
-        }
+        //if (isDashing)
+        //{
+        //    return;
+        //}
 
         //transform.rotation = Quaternion.identity;
 

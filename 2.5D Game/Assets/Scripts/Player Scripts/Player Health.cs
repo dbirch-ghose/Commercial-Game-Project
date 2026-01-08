@@ -2,9 +2,11 @@ using UnityEngine;
 using Fusion;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-
+using TMPro;
+using System.Collections;
 public class PlayerHealth : NetworkBehaviour
 {
+    
     [Networked] public int health { get; set; }
     public int maxHealth = 3;
 
@@ -20,9 +22,15 @@ public class PlayerHealth : NetworkBehaviour
     private bool firstFrame = false;
     private float mathness;
 
+    public TextMeshProUGUI respawnText;
+    public int respawnTime = 3;
+    [Networked] public bool playerDead { get; set; }
+
     public override void Spawned()
     {
-        if (Object.HasStateAuthority)
+        if (!Object.HasStateAuthority)
+            return;
+
             health = maxHealth;
 
         pp = GameObject.FindWithTag("pp").GetComponent<Volume>();
@@ -33,6 +41,8 @@ public class PlayerHealth : NetworkBehaviour
         {
             vignette.intensity.overrideState = true;
         }
+
+        respawnText = RespawnUIManager.Instance.respawnText; //assigns respawn text
     }
 
     public override void FixedUpdateNetwork()
@@ -53,8 +63,12 @@ public class PlayerHealth : NetworkBehaviour
             vignetteProgress += 0.02f;
         }
 
-        if (health < 0)
+        if (health <= 0)
+        {
             health = 0;
+            Die();
+        }
+           
     }
 
     // Enemy requests damage
@@ -80,4 +94,32 @@ public class PlayerHealth : NetworkBehaviour
         health -= damage;
         Debug.Log($"Player took {damage} damage. Health now {health}");
     }
+
+
+    public void  Die()
+    {
+        if (Object.HasStateAuthority)
+        {
+            playerDead = true;
+        }
+
+        if (!Object.HasInputAuthority) return;
+        StartCoroutine(RespawnCountdown());
+
+    }
+
+    private IEnumerator RespawnCountdown()
+    {
+        respawnText.gameObject.SetActive(true);
+
+        float timer = respawnTime;
+
+        while (timer > 0)
+        {
+            respawnText.text = $"Respawning in {Mathf.Ceil(timer)}...";
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+    }
+
 }

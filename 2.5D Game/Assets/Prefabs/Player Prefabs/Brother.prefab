@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackHitBox: {fileID: 5552352203215606465}
+  playerHealth: {fileID: -6873496900376562824}
   moveSpeed: 5
   rotationSpeed: 10
   melee: {fileID: 3164364208155221034}
@@ -498,6 +499,9 @@ MonoBehaviour:
   maxHealth: 3
   hitCooldown: 2
   pp: {fileID: 0}
+  respawnText: {fileID: 0}
+  respawnTime: 3
+  playerDead: 0
 --- !u!114 &987132642229862964
 MonoBehaviour:
   m_ObjectHideFlags: 0
