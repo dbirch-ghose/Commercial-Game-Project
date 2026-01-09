@@ -390,6 +390,20 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: 
+  - id: 12
+    fields:
+    - title: Name
+      value: MetAck
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
   conversations:
   - id: 1
     fields:
@@ -6179,7 +6193,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 80
+        x: 79.29079
         y: 218
         width: 160
         height: 30
@@ -6625,8 +6639,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 579}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 0, y: 91.48935}
+    canvasZoom: 0.94
   - id: 7
     fields:
     - title: Title
@@ -9328,9 +9342,19 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: AudioWait(brother/meeting ackergaul 1-1)
+        value: 'AudioWait(brother/meeting ackergaul 1-1);
+
+'
         type: 0
         typeString: CustomFieldType_Text
+      - title: Response Menu Sequence
+        value: 
+        type: 0
+        typeString: 
+      - title: EventGuid
+        value: c3b7bc84-ae6a-44fd-9fbc-8ad819f19464
+        type: 0
+        typeString: 
       conversationID: 10
       isRoot: 0
       isGroup: 0
@@ -9345,8 +9369,8 @@ MonoBehaviour:
         destinationDialogueID: 2
         isConnector: 0
         priority: 2
-      conditionsString: 
-      userScript: 
+      conditionsString: Variable["MetAck"] == false
+      userScript: Variable["MetAck"] = true
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -9438,7 +9462,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: AudioWait(brother/meeting ackergaul 1-2)
+        value: 'AudioWait(brother/meeting ackergaul 1-2);
+
+          SpawnFlies()'
         type: 0
         typeString: 
       conversationID: 10
@@ -10181,7 +10207,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: AudioWait(brother/meeting ackergaul 2-cat3)
+        value: '
+
+          AudioWait(brother/meeting ackergaul 2-cat3)'
         type: 0
         typeString: 
       conversationID: 10
@@ -10204,8 +10232,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 921.0874}
-    canvasZoom: 0.75999975
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 0.5799999
   - id: 11
     fields:
     - title: Title

@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: -3559126841936407484}
   - component: {fileID: -593796244419594951}
   - component: {fileID: -4468341180275189482}
+  - component: {fileID: 2350096584421031566}
   m_Layer: 7
   m_Name: Sister(Cat)
   m_TagString: Player
@@ -494,7 +495,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   distanceFrom: 2
-  maxSelectionDistance: 30
+  maxSelectionDistance: 394.8
   runRaycasts: 1
   raycastAll: 1
   selectBehindUIObjects: 1
@@ -554,6 +555,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactPrompt: {fileID: 0}
+--- !u!114 &2350096584421031566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5160c56f5b4504e936d432ce05caea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6118444919685330054
 GameObject:
   m_ObjectHideFlags: 0

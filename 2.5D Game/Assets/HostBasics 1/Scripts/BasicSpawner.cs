@@ -25,6 +25,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private string _currentRoomName;
     public booksSpawner bookSpawner;
     public NetworkObject blockers;
+    private referencer referenceBlock;
     
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         {
             _currentRoomName = "TestRoom";
         }
+        referenceBlock = FindFirstObjectByType<referencer>();
     }
     
     private void OnGUI()
@@ -236,6 +238,25 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             blockers.gameObject.SetActive(false);
         }
         
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_spawnFlies()
+    {
+        if (referenceBlock == null)
+        {
+            Debug.Log("referencer is null");
+        }
+        Debug.Log("Running spawn flies");
+        if (referenceBlock.flyPrefab == null)
+        {
+            Debug.Log("fly prefab is null");
+        }
+        if (referenceBlock.flyDrop == null)
+        {
+            Debug.Log("flyDrop is null");
+        }
+        _runner.Spawn(referenceBlock.flyPrefab, referenceBlock.flyDrop.position);
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)

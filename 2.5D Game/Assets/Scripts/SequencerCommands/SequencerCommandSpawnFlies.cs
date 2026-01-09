@@ -1,3 +1,5 @@
+
+
 using UnityEngine;
 using System.Collections;
 using PixelCrushers.DialogueSystem;
@@ -6,26 +8,14 @@ using Fusion;
 namespace PixelCrushers.DialogueSystem.SequencerCommands
 {
 
-    public class SequencerCommandCageDrop : SequencerCommand
-    { 
-
+    public class SequencerCommandSpawnFlies : SequencerCommand
+    { // Rename to SequencerCommand<YourCommand>
+        private BasicSpawner runner;
         public void Awake()
         {
-
-
-            // Add your initialization code here. You can use the GetParameter***() and GetSubject()
-            // functions to get information from the command's parameters. You can also use the
-            // Sequencer property to access the SequencerCamera, CameraAngle, Speaker, Listener,
-            // SubtitleEndTime, and other properties on the sequencer. If IsAudioMuted() is true, 
-            // the player has muted audio.
-            //
-            // If your sequencer command only does something immediately and then finishes,
-            // you can call Stop() here and remove the Update() method:
-            //
-            // Stop();
-            //
-            // If you want to use a coroutine, use a Start() method in place of or in addition to
-            // this method.
+            runner = FindFirstObjectByType<BasicSpawner>();
+            runner.RPC_spawnFlies();
+            Stop();
         }
 
         public void Update()
