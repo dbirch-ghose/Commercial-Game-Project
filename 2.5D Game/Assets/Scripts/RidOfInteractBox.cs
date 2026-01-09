@@ -14,15 +14,14 @@ public class RidOfInteractBox : MonoBehaviour
         interactPrompt = FindFirstObjectByType<LiterallyJustHoldsAReferenceToThisText>(FindObjectsInactive.Include);
         prompt = interactPrompt.text;
         selector = GetComponent<Selector>();
-        selector.CustomPosition = transform.position;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        selector.CustomPosition=transform.position;
-        //Debug.Log("Selector position: " + selector.CustomPosition);
+        
         var usable = selector.CurrentUsable;
         //Debug.Log(usable);
         

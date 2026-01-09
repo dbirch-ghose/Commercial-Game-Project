@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 3003888394552394867}
   - component: {fileID: 6869844215730016366}
   - component: {fileID: -3875445635468489913}
+  - component: {fileID: -6009583989208885002}
   m_Layer: 7
   m_Name: Brother
   m_TagString: Player
@@ -501,7 +502,7 @@ MonoBehaviour:
   pp: {fileID: 0}
   respawnText: {fileID: 0}
   respawnTime: 3
-  playerDead: 0
+  _playerDead: 0
 --- !u!114 &987132642229862964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,10 +682,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   distanceFrom: 2
-  maxSelectionDistance: 300000
+  maxSelectionDistance: 300
   runRaycasts: 1
-  raycastAll: 0
-  selectBehindUIObjects: 0
+  raycastAll: 1
+  selectBehindUIObjects: 1
   useDefaultGUI: 0
   guiSkin: {fileID: 0}
   guiStyleName: label
@@ -727,6 +728,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactPrompt: {fileID: 0}
+--- !u!114 &-6009583989208885002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5160c56f5b4504e936d432ce05caea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6118444919685330054
 GameObject:
   m_ObjectHideFlags: 0
