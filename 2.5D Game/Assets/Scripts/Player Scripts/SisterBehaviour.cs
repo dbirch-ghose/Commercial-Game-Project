@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SisterBehaviour : NetworkBehaviour
 {
-    [SerializeField] private Rigidbody rb;
+    //[SerializeField] private Rigidbody rb;
     [SerializeField] private Transform attackHitBox;
 
     public PlayerHealth playerHealth;
@@ -32,9 +32,7 @@ public class SisterBehaviour : NetworkBehaviour
     private NetworkObject enemyNO;
     public NetworkObject thisDude;
 
-    
-
-
+    public BoarCharge boarCharge;
 
     private void Awake()
     {
@@ -42,7 +40,7 @@ public class SisterBehaviour : NetworkBehaviour
         thisDude = GetComponent<NetworkObject>();
     }
 
-   
+
 
     public override void Spawned()
     {
@@ -58,34 +56,92 @@ public class SisterBehaviour : NetworkBehaviour
     }
 
 
+    //public override void FixedUpdateNetwork()
+    //{
+    //if (!GetInput(out NetworkInputData data))
+    //{
+    //    return;
+    //}
+    ////prevents movement when dead
+    //if (playerHealth.playerDead)
+    //{
+    //    if (Object.HasInputAuthority)
+    //    {
+    //        animator.SetBool("isDead", true); //change sprite just for this player
+    //    }
+    //    if (Object.HasStateAuthority)
+    //    {
+    //        _cc.Move(Vector3.zero);
+    //        _cc.Velocity = Vector3.zero;
+    //    }
+    //    return;
+    //}
+
+    //if (boarCharge == null)
+    //{
+    //    return;
+    //}
+    //else if (HasStateAuthority && boarCharge.canCharge && Input.GetKeyDown(KeyCode.Space))
+    //{
+    //    boarCharge.StartCharge();
+    //    Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
+    //    _cc.Move(move * (moveSpeed + 5) * Runner.DeltaTime);
+    //}
+
+    //if (Object.HasStateAuthority)
+    //{
+    //    Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
+    //    _cc.Move(move * moveSpeed * Runner.DeltaTime);
+    //}
+    //if (!Object.HasInputAuthority)
+    //    return;
+
     public override void FixedUpdateNetwork()
     {
         if (!GetInput(out NetworkInputData data))
-        {
             return;
-        }
-        //prevents movement when dead
+
         if (playerHealth.playerDead)
         {
-            if (Object.HasInputAuthority)
-            {
-                animator.SetBool("isDead", true); //change sprite just for this player
-            }
             if (Object.HasStateAuthority)
             {
                 _cc.Move(Vector3.zero);
                 _cc.Velocity = Vector3.zero;
             }
+            if (Object.HasInputAuthority)
+                animator.SetBool("isDead", true);
+
             return;
         }
 
+        if (boarCharge == null)
+            return;
+
+        Vector3 moveDir = new Vector3(data.direction.x, 0, data.direction.z);
+
         if (Object.HasStateAuthority)
         {
-            Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
-            _cc.Move(move * moveSpeed * Runner.DeltaTime);
+            float speedToUse = moveSpeed;
+
+            // only triggers once when the button is pressed (edge)
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (boarCharge.TryStartCharge())
+                    speedToUse = moveSpeed + 5f; // burst this tick
+            }
+
+            // If you want the burst to last the whole chargeDuration:
+            if (boarCharge.IsCharging)
+                speedToUse = moveSpeed + 5f;
+
+            _cc.Move(moveDir * speedToUse * Runner.DeltaTime);
         }
+
         if (!Object.HasInputAuthority)
             return;
+
+
+
 
         //sprite controller
         animator.SetBool("isIdle", false);
@@ -140,23 +196,23 @@ public class SisterBehaviour : NetworkBehaviour
             Debug.Log("State authority: " + HasStateAuthority);
             Debug.Log("canPossess: " + canPossess);
         }
-        
-            if (HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("SA+canPosess+PressSpace");
-                BasicSpawner BS = FindFirstObjectByType<BasicSpawner>();
-                NetworkPrefabRef creatureType = wm.creatureType;
-                Vector3 spawnPoint = enemy.transform.position;
-                BS.RPC_RequestDestroy(enemyNO);
-                BS.WMSpawn(thisDude, creatureType, spawnPoint);
-                canPossess = false;
-            }
 
-            transform.rotation = Quaternion.identity;
+        if (HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("SA+canPosess+PressSpace");
+            BasicSpawner BS = FindFirstObjectByType<BasicSpawner>();
+            NetworkPrefabRef creatureType = wm.creatureType;
+            Vector3 spawnPoint = enemy.transform.position;
+            BS.RPC_RequestDestroy(enemyNO);
+            BS.WMSpawn(thisDude, creatureType, spawnPoint);
+            canPossess = false;
+        }
 
-        
+        transform.rotation = Quaternion.identity;
 
     }
+
+    
 
 
 
