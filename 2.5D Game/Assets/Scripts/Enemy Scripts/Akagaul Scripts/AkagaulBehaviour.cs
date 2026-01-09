@@ -9,6 +9,7 @@ public class AkagaulBehaviour : NetworkBehaviour
     public Transform player2;
     public Transform closestPlayer; //target
 
+    [Networked] public bool IsDead { get; private set; }
 
     //-------------------ATTACK-LOGIC--------------------
     [Networked] public bool attackFinished { get; set; }
@@ -76,6 +77,7 @@ public class AkagaulBehaviour : NetworkBehaviour
     public void StartAttackLoop()
     {
         isAttacking = false;
+        if (IsDead) return;
         if (!Object.HasStateAuthority) return;
         if (!isAttacking)
         {
@@ -105,6 +107,14 @@ public class AkagaulBehaviour : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
 
+        if (IsDead)
+        {
+            animator.SetBool("isDead", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isThrowing", false);
+            animator.SetBool("isSlashing", false);
+            return;
+        }
 
         if (Object.HasStateAuthority && basicSpawner.players.Count < 2)
         {
@@ -184,7 +194,8 @@ public class AkagaulBehaviour : NetworkBehaviour
             meleePoint.position = transform.position + direction;
         }
 
-        Die();
+
+
     }
 
 
@@ -224,7 +235,7 @@ public class AkagaulBehaviour : NetworkBehaviour
             //Debug.Log("Attacks have started");
             isAttacking = true; //marks that the attacks have started
 
-            while (true)
+            while (!IsDead)
             {
                 if (closestPlayer == null)
                 {
@@ -489,9 +500,17 @@ public class AkagaulBehaviour : NetworkBehaviour
         attackFinished = true; //reset attack
     }
 
-    void Die() 
+    public void Die() 
     {
-               
+        if (!Object.HasStateAuthority)
+        {
+            return;
+        }
+        IsDead = true;
+        isAttacking = false;
+        attackFinished = true;
+        animator.SetBool("isDead", true);    
+
     }
 
 }

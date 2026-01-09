@@ -10331,7 +10331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.14
+      value: 8.65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10401,6 +10401,14 @@ PrefabInstance:
       propertyPath: SortKey
       value: 3979404123
       objectReference: {fileID: 0}
+    - target: {fileID: 105788330011254947, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[3]'
+      value: 
+      objectReference: {fileID: 764843124}
+    - target: {fileID: 105788330011254947, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[4]'
+      value: 
+      objectReference: {fileID: 764843130}
     - target: {fileID: 4624568364146604923, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -10411,11 +10419,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7028788027444238098, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
       propertyPath: 'StateHashes.Array.data[9]'
-      value: 20298039
+      value: 842689153
       objectReference: {fileID: 0}
     - target: {fileID: 7028788027444238098, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
       propertyPath: 'StateHashes.Array.data[10]'
-      value: -1482263730
+      value: -571717371
       objectReference: {fileID: 0}
     - target: {fileID: 7346529955126550825, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
       propertyPath: m_LocalScale.x
@@ -10489,10 +10497,14 @@ PrefabInstance:
       propertyPath: basicSpawner
       value: 
       objectReference: {fileID: 1837907119}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7016556936469653477, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8558386934288724700, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 764843130}
   m_SourcePrefab: {fileID: 100100000, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
 --- !u!4 &646520711 stripped
 Transform:
@@ -11458,7 +11470,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8847508433338515602, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
   m_PrefabInstance: {fileID: 646520710}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 764843120}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64869cd41fafefe4f9ccb6607976de8a, type: 3}
@@ -12279,6 +12291,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759953124}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &764843120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8558386934288724700, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
+  m_PrefabInstance: {fileID: 646520710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &764843124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 85296675519609744, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
+  m_PrefabInstance: {fileID: 646520710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764843120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &764843130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764843120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5885788a8026598469803661d796d042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  akBehaviour: {fileID: 738581838}
+  _Health: 16
 --- !u!1 &768452300
 GameObject:
   m_ObjectHideFlags: 0
