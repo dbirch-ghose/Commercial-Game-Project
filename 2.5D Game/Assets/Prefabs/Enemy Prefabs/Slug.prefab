@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3365072059349016101}
   - component: {fileID: -6527948409861631479}
   - component: {fileID: -9019110566960436607}
-  - component: {fileID: -6012874578814569621}
+  - component: {fileID: 3968711165606683948}
   m_Layer: 6
   m_Name: Slug
   m_TagString: Enemy
@@ -95,7 +95,7 @@ MonoBehaviour:
   - {fileID: 181608195125352407}
   - {fileID: 3365072059349016101}
   - {fileID: -9019110566960436607}
-  - {fileID: -6012874578814569621}
+  - {fileID: 3968711165606683948}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &6625734536598446962
 SpriteRenderer:
@@ -162,10 +162,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.31999996
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 2
+  m_Acceleration: 1
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 50
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-6012874578814569621
+--- !u!114 &3968711165606683948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,15 +327,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7746849647774398464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f77e1dda73d3b4d895c970336aa3f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 52b6de59d41fdf54097b96231675c693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 4332793676669693793}
-  range: 0
-  player: {fileID: 0}
-  isPatrolling: 0
   player1: {fileID: 0}
   player2: {fileID: 0}
   closestPlayer: {fileID: 0}
   basicSpawner: {fileID: 0}
-  sr: {fileID: 0}
+  sr: {fileID: 6625734536598446962}

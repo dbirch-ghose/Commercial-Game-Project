@@ -6,17 +6,18 @@ public class SpecimenController : NetworkBehaviour
     public BoulderTrigger boulderTrigger;
 
     public bool pickup = false;
-
+    public bool specActive;
 
     public Animator animator;
     public SpriteRenderer sr;
 
-    private void Start()
+    public override void Spawned()
     {
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         GameObject boulder = GameObject.FindGameObjectWithTag("Boulder");
         boulderTrigger = boulder.GetComponent<BoulderTrigger>();
+        specActive = true;
     }
 
 

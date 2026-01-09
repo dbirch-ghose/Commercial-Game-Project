@@ -172,10 +172,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b705842955aa34a89466d5f9c3f230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   attackHitBox: {fileID: 5552352203215606465}
+  playerHealth: {fileID: -6873496900376562824}
   moveSpeed: 5
   rotationSpeed: 10
+  melee: {fileID: 3164364208155221034}
+  lastMoveDir: {x: 0, y: -1}
   animator: {fileID: 2801503880117492055}
   sr: {fileID: 6952026797092074400}
   tr: {fileID: 1370922366899988754}
@@ -197,7 +199,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackDuration: 0.2
+  attackHitDelay: 0.3
   damage: 2
+  isAttacking: 0
+  brother: {fileID: 3695285539236546572}
   animator: {fileID: 0}
 --- !u!95 &2801503880117492055
 Animator:
@@ -475,9 +480,9 @@ MonoBehaviour:
   Animator: {fileID: 2801503880117492055}
   ApplyTiming: 2
   SyncSettings: 79
-  StateHashes: 000000005cf06304f9b484bbe339287afe3eef3d6db2564570b59102d0c53fc0f3753c66
-  TriggerHashes: 00000000
-  TotalWords: 1
+  StateHashes: 000000005cf06304f9b484bb46980c4f14c273660d286c404e865f43
+  TriggerHashes: 000000000d286c40
+  TotalWords: 3
 --- !u!114 &-6873496900376562824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,6 +499,9 @@ MonoBehaviour:
   maxHealth: 3
   hitCooldown: 2
   pp: {fileID: 0}
+  respawnText: {fileID: 0}
+  respawnTime: 3
+  playerDead: 0
 --- !u!114 &987132642229862964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,8 +753,8 @@ Transform:
   m_GameObject: {fileID: 6118444919685330054}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.004040712, y: -0.058628205, z: 1.214}
-  m_LocalScale: {x: 0.5985172, y: 0.5512266, z: 0.4161993}
+  m_LocalPosition: {x: -0.0040407, y: -0.058628205, z: 1.214}
+  m_LocalScale: {x: 0.43151626, y: 0.3974209, z: 0.3000695}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2345808246448839495}
