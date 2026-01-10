@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: -593796244419594951}
   - component: {fileID: -4468341180275189482}
   - component: {fileID: 2350096584421031566}
+  - component: {fileID: 8492026379352516845}
   m_Layer: 7
   m_Name: Sister(Cat)
   m_TagString: Player
@@ -176,7 +177,7 @@ MonoBehaviour:
   pp: {fileID: 0}
   respawnText: {fileID: 0}
   respawnTime: 3
-  playerDead: 0
+  _playerDead: 0
 --- !u!95 &2801503880117492055
 Animator:
   serializedVersion: 7
@@ -293,6 +294,7 @@ MonoBehaviour:
   - {fileID: 2711720695803682713}
   - {fileID: 8135002595893628874}
   - {fileID: 5254509116522753159}
+  - {fileID: 8492026379352516845}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &2561638298929355857
 CharacterController:
@@ -364,7 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4060d8bfc4a07094ea6bfd2177e4401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   attackHitBox: {fileID: 5552352203215606465}
   playerHealth: {fileID: 7096440744150042362}
   moveSpeed: 8
@@ -571,6 +572,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5160c56f5b4504e936d432ce05caea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8492026379352516845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 2801503880117492055}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 0000000028ebb5b21b5890859936667b7754ae0e372fe390dcec6b6da868a44f0d2c43f0d2284d53105a8cf1
+  TriggerHashes: 00000000
+  TotalWords: 1
 --- !u!1 &6118444919685330054
 GameObject:
   m_ObjectHideFlags: 0
