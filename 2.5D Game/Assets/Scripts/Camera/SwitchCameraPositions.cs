@@ -1,7 +1,7 @@
 using UnityEngine;
-using Fusion;
 
-public class SwitchCameraPosition : NetworkBehaviour
+
+public class SwitchCameraPosition : MonoBehaviour
 {
     public Camera cam;
     public Transform position;
