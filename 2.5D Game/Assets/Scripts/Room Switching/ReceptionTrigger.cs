@@ -1,7 +1,7 @@
 using UnityEngine;
 using Fusion;
 
-public class ReceptionTrigger : MonoBehaviour
+public class ReceptionTrigger : NetworkBehaviour
 {
     public SwitchCameraPosition switchCameraPosition;
 
@@ -16,15 +16,16 @@ public class ReceptionTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (Object.HasStateAuthority)
-        //{
-        //Runner.Despawn(FrontWall.GetComponent<NetworkObject>());
-        //    Runner.Spawn(Barrier, BarrierPos.position);
-        //    inReception = true;
-        //}
+
+        if (Object.HasInputAuthority)
+        {
+            //Runner.Despawn(FrontWall.GetComponent<NetworkObject>());s
+            Runner.Spawn(Barrier, BarrierPos.position);
+            inReception = true;
+        }
         //Destroy(FrontWall.GetComponent<NetworkObject>());
-        Instantiate(Barrier, BarrierPos.position, Quaternion.Euler(0f, 90f, 0f));
-        inReception = true;
+        //Instantiate(Barrier, BarrierPos.position, Quaternion.Euler(0f, 90f, 0f));
+        //inReception = true;
 
         if (other.gameObject.CompareTag("Player"))
         {
