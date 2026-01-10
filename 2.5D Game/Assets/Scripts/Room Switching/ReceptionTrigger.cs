@@ -20,7 +20,7 @@ public class ReceptionTrigger : NetworkBehaviour
         if (other.GetComponent<NetworkObject>().HasInputAuthority)
         {
             //Runner.Despawn(FrontWall.GetComponent<NetworkObject>());s
-            Runner.Spawn(Barrier, BarrierPos.position);
+            Instantiate(Barrier, BarrierPos.position, Quaternion.Euler(0f, 90f, 0f));
             inReception = true;
         }
         //Destroy(FrontWall.GetComponent<NetworkObject>());
