@@ -129,7 +129,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 //{
                 //    Rpc_EnableIntroDialogue();
                 //}
-                bookSpawner.spawnBooks();
+                //bookSpawner.spawnBooks();
             }
             // Keep track of the player avatars for easy access
 
