@@ -500,7 +500,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   distanceFrom: 2
-  maxSelectionDistance: 394.8
+  maxSelectionDistance: 300
   runRaycasts: 1
   raycastAll: 1
   selectBehindUIObjects: 1
