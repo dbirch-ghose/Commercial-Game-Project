@@ -17752,7 +17752,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 882711709}
-  - component: {fileID: 882711710}
   m_Layer: 10
   m_Name: Front Wall
   m_TagString: Untagged
@@ -17781,25 +17780,6 @@ Transform:
   - {fileID: 968298887}
   m_Father: {fileID: 369454196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &882711710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882711708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 3530139110
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects:
-  - {fileID: 968298889}
-  NetworkedBehaviours: []
-  ForceRemoteRenderTimeframe: 0
 --- !u!1 &884837272
 GameObject:
   m_ObjectHideFlags: 0
@@ -19409,9 +19389,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 968298889}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 968298888}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       insertIndex: -1
@@ -19440,31 +19417,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchCameraPosition: {fileID: 803771405}
-  FrontWall: {fileID: 882711708}
   BarrierPos: {fileID: 803826565}
   Barrier: {fileID: 4605030560135993855, guid: 1218136bf3834bb43bf7e6cf27867017, type: 3}
   CamPos: {fileID: 1935540299}
   inReception: 0
   cam: {fileID: 803771400}
---- !u!114 &968298889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968298886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 236616827
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 968298888}
-  ForceRemoteRenderTimeframe: 0
 --- !u!65 &968298890
 BoxCollider:
   m_ObjectHideFlags: 0

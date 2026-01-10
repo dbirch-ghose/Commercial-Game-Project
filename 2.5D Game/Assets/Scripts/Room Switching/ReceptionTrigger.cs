@@ -5,7 +5,7 @@ public class ReceptionTrigger : MonoBehaviour
 {
     public SwitchCameraPosition switchCameraPosition;
 
-    public GameObject FrontWall;
+    //public GameObject FrontWall;
     public Transform BarrierPos;
     public GameObject Barrier;
 
@@ -22,8 +22,8 @@ public class ReceptionTrigger : MonoBehaviour
         //    Runner.Spawn(Barrier, BarrierPos.position);
         //    inReception = true;
         //}
-        Destroy(FrontWall.GetComponent<NetworkObject>());
-        Instantiate(Barrier, BarrierPos.position, Quaternion.identity);
+        //Destroy(FrontWall.GetComponent<NetworkObject>());
+        Instantiate(Barrier, BarrierPos.position, Quaternion.Euler(0f, 90f, 0f));
         inReception = true;
 
         if (other.gameObject.CompareTag("Player"))
