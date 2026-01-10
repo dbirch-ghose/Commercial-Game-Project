@@ -17,7 +17,7 @@ public class ReceptionTrigger : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (Object.HasInputAuthority)
+        if (other.GetComponent<NetworkObject>().HasInputAuthority)
         {
             //Runner.Despawn(FrontWall.GetComponent<NetworkObject>());s
             Runner.Spawn(Barrier, BarrierPos.position);
