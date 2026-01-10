@@ -97,40 +97,38 @@ public class SisterBehaviour : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (!GetInput(out NetworkInputData data))
-            return;
 
+        if (!GetInput(out NetworkInputData data))
+        {
+            return;
+        }
+       
+
+        //prevents movement when dead
         if (playerHealth.playerDead)
         {
+            if (Object.HasInputAuthority)
+            {
+                animator.SetBool("isDead", true); //change sprite just for this player
+            }
             if (Object.HasStateAuthority)
             {
                 _cc.Move(Vector3.zero);
                 _cc.Velocity = Vector3.zero;
             }
-            if (Object.HasInputAuthority)
-                animator.SetBool("isDead", true);
-
             return;
         }
 
-      
-        Vector3 moveDir = new Vector3(data.direction.x, 0, data.direction.z);
-
         if (Object.HasStateAuthority)
         {
-            float speedToUse = moveSpeed;
-
-
-            _cc.Move(moveDir * speedToUse * Runner.DeltaTime);
+            Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
+            _cc.Move(move * moveSpeed * Runner.DeltaTime);
         }
-
         if (!Object.HasInputAuthority)
             return;
 
 
-
-
-        //sprite controller
+            //sprite controller
         animator.SetBool("isIdle", false);
         animator.SetBool("isWalkingSide", false);
         animator.SetBool("isWalkingDown", false);
