@@ -71,7 +71,6 @@ GameObject:
   - component: {fileID: 8997859700591429814}
   - component: {fileID: -7819401095198963635}
   - component: {fileID: 7726629685439152115}
-  - component: {fileID: -8204167123913352204}
   - component: {fileID: 1852701822258074987}
   - component: {fileID: -737498313518983688}
   m_Layer: 6
@@ -151,7 +150,6 @@ MonoBehaviour:
   - {fileID: 4070723270344646432}
   - {fileID: 8997859700591429814}
   - {fileID: 7726629685439152115}
-  - {fileID: -8204167123913352204}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &6765918275768450128
 SpriteRenderer:
@@ -374,24 +372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8204167123913352204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2632556834967718471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f77e1dda73d3b4d895c970336aa3f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 4478904888170107638}
-  player1: {fileID: 0}
-  player2: {fileID: 0}
-  closestPlayer: {fileID: 0}
-  basicSpawner: {fileID: 0}
-  sr: {fileID: 6765918275768450128}
 --- !u!114 &1852701822258074987
 MonoBehaviour:
   m_ObjectHideFlags: 0

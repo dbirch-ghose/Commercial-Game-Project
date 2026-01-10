@@ -32,7 +32,6 @@ public class SisterBehaviour : NetworkBehaviour
     private NetworkObject enemyNO;
     public NetworkObject thisDude;
 
-    public BoarCharge boarCharge;
 
     private void Awake()
     {
@@ -114,25 +113,13 @@ public class SisterBehaviour : NetworkBehaviour
             return;
         }
 
-        if (boarCharge == null)
-            return;
-
+      
         Vector3 moveDir = new Vector3(data.direction.x, 0, data.direction.z);
 
         if (Object.HasStateAuthority)
         {
             float speedToUse = moveSpeed;
 
-            // only triggers once when the button is pressed (edge)
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (boarCharge.TryStartCharge())
-                    speedToUse = moveSpeed + 5f; // burst this tick
-            }
-
-            // If you want the burst to last the whole chargeDuration:
-            if (boarCharge.IsCharging)
-                speedToUse = moveSpeed + 5f;
 
             _cc.Move(moveDir * speedToUse * Runner.DeltaTime);
         }
