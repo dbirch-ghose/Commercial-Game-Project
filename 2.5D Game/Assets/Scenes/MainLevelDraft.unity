@@ -3448,13 +3448,17 @@ PrefabInstance:
       value: 1361512512
       objectReference: {fileID: 0}
     - target: {fileID: 7669671476717919590, guid: d3f2f56f81ff48846a57718b42eb1ee5, type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7669671476717919590, guid: d3f2f56f81ff48846a57718b42eb1ee5, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[1]'
       value: 
-      objectReference: {fileID: 1445596664}
+      objectReference: {fileID: 1445596662}
     - target: {fileID: 7669671476717919590, guid: d3f2f56f81ff48846a57718b42eb1ee5, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[2]'
       value: 
-      objectReference: {fileID: 1445596662}
+      objectReference: {fileID: 1445596674}
     - target: {fileID: 7669671476717919590, guid: d3f2f56f81ff48846a57718b42eb1ee5, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[3]'
       value: 
@@ -8267,6 +8271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   akagaulBehaviour: {fileID: 938646784}
+  switchCameraPosition: {fileID: 0}
+  CamPos: {fileID: 0}
 --- !u!114 &723870842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10832,6 +10838,7 @@ MonoBehaviour:
   player1: {fileID: 0}
   player2: {fileID: 0}
   closestPlayer: {fileID: 0}
+  _IsDead: 0
   _attackFinished: 0
   _isAttacking: 0
   meleePoint: {fileID: 838502904}
@@ -10921,7 +10928,7 @@ MonoBehaviour:
   Animator: {fileID: 938646786}
   ApplyTiming: 2
   SyncSettings: 79
-  StateHashes: 000000002b1a167c79406955d52d0810cfbc32fa132b555809ba6fb26bd5a32d398fdc04
+  StateHashes: 000000002b1a167c79406955d52d0810cfbc32fa132b555809ba6fb26bd5a32d398fdc04816a3a320549ecdd
   TriggerHashes: 00000000
   TotalWords: 4
 --- !u!114 &938646788
@@ -12201,9 +12208,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e8fada2a79bbd42b4bae39bd5697be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cage: {fileID: 1755719850}
+  cage: {fileID: 0}
   cutscene: {fileID: 1849415708}
   starter: {fileID: 140605435}
+  flyPrefab:
+    RawGuidValue: 00000000000000000000000000000000
+  flyDrop: {fileID: 0}
 --- !u!4 &1175725623
 Transform:
   m_ObjectHideFlags: 0
@@ -12250,7 +12260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fd46e90ee47814e952fd8c4f365f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cage: {fileID: 1755719850}
+  cage: {fileID: 0}
   upMove: {x: 0, y: 0, z: 0}
   counter: 10
   running: 0
@@ -14309,17 +14319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1445596664 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1277631781597559538, guid: d3f2f56f81ff48846a57718b42eb1ee5, type: 3}
-  m_PrefabInstance: {fileID: 318328694}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445596659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &1445596666 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 5311764507021847886, guid: d3f2f56f81ff48846a57718b42eb1ee5, type: 3}
@@ -14343,14 +14342,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1445596666}
-  range: 0
-  player: {fileID: 0}
-  isPatrolling: 0
   player1: {fileID: 0}
   player2: {fileID: 0}
   closestPlayer: {fileID: 0}
   basicSpawner: {fileID: 17664353}
   sr: {fileID: 1445596668}
+--- !u!114 &1445596674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7115852991211114015, guid: d3f2f56f81ff48846a57718b42eb1ee5, type: 3}
+  m_PrefabInstance: {fileID: 318328694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445596659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1466190107
 GameObject:
   m_ObjectHideFlags: 0
@@ -14404,7 +14411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fd46e90ee47814e952fd8c4f365f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cage: {fileID: 1755719850}
+  cage: {fileID: 0}
   upMove: {x: 0, y: 0, z: 0}
   counter: 10
   running: 0
@@ -17020,17 +17027,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5666451723920358500, guid: 9222980c014d2544389e831795a8257d, type: 3}
   m_PrefabInstance: {fileID: 6739467812406746716}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1755719850 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1396607396131358874, guid: 9222980c014d2544389e831795a8257d, type: 3}
-  m_PrefabInstance: {fileID: 6739467812406746716}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755719843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1774132668
 GameObject:
   m_ObjectHideFlags: 0

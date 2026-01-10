@@ -7597,7 +7597,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 8
@@ -8391,8 +8391,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 1034.5}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 7.5601807, y: 0}
+    canvasZoom: 0.96999997
   - id: 9
     fields:
     - title: Title
@@ -9218,11 +9218,11 @@ MonoBehaviour:
     - title: Title
       value: Meeting Ackergaul
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Description
       value: 
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Actor
       value: 4
       type: 5

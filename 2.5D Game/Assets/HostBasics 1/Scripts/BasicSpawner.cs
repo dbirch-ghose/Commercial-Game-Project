@@ -243,19 +243,19 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_spawnFlies()
     {
-        if (referenceBlock == null)
-        {
-            Debug.Log("referencer is null");
-        }
-        Debug.Log("Running spawn flies");
-        if (referenceBlock.flyPrefab == null)
-        {
-            Debug.Log("fly prefab is null");
-        }
-        if (referenceBlock.flyDrop == null)
-        {
-            Debug.Log("flyDrop is null");
-        }
+        //if (referenceBlock == null)
+        //{
+        //    Debug.Log("referencer is null");
+        //}
+        //Debug.Log("Running spawn flies");
+        //if (referenceBlock.flyPrefab == null)
+        //{
+        //    Debug.Log("fly prefab is null");
+        //}
+        //if (referenceBlock.flyDrop == null)
+        //{
+        //    Debug.Log("flyDrop is null");
+        //}
         _runner.Spawn(referenceBlock.flyPrefab, referenceBlock.flyDrop.position);
     }
 
