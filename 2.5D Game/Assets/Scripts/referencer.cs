@@ -9,6 +9,7 @@ public class referencer : MonoBehaviour
     public NetworkObject starter;
     public NetworkPrefabRef flyPrefab;
     public Transform flyDrop;
+    public NetworkObject cageDoor;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
