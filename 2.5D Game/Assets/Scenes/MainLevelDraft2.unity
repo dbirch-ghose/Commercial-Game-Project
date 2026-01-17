@@ -15717,7 +15717,7 @@ MonoBehaviour:
   anotherQuestEntryNumber: 1
   anotherQuestEntryState: 0
   luaCode: 
-  sequence: 
+  sequence: CageOpen();
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
   waitOneFrameOnStartOrEnable: 1
@@ -15737,7 +15737,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: Specimen - Brother
+  conversation: 
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 751685441}
   startConversationEntryID: -1
@@ -21811,6 +21811,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8497784986542614875, guid: 9222980c014d2544389e831795a8257d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1046676670}
+    - targetCorrespondingSourceObject: {fileID: 8497784986542614875, guid: 9222980c014d2544389e831795a8257d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1046676672}
+    - targetCorrespondingSourceObject: {fileID: 8497784986542614875, guid: 9222980c014d2544389e831795a8257d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1046676673}
   m_SourcePrefab: {fileID: 100100000, guid: 9222980c014d2544389e831795a8257d, type: 3}
 --- !u!1 &1046676669 stripped
 GameObject:
@@ -21839,6 +21845,43 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1046676672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046676669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 2148907632
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1046676673}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &1046676673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046676669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 1046676670}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 0000000059152c10b2d6a4ed958341e27e40c91f
+  TriggerHashes: 00000000
+  TotalWords: 1
 --- !u!4 &1046676675 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5666451723920358500, guid: 9222980c014d2544389e831795a8257d, type: 3}
@@ -29090,7 +29133,8 @@ MonoBehaviour:
   SortKey: 3239814140
   ObjectInterest: 1
   Flags: 262145
-  NestedObjects: []
+  NestedObjects:
+  - {fileID: 1046676672}
   NetworkedBehaviours:
   - {fileID: 1471560787}
   ForceRemoteRenderTimeframe: 0
@@ -34083,6 +34127,7 @@ MonoBehaviour:
   flyPrefab:
     RawGuidValue: d3f2f56f81ff48846a57718b42eb1ee5
   flyDrop: {fileID: 1286211575}
+  cageDoor: {fileID: 1046676672}
 --- !u!1 &1700223502
 GameObject:
   m_ObjectHideFlags: 0

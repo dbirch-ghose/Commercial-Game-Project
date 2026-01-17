@@ -8,17 +8,19 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
 
     public class SequencerCommandCageOpen : SequencerCommand
     {
-        private NetworkObject cage;
-        private cageOpen referenceBlock;
+        private NetworkObject cageDoor;
+        private referencer referenceBlock;
+        private Animator anim;
         
         public void Awake()
         {
-            Debug.Log("Running awake");
-            referenceBlock = FindFirstObjectByType<cageOpen>();
-            referenceBlock.openCage();
-            
-            
-            
+            Debug.Log("Open Cage Sequence Run");
+            referenceBlock = FindFirstObjectByType<referencer>();
+            cageDoor = referenceBlock.cageDoor;
+            anim = cageDoor.GetComponent<Animator>();
+            anim.SetBool("isOpen", true);
+
+            Stop();
         }
 
         public void Update()
