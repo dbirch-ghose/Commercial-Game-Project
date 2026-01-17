@@ -15,7 +15,12 @@ public class InfirmaryTrigger: NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!Object.HasStateAuthority) return;
+        var playerNO = other.GetComponentInParent<NetworkObject>();
+        if (playerNO == null)
+            return;
+
+        if (!playerNO.HasInputAuthority)
+            return;
         if (onCooldown) return;
 
         StartCoroutine(Cooldown());
