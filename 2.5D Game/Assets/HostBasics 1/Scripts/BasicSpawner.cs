@@ -1,6 +1,7 @@
 using Fusion;
 using Fusion.Addons.Physics;
 using Fusion.Sockets;
+using MoreMountains.Feel;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -14,7 +15,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     [Header("Room Configuration")]
     [Tooltip("Enable to read room name from RoomConfig.txt on desktop")]
     public bool useRoomConfigFile = true;
-    
+
     public Vector3 spawnPoint;
     private NetworkRunner _runner;
     private PlayerRef Possessor;
@@ -27,7 +28,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     public booksSpawner bookSpawner;
     public NetworkObject blockers;
     private referencer referenceBlock;
-    
+
     private void Awake()
     {
         // Load the configured room name when the scene starts
@@ -42,7 +43,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         referenceBlock = FindFirstObjectByType<referencer>();
         referencer = FindFirstObjectByType<LuaChanger>();
     }
-    
+
     private void OnGUI()
     {
         if (_runner == null)
@@ -50,19 +51,19 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             // Display the current room ID at the top
             string roomLabel = useRoomConfigFile ? $"Room ID: {_currentRoomName}" : $"Room ID: {_currentRoomName} (Default)";
             GUI.Label(new Rect(210, 10, 400, 30), roomLabel);
-            
+
             if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
             {
                 StartGame(GameMode.Host);
                 //starter.SetActive(true);
-                
+
             }
 
             if (GUI.Button(new Rect(0, 40, 200, 40), "Join"))
             {
                 StartGame(GameMode.Client);
                 //starter.SetActive(true);
-                
+
             }
         }
     }
@@ -82,7 +83,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         if (scene.IsValid) {
             sceneInfo.AddSceneRef(scene, LoadSceneMode.Additive);
         }
-        
+
         // Start or join (depends on gamemode) a session with a specific name
         await _runner.StartGame(new StartGameArgs()
         {
@@ -100,7 +101,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkPrefabRef _player2Prefab;// Character to spawn for a joining player
 
     public Dictionary<PlayerRef, NetworkObject> _spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
-    public List<NetworkObject> players =  new List<NetworkObject>();
+    public List<NetworkObject> players = new List<NetworkObject>();
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
@@ -111,14 +112,14 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             //Vector3 spawnPosition = new Vector3((player.RawEncoded % runner.Config.Simulation.PlayerCount) * 3, 1, 0);
             Vector3 spawnPosition = new Vector3();
             spawnPosition = this.GetComponent<Transform>().position;
-            
+
             if (_spawnedCharacters.Count == 0)
             {
                 Possessor = player;
                 NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
-                
+
 
             }
             else
@@ -143,11 +144,19 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         introDialogue.gameObject.SetActive(true);
     }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
+    {
+        Rpc_WMSpawn(fallen, enemyType, spawnPosition);
+
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void Rpc_WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
     {
         _runner.Despawn(fallen);
         NetworkObject networkPlayerObject = _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
-        
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
