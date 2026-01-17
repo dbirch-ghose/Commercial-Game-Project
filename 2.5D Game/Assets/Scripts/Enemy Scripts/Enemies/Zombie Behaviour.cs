@@ -32,7 +32,7 @@ public class ZombieBehaviour : NetworkBehaviour
         StartCoroutine(InitNavMesh());
     }
 
-    IEnumerator InitNavMesh()
+   IEnumerator InitNavMesh()
     {
         yield return null; //  wait one frame
 
