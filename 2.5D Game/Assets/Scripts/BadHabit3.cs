@@ -1,9 +1,11 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using Fusion;
 
-public class BadHabit3 : MonoBehaviour
+public class BadHabit3 : NetworkBehaviour
 {
     public bool down;
+    public GameObject container;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,8 +13,16 @@ public class BadHabit3 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
-        
+        if (down)
+        {
+            container.transform.eulerAngles = new Vector3(180f, 180f, 0f);
+        }
+        else
+        {
+            container.transform.eulerAngles = new Vector3(0f, 180f, 0f);
+
+        }
     }
 }
