@@ -123,16 +123,19 @@ public class SisterBehaviour : NetworkBehaviour
         {
             Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
             _cc.Move(move * moveSpeed * Runner.DeltaTime);
-        }
-        if (!Object.HasInputAuthority)
-            return;
-
-
-            //sprite controller
+        }    
+        
+        //sprite controller
         animator.SetBool("isIdle", false);
         animator.SetBool("isWalkingSide", false);
         animator.SetBool("isWalkingDown", false);
         animator.SetBool("isWalkingUp", false);
+
+
+        
+
+
+        
 
         if (data.direction.sqrMagnitude <= 0)
         {
@@ -165,6 +168,9 @@ public class SisterBehaviour : NetworkBehaviour
             //Debug.Log("up");
             animator.SetBool("isWalkingUp", true);
         }
+        
+        if (!Object.HasInputAuthority)
+            return;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -178,11 +184,11 @@ public class SisterBehaviour : NetworkBehaviour
             }
 
             Debug.Log("Space Pressed");
-            Debug.Log("State authority: " + HasStateAuthority);
+            Debug.Log("Is player 2: " + !HasStateAuthority);
             Debug.Log("canPossess: " + canPossess);
         }
 
-        if (HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
+        if (!HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("SA+canPosess+PressSpace");
             BasicSpawner BS = FindFirstObjectByType<BasicSpawner>();
