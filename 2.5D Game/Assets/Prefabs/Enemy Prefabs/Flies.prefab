@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: -1513356651680713491}
   - component: {fileID: 5928544986267321290}
   - component: {fileID: 7115852991211114015}
+  - component: {fileID: 2524690305038167242}
   m_Layer: 8
   m_Name: Flies
   m_TagString: Enemy
@@ -84,6 +85,7 @@ MonoBehaviour:
   - {fileID: 1277631781597559538}
   - {fileID: -6695040329176390754}
   - {fileID: 7115852991211114015}
+  - {fileID: 2524690305038167242}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &1458775385567441961
 SpriteRenderer:
@@ -359,6 +361,19 @@ MonoBehaviour:
   StateHashes: 00000000845de1f60612ad73
   TriggerHashes: 00000000
   TotalWords: 0
+--- !u!114 &2524690305038167242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725473329694757749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067e1ec249fd6f8428ac6cda2c95be8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 5311764507021847886}
 --- !u!1 &5148935760147914837
 GameObject:
   m_ObjectHideFlags: 0

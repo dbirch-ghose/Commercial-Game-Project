@@ -332,32 +332,15 @@ public class AkagaulBehaviour : NetworkBehaviour
 
         while (horseCount < 2)
         {
-            //targetPos = Random.Range(-15f, 15f); //random spawn height
             targetPos = closestPlayer.position.z; //gets the players z axis position
-
             bool spawnLeft = Random.value > 0.5f; //randomly choose left or right spawn each time                
-
             Vector3 spawnPos = spawnLeft ? new Vector3(leftSpawnX, 1.5f, targetPos) : new Vector3(rightSpawnX, 1.5f, targetPos);
-
-            //Vector3 spawnPos = new Vector3(rightSpawnX, 1.5f, targetPos); //spawn horse on the right
-
             NetworkObject horse = Runner.Spawn(Horse, spawnPos, Quaternion.identity);
-            //NetworkObject horse2 = Runner.Spawn(Horse2, spawnPos, Quaternion.identity);
             horse.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
-
-            //int randHorse = UnityEngine.Random.Range(0, 2);  
-            //if (randHorse == 0)
-            //{
-            //    horse.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
-            //}
-            //else if (randHorse == 1) 
-            //{
-            //    horse2.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
-
-            //}
             yield return new WaitForSeconds(2f); // duration of attack
             horseCount ++;
         }
+
         attackFinished = true;
     }
 
