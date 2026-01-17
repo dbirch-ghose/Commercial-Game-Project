@@ -1,12 +1,15 @@
-using UnityEngine;
 using Fusion;
+using System;
+using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class ShelfController : NetworkBehaviour
 {
     public NetworkObject shelf1;
     public NetworkObject shelf2;
-    private int shelf1Pos;
-    private int shelf2Pos;
+    public badHabit1 Lever1;
+    public badHabit2 Lever2;
+    public BadHabit3 Lever3;
     private int currentFormation;
     private int newFormation;
     public bool lever1Down;
@@ -31,13 +34,58 @@ public class ShelfController : NetworkBehaviour
         shelf1right = false;
         shelf2right = false;
         i = 0;
+        Lever1 = FindFirstObjectByType<badHabit1>();
+        Lever2 = FindFirstObjectByType<badHabit2>();
+        Lever3 = FindFirstObjectByType<BadHabit3>();
     }
 
     public override void FixedUpdateNetwork()
     {
+        lever1Down=Lever1.down;
+        lever2Down=Lever2.down;
+        lever3Down=Lever3.down;
         if(moving)
         {
+            if (i <= 100)
+            {
+                if (HasStateAuthority)
+                {
 
+                    if (shelf1left)
+                    {
+                        Vector3 NewPos = shelf1.transform.position;
+                        NewPos = new Vector3(NewPos.x - 0.015f, NewPos.y, NewPos.z);
+                        shelf1.transform.position = NewPos;
+                    }
+                    if (shelf2left)
+                    {
+                        Vector3 NewPos = shelf2.transform.position;
+                        NewPos = new Vector3(NewPos.x - 0.015f, NewPos.y, NewPos.z);
+                        shelf2.transform.position = NewPos;
+                    }
+                    if (shelf1right)
+                    {
+                        Vector3 NewPos = shelf1.transform.position;
+                        NewPos = new Vector3(NewPos.x + 0.015f, NewPos.y, NewPos.z);
+                        shelf1.transform.position = NewPos;
+                    }
+                    if (shelf2right)
+                    {
+                        Vector3 NewPos = shelf2.transform.position;
+                        NewPos = new Vector3(NewPos.x + 0.015f, NewPos.y, NewPos.z);
+                        shelf2.transform.position = NewPos;
+                    }
+                }
+                i++;
+            }
+            else
+            {
+                moving = false;
+                shelf1left = false;
+                shelf1right = false;
+                shelf2left = false;
+                shelf2right = false;
+            }
         }
         if (!moving)
         {
