@@ -23,11 +23,8 @@ public class ReceptionTrigger : NetworkBehaviour
             return;
         switchCameraPosition.MoveCamera(CamPos); //move cam
         switchCameraPosition.ShowRoom("Reception");
-       inReception = true;
-        
-        Instantiate(Barrier, BarrierPos.position, Quaternion.Euler(0f, 90f, 0f));
-        
-
+        inReception = true;
+        Barrier.GetComponent<BoxCollider>().enabled = true;
     }
    
 }
