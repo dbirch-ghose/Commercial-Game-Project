@@ -3,6 +3,7 @@ using Fusion.Addons.Physics;
 using Fusion.Sockets;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Unity.Collections.Unicode;
@@ -257,6 +258,18 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         //    Debug.Log("flyDrop is null");
         //}
         _runner.Spawn(referenceBlock.flyPrefab, referenceBlock.flyDrop.position);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_requestMove(GameObject block, Vector3 move)
+    {
+        RPC_applyMove(block, move);
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_applyMove(GameObject block, Vector3 move)
+    {
+        
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)

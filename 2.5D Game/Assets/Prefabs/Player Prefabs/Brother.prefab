@@ -421,6 +421,7 @@ MonoBehaviour:
   - {fileID: 1582468450323258006}
   - {fileID: -6873496900376562824}
   - {fileID: 6641858240176466760}
+  - {fileID: -6009583989208885002}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &2561638298929355857
 CharacterController:
@@ -481,7 +482,7 @@ MonoBehaviour:
   Animator: {fileID: 2801503880117492055}
   ApplyTiming: 2
   SyncSettings: 79
-  StateHashes: 000000005cf06304f9b484bb46980c4f14c273660d286c404e865f43
+  StateHashes: 000000005cf06304f9b484bb46980c4f14c273660d286c404e865f43d2284d53105a8cf1
   TriggerHashes: 000000000d286c40
   TotalWords: 3
 --- !u!114 &-6873496900376562824
