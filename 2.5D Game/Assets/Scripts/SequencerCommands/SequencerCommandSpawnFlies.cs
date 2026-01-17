@@ -10,11 +10,11 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
 
     public class SequencerCommandSpawnFlies : SequencerCommand
     { // Rename to SequencerCommand<YourCommand>
-        private BasicSpawner runner;
+        private spawnFlies flies;
         public void Awake()
         {
-            runner = FindFirstObjectByType<BasicSpawner>();
-            runner.RPC_spawnFlies();
+            flies = FindFirstObjectByType<spawnFlies>();
+            flies.spawnFliesPlease();
             Stop();
         }
 
