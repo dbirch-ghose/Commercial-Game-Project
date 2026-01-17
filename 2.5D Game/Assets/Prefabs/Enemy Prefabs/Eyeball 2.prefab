@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 51349158577787858}
   - component: {fileID: 4162653654497708123}
   - component: {fileID: 2070143301672068571}
-  - component: {fileID: 9093376636895929810}
   - component: {fileID: 1366102137546972831}
   - component: {fileID: 1508755342096609668}
   - component: {fileID: 5916703040415248811}
   - component: {fileID: 2399235329619172737}
   - component: {fileID: 767756405016441738}
+  - component: {fileID: -3385773225458909246}
   m_Layer: 6
   m_Name: Eyeball 2
   m_TagString: Enemy
@@ -56,7 +56,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -93,9 +93,9 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 51349158577787858}
-  - {fileID: 9093376636895929810}
   - {fileID: 5916703040415248811}
   - {fileID: 767756405016441738}
+  - {fileID: -3385773225458909246}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &2070143301672068571
 SpriteRenderer:
@@ -152,27 +152,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9093376636895929810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8253752617659761988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd26e8aaf4c3d84a9de56e46029394b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 1366102137546972831}
-  range: 0
-  centerPoint: {fileID: 0}
-  player: {fileID: 0}
-  isPatrolling: 1
-  basicSpawner: {fileID: 0}
-  sr: {fileID: 2070143301672068571}
-  enemyTakeDamage: {fileID: 5916703040415248811}
-  health: 0
 --- !u!195 &1366102137546972831
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -183,10 +162,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.31999996
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 1.5
+  m_Acceleration: 2
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 50
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -229,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  _Health: 2
 --- !u!82 &2399235329619172737
 AudioSource:
   m_ObjectHideFlags: 0
@@ -339,3 +318,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3385773225458909246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8253752617659761988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b6de59d41fdf54097b96231675c693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1366102137546972831}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  closestPlayer: {fileID: 0}
+  basicSpawner: {fileID: 0}
+  sr: {fileID: 2070143301672068571}

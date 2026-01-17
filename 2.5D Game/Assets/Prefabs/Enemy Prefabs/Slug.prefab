@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 181608195125352407}
   - component: {fileID: 989193953708401519}
   - component: {fileID: 6625734536598446962}
-  - component: {fileID: 724169659726726594}
   - component: {fileID: 4332793676669693793}
   - component: {fileID: 7113415494262090421}
   - component: {fileID: 3365072059349016101}
   - component: {fileID: -6527948409861631479}
   - component: {fileID: -9019110566960436607}
+  - component: {fileID: 3968711165606683948}
   m_Layer: 6
   m_Name: Slug
   m_TagString: Enemy
@@ -56,7 +56,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -93,9 +93,9 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 181608195125352407}
-  - {fileID: 724169659726726594}
   - {fileID: 3365072059349016101}
   - {fileID: -9019110566960436607}
+  - {fileID: 3968711165606683948}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &6625734536598446962
 SpriteRenderer:
@@ -152,27 +152,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &724169659726726594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7746849647774398464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd26e8aaf4c3d84a9de56e46029394b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 4332793676669693793}
-  range: 0
-  centerPoint: {fileID: 0}
-  player: {fileID: 0}
-  isPatrolling: 1
-  basicSpawner: {fileID: 0}
-  sr: {fileID: 6625734536598446962}
-  enemyTakeDamage: {fileID: 3365072059349016101}
-  health: 0
 --- !u!195 &4332793676669693793
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -183,10 +162,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.31999996
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 2
+  m_Acceleration: 1
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 50
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -229,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  _Health: 2
 --- !u!82 &-6527948409861631479
 AudioSource:
   m_ObjectHideFlags: 0
@@ -339,3 +318,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3968711165606683948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746849647774398464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b6de59d41fdf54097b96231675c693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 4332793676669693793}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  closestPlayer: {fileID: 0}
+  basicSpawner: {fileID: 0}
+  sr: {fileID: 6625734536598446962}

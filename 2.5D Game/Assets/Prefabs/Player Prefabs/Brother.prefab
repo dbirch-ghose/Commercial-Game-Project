@@ -102,7 +102,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -127,13 +127,16 @@ GameObject:
   - component: {fileID: 3890313211348492213}
   - component: {fileID: 2561638298929355857}
   - component: {fileID: 2711720695803682713}
-  - component: {fileID: 5570596403354127645}
-  - component: {fileID: 4026150392290727815}
   - component: {fileID: 1582468450323258006}
   - component: {fileID: -6873496900376562824}
   - component: {fileID: 987132642229862964}
   - component: {fileID: -4166366289235254577}
   - component: {fileID: 6641858240176466760}
+  - component: {fileID: -6040872421063224628}
+  - component: {fileID: 3003888394552394867}
+  - component: {fileID: 6869844215730016366}
+  - component: {fileID: -3875445635468489913}
+  - component: {fileID: -6009583989208885002}
   m_Layer: 7
   m_Name: Brother
   m_TagString: Player
@@ -150,8 +153,8 @@ Transform:
   m_GameObject: {fileID: 2538751722601739453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.7624557, y: 3.2899122, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.464}
+  m_LocalScale: {x: 1.64, y: 1.434025, z: 0.43588552}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5552352203215606465}
@@ -170,14 +173,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b705842955aa34a89466d5f9c3f230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   attackHitBox: {fileID: 5552352203215606465}
+  playerHealth: {fileID: -6873496900376562824}
   moveSpeed: 5
   rotationSpeed: 10
+  melee: {fileID: 3164364208155221034}
+  lastMoveDir: {x: 0, y: -1}
   animator: {fileID: 2801503880117492055}
   sr: {fileID: 6952026797092074400}
   tr: {fileID: 1370922366899988754}
-  camera: {fileID: 0}
 --- !u!114 &3164364208155221034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +200,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackDuration: 0.2
+  attackHitDelay: 0.3
   damage: 2
+  isAttacking: 0
+  brother: {fileID: 3695285539236546572}
   animator: {fileID: 0}
 --- !u!95 &2801503880117492055
 Animator:
@@ -455,73 +462,10 @@ MonoBehaviour:
   _stateAuthorityChangeErrorCorrectionDelta: 0
   gravity: -20
   jumpImpulse: 8
-  acceleration: 25
-  braking: 15
-  maxSpeed: 8
-  rotationSpeed: 15
---- !u!114 &5570596403354127645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2538751722601739453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624654ff0a68ee844994f728ddf3d991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectAt: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  distanceFrom: 0
-  maxSelectionDistance: 30
-  runRaycasts: 1
-  raycastAll: 0
-  selectBehindUIObjects: 0
-  useDefaultGUI: 1
-  guiSkin: {fileID: 0}
-  guiStyleName: label
-  alignment: 1
-  textStyle: 1
-  textStyleColor: {r: 0, g: 0, b: 0, a: 1}
-  inRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  outOfRangeColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  reticle:
-    inRange: {fileID: 0}
-    outOfRange: {fileID: 0}
-    width: 64
-    height: 64
-  useKey: 32
-  useButton: Fire2
-  m_defaultUseMessage: (spacebar to interact)
-  broadcastToChildren: 1
-  actorTransform: {fileID: 0}
-  tooFarMessage: 
-  onSelectedUsable:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselectedUsable:
-    m_PersistentCalls:
-      m_Calls: []
-  tooFarEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  debug: 0
---- !u!114 &4026150392290727815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2538751722601739453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32095748196e98742ac7c69d6f80d997, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mass: 1
+  acceleration: 550
+  braking: 550
+  maxSpeed: 3.5
+  rotationSpeed: 0
 --- !u!114 &1582468450323258006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,9 +481,9 @@ MonoBehaviour:
   Animator: {fileID: 2801503880117492055}
   ApplyTiming: 2
   SyncSettings: 79
-  StateHashes: 000000005cf06304f9b484bbe339287afe3eef3d6db2564570b59102d0c53fc0f3753c66
-  TriggerHashes: 00000000
-  TotalWords: 1
+  StateHashes: 000000005cf06304f9b484bb46980c4f14c273660d286c404e865f43
+  TriggerHashes: 000000000d286c40
+  TotalWords: 3
 --- !u!114 &-6873496900376562824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,6 +498,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 0
   maxHealth: 3
+  hitCooldown: 2
+  pp: {fileID: 0}
+  respawnText: {fileID: 0}
+  respawnTime: 3
+  _playerDead: 0
 --- !u!114 &987132642229862964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +542,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.97265863
   MaxDistance: 20
   Pan2D: 0
   rolloffMode: 0
@@ -681,6 +630,116 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6040872421063224628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f17d3292d455242a47944a59dea99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagSpecificElements: []
+  layerSpecificElements: []
+--- !u!65 &3003888394552394867
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.64, y: 0.6399999, z: 0.19999997}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6869844215730016366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624654ff0a68ee844994f728ddf3d991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectAt: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  distanceFrom: 2
+  maxSelectionDistance: 300
+  runRaycasts: 1
+  raycastAll: 1
+  selectBehindUIObjects: 1
+  useDefaultGUI: 0
+  guiSkin: {fileID: 0}
+  guiStyleName: label
+  alignment: 1
+  textStyle: 1
+  textStyleColor: {r: 0, g: 0, b: 0, a: 1}
+  inRangeColor: {r: 1, g: 0.23587458, b: 0.015686274, a: 1}
+  outOfRangeColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  reticle:
+    inRange: {fileID: 0}
+    outOfRange: {fileID: 0}
+    width: 64
+    height: 64
+  useKey: 101
+  useButton: Fire2
+  m_defaultUseMessage: (E to interact)
+  broadcastToChildren: 1
+  actorTransform: {fileID: 2345808246448839495}
+  tooFarMessage: 
+  onSelectedUsable:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselectedUsable:
+    m_PersistentCalls:
+      m_Calls: []
+  tooFarEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  debug: 0
+--- !u!114 &-3875445635468489913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935b493d021615148a4e243f33a3558a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactPrompt: {fileID: 0}
+--- !u!114 &-6009583989208885002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5160c56f5b4504e936d432ce05caea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6118444919685330054
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,8 +766,8 @@ Transform:
   m_GameObject: {fileID: 6118444919685330054}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.004040712, y: -0.058628205, z: 0.87}
-  m_LocalScale: {x: 0.41206002, y: 0.37950197, z: 0.28653997}
+  m_LocalPosition: {x: -0.0040407, y: -0.058628205, z: 1.214}
+  m_LocalScale: {x: 0.43151626, y: 0.3974209, z: 0.3000695}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2345808246448839495}

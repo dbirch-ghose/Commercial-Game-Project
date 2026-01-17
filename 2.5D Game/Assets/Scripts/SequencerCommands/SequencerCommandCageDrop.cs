@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using PixelCrushers.DialogueSystem;
 using Fusion;
+using Fusion.Addons.Physics;
 
 namespace PixelCrushers.DialogueSystem.SequencerCommands
 {
@@ -12,6 +13,7 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
         private referencer referenceBlock;
         public void Awake()
         {
+            //Debug.Log("cage should drop");
             referenceBlock = FindFirstObjectByType<referencer>();
             cage = referenceBlock.cage;
             cage.GetComponent<Rigidbody>().useGravity = true;

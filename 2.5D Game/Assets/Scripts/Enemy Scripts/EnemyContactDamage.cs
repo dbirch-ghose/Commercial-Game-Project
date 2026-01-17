@@ -1,23 +1,3 @@
-//using Fusion;
-//using UnityEngine;
-
-//public class EnemyContactDamage : NetworkBehaviour
-//{
-//    public PlayerHealth playerHealth;
-//    public int damage = 1;
-
-
-//    void OnCollisionEnter(Collision collision)
-//    {
-
-//        if (collision.gameObject.tag == "Player")
-//        {
-//            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>(); //reference to the players health
-
-//            playerHealth.TakeDamage(damage);
-//        } 
-//    }
-//}
 using UnityEngine;
 using Fusion;
 
@@ -25,18 +5,23 @@ public class EnemyContactDamage : NetworkBehaviour
 {
     public int damage = 1;
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // Get the PlayerHealth component
-            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+        if (!Object.HasStateAuthority)
+            return;
 
-            if (playerHealth != null)
-            {
-                // Directly apply damage like the acid vial does
-                playerHealth.RPC_TakeDamage(1);
-            }
+        if (!other.CompareTag("Player"))
+            return;
+
+        // Get the PlayerHealth component on the root player object
+        PlayerHealth playerHealth = other.GetComponentInParent<PlayerHealth>();
+        if (playerHealth == null)
+        {
+            Debug.LogWarning("PlayerHealth not found on " + other.name);
+            return;
         }
+
+        // Ask the player to take damage via RPC
+        playerHealth.RPC_TakeDamage(damage);
     }
 }

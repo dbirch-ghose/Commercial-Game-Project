@@ -10,16 +10,17 @@ GameObject:
   m_Component:
   - component: {fileID: 7295786447584201708}
   - component: {fileID: 4476700561490172347}
-  - component: {fileID: 3960207990117012470}
   - component: {fileID: 7669671476717919590}
   - component: {fileID: 1458775385567441961}
-  - component: {fileID: 2081582170870817187}
   - component: {fileID: 5311764507021847886}
   - component: {fileID: 2155730171528846476}
   - component: {fileID: 1277631781597559538}
   - component: {fileID: -23946935443168101}
   - component: {fileID: -6695040329176390754}
-  m_Layer: 6
+  - component: {fileID: -1513356651680713491}
+  - component: {fileID: 5928544986267321290}
+  - component: {fileID: 7115852991211114015}
+  m_Layer: 8
   m_Name: Flies
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -36,7 +37,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.35, y: -0.86, z: -16.544512}
-  m_LocalScale: {x: 4.785357, y: 4.785357, z: 4.785357}
+  m_LocalScale: {x: 1.909166, y: 1.909166, z: 1.909166}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7161950331861661141}
@@ -61,21 +62,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.32399106, y: 0.1996805, z: 0.17207746}
-  m_Center: {x: 0.013170986, y: -0.020866716, z: -0.0020214398}
---- !u!114 &3960207990117012470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725473329694757749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bbf5cccad4e4534fa3fc2c65588f8b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
+  m_Size: {x: 0.2996227, y: 0.1996805, z: 0.17207748}
+  m_Center: {x: 0.0009865359, y: -0.020866714, z: -0.002021437}
 --- !u!114 &7669671476717919590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,10 +81,9 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 3960207990117012470}
-  - {fileID: 2081582170870817187}
   - {fileID: 1277631781597559538}
   - {fileID: -6695040329176390754}
+  - {fileID: 7115852991211114015}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &1458775385567441961
 SpriteRenderer:
@@ -153,27 +140,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2081582170870817187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725473329694757749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd26e8aaf4c3d84a9de56e46029394b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 5311764507021847886}
-  range: 0
-  centerPoint: {fileID: 0}
-  player: {fileID: 0}
-  isPatrolling: 1
-  basicSpawner: {fileID: 0}
-  sr: {fileID: 1458775385567441961}
-  enemyTakeDamage: {fileID: 1277631781597559538}
-  health: 0
 --- !u!195 &5311764507021847886
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -230,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be47ee2e0eb3cf74d84748957a798a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  _Health: 1
 --- !u!82 &-23946935443168101
 AudioSource:
   m_ObjectHideFlags: 0
@@ -242,11 +208,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Resource: {fileID: 8300000, guid: 4a81c252164ca844b9331a0047b50741, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -340,6 +306,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1513356651680713491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725473329694757749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa0f0a0c9c8a38428df87c04906065d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creatureType:
+    RawGuidValue: 94dda340732ae214cb88285bd33105a1
+--- !u!65 &5928544986267321290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725473329694757749}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.61, y: 0.4906113, z: 0.6901754}
+  m_Center: {x: -0.011000291, y: 0.08530559, z: 0.069394685}
+--- !u!114 &7115852991211114015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725473329694757749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 2155730171528846476}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 00000000845de1f60612ad73
+  TriggerHashes: 00000000
+  TotalWords: 0
 --- !u!1 &5148935760147914837
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +371,7 @@ GameObject:
   - component: {fileID: 8575685216526896249}
   - component: {fileID: 9033503282641438076}
   - component: {fileID: 6875701448696393177}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

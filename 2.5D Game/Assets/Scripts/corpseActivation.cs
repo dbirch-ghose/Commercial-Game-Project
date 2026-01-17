@@ -26,7 +26,7 @@ public class corpseActivation : NetworkBehaviour
             {
                 leftMove = Hanger.GetComponent<Rigidbody>().position;
                 Debug.Log("Running update");
-                leftMove = new Vector3(leftMove.x-0.25f, leftMove.y, leftMove.z);
+                leftMove = new Vector3(leftMove.x-0.2f, leftMove.y, leftMove.z);
                 Hanger.GetComponent<Rigidbody>().MovePosition(leftMove);
 
                 counter += 1;

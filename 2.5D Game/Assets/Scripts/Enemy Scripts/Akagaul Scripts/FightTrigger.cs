@@ -4,6 +4,8 @@ using UnityEngine;
 public class FightTrigger : NetworkBehaviour
 {
     public AkagaulBehaviour akagaulBehaviour;
+    public SwitchCameraPosition switchCameraPosition;
+    public Transform CamPos;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,6 +14,7 @@ public class FightTrigger : NetworkBehaviour
 
 
         Debug.Log("collision with trigger wall");
+        switchCameraPosition.MoveCamera(CamPos);
         if (akagaulBehaviour != null)
         {
             NetworkObject bossNetObj = akagaulBehaviour.GetComponent<NetworkObject>();
@@ -23,7 +26,7 @@ public class FightTrigger : NetworkBehaviour
         }
     
 
-        //network safe destroy
+        //network safe destroyAW
         if (Runner != null)
         {
             Runner.Despawn(Object);

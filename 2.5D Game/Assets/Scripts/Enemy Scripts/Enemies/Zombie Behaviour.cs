@@ -7,117 +7,109 @@ using Fusion;
 public class ZombieBehaviour : NetworkBehaviour
 {
     public NavMeshAgent agent;
-    public float range;
-    public Transform centerPoint;
 
-    public Transform player;
-    public bool isPatrolling = true;
+    public Transform player1;
+    public Transform player2;
+    public Transform closestPlayer;
 
     public BasicSpawner basicSpawner;
-
     public SpriteRenderer sr;
 
- 
+    private bool navReady = false;
+    private bool waitingForPlayers = false;
+
     public override void Spawned()
     {
+        if (!Object.HasStateAuthority)
+            return;
+
         agent = GetComponent<NavMeshAgent>();
-        agent.enabled = Object.HasStateAuthority; //allows nav mesh to work with fusion
-
-
-        //player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
-
+        agent.enabled = true;
 
         sr = GetComponent<SpriteRenderer>();
+        basicSpawner = FindFirstObjectByType<BasicSpawner>();
 
-        
-
+        StartCoroutine(InitNavMesh());
     }
 
-    IEnumerator WaitForPlayer()
+    IEnumerator InitNavMesh()
     {
-        var p = basicSpawner.players[0];
-        if (p != null)
+        yield return null; //  wait one frame
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(transform.position, out hit, 2f, NavMesh.AllAreas))
         {
-            player = p.transform;
-            Debug.Log("slime found player");
-            yield break;
+            agent.Warp(hit.position);
+            navReady = true;
         }
-        yield return null;
     }
 
     public override void FixedUpdateNetwork()
     {
+        if (!Object.HasStateAuthority || !navReady)
+            return;
 
-        if (Object.HasStateAuthority)
+        if (!waitingForPlayers && player1 == null)
         {
-            StartCoroutine(WaitForPlayer()); //waits for player ref
+            waitingForPlayers = true;
+            StartCoroutine(WaitForPlayer());
+            return;
         }
 
-        if (isPatrolling == true) //patrol is on by defualt
-        {
-            Patrol();
-        }
-
-        Chase();
+        if (player1 == null)
+            return;
 
         agent.updateRotation = false; //locks rotation
 
-        Vector3 velocity = agent.velocity;
 
-        //flip sprite based on movement direction
-        if (velocity.x > 0.1f)
-            sr.flipX = false;  
-        else if (velocity.x < -0.1f)
-            sr.flipX = true;
-
+        UpdateClosestPlayer();
+        Chase();
+        UpdateSprite();
     }
 
-    bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    IEnumerator WaitForPlayer()
     {
-        Vector3 randomPoint = center + Random.insideUnitSphere * range; //makes a random point in a sphere
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
-        {
-            result = hit.position;
-            return true;
-        }
-        result = Vector3.zero;
-        return false;
+        while (basicSpawner.players.Count == 0)
+            yield return null;
 
+        player1 = basicSpawner.players[0].transform;
+
+        if (basicSpawner.players.Count > 1)
+            player2 = basicSpawner.players[1].transform;
     }
 
-    void Patrol()
+    void UpdateClosestPlayer()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance) 
+        if (player2 == null)
         {
-            Vector3 point;
-            if (RandomPoint(centerPoint.position, range, out point)) 
-            {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                agent.SetDestination(point); //sets agent destination to the random point everytime it reaches it
-            }
+            closestPlayer = player1;
+            return;
         }
+
+        float d1 = Vector3.Distance(player1.position, transform.position);
+        float d2 = Vector3.Distance(player2.position, transform.position);
+
+        closestPlayer = d1 < d2 ? player1 : player2;
     }
 
     void Chase()
     {
-        if (player == null)
-        {
-            Debug.Log("no player for slime");
+        if (closestPlayer == null)
             return;
-        }  //checks for player 
 
-        float distance = Vector3.Distance(player.transform.position, transform.position);
-        if (distance <= 5)
+        float distance = Vector3.Distance(closestPlayer.position, transform.position);
+
+        if (distance <= 5f)
         {
-            agent.SetDestination(player.position); //sets the agent destination to the player
-            isPatrolling = false;
-        }
-        else if (distance > 5 )
-        {
-            isPatrolling = true;
+            agent.SetDestination(closestPlayer.position);
         }
     }
 
-    
+    void UpdateSprite()
+    {
+        Vector3 v = agent.velocity;
+
+        if (v.x > 0.1f) sr.flipX = false;
+        else if (v.x < -0.1f) sr.flipX = true;
+    }
 }

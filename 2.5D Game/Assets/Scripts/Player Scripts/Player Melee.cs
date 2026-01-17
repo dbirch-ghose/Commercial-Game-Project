@@ -8,9 +8,11 @@ public class PlayerMelee : NetworkBehaviour
     public float attackRange = 1f;
     public LayerMask enemyLayers;
     public float attackDuration = 0.6f;
+    public float attackHitDelay = 0.3f;
     public int damage = 2;
 
-    private bool isAttacking;
+    public bool isAttacking;
+    public BrotherBehaviour brother;
 
     public Animator animator;
 
@@ -35,14 +37,23 @@ public class PlayerMelee : NetworkBehaviour
     {
         isAttacking = true;
 
-        animator.SetBool("isHitting", true);
+        animator.SetFloat("MoveX", brother.LastMoveDir.x);
+        animator.SetFloat("MoveY", brother.LastMoveDir.y);
+        animator.SetTrigger("Attack");
+
+        if (Mathf.Abs(brother.LastMoveDir.x) > 0.01f)
+        {
+            brother.sr.flipX = brother.LastMoveDir.x > 0; // adjust depending on default sprite
+        }
+
+        yield return new WaitForSeconds(attackHitDelay); // hit frame delay before applying damage
 
         // Client-side hit detection
         Collider[] hitEnemies = Physics.OverlapSphere(
-            attackPoint.position,
-            attackRange,
-            enemyLayers
-        );
+                attackPoint.position,
+                attackRange,
+                enemyLayers
+            );
 
         foreach (Collider enemy in hitEnemies)
         {
@@ -54,9 +65,8 @@ public class PlayerMelee : NetworkBehaviour
             }
         }
 
-        yield return new WaitForSeconds(attackDuration);
+        yield return new WaitForSeconds(attackDuration - attackHitDelay);
 
-        animator.SetBool("isHitting", false);
         isAttacking = false;
     }
 

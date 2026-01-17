@@ -126,11 +126,15 @@ GameObject:
   - component: {fileID: 3890313211348492213}
   - component: {fileID: 2561638298929355857}
   - component: {fileID: 2711720695803682713}
-  - component: {fileID: 5570596403354127645}
   - component: {fileID: 8664453253486213449}
   - component: {fileID: 8135002595893628874}
   - component: {fileID: 1924123746650476238}
   - component: {fileID: 5254509116522753159}
+  - component: {fileID: -3559126841936407484}
+  - component: {fileID: -593796244419594951}
+  - component: {fileID: -4468341180275189482}
+  - component: {fileID: 2350096584421031566}
+  - component: {fileID: 8492026379352516845}
   m_Layer: 7
   m_Name: Sister(Cat)
   m_TagString: Player
@@ -148,7 +152,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3524003, y: 2.0569518, z: 0.62523}
+  m_LocalScale: {x: 1.3127805, y: 1.1479025, z: 0.34891585}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5552352203215606465}
@@ -169,7 +173,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 0
   maxHealth: 3
+  hitCooldown: 2
   pp: {fileID: 0}
+  respawnText: {fileID: 0}
+  respawnTime: 3
+  _playerDead: 0
 --- !u!95 &2801503880117492055
 Animator:
   serializedVersion: 7
@@ -286,6 +294,7 @@ MonoBehaviour:
   - {fileID: 2711720695803682713}
   - {fileID: 8135002595893628874}
   - {fileID: 5254509116522753159}
+  - {fileID: 8492026379352516845}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &2561638298929355857
 CharacterController:
@@ -327,60 +336,10 @@ MonoBehaviour:
   _stateAuthorityChangeErrorCorrectionDelta: 0
   gravity: -20
   jumpImpulse: 8
-  acceleration: 25
-  braking: 50
-  maxSpeed: 8
-  rotationSpeed: 15
---- !u!114 &5570596403354127645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2538751722601739453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624654ff0a68ee844994f728ddf3d991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectAt: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  distanceFrom: 0
-  maxSelectionDistance: 30
-  runRaycasts: 1
-  raycastAll: 0
-  selectBehindUIObjects: 0
-  useDefaultGUI: 1
-  guiSkin: {fileID: 0}
-  guiStyleName: label
-  alignment: 1
-  textStyle: 1
-  textStyleColor: {r: 0, g: 0, b: 0, a: 1}
-  inRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  outOfRangeColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  reticle:
-    inRange: {fileID: 0}
-    outOfRange: {fileID: 0}
-    width: 64
-    height: 64
-  useKey: 32
-  useButton: Fire2
-  m_defaultUseMessage: (spacebar to interact)
-  broadcastToChildren: 1
-  actorTransform: {fileID: 0}
-  tooFarMessage: 
-  onSelectedUsable:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselectedUsable:
-    m_PersistentCalls:
-      m_Calls: []
-  tooFarEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  debug: 0
+  acceleration: 550
+  braking: 550
+  maxSpeed: 4
+  rotationSpeed: 0
 --- !u!114 &8664453253486213449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,13 +366,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4060d8bfc4a07094ea6bfd2177e4401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   attackHitBox: {fileID: 5552352203215606465}
+  playerHealth: {fileID: 7096440744150042362}
   moveSpeed: 8
   rotationSpeed: 10
   animator: {fileID: 2801503880117492055}
   sr: {fileID: 6952026797092074400}
   camera: {fileID: 0}
+  thisDude: {fileID: 0}
 --- !u!82 &1924123746650476238
 AudioSource:
   m_ObjectHideFlags: 0
@@ -523,6 +483,113 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3559126841936407484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624654ff0a68ee844994f728ddf3d991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectAt: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  distanceFrom: 2
+  maxSelectionDistance: 300
+  runRaycasts: 1
+  raycastAll: 1
+  selectBehindUIObjects: 1
+  useDefaultGUI: 0
+  guiSkin: {fileID: 0}
+  guiStyleName: label
+  alignment: 1
+  textStyle: 1
+  textStyleColor: {r: 0, g: 0, b: 0, a: 1}
+  inRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  outOfRangeColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  reticle:
+    inRange: {fileID: 0}
+    outOfRange: {fileID: 0}
+    width: 64
+    height: 64
+  useKey: 101
+  useButton: Fire2
+  m_defaultUseMessage: (E to interact)
+  broadcastToChildren: 1
+  actorTransform: {fileID: 2345808246448839495}
+  tooFarMessage: 
+  onSelectedUsable:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselectedUsable:
+    m_PersistentCalls:
+      m_Calls: []
+  tooFarEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  debug: 1
+--- !u!114 &-593796244419594951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f17d3292d455242a47944a59dea99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagSpecificElements: []
+  layerSpecificElements: []
+--- !u!114 &-4468341180275189482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935b493d021615148a4e243f33a3558a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactPrompt: {fileID: 0}
+--- !u!114 &2350096584421031566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5160c56f5b4504e936d432ce05caea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8492026379352516845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 2801503880117492055}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 0000000028ebb5b21b5890859936667b7754ae0e372fe390dcec6b6da868a44f0d2c43f0d2284d53105a8cf1
+  TriggerHashes: 00000000
+  TotalWords: 1
 --- !u!1 &6118444919685330054
 GameObject:
   m_ObjectHideFlags: 0

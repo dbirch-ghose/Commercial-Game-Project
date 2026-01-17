@@ -10,6 +10,8 @@ TagManager:
   - pp
   - player1Canvas
   - player2Canvas
+  - SpawnTrigger
+  - Boulder
   layers:
   - Default
   - TransparentFX
@@ -21,15 +23,15 @@ TagManager:
   - Player
   - Fly
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Overworld
+  - Reception
+  - Infirmary
+  - Jail
+  - Library
+  - Stairway
+  - Study
+  - Storage
+  - Operating Theatre
   - 
   - 
   - 

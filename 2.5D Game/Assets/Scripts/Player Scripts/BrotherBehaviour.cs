@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class BrotherBehaviour : NetworkBehaviour
 {
-    [SerializeField] private Rigidbody rb;
+    //[SerializeField] private Rigidbody rb;
     [SerializeField] private Transform attackHitBox;
 
+    public PlayerHealth playerHealth;
 
     public float moveSpeed = 5f;
     public float rotationSpeed = 10f;
 
-    private Vector2 inputDirection;
+    public PlayerMelee melee;
 
-    private Vector3 lastMoveDir;
+    private Vector2 inputDirection;
+    public Vector2 lastMoveDir = Vector2.down;
+    public Vector2 LastMoveDir => lastMoveDir; // read-only
+    
+
+    //private Vector3 lastMoveDir;
     private bool canDash = true;
     private bool isDashing;
     private float dashingPower = 10f;
@@ -24,7 +30,6 @@ public class BrotherBehaviour : NetworkBehaviour
     public SpriteRenderer sr;
     public TrailRenderer tr;
 
-    public Camera camera;
 
     private NetworkCharacterController _cc;
     private Vector3 _forward = Vector3.forward;
@@ -37,84 +42,77 @@ public class BrotherBehaviour : NetworkBehaviour
 
     }
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
-    }
-
+   
     public override void Spawned()
     {
-        //_changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
-        if (HasInputAuthority)
-        {
-            camera = Camera.main;
-            camera.GetComponent<CameraBehaviour>().target = transform;
-        }
+        ////_changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
+        //if (HasInputAuthority)
+        //{
+        //    camera = Camera.main;
+        //    camera.GetComponent<CameraBehaviour>().target = transform;
+        //}
+        animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+        if (playerHealth == null)
+            playerHealth = GetComponent<PlayerHealth>();
     }
-
 
     public override void FixedUpdateNetwork()
     {
-        if (GetInput(out NetworkInputData data))
+        
+
+        if (!GetInput(out NetworkInputData data))
         {
-            //data.direction.Normalize();
-            //_cc.Move(5 * data.direction * Runner.DeltaTime);
+            return;
+        }
+        if (melee.isAttacking)
+        {
+            if (Object.HasStateAuthority)
+                _cc.Move(Vector3.zero);
+            return; // stop movement during attack
+        }
 
-            //if (data.direction.sqrMagnitude > 0)
-            //    _forward = data.direction;
+        //prevents movement when dead
+        if (playerHealth.playerDead)
+        {
+            if (Object.HasInputAuthority)
+            {
+                animator.SetBool("isDead", true); //change sprite just for this player
+            }
+            if (Object.HasStateAuthority)
+            {
+                _cc.Move(Vector3.zero);
+                _cc.Velocity = Vector3.zero;
+            }
+            return;
+        }
 
+        if (Object.HasStateAuthority)
+        {
             Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
             _cc.Move(move * moveSpeed * Runner.DeltaTime);
-
         }
+        if (!Object.HasInputAuthority)
+            return;
 
-        //sprite controller
-        animator.SetBool("isIdle", false);
-        animator.SetBool("isWalkingSide", false);
-        animator.SetBool("isWalkingDown", false);
+        
 
-        if (data.direction.sqrMagnitude <= 0)
-        {
-            animator.SetBool("isIdle", true);
-        }
-        else
-        {
-            animator.SetBool("isIdle", false);
-        }
+        //blend tree animation controller
+        Vector2 input = new Vector2(data.direction.x, data.direction.z);
 
-        if (data.direction.x < 0) //left
-        {
-            //Debug.Log("Left");
-            animator.SetBool("isWalkingSide", true);
-            sr.flipX = false;
-        }
-        else if (data.direction.x > 0) //right
-        {
-            //Debug.Log("right");
-            animator.SetBool("isWalkingSide", true);
-            sr.flipX = true;
-        }
-        else if (data.direction.z < 0) //down
-        {
-            //Debug.Log("down");
-            animator.SetBool("isWalkingDown", true);
-        }
-        else if (data.direction.z > 0) //up
-        {
-            //Debug.Log("up");
-            animator.SetBool("isWalkingUp", true);
-        }
+        bool isMoving = input.sqrMagnitude > 0.01f;
+        animator.SetBool("isMoving", isMoving);
 
-        ////hitbox rotation
-        //if (data.direction.sqrMagnitude > 0.01f) // only rotate when moving
-        //{
+        if (isMoving)
+            lastMoveDir = input.normalized;
 
-        //    // Keep the hitbox in front of the player             
-        //    attackHitBox.position = transform.position + data.direction.normalized;
-        //}
+        animator.SetFloat("MoveX", lastMoveDir.x);
+        animator.SetFloat("MoveY", lastMoveDir.y);
 
+        if (lastMoveDir.x != 0)
+            sr.flipX = lastMoveDir.x > 0;
 
+       
         ////hitbox rotation
         if (data.direction.sqrMagnitude > 0.01f)
         {
@@ -129,15 +127,17 @@ public class BrotherBehaviour : NetworkBehaviour
 
         }
 
+       
 
 
 
         //prevents movement while dashing
-        if (isDashing)
-        {
-            return;
-        }
-        transform.rotation = Quaternion.identity;
+        //if (isDashing)
+        //{
+        //    return;
+        //}
+
+        //transform.rotation = Quaternion.identity;
 
         //float horizontal = Input.GetAxisRaw("Horizontal");
         //float vertical = Input.GetAxisRaw("Vertical");
@@ -150,13 +150,18 @@ public class BrotherBehaviour : NetworkBehaviour
         //    lastMoveDir = dashDir.normalized;
         //}
 
-        if (Input.GetKeyDown(KeyCode.E) && canDash)
-        {
-            StartCoroutine(Dash());
-        }
+        //if (Input.GetKeyDown(KeyCode.E) && canDash)
+        //{
+        //StartCoroutine(Dash());
+        //}
     }
 
+    //old movement
+    //data.direction.Normalize();
+    //_cc.Move(5 * data.direction * Runner.DeltaTime);
 
+    //if (data.direction.sqrMagnitude > 0)
+    //    _forward = data.direction;
 
     //void Update()
     //{
@@ -221,18 +226,18 @@ public class BrotherBehaviour : NetworkBehaviour
     //    }
     //}
 
-    private IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-        rb.linearVelocity = _forward * dashingPower; //creates dash force
-        tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime); //duration
-        isDashing = false;
-        tr.emitting = false;
-        yield return new WaitForSeconds(dashingCooldown); //cooldown
-        canDash = true;
-    }
+    //private IEnumerator Dash()
+    //{
+    //    canDash = false;
+    //    isDashing = true;
+    //    rb.linearVelocity = _forward * dashingPower; //creates dash force
+    //    tr.emitting = true;
+    //    yield return new WaitForSeconds(dashingTime); //duration
+    //    isDashing = false;
+    //    tr.emitting = false;
+    //    yield return new WaitForSeconds(dashingCooldown); //cooldown
+    //    canDash = true;
+    //}
 }
 
 

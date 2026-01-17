@@ -1,24 +1,54 @@
-using System;
-using System.Collections.Generic;
 using Fusion;
 using Fusion.Addons.Physics;
 using Fusion.Sockets;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Unity.Collections.Unicode;
 
 
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
+    [Header("Room Configuration")]
+    [Tooltip("Enable to read room name from RoomConfig.txt on desktop")]
+    public bool useRoomConfigFile = true;
+    
     public Vector3 spawnPoint;
     private NetworkRunner _runner;
     private PlayerRef Possessor;
     public GameObject starter;
+    public GameObject books;
     public NetworkObject introDialogue;
+    public LuaChanger referencer;
     //public NetworkObject networkPlayerObject;
+    private string _currentRoomName;
+    public booksSpawner bookSpawner;
+    public NetworkObject blockers;
+    private referencer referenceBlock;
+    
+    private void Awake()
+    {
+        // Load the configured room name when the scene starts
+        if (useRoomConfigFile)
+        {
+            _currentRoomName = RoomConfigReader.GetConfiguredRoomName();
+        }
+        else
+        {
+            _currentRoomName = "TestRoom";
+        }
+        referenceBlock = FindFirstObjectByType<referencer>();
+    }
+    
     private void OnGUI()
     {
         if (_runner == null)
         {
+            // Display the current room ID at the top
+            string roomLabel = useRoomConfigFile ? $"Room ID: {_currentRoomName}" : $"Room ID: {_currentRoomName} (Default)";
+            GUI.Label(new Rect(210, 10, 400, 30), roomLabel);
+            
             if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
             {
                 StartGame(GameMode.Host);
@@ -55,7 +85,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         await _runner.StartGame(new StartGameArgs()
         {
             GameMode = mode,
-            SessionName = "TestRoom",
+            SessionName = _currentRoomName,
             Scene = scene,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
@@ -86,10 +116,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
-                if (introDialogue.HasStateAuthority)
-                {
-                    introDialogue.gameObject.SetActive(true);
-                }
+                
 
             }
             else
@@ -98,19 +125,25 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
-                if (introDialogue.HasStateAuthority)
-                {
-                    introDialogue.gameObject.SetActive(true);
-                }
+                //if (introDialogue.HasStateAuthority)
+                //{
+                //    Rpc_EnableIntroDialogue();
+                //}
+                //bookSpawner.spawnBooks();
             }
             // Keep track of the player avatars for easy access
 
         }
     }
 
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    void Rpc_EnableIntroDialogue()
+    {
+        introDialogue.gameObject.SetActive(true);
+    }
     public void WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
     {
-        Destroy(fallen);
+        _runner.Despawn(fallen);
         NetworkObject networkPlayerObject = _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
         
     }
@@ -157,6 +190,73 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         _mouseButton1 = false;
         
         input.Set(data);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_RequestDestroy(NetworkObject target)
+    {
+        if (target == null)
+            return;
+
+        // Safety check
+        if (!target.HasStateAuthority)
+            return;
+
+        _runner.Despawn(target);
+    }
+
+    public void RequestUnlock(int unlockId)
+    {
+        Rpc_RequestUnlock(unlockId);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void Rpc_RequestUnlock(int unlockId)
+    {
+        // Authority tells everyone (including itself)
+        Rpc_ApplyUnlock(unlockId);
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void Rpc_ApplyUnlock(int unlockId)
+    {
+        referencer.luaChange(unlockId);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void Rpc_RequestKillBlocks()
+    {
+        // Authority tells everyone (including itself)
+        Rpc_KillBlocks();
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void Rpc_KillBlocks()
+    {
+        if (blockers.HasInputAuthority)
+        {
+            blockers.gameObject.SetActive(false);
+        }
+        
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_spawnFlies()
+    {
+        //if (referenceBlock == null)
+        //{
+        //    Debug.Log("referencer is null");
+        //}
+        //Debug.Log("Running spawn flies");
+        //if (referenceBlock.flyPrefab == null)
+        //{
+        //    Debug.Log("fly prefab is null");
+        //}
+        //if (referenceBlock.flyDrop == null)
+        //{
+        //    Debug.Log("flyDrop is null");
+        //}
+        _runner.Spawn(referenceBlock.flyPrefab, referenceBlock.flyDrop.position);
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
