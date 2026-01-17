@@ -21878,10 +21878,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 1046676670}
   ApplyTiming: 2
-  SyncSettings: 79
+  SyncSettings: -1
   StateHashes: 0000000059152c10b2d6a4ed958341e27e40c91f
   TriggerHashes: 00000000
-  TotalWords: 1
+  TotalWords: 3
 --- !u!4 &1046676675 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5666451723920358500, guid: 9222980c014d2544389e831795a8257d, type: 3}
