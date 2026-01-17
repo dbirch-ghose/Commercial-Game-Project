@@ -367,7 +367,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
         rotation *= Quaternion.Euler(0f, 0f, 180f);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-        //}
+        
         float timer = 0f;
         while (timer < chargeTime)
         {

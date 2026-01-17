@@ -5,7 +5,6 @@ public class ReceptionTrigger : NetworkBehaviour
 {
     public SwitchCameraPosition switchCameraPosition;
 
-    //public GameObject FrontWall;
     public Transform BarrierPos;
     public GameObject Barrier;
 
@@ -16,26 +15,19 @@ public class ReceptionTrigger : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        var playerNO = other.GetComponentInParent<NetworkObject>();
+        if (playerNO == null)
+            return;
 
-        if (other.GetComponent<NetworkObject>().HasInputAuthority)
-        {
-            //Runner.Despawn(FrontWall.GetComponent<NetworkObject>());s
-            Instantiate(Barrier, BarrierPos.position, Quaternion.Euler(0f, 90f, 0f));
-            inReception = true;
-        }
-        //Destroy(FrontWall.GetComponent<NetworkObject>());
-        //Instantiate(Barrier, BarrierPos.position, Quaternion.Euler(0f, 90f, 0f));
-        //inReception = true;
+        if (!playerNO.HasInputAuthority)
+            return;
+        switchCameraPosition.MoveCamera(CamPos); //move cam
+        switchCameraPosition.ShowRoom("Reception");
+       inReception = true;
+        
+        Instantiate(Barrier, BarrierPos.position, Quaternion.Euler(0f, 90f, 0f));
+        
 
-        if (other.gameObject.CompareTag("Player"))
-        {
-            switchCameraPosition.MoveCamera(CamPos); //move cam
-            switchCameraPosition.ShowRoom("Reception");
-
-            //Transform barrier1pos = barrier1.transform.position;
-            //Runner.Spawn(barrier1, barrier1.position);
-        }
     }
-    
+   
 }
-
