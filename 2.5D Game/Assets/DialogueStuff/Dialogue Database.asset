@@ -404,6 +404,48 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: 
+  - id: 13
+    fields:
+    - title: Name
+      value: Q1Done
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: false
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 14
+    fields:
+    - title: Name
+      value: Q2Dibe
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: false
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 15
+    fields:
+    - title: Name
+      value: Q3Done
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: false
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
   conversations:
   - id: 1
     fields:
@@ -616,7 +658,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: Block
+      falseConditionAction: Passthrough
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 1
@@ -643,7 +685,7 @@ MonoBehaviour:
         destinationDialogueID: 17
         isConnector: 0
         priority: 2
-      conditionsString: 
+      conditionsString: Variable["Q1Done"] == false
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -681,7 +723,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: KillBlocks()
+        value: 
         type: 0
         typeString: 
       conversationID: 1
@@ -699,14 +741,14 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: Variable["num2"] == true
-      userScript: 
+      userScript: Variable["Q1Done"] = true
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 367.6433
-        y: 234.79907
+        x: 353.05997
+        y: 237.92407
         width: 160
         height: 30
     - id: 6
@@ -1027,7 +1069,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: Variable["num6"] == true
-      userScript: 
+      userScript: Variable["Q2Dibe"] = true
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -1211,7 +1253,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: Variable["num8"] == true
-      userScript: 
+      userScript: Variable["Q3Done"] = true
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -1375,7 +1417,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
+    canvasScrollPosition: {x: 5.208313, y: 0}
     canvasZoom: 0.64000034
   - id: 2
     fields:
