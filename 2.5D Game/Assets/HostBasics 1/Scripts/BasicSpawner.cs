@@ -40,6 +40,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             _currentRoomName = "TestRoom";
         }
         referenceBlock = FindFirstObjectByType<referencer>();
+        referencer = FindFirstObjectByType<LuaChanger>();
     }
     
     private void OnGUI()
