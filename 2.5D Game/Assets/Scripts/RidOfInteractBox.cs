@@ -1,9 +1,10 @@
 using PixelCrushers.DialogueSystem;
 using System;
 using UnityEngine;
+using Fusion;
 
 
-public class RidOfInteractBox : MonoBehaviour
+public class RidOfInteractBox : NetworkBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public LiterallyJustHoldsAReferenceToThisText interactPrompt;
@@ -20,25 +21,27 @@ public class RidOfInteractBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-        var usable = selector.CurrentUsable;
-        //Debug.Log(usable);
-        
 
-        if (usable == null)
+        if (HasInputAuthority)
         {
-            prompt.SetActive(false);
-            //Debug.Log("Running");
-            return;
+            var usable = selector.CurrentUsable;
+            //Debug.Log(usable);
+
+
+            if (usable == null)
+            {
+                prompt.SetActive(false);
+                //Debug.Log("Running");
+                return;
+            }
+
+            float distance = Vector3.Distance(
+                selector.transform.position,
+                usable.transform.position
+            );
+            //Debug.Log(distance);
+
+            prompt.SetActive(distance <= usable.maxUseDistance);
         }
-
-        float distance = Vector3.Distance(
-            selector.transform.position,
-            usable.transform.position
-        );
-        //Debug.Log(distance);
-
-        prompt.SetActive(distance <= usable.maxUseDistance);
     }
 }
