@@ -36742,9 +36742,9 @@ MonoBehaviour:
   bookSpawner: {fileID: 0}
   blockers: {fileID: 0}
   _playerPrefab:
-    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
-  _player2Prefab:
     RawGuidValue: 5797adf09924c5441991408ae90d941f
+  _player2Prefab:
+    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
   players: []
 --- !u!4 &1837907120
 Transform:
