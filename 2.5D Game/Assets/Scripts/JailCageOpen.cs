@@ -15,7 +15,7 @@ public class JailCageOpen : NetworkBehaviour
 
     public override void Render()
     {
-        if (opened == true)
+        if (opened)
             return;
 
         animator.SetBool("open", Open);
