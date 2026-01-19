@@ -213,6 +213,11 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         if (!target.HasStateAuthority)
             return;
 
+        RPC_Destroy(target);
+    }
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_Destroy(NetworkObject target)
+    {
         _runner.Despawn(target);
     }
 
