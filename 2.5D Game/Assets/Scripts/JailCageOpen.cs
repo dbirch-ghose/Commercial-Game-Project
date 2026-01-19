@@ -10,16 +10,18 @@ public class JailCageOpen : NetworkBehaviour
     public override void Spawned()
     {
         animator = GetComponent<Animator>();
+        opened = false;
     }
 
     public override void Render()
     {
+        Debug.Log(opened);
         if (opened == true)
             return;
 
         Debug.Log("rendering cage anim");
         animator.SetBool("open", Open);
-        opened = true;
+        opened = Open;
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]   
