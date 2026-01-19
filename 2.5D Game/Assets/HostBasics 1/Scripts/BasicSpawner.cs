@@ -225,6 +225,19 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         _runner.Despawn(target);
     }
 
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_RequestRespawn(NetworkPrefabRef target, PlayerRef player)
+    {
+        RPC_Respawn(target, player);
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void RPC_Respawn(NetworkPrefabRef target, PlayerRef player)
+    {
+        Vector3 spawnPosition = new Vector3();
+        spawnPosition = this.GetComponent<Transform>().position;
+        _runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
+    }
     public void RequestUnlock(int unlockId)
     {
         Rpc_RequestUnlock(unlockId);

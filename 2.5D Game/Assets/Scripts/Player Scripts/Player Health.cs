@@ -21,6 +21,10 @@ public class PlayerHealth : NetworkBehaviour
     private bool vignetteActivate = false;
     private bool firstFrame = false;
     private float mathness;
+    private BasicSpawner runner;
+    public NetworkPrefabRef prefabRef;
+    private PlayerRef player;
+    private bool hasDied;
 
     public TextMeshProUGUI respawnText;
     public int respawnTime = 3;
@@ -28,6 +32,8 @@ public class PlayerHealth : NetworkBehaviour
 
     public override void Spawned()
     {
+        hasDied = false;
+        runner = FindFirstObjectByType<BasicSpawner>();
         if (!Object.HasStateAuthority)
             return;
 
@@ -66,7 +72,11 @@ public class PlayerHealth : NetworkBehaviour
         if (health <= 0)
         {
             health = 0;
-            Die();
+            if (!hasDied)
+            {
+                Die();
+            }
+            hasDied = true;
         }
            
     }
@@ -120,6 +130,9 @@ public class PlayerHealth : NetworkBehaviour
             timer -= Time.deltaTime;
             yield return null;
         }
+        player = GetComponent<NetworkObject>().InputAuthority;
+        runner.RPC_RequestRespawn(prefabRef, player);
+        yield return null;
     }
 
 }
