@@ -31,6 +31,7 @@ public class SisterBehaviour : NetworkBehaviour
     private GameObject enemy;
     private NetworkObject enemyNO;
     public NetworkObject thisDude;
+    private BasicSpawner BS;
 
 
     private void Awake()
@@ -48,6 +49,7 @@ public class SisterBehaviour : NetworkBehaviour
         //{
         //    camera = Camera.main;
         //    camera.GetComponent<CameraBehaviour>().target = transform;
+        BS = FindFirstObjectByType<BasicSpawner>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         if (playerHealth == null)
@@ -191,11 +193,11 @@ public class SisterBehaviour : NetworkBehaviour
         if (!HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("SA+canPosess+PressSpace");
-            BasicSpawner BS = FindFirstObjectByType<BasicSpawner>();
+            
             NetworkPrefabRef creatureType = wm.creatureType;
             Vector3 spawnPoint = enemy.transform.position;
+            BS.RPC_WMSpawn(thisDude, creatureType, spawnPoint);
             BS.RPC_RequestDestroy(enemyNO);
-            BS.WMSpawn(thisDude, creatureType, spawnPoint);
             canPossess = false;
         }
 
@@ -203,8 +205,7 @@ public class SisterBehaviour : NetworkBehaviour
 
     }
 
-    
-
+ 
 
 
     void OnTriggerEnter(Collider other)

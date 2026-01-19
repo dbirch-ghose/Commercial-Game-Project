@@ -146,22 +146,20 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
+    public void RPC_WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
     {
-        Debug.Log("First WMSPawn RPC called");
-        Rpc_WMSpawn(fallen, enemyType, spawnPosition);
-        Debug.Log("and it didnt fail");
+        Debug.Log("WMSpawn running on StateAuthority");
 
-    }
+        if (fallen == null)
+        {
+            Debug.LogError("Fallen is null");
+            return;
+        }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    public void Rpc_WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
-    {
-        Debug.Log("Second WMSPawn RPC called");
         _runner.Despawn(fallen);
-        NetworkObject networkPlayerObject = _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
-        Debug.Log("and it didnt fail!");
+        _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
     }
+
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
