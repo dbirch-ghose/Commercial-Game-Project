@@ -145,19 +145,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         introDialogue.gameObject.SetActive(true);
     }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
-    {
-        Debug.Log("WMSpawn running on StateAuthority");
-
-        if (fallen == null)
-        {
-            Debug.LogError("Fallen is null");
-            return;
-        }
-        RPC_WMSpawnNow(fallen, enemyType, spawnPosition);
-
-    }
+    
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_WMSpawnNow(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition) {
         _runner.Despawn(fallen);

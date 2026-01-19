@@ -196,7 +196,7 @@ public class SisterBehaviour : NetworkBehaviour
             
             NetworkPrefabRef creatureType = wm.creatureType;
             Vector3 spawnPoint = enemy.transform.position;
-            BS.RPC_WMSpawn(thisDude, creatureType, spawnPoint);
+            RPC_WMSpawn(thisDude, creatureType, spawnPoint);
             BS.RPC_RequestDestroy(enemyNO);
             canPossess = false;
         }
@@ -205,7 +205,23 @@ public class SisterBehaviour : NetworkBehaviour
 
     }
 
- 
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_WMSpawn(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
+    {
+        if (!HasStateAuthority)
+        {
+            return;
+        }
+        Debug.Log("WMSpawn running on StateAuthority");
+
+        if (fallen == null)
+        {
+            Debug.LogError("Fallen is null");
+            return;
+        }
+        BS.RPC_WMSpawnNow(fallen, enemyType, spawnPosition);
+
+    }
 
 
     void OnTriggerEnter(Collider other)
