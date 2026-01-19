@@ -155,12 +155,14 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             Debug.LogError("Fallen is null");
             return;
         }
+        RPC_WMSpawnNow(fallen, enemyType, spawnPosition);
 
+    }
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_WMSpawnNow(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition) {
         _runner.Despawn(fallen);
         _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
     }
-
-
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
         if (_spawnedCharacters.TryGetValue(player, out NetworkObject networkObject))
