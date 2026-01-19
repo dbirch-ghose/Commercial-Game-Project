@@ -22,7 +22,7 @@ public class ShelfController : NetworkBehaviour
     private bool shelf2right;
     private int i;
     
-    void Start()
+    public override void Spawned()
     {
         moving = false;
         currentFormation = 1;
