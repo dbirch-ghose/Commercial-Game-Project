@@ -10,9 +10,14 @@ public class BoulderTrigger : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (HasStateAuthority && other.gameObject.CompareTag("Player"))
-        {
-            if (specController != null)
+        var playerNO = other.GetComponentInParent<NetworkObject>();
+        if (playerNO == null)
+            return;
+
+        if (!playerNO.HasInputAuthority)
+            return;
+
+        if (specController != null)
             {
                 SpecimenController specController = other.GetComponentInParent<SpecimenController>();
 
