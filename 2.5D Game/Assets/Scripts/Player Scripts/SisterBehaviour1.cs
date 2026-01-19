@@ -201,8 +201,7 @@ public class SisterBehaviour : NetworkBehaviour
             canPossess = false;
         }
 
-        transform.rotation = Quaternion.identity;
-
+        _cc.transform.rotation = Quaternion.identity;
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
