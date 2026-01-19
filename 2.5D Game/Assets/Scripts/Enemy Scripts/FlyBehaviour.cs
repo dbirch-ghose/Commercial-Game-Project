@@ -6,6 +6,7 @@ public class FlyBehaviour : NetworkBehaviour
 {
     public NavMeshAgent agent;
     private bool navReady = false;
+
     public override void Spawned()
     {
         if (!Object.HasStateAuthority)
