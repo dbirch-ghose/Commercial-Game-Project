@@ -10,16 +10,15 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
     {
         private NetworkObject cageDoor;
         private referencer referenceBlock;
-        private Animator anim;
+        private cageDoorController controller;
         
         public void Awake()
         {
             Debug.Log("Open Cage Sequence Run");
             referenceBlock = FindFirstObjectByType<referencer>();
             cageDoor = referenceBlock.cageDoor;
-            anim = cageDoor.GetComponent<Animator>();
-            anim.SetBool("isOpen", true);
-
+            controller = cageDoor.GetComponent<cageDoorController>();
+            controller.RPC_RequestOpenDoor();
             Stop();
         }
 

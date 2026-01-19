@@ -7,9 +7,6 @@ public class TempJailDoorTrigger : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (HasStateAuthority)
-        {
-            jailCage.Opencage();
-        }
+        jailCage.RPC_Opencage();
     }
 }

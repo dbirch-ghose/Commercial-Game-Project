@@ -40,6 +40,18 @@ public class LuaChanger : MonoBehaviour
             case 9:
                 DialogueLua.SetVariable("num9", true);
                 break;
+            case 11:
+                DialogueLua.SetVariable("QuestionNo", 1);
+                break;
+            case 12:
+                DialogueLua.SetVariable("QuestionNo", 2);
+                break;
+            case 13:
+                DialogueLua.SetVariable("QuestionNo", 3);
+                break;
+            case 14:
+                DialogueLua.SetVariable("QuestionNo", 4);
+                break;
         }
     }
 

@@ -8,7 +8,7 @@ public class badHabit1 : NetworkBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        down = false;
+        down = true;
     }
 
     // Update is called once per frame
