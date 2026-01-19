@@ -176,6 +176,8 @@ MonoBehaviour:
   maxHealth: 3
   hitCooldown: 2
   pp: {fileID: 0}
+  prefabRef:
+    RawGuidValue: 5797adf09924c5441991408ae90d941f
   respawnText: {fileID: 0}
   respawnTime: 3
   _playerDead: 0
