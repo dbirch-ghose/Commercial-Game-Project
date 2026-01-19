@@ -26,6 +26,8 @@ public class SwitchCameraPosition : MonoBehaviour
         (1 << LayerMask.NameToLayer("Player")) |            
         (1 << LayerMask.NameToLayer("Enemy")) |             
         (1 << LayerMask.NameToLayer("UI")) |
-        (1 << LayerMask.NameToLayer("Fly"));
+        (1 << LayerMask.NameToLayer("Fly")) |
+        (1 << LayerMask.NameToLayer("Cage"));
+        ;
     }
 }
