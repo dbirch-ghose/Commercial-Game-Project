@@ -35732,6 +35732,8 @@ MonoBehaviour:
     RawGuidValue: d3f2f56f81ff48846a57718b42eb1ee5
   flyDrop: {fileID: 1286211575}
   cageDoor: {fileID: 1046676672}
+  heartItem:
+    RawGuidValue: 2a17fc0569e2b2542bd2924a450cb825
 --- !u!1 &1700223502
 GameObject:
   m_ObjectHideFlags: 0
