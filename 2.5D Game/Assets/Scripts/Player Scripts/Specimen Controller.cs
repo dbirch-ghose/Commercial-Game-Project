@@ -19,14 +19,14 @@ public class SpecimenController : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-        if (HasStateAuthority && boulderTrigger != null && boulderTrigger.inRange)
+        if (HasInputAuthority && boulderTrigger != null && boulderTrigger.inRange)
         {
             PickUpBoulder();
         }        
     }
     private void PickUpBoulder()
     {
-        if (HasStateAuthority && Input.GetKeyDown(KeyCode.Space))
+        if (HasInputAuthority && Input.GetKeyDown(KeyCode.Space))
         {
             pickup = true;
             animator.SetBool("isPickingUp", true);
