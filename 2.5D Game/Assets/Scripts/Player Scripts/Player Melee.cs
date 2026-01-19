@@ -29,14 +29,20 @@ public class PlayerMelee : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
         {
+            if (!Object.HasInputAuthority)
+                return;
             StartCoroutine(Attack());
         }
     }
 
     private IEnumerator Attack()
     {
+        if (!GetInput(out NetworkInputData data))
+        {
+            yield return null ;
+        }
         if (!Object.HasInputAuthority)
-            yield return null;            
+            yield return null;
 
         isAttacking = true;
 

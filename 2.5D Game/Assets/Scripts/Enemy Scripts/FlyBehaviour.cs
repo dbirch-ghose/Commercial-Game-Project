@@ -6,12 +6,10 @@ public class FlyBehaviour : NetworkBehaviour
 {
     public NavMeshAgent agent;
     private bool navReady = false;
-    Animator animator;
     public override void Spawned()
     {
         if (!Object.HasStateAuthority)
             return;
-        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.enabled = true;
         StartCoroutine(InitNavMesh());

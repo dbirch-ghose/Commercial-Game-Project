@@ -15,18 +15,19 @@ public class StudyTrigger : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!Object.HasStateAuthority)
-        {
+        var playerNO = other.GetComponentInParent<NetworkObject>();
+        if (playerNO == null)
             return;
-        }
+
+        if (!playerNO.HasInputAuthority)
+            return;
 
         if (onCooldown)
             return;
 
         StartCoroutine(Cooldown());
 
-        if (other.gameObject.CompareTag("Player"))
-        {
+        
             if (stairwayTrigger.inStairway == true)
             {
                 switchCameraPosition.MoveCamera(CamPos1);
@@ -40,7 +41,7 @@ public class StudyTrigger : NetworkBehaviour
                 stairwayTrigger.inStairway = true;
                 switchCameraPosition.ShowRoom("Stairway"); 
 
-            }
+            
         }
     }
     private IEnumerator Cooldown()

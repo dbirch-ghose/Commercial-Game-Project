@@ -15,18 +15,20 @@ public class StairwayTrigger : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Object.HasStateAuthority)
-        {
-            //destroy barrirer
-        }
+        var playerNO = other.GetComponentInParent<NetworkObject>();
+        if (playerNO == null)
+            return;
+
+        if (!playerNO.HasInputAuthority)
+            return;
 
         if (onCooldown)
             return;
 
         StartCoroutine(Cooldown());
 
-        if (other.gameObject.CompareTag("Player"))
-        {
+    
+        
             if (libraryTrigger.inLibrary == true)
             {
                 switchCameraPosition.MoveCamera(CamPos1); 
@@ -40,7 +42,7 @@ public class StairwayTrigger : NetworkBehaviour
                 libraryTrigger.inLibrary = true;
                 switchCameraPosition.ShowRoom("Library"); 
 
-            }
+            
         }
     }
     private IEnumerator Cooldown()

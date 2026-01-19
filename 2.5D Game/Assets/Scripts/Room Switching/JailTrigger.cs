@@ -21,6 +21,7 @@ public class JailTrigger : NetworkBehaviour
 
         if (!playerNO.HasInputAuthority)
             return;
+
         if (onCooldown)
             return;
 

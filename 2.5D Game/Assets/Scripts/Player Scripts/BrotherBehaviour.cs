@@ -92,10 +92,10 @@ public class BrotherBehaviour : NetworkBehaviour
             Vector3 move = new Vector3(data.direction.x, 0, data.direction.z);
             _cc.Move(move * moveSpeed * Runner.DeltaTime);
         }
+
+
         if (!Object.HasInputAuthority)
             return;
-
-        
 
         //blend tree animation controller
         Vector2 input = new Vector2(data.direction.x, data.direction.z);
