@@ -18665,7 +18665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a087d517febfd41a924c69ae770e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  down: 0
+  _down: 0
   container: {fileID: 1700223502}
 --- !u!114 &830011549
 MonoBehaviour:
@@ -22098,7 +22098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe9d35c75f85214dadc33ee3ff926b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  down: 0
+  _down: 0
   container: {fileID: 1468751447}
 --- !u!1 &1038290522
 GameObject:
@@ -23341,6 +23341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1069015106}
+  - component: {fileID: 1069015107}
   m_Layer: 14
   m_Name: Lever1
   m_TagString: Untagged
@@ -23364,6 +23365,25 @@ Transform:
   - {fileID: 1193094446}
   m_Father: {fileID: 742804923}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1069015107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069015105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 2679431958
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects:
+  - {fileID: 1193094448}
+  NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &1082252773
 GameObject:
   m_ObjectHideFlags: 0
@@ -25186,7 +25206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea13a2d4860b34428db069e95b88024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  down: 1
+  _down: 0
   container: {fileID: 1069015105}
 --- !u!1 &1201506791
 GameObject:
@@ -30495,6 +30515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1468751448}
+  - component: {fileID: 1468751449}
   m_Layer: 14
   m_Name: Lever3
   m_TagString: Untagged
@@ -30518,6 +30539,25 @@ Transform:
   - {fileID: 1025553680}
   m_Father: {fileID: 742804923}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1468751449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468751447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 3942380546
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects:
+  - {fileID: 1025553682}
+  NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &1471560785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3879444006961197518, guid: 9222980c014d2544389e831795a8257d, type: 3}
@@ -35701,6 +35741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1700223503}
+  - component: {fileID: 1700223504}
   m_Layer: 14
   m_Name: Lever2
   m_TagString: Untagged
@@ -35724,6 +35765,25 @@ Transform:
   - {fileID: 830011547}
   m_Father: {fileID: 742804923}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1700223504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700223502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 1527999785
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects:
+  - {fileID: 830011549}
+  NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &1703178623
 GameObject:
   m_ObjectHideFlags: 0
