@@ -14305,7 +14305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.53
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16343,6 +16343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 743324752}
   - component: {fileID: 743324753}
+  - component: {fileID: 743324754}
   m_Layer: 14
   m_Name: MovingShelf2
   m_TagString: Untagged
@@ -16390,8 +16391,26 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 743324754}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &743324754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743324751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1001 &743707906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23293,6 +23312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1066381562}
   - component: {fileID: 1066381563}
+  - component: {fileID: 1066381564}
   m_Layer: 14
   m_Name: MovingShelf1
   m_TagString: Untagged
@@ -23340,8 +23360,26 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 1066381564}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &1066381564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066381561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &1067477695
 GameObject:
   m_ObjectHideFlags: 0
@@ -23460,6 +23498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1069015106}
   - component: {fileID: 1069015107}
+  - component: {fileID: 1069015108}
   m_Layer: 14
   m_Name: Lever1
   m_TagString: Untagged
@@ -23500,8 +23539,26 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects:
   - {fileID: 1193094448}
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 1069015108}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &1069015108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069015105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &1082252773
 GameObject:
   m_ObjectHideFlags: 0
@@ -30634,6 +30691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1468751448}
   - component: {fileID: 1468751449}
+  - component: {fileID: 1468751450}
   m_Layer: 14
   m_Name: Lever3
   m_TagString: Untagged
@@ -30674,8 +30732,26 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects:
   - {fileID: 1025553682}
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 1468751450}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &1468751450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468751447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &1471560785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3879444006961197518, guid: 9222980c014d2544389e831795a8257d, type: 3}
@@ -35866,6 +35942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1700223503}
   - component: {fileID: 1700223504}
+  - component: {fileID: 1700223505}
   m_Layer: 14
   m_Name: Lever2
   m_TagString: Untagged
@@ -35906,8 +35983,26 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects:
   - {fileID: 830011549}
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 1700223505}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &1700223505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700223502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &1703178623
 GameObject:
   m_ObjectHideFlags: 0
