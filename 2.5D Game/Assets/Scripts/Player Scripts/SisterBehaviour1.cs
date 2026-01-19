@@ -219,6 +219,7 @@ public class SisterBehaviour : NetworkBehaviour
             Debug.LogError("Fallen is null");
             return;
         }
+        BS.RPC_RequestDestroy(enemyNO);
         BS.RPC_WMSpawnNow(fallen, enemyType, spawnPosition);
 
     }
