@@ -8,7 +8,7 @@ public class BadHabit3 : NetworkBehaviour
     public bool down { get; set; }
     public GameObject container;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Spawned()
     {
         down = false;
     }

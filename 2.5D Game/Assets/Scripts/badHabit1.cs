@@ -1,5 +1,6 @@
 using UnityEngine;
 using Fusion;
+using MoreMountains.Tools;
 
 public class badHabit1 : NetworkBehaviour
 {
@@ -7,7 +8,7 @@ public class badHabit1 : NetworkBehaviour
     public bool down { get; set; }
     public GameObject container;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Spawned()
     {
         down = false;
     }
