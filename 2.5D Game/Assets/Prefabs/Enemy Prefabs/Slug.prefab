@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 3968711165606683948}
   - component: {fileID: 4200902722687047750}
   - component: {fileID: -8322186488273733356}
+  - component: {fileID: 1682172825076049176}
   m_Layer: 6
   m_Name: Slug
   m_TagString: Enemy
@@ -99,6 +100,7 @@ MonoBehaviour:
   - {fileID: -9019110566960436607}
   - {fileID: 3968711165606683948}
   - {fileID: -8322186488273733356}
+  - {fileID: 1682172825076049176}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &6625734536598446962
 SpriteRenderer:
@@ -212,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Health: 2
+  referenceBlock: {fileID: 0}
 --- !u!82 &-6527948409861631479
 AudioSource:
   m_ObjectHideFlags: 0
@@ -376,3 +379,20 @@ MonoBehaviour:
   StateHashes: 000000008530878e9fa1bd64
   TriggerHashes: 00000000
   TotalWords: 0
+--- !u!114 &1682172825076049176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746849647774398464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0

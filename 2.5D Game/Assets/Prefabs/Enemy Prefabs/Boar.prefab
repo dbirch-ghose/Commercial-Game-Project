@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 7726629685439152115}
   - component: {fileID: 1852701822258074987}
   - component: {fileID: -737498313518983688}
+  - component: {fileID: 2351158269850857265}
   m_Layer: 6
   m_Name: Boar
   m_TagString: Untagged
@@ -150,6 +151,7 @@ MonoBehaviour:
   - {fileID: 4070723270344646432}
   - {fileID: 8997859700591429814}
   - {fileID: 7726629685439152115}
+  - {fileID: 2351158269850857265}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &6765918275768450128
 SpriteRenderer:
@@ -263,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Health: 4
+  referenceBlock: {fileID: 0}
 --- !u!82 &-7819401095198963635
 AudioSource:
   m_ObjectHideFlags: 0
@@ -405,3 +408,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creatureType:
     RawGuidValue: 29034b4120411a248b7ba5d70c6d1ea4
+--- !u!114 &2351158269850857265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632556834967718471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0

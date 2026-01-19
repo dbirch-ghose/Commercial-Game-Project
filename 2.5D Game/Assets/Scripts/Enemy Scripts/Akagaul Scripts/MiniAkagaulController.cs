@@ -5,6 +5,7 @@ public class MiniAk : NetworkBehaviour
 {
     public Animator animator;
     public SpriteRenderer sr;
+    private bool isHere = false;
 
     public override void Spawned()
     {
@@ -14,9 +15,18 @@ public class MiniAk : NetworkBehaviour
 
     public void EnterRoom()
     {
-        Debug.Log("Aki enters");
-        animator.SetBool("isEntering", true);
+        if (!isHere)
+        {
+            Debug.Log("Aki enters");
+            animator.SetBool("isEntering", true);
+            isHere = true;
+        }
+        else
+        {
+            animator.SetBool("isIdle", true);
+        }
     }
+   
     public void LeaveRoom()
     {
         Debug.Log("Aki leaves");

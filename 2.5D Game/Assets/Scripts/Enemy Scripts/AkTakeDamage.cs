@@ -6,6 +6,9 @@ public class AkTakeDamage : NetworkBehaviour
     public AkagaulBehaviour akBehaviour;
     [Networked] public int Health { get; set; }
     [Networked] private bool IsDead { get; set; }
+    private bool _spawned;
+    private SpriteRenderer spriteRenderer;
+    [Networked] private TickTimer damageFlashTimer { get; set; }
 
     public override void FixedUpdateNetwork()
     {
@@ -17,6 +20,15 @@ public class AkTakeDamage : NetworkBehaviour
             IsDead = true;
             akBehaviour.Die();
         }
+    }
+    public override void Render()
+    {
+        if (!_spawned || spriteRenderer == null)
+            return;
+
+        // Visual flash logic (runs on all clients)
+        bool flashing = damageFlashTimer.IsRunning && !damageFlashTimer.Expired(Runner);
+        spriteRenderer.color = flashing ? Color.red : Color.white;
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
