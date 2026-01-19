@@ -7604,6 +7604,10 @@ PrefabInstance:
       propertyPath: SortKey
       value: 3403169300
       objectReference: {fileID: 0}
+    - target: {fileID: 691075917069041342, guid: 16b6b6af2175c2446a838fc8e10d108c, type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 881072571462655927, guid: 16b6b6af2175c2446a838fc8e10d108c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.734
@@ -12439,7 +12443,7 @@ GameObject:
   - component: {fileID: 561121555}
   - component: {fileID: 561121557}
   - component: {fileID: 561121556}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Mother Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14285,6 +14289,18 @@ PrefabInstance:
       value: 3979404123
       objectReference: {fileID: 0}
     - target: {fileID: 105788330011254947, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 105788330011254947, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[0]'
+      value: 
+      objectReference: {fileID: 738581838}
+    - target: {fileID: 105788330011254947, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[1]'
+      value: 
+      objectReference: {fileID: 764843136}
+    - target: {fileID: 105788330011254947, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[3]'
       value: 
       objectReference: {fileID: 764843124}
@@ -14923,6 +14939,10 @@ PrefabInstance:
     - target: {fileID: 691075917069041342, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
       propertyPath: SortKey
       value: 321548022
+      objectReference: {fileID: 0}
+    - target: {fileID: 691075917069041342, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 881072571462655927, guid: a6916f9e6c27f5e46b07f93c7a98458a, type: 3}
       propertyPath: m_LocalScale.x
@@ -16981,6 +17001,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   akBehaviour: {fileID: 738581838}
   _Health: 16
+--- !u!114 &764843136 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7028788027444238098, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
+  m_PrefabInstance: {fileID: 646520710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764843120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &768452300
 GameObject:
   m_ObjectHideFlags: 0
@@ -28308,7 +28339,7 @@ GameObject:
   - component: {fileID: 1343779133}
   - component: {fileID: 1343779132}
   - component: {fileID: 1343779131}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Hanger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30755,6 +30786,10 @@ PrefabInstance:
       propertyPath: SortKey
       value: 2763099801
       objectReference: {fileID: 0}
+    - target: {fileID: 2868638151072610103, guid: 329a4bdf52b76154dbbe5f44fe90ffd1, type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3396219294053662320, guid: 329a4bdf52b76154dbbe5f44fe90ffd1, type: 3}
       propertyPath: CamPos
       value: 
@@ -31914,7 +31949,7 @@ GameObject:
   - component: {fileID: 1539453231}
   - component: {fileID: 1539453230}
   - component: {fileID: 1539453229}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Mother stand in
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33890,7 +33925,7 @@ Transform:
   m_GameObject: {fileID: 1628686513}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.22, y: -2.897, z: -3.51}
+  m_LocalPosition: {x: -4.122, y: -2.897, z: -3.439}
   m_LocalScale: {x: 0.3751255, y: 0.3751255, z: 1.8613727}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34008,7 +34043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hanger: {fileID: 1343779134}
-  activate: 0
+  _activate: 0
 --- !u!65 &1628686518
 BoxCollider:
   m_ObjectHideFlags: 0

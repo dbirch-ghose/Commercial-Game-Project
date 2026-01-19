@@ -13,9 +13,8 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
         
         public void Awake()
         {
-            Debug.Log("Running awake");
             referenceBlock = FindFirstObjectByType<corpseActivation>();
-            referenceBlock.activated();
+            referenceBlock.RPC_activated();
             Stop();
             
             
