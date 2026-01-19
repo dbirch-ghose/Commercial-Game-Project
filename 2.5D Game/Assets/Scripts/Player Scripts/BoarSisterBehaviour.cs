@@ -137,17 +137,19 @@ public class BoarSisterBehaviour : NetworkBehaviour
             _cc.Move(moveDir * speedToUse * Runner.DeltaTime);
         }
 
+//sprite controller
+        animator.SetBool("isIdle", false);
+        animator.SetBool("isWalkingSide", false);
+        animator.SetBool("isWalkingDown", false);
+        animator.SetBool("isWalkingUp", false);
+
         if (!Object.HasInputAuthority)
             return;
 
 
 
 
-        //sprite controller
-        animator.SetBool("isIdle", false);
-        animator.SetBool("isWalkingSide", false);
-        animator.SetBool("isWalkingDown", false);
-        animator.SetBool("isWalkingUp", false);
+        
 
         if (data.direction.sqrMagnitude <= 0)
         {
@@ -197,14 +199,14 @@ public class BoarSisterBehaviour : NetworkBehaviour
             Debug.Log("canPossess: " + canPossess);
         }
 
-        if (HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
+        if (canPossess == true && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("SA+canPosess+PressSpace");
             BasicSpawner BS = FindFirstObjectByType<BasicSpawner>();
             NetworkPrefabRef creatureType = wm.creatureType;
             Vector3 spawnPoint = enemy.transform.position;
             BS.RPC_RequestDestroy(enemyNO);
-            BS.WMSpawn(thisDude, creatureType, spawnPoint);
+            BS.RPC_WMSpawn(thisDude, creatureType, spawnPoint);
             canPossess = false;
         }
 

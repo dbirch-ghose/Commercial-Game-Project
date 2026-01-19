@@ -190,7 +190,7 @@ public class SisterBehaviour : NetworkBehaviour
             Debug.Log("canPossess: " + canPossess);
         }
 
-        if (!HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
+        if (canPossess == true && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("SA+canPosess+PressSpace");
             

@@ -81,7 +81,7 @@ public class Player : NetworkBehaviour
                 NetworkPrefabRef creatureType = wm.creatureType;
                 Vector3 spawnPoint = enemy.transform.position;
                 Destroy(enemy);
-                BS.WMSpawn(thisDude, creatureType, spawnPoint);
+                //BS.WMSpawn(thisDude, creatureType, spawnPoint);
             }
         }
     }
