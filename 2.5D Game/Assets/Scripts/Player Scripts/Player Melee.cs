@@ -35,6 +35,9 @@ public class PlayerMelee : NetworkBehaviour
 
     private IEnumerator Attack()
     {
+        if (!Object.HasInputAuthority)
+            yield return null;            
+
         isAttacking = true;
 
         animator.SetFloat("MoveX", brother.LastMoveDir.x);
