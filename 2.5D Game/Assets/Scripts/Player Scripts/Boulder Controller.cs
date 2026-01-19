@@ -3,16 +3,31 @@ using Fusion;
 
 public class BoulderController : NetworkBehaviour
 {
+    private bool picked = false;
     public Animator animator;
-    private void Start()
+    public override void Spawned()
     {
         animator = GetComponent<Animator>();
     }
 
-    public void BoulderAnim()
+    [Networked] public bool Open { get; set; }
+    public override void Render()
     {
-        animator.SetBool("isPickingUp", true);
-        GetComponent<Collider>().enabled = false;
+        if (picked)
+            return;
+        animator.SetBool("isPickingUp", Open);
+        picked = Open;
+
+        if (Open) GetComponent<Collider>().enabled = false;
+
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_BoulderAnim()
+    {
+        if (Open)
+            return;
+        Open = true;
     }
 
 

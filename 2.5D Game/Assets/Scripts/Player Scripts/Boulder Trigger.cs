@@ -5,6 +5,7 @@ public class BoulderTrigger : NetworkBehaviour
     public SpecimenController specController;
     public BoulderController boulderController;
 
+
     public bool inRange = false;
 
 
@@ -25,12 +26,11 @@ public class BoulderTrigger : NetworkBehaviour
 
                 if (specController.pickup)
                 {
-                    boulderController.BoulderAnim();
+                    boulderController.RPC_BoulderAnim();
                 }
-            }
+            
            
         }
     }
-
 }
 
