@@ -19,15 +19,15 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
             {
                 case 1:
                     bad1 = FindFirstObjectByType<badHabit1>();
-                    bad1.down = !bad1.down;
+                    bad1.RPC_FlipSwitch();
                     break;
                 case 2:
                     bad2 = FindFirstObjectByType<badHabit2>();
-                    bad2.down = !bad2.down;
+                    bad2.RPC_FlipSwitch();
                     break;
                 case 3:
                     bad3 = FindFirstObjectByType<BadHabit3>();
-                    bad3.down = !bad3.down;
+                    bad3.RPC_FlipSwitch();
                     break;
             }
             Stop();

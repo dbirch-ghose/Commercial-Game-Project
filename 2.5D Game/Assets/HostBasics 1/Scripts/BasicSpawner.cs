@@ -267,6 +267,12 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         //{
         //    Debug.Log("flyDrop is null");
         //}
+        RPC_ActualSpawnFlies();
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_ActualSpawnFlies()
+    {
         _runner.Spawn(referenceBlock.flyPrefab, referenceBlock.flyDrop.position);
     }
 
