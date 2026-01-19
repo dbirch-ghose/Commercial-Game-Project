@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 767756405016441738}
   - component: {fileID: -3385773225458909246}
   - component: {fileID: 171150157681124438}
+  - component: {fileID: 7521133756542615262}
   m_Layer: 6
   m_Name: Eyeball 2
   m_TagString: Enemy
@@ -98,6 +99,7 @@ MonoBehaviour:
   - {fileID: 767756405016441738}
   - {fileID: -3385773225458909246}
   - {fileID: 171150157681124438}
+  - {fileID: 7521133756542615262}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &2070143301672068571
 SpriteRenderer:
@@ -211,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Health: 2
+  referenceBlock: {fileID: 0}
 --- !u!82 &2399235329619172737
 AudioSource:
   m_ObjectHideFlags: 0
@@ -356,3 +359,20 @@ MonoBehaviour:
   StateHashes: 00000000137f77f330cf7455
   TriggerHashes: 00000000
   TotalWords: 0
+--- !u!114 &7521133756542615262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8253752617659761988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0

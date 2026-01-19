@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: -6557723957255181671}
   - component: {fileID: 256846663628334260}
   - component: {fileID: -8967038493512427692}
+  - component: {fileID: -4156229601793543925}
   m_Layer: 6
   m_Name: Zombie 3
   m_TagString: Enemy
@@ -117,6 +118,7 @@ MonoBehaviour:
   - {fileID: 1996041960692863470}
   - {fileID: -6557723957255181671}
   - {fileID: -8967038493512427692}
+  - {fileID: -4156229601793543925}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &5013367798785783401
 SpriteRenderer:
@@ -230,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Health: 6
+  referenceBlock: {fileID: 0}
 --- !u!82 &4819952080861113396
 AudioSource:
   m_ObjectHideFlags: 0
@@ -377,3 +380,20 @@ MonoBehaviour:
   StateHashes: 00000000ad7a75c4083e927b
   TriggerHashes: 00000000
   TotalWords: 0
+--- !u!114 &-4156229601793543925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6625298651998640441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
