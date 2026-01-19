@@ -4,7 +4,8 @@ using Fusion;
 
 public class BadHabit3 : NetworkBehaviour
 {
-    public bool down;
+    [Networked]
+    public bool down { get; set; }
     public GameObject container;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,5 +25,11 @@ public class BadHabit3 : NetworkBehaviour
             container.transform.eulerAngles = new Vector3(0f, 180f, 0f);
 
         }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_FlipSwitch()
+    {
+        down = !down;
     }
 }

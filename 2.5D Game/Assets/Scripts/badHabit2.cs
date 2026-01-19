@@ -3,7 +3,8 @@ using Fusion;
 
 public class badHabit2 : NetworkBehaviour
 {
-    public bool down;
+    [Networked]
+    public bool down { get; set; }
     public GameObject container;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,4 +25,11 @@ public class badHabit2 : NetworkBehaviour
 
         }
     }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_FlipSwitch()
+    {
+        down = !down;
+    }
 }
+
