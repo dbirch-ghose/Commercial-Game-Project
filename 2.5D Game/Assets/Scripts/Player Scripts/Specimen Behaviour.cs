@@ -134,7 +134,7 @@ public class SpecimenBehaviour : NetworkBehaviour
             NetworkPrefabRef creatureType = wm.creatureType;
             Vector3 spawnPoint = enemy.transform.position;
             BS.RPC_RequestDestroy(enemyNO);
-            BS.RPC_WMSpawn(thisDude, creatureType, spawnPoint);
+            //BS.RPC_WMSpawn(thisDude, creatureType, spawnPoint);
             canPossess = false;
         }
 
