@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 5928544986267321290}
   - component: {fileID: 7115852991211114015}
   - component: {fileID: 2524690305038167242}
+  - component: {fileID: -3106386416682276898}
   m_Layer: 8
   m_Name: Flies
   m_TagString: Enemy
@@ -64,6 +65,7 @@ MonoBehaviour:
   - {fileID: -6695040329176390754}
   - {fileID: 7115852991211114015}
   - {fileID: 2524690305038167242}
+  - {fileID: -3106386416682276898}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &1458775385567441961
 SpriteRenderer:
@@ -177,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Health: 1
+  referenceBlock: {fileID: 0}
 --- !u!82 &-23946935443168101
 AudioSource:
   m_ObjectHideFlags: 0
@@ -352,6 +355,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 5311764507021847886}
+--- !u!114 &-3106386416682276898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725473329694757749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &5148935760147914837
 GameObject:
   m_ObjectHideFlags: 0
