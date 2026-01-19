@@ -41,21 +41,12 @@ public class SpecimenBehaviour : NetworkBehaviour
         thisDude = GetComponent<NetworkObject>();
     }
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
-    }
+ 
 
     public override void Spawned()
     {
-        ////_changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
-        //if (HasInputAuthority)
-        //{
-        //    camera = Camera.main;
-        //    camera.GetComponent<CameraBehaviour>().target = transform;
-
-        //}
+        animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
 
