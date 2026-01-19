@@ -131,6 +131,9 @@ GameObject:
   - component: {fileID: 8135002595893628874}
   - component: {fileID: 1924123746650476238}
   - component: {fileID: 5254509116522753159}
+  - component: {fileID: -2093033358240895938}
+  - component: {fileID: -8966322753482433099}
+  - component: {fileID: 3133333955508459327}
   m_Layer: 8
   m_Name: Sister(Flies)
   m_TagString: Player
@@ -169,7 +172,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 0
   maxHealth: 3
+  hitCooldown: 2
   pp: {fileID: 0}
+  prefabRef:
+    RawGuidValue: 00000000000000000000000000000000
+  respawnText: {fileID: 0}
+  respawnTime: 3
+  _playerDead: 0
 --- !u!95 &2801503880117492055
 Animator:
   serializedVersion: 7
@@ -286,6 +295,9 @@ MonoBehaviour:
   - {fileID: 2711720695803682713}
   - {fileID: 8135002595893628874}
   - {fileID: 5254509116522753159}
+  - {fileID: -2093033358240895938}
+  - {fileID: -8966322753482433099}
+  - {fileID: 3133333955508459327}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &2561638298929355857
 CharacterController:
@@ -352,7 +364,7 @@ MonoBehaviour:
   runRaycasts: 1
   raycastAll: 0
   selectBehindUIObjects: 0
-  useDefaultGUI: 1
+  useDefaultGUI: 0
   guiSkin: {fileID: 0}
   guiStyleName: label
   alignment: 1
@@ -407,13 +419,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4060d8bfc4a07094ea6bfd2177e4401a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   attackHitBox: {fileID: 5552352203215606465}
+  playerHealth: {fileID: 0}
   moveSpeed: 8
   rotationSpeed: 10
   animator: {fileID: 2801503880117492055}
   sr: {fileID: 6952026797092074400}
   camera: {fileID: 0}
+  thisDude: {fileID: 0}
 --- !u!82 &1924123746650476238
 AudioSource:
   m_ObjectHideFlags: 0
@@ -523,6 +536,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae0d93ec9c7d474db6420c538978a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2093033358240895938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5160c56f5b4504e936d432ce05caea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8966322753482433099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935b493d021615148a4e243f33a3558a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactPrompt: {fileID: 0}
+--- !u!114 &3133333955508459327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538751722601739453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 2801503880117492055}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 00000000845de1f60612ad73
+  TriggerHashes: 00000000
+  TotalWords: 0
 --- !u!1 &6118444919685330054
 GameObject:
   m_ObjectHideFlags: 0
