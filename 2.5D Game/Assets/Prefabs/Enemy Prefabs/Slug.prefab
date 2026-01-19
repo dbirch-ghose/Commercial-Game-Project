@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: -9019110566960436607}
   - component: {fileID: 3968711165606683948}
   - component: {fileID: 4200902722687047750}
+  - component: {fileID: -8322186488273733356}
   m_Layer: 6
   m_Name: Slug
   m_TagString: Enemy
@@ -97,6 +98,7 @@ MonoBehaviour:
   - {fileID: 3365072059349016101}
   - {fileID: -9019110566960436607}
   - {fileID: 3968711165606683948}
+  - {fileID: -8322186488273733356}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &6625734536598446962
 SpriteRenderer:
@@ -356,3 +358,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1dae31b84cb41e64780d911c85a762e7, type: 3}
   minInterval: 6
   maxInterval: 15
+--- !u!114 &-8322186488273733356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746849647774398464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 7113415494262090421}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 000000008530878e9fa1bd64
+  TriggerHashes: 00000000
+  TotalWords: 0

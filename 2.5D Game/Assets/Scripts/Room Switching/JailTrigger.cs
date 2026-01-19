@@ -15,33 +15,32 @@ public class JailTrigger : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Object.HasStateAuthority)
-        {
-            //destroy barrirer
-        }
+        var playerNO = other.GetComponentInParent<NetworkObject>();
+        if (playerNO == null)
+            return;
 
+        if (!playerNO.HasInputAuthority)
+            return;
         if (onCooldown)
             return;
 
         StartCoroutine(Cooldown());
-
-        if (other.gameObject.CompareTag("Player"))
+        
+        if (infirmaryTrigger.inInfirmary == true)
         {
-            if (infirmaryTrigger.inInfirmary == true)
-            {
-                switchCameraPosition.MoveCamera(CamPos1); //move cam
-                infirmaryTrigger.inInfirmary = false;
-                inInfirmary = true;
-                switchCameraPosition.ShowRoom("Jail"); //show jail and infirmary reception
+            switchCameraPosition.MoveCamera(CamPos1); //move cam
+            infirmaryTrigger.inInfirmary = false;
+            inInfirmary = true;
+            switchCameraPosition.ShowRoom("Jail"); //show jail and infirmary reception
 
-            }
-            else
-            {
-                switchCameraPosition.MoveCamera(CamPos2); //move cam
-                infirmaryTrigger.inInfirmary = true;
-                switchCameraPosition.ShowRoom("Infirmary");
-            }
         }
+        else
+        {
+            switchCameraPosition.MoveCamera(CamPos2); //move cam
+            infirmaryTrigger.inInfirmary = true;
+            switchCameraPosition.ShowRoom("Infirmary");
+        }
+        
     }
     private IEnumerator Cooldown()
     {

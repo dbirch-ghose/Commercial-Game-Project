@@ -15,18 +15,19 @@ public class LibraryTrigger : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Object.HasStateAuthority)
-        {
-            //destroy barrirer
-        }
+        var playerNO = other.GetComponentInParent<NetworkObject>();
+        if (playerNO == null)
+            return;
+
+        if (!playerNO.HasInputAuthority)
+            return;
 
         if (onCooldown)
             return;
 
         StartCoroutine(Cooldown());
 
-        if (other.gameObject.CompareTag("Player"))
-        {
+        
             if (receptionTrigger.inReception == true)
             {
                 switchCameraPosition.MoveCamera(CamPos1); //move cam
@@ -41,7 +42,7 @@ public class LibraryTrigger : NetworkBehaviour
                 switchCameraPosition.ShowRoom("Reception"); //show reception again
 
             }
-        }
+        
     }
     private IEnumerator Cooldown()
     {

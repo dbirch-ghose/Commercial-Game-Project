@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: -3564888732072615711}
   - component: {fileID: -1024812512484287745}
   - component: {fileID: 5054115781455501180}
+  - component: {fileID: 679610919625624805}
   m_Layer: 6
   m_Name: Zombie 1
   m_TagString: Enemy
@@ -117,6 +118,7 @@ MonoBehaviour:
   - {fileID: 1541001278457078663}
   - {fileID: 275189625025058542}
   - {fileID: -1024812512484287745}
+  - {fileID: 679610919625624805}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &8000245281400981077
 SpriteRenderer:
@@ -377,3 +379,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc1de1771915f0c4fb1e720130d31180, type: 3}
   minInterval: 5
   maxInterval: 10
+--- !u!114 &679610919625624805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352748462949674729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 3050389120732157839}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 00000000cd29b5be686d5201
+  TriggerHashes: 00000000
+  TotalWords: 0

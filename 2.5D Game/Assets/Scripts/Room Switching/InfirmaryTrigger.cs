@@ -21,31 +21,25 @@ public class InfirmaryTrigger: NetworkBehaviour
 
         if (!playerNO.HasInputAuthority)
             return;
+
         if (onCooldown) return;
 
         StartCoroutine(Cooldown());
-
-        if (other.gameObject.CompareTag("Player"))
+        
+        if (receptionTrigger.inReception == true)
         {
-            if (receptionTrigger.inReception == true)
-            {
-                switchCameraPosition.MoveCamera(CamPos1); //move cam
-                receptionTrigger.inReception = false;
-                inInfirmary = true;
-                switchCameraPosition.ShowRoom("Infirmary"); //show infirmary and hide reception
-            }
-            else
-            {
-                switchCameraPosition.MoveCamera(CamPos2); //move cam
-                receptionTrigger.inReception = true;
-                switchCameraPosition.ShowRoom("Reception"); //show reception again
-
-            }
+            switchCameraPosition.MoveCamera(CamPos1); //move cam
+            receptionTrigger.inReception = false;
+            inInfirmary = true;
+            switchCameraPosition.ShowRoom("Infirmary"); //show infirmary and hide reception
         }
-    }
+        else
+        {
+            switchCameraPosition.MoveCamera(CamPos2); //move cam
+            receptionTrigger.inReception = true;
+            switchCameraPosition.ShowRoom("Reception"); //show reception again
 
-    private void OnTriggerExit(Collider other)
-    {
+        }
         
     }
 
