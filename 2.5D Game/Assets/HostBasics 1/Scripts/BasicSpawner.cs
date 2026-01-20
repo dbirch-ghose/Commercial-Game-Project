@@ -45,6 +45,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         _currentRoomName = UIController.roomCode;
         referenceBlock = FindFirstObjectByType<referencer>();
         referencer = FindFirstObjectByType<LuaChanger>();
+        intro = FindFirstObjectByType<enableIntroDialogue>();
         if (UIController.hosting) { StartGame(GameMode.Host); }
         else { StartGame(GameMode.Client); }
     }
