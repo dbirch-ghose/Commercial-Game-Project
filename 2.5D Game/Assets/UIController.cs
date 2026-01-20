@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
-    public static bool hosting;
+    public static bool hosting = true;
     public static string roomCode;
     public GameObject playButton;
     public GameObject RoomCodeTitle;
@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     public GameObject JoinButton;
     public GameObject test;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
 
     public void playClick()
     {

@@ -21,7 +21,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private PlayerRef Possessor;
     public GameObject starter;
     public GameObject books;
-    public NetworkObject introDialogue;
+    public GameObject introDialogue;
     public LuaChanger referencer;
     //public NetworkObject networkPlayerObject;
     private string _currentRoomName;
@@ -124,6 +124,8 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
 
+                //take this out for multiplayer
+                Rpc_EnableIntroDialogue();
 
             }
             else
@@ -132,10 +134,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
-                //if (introDialogue.HasStateAuthority)
-                //{
-                //    Rpc_EnableIntroDialogue();
-                //}
+                Rpc_EnableIntroDialogue();
                 //bookSpawner.spawnBooks();
             }
             // Keep track of the player avatars for easy access
@@ -143,10 +142,16 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         }
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     void Rpc_EnableIntroDialogue()
     {
+        Rpc_EnableIntroDialogueBroadcast();
+    }
+    [Rpc(RpcSources.StateAuthority,RpcTargets.All)]
+    void Rpc_EnableIntroDialogueBroadcast()
+    {
         introDialogue.gameObject.SetActive(true);
+        referenceBlock.waitText.SetActive(false);
     }
 
     

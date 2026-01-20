@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using PixelCrushers.DialogueSystem;
-using Fusion;
 
 namespace PixelCrushers.DialogueSystem.SequencerCommands
 {
@@ -9,23 +8,15 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
     public class SequencerCommandEndIntro : SequencerCommand
     {
         private referencer referencer;
-        private NetworkObject cutscene;
-        private NetworkObject starter;
+        private GameObject cutscene;
         
         
         public void Awake()
         {
             referencer = FindFirstObjectByType<referencer>();
             cutscene = referencer.cutscene;
-            starter = referencer.starter;
-            if (cutscene.HasStateAuthority)
-            {
-                cutscene.gameObject.SetActive(false);
-            }
-            if (starter.HasStateAuthority)
-            {
-                starter.gameObject.SetActive(true);
-            }
+            cutscene.gameObject.SetActive(false);
+
             Stop();
             
         }
