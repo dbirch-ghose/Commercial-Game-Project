@@ -16,6 +16,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     [Tooltip("Enable to read room name from RoomConfig.txt on desktop")]
     public bool useRoomConfigFile = true;
 
+    public enableIntroDialogue intro;
     public Vector3 spawnPoint;
     private NetworkRunner _runner;
     private PlayerRef Possessor;
@@ -134,7 +135,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
-                Rpc_EnableIntroDialogue();
+                intro.Rpc_EnableIntroDialogue();
                 //bookSpawner.spawnBooks();
             }
             // Keep track of the player avatars for easy access
@@ -142,18 +143,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         }
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    void Rpc_EnableIntroDialogue()
-    {
-        introDialogue.gameObject.SetActive(true);
-        referenceBlock.waitText.SetActive(false);
-    }
-    [Rpc(RpcSources.StateAuthority,RpcTargets.All)]
-    void Rpc_EnableIntroDialogueBroadcast()
-    {
-        introDialogue.gameObject.SetActive(true);
-        referenceBlock.waitText.SetActive(false);
-    }
 
     
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
