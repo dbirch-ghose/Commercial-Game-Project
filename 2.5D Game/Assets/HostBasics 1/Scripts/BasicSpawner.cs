@@ -125,7 +125,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 players.Add(networkPlayerObject);
 
                 //take this out for multiplayer
-                Rpc_EnableIntroDialogue();
+                //Rpc_EnableIntroDialogue();
 
             }
             else
