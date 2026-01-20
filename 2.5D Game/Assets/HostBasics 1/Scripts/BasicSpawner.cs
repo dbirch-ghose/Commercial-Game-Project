@@ -142,10 +142,11 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         }
     }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    [Rpc(RpcSources.All, RpcTargets.All)]
     void Rpc_EnableIntroDialogue()
     {
-        Rpc_EnableIntroDialogueBroadcast();
+        introDialogue.gameObject.SetActive(true);
+        referenceBlock.waitText.SetActive(false);
     }
     [Rpc(RpcSources.StateAuthority,RpcTargets.All)]
     void Rpc_EnableIntroDialogueBroadcast()
