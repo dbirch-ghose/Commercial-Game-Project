@@ -12,6 +12,8 @@ public class EnemyTakeDamage : NetworkBehaviour
     public referencer referenceBlock;
 
     private bool _spawned;
+    private static int enemiesKilled;
+
 
     public override void Spawned()
     {
@@ -23,19 +25,29 @@ public class EnemyTakeDamage : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (!_spawned)
-            return;
+       // Death logic (state authority only)
+    if (Object.HasStateAuthority && !IsDead && Health <= 0)
+    {
+        IsDead = true;
 
-        // Death logic (state authority only)
-        if (Object.HasStateAuthority && !IsDead && Health <= 0)
+        enemiesKilled++;
+
+        if (referenceBlock != null && referenceBlock.heartItem != null)
         {
-            IsDead = true;
-
-            if (referenceBlock != null && referenceBlock.heartItem != null)
-                Runner.Spawn(referenceBlock.heartItem, transform.position, Quaternion.identity);
-
-            Runner.Despawn(Object);
+            //drop health every other enemy
+            if (enemiesKilled % 2 == 0)
+            {
+                Runner.Spawn(
+                    referenceBlock.heartItem,
+                    transform.position,
+                    Quaternion.identity
+                );
+            }
         }
+
+        Runner.Despawn(Object);
+    }
+
     }
 
     public override void Render()
