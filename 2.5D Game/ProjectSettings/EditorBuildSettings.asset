@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainLevelDraft.unity
     guid: 8ca3bd7db5e8b5241b933bc680eddb89
+  - enabled: 1
+    path: Assets/Scenes/menu possibility.unity
+    guid: 49bdf8d0f76ad524ea690f61873d9685
+  - enabled: 1
+    path: Assets/Scenes/testingStaticVariables.unity
+    guid: 500fccbfc1332a54a993c6e7a9e98257
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: deeb8f1711ab74ffeb231da0eec51b28, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

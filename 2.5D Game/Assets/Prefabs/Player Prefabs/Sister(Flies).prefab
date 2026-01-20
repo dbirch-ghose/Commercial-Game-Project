@@ -358,11 +358,11 @@ MonoBehaviour:
   selectAt: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
-  distanceFrom: 0
-  maxSelectionDistance: 245.6
+    m_Bits: 4294967295
+  distanceFrom: 2
+  maxSelectionDistance: 323.6
   runRaycasts: 1
-  raycastAll: 0
+  raycastAll: 1
   selectBehindUIObjects: 1
   useDefaultGUI: 0
   guiSkin: {fileID: 0}
@@ -377,7 +377,7 @@ MonoBehaviour:
     outOfRange: {fileID: 0}
     width: 64
     height: 64
-  useKey: 32
+  useKey: 101
   useButton: Fire2
   m_defaultUseMessage: (spacebar to interact)
   broadcastToChildren: 1

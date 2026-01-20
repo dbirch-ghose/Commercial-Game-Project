@@ -32,16 +32,20 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private void Awake()
     {
         // Load the configured room name when the scene starts
-        if (useRoomConfigFile)
-        {
-            _currentRoomName = RoomConfigReader.GetConfiguredRoomName();
-        }
-        else
-        {
-            _currentRoomName = "TestRoom";
-        }
+        //if (useRoomConfigFile)
+        //{
+        //    _currentRoomName = RoomConfigReader.GetConfiguredRoomName();
+        //}
+        
+        //else
+        //{
+        //    _currentRoomName = "TestRoom";
+        //}
+        _currentRoomName = UIController.roomCode;
         referenceBlock = FindFirstObjectByType<referencer>();
         referencer = FindFirstObjectByType<LuaChanger>();
+        if (UIController.hosting) { StartGame(GameMode.Host); }
+        else { StartGame(GameMode.Client); }
     }
 
     private void OnGUI()
@@ -52,19 +56,19 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             string roomLabel = useRoomConfigFile ? $"Room ID: {_currentRoomName}" : $"Room ID: {_currentRoomName} (Default)";
             GUI.Label(new Rect(210, 10, 400, 30), roomLabel);
 
-            if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
-            {
-                StartGame(GameMode.Host);
-                //starter.SetActive(true);
+            //if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
+            //{
+            //    StartGame(GameMode.Host);
+            //    //starter.SetActive(true);
 
-            }
+            //}
 
-            if (GUI.Button(new Rect(0, 40, 200, 40), "Join"))
-            {
-                StartGame(GameMode.Client);
-                //starter.SetActive(true);
+            //if (GUI.Button(new Rect(0, 40, 200, 40), "Join"))
+            //{
+            //    StartGame(GameMode.Client);
+            //    //starter.SetActive(true);
 
-            }
+            //}
         }
     }
 
@@ -241,7 +245,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     private void Rpc_ApplyUnlock(int unlockId)
     {
-        referencer.luaChange(unlockId);
+        referencer.RPC_luaChange(unlockId);
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]

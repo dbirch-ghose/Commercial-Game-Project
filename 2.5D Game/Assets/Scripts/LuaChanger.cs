@@ -1,7 +1,8 @@
 using PixelCrushers.DialogueSystem;
 using UnityEngine;
+using Fusion;
 
-public class LuaChanger : MonoBehaviour
+public class LuaChanger : NetworkBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -9,7 +10,17 @@ public class LuaChanger : MonoBehaviour
         
     }
 
-    public void luaChange(int option)
+    [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
+    public void RPC_luaChange(int option)
+    {
+        if (HasStateAuthority)
+        {
+            RPC_luaChangeBroadcast(option);
+        }
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_luaChangeBroadcast(int option)
     {
         switch (option)
         { 
