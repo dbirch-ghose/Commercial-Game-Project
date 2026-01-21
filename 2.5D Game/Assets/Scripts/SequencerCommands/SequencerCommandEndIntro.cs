@@ -9,6 +9,7 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
     {
         private referencer referencer;
         private GameObject cutscene;
+        private enableIntroDialogue netReferencer;
         
         
         public void Awake()
@@ -16,7 +17,8 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
             referencer = FindFirstObjectByType<referencer>();
             cutscene = referencer.cutscene;
             cutscene.gameObject.SetActive(false);
-
+            netReferencer.brotherCanvas.SetActive(true);
+            netReferencer.sisterCanvas.SetActive(true);
             Stop();
             
         }
