@@ -134,7 +134,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
-                //intro.Rpc_EnableIntroDialogue();
+                intro.Rpc_EnableIntroDialogue();
                 //bookSpawner.spawnBooks();
             }
             // Keep track of the player avatars for easy access
@@ -211,29 +211,18 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         _runner.Despawn(target);
     }
-
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_RequestRespawn(NetworkPrefabRef target, PlayerRef player)
-    {
-        RPC_Respawn(target, player);
-    }
-
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    private void RPC_Respawn(NetworkPrefabRef target, PlayerRef player)
+ 
+    public void Respawn(NetworkPrefabRef target, PlayerRef player)
     {
         Vector3 spawnPosition = new Vector3();
-        spawnPosition = this.GetComponent<Transform>().position;
-        _runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
+        spawnPosition = GetComponent<Transform>().position;
+        _runner.Spawn(target, spawnPosition, Quaternion.identity, player);
     }
     public void RequestUnlock(int unlockId)
     {
-        Rpc_RequestUnlock(unlockId);
-    }
-
-    private void Rpc_RequestUnlock(int unlockId)
-    {
         referencer.RPC_luaChange(unlockId);
     }
+
 
     //[Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     //private void Rpc_ApplyUnlock(int unlockId)
