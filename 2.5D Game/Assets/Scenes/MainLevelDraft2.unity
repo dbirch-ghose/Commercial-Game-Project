@@ -12841,8 +12841,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.7669827, z: 1}
-  m_Center: {x: 0, y: 13.797792, z: 0}
+  m_Size: {x: 1, y: 1.2208256, z: 0.6948716}
+  m_Center: {x: -6.235484e-16, y: 16.225313, z: -0.15256418}
 --- !u!23 &532046474
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41930,7 +41930,7 @@ MonoBehaviour:
   bookSpawner: {fileID: 0}
   blockers: {fileID: 0}
   _playerPrefab:
-    RawGuidValue: 5797adf09924c5441991408ae90d941f
+    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
   _player2Prefab:
     RawGuidValue: 5797adf09924c5441991408ae90d941f
   players: []
@@ -43213,8 +43213,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.11693035, z: 1}
-  m_Center: {x: 0.000000058671777, y: 1.6305802, z: -0.00000045452538}
+  m_Size: {x: 1, y: 0.0489335, z: 1.1545597}
+  m_Center: {x: 0.00000008917579, y: 2.2094293, z: 0.19731477}
 --- !u!23 &1873460665
 MeshRenderer:
   m_ObjectHideFlags: 0

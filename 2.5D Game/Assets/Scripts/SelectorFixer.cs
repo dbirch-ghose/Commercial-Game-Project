@@ -17,7 +17,7 @@ public class SelectorFixer : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
         if (HasInputAuthority)
         {
@@ -46,11 +46,10 @@ public class SelectorFixer : NetworkBehaviour
             specimenCheck = null;
             usableGO = closest.gameObject;
             boulderCheck = usableGO.GetComponent<cageDoorController>();
-            specimenCheck = GetComponent<SpecimenController>();
-            Debug.Log("boulderCheck: " + boulderCheck);
-            Debug.Log("specimenCheck: " + specimenCheck);
+            
             if (boulderCheck != null)
             {
+                specimenCheck = GetComponent<SpecimenController>();
                 if (specimenCheck == null)
                 {
                     closest.enabled = false;
