@@ -33,7 +33,7 @@ public class StorageTrigger : NetworkBehaviour
                 switchCameraPosition.MoveCamera(CamPos1);
                 studyTrigger.inStudy = false;
                 inStorage = true;
-            string[] rooms = { "Storage","Enemies" };
+            string[] rooms = { "Storage","Enemy" };
             switchCameraPosition.ShowRoom(rooms);
         }
             else
