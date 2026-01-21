@@ -10,7 +10,7 @@ public class SelectorFixer : NetworkBehaviour
     private GameObject usableGO;
     private cageDoorController boulderCheck;
     private SpecimenController specimenCheck;
-    void Start()
+    public override void Spawned()
     {
         usables = FindObjectsByType<Usable>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         
