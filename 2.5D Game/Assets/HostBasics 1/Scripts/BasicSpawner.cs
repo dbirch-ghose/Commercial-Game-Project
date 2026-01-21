@@ -100,11 +100,9 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         });
     }
 
-    [SerializeField]
-    private NetworkPrefabRef _playerPrefab;
+    public NetworkPrefabRef _playerPrefab;
 
-    [SerializeField]
-    private NetworkPrefabRef _player2Prefab;// Character to spawn for a joining player
+    public NetworkPrefabRef _player2Prefab;// Character to spawn for a joining player
 
     public Dictionary<PlayerRef, NetworkObject> _spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
     public List<NetworkObject> players = new List<NetworkObject>();

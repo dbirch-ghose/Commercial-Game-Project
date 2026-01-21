@@ -223,6 +223,17 @@ public class SisterBehaviour : NetworkBehaviour
 
     }
 
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_catReversion()
+    {
+        if (!HasStateAuthority)
+        {
+            return;
+        }
+        Debug.Log("cat reverting");
+
+        BS.RPC_WMSpawnNow(GetComponent<NetworkObject>(), BS._player2Prefab, transform.position);
+    }
 
     void OnTriggerEnter(Collider other)
     {
