@@ -9448,6 +9448,8 @@ MonoBehaviour:
       - title: Sequence
         value: 'AudioWait(brother/meeting ackergaul 1-1);
 
+          Shake()
+
 '
         type: 0
         typeString: CustomFieldType_Text
@@ -9678,12 +9680,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 'CageDrop();
+        value: '
 
-          Shake();
-
-          AudioWait(brother/meeting
-          ackergaul 1-4)'
+          AudioWait(brother/meeting ackergaul 1-4)'
         type: 0
         typeString: 
       - title: Response Menu Sequence
@@ -10336,7 +10335,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 182.05139}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 0.52
   - id: 11
     fields:
