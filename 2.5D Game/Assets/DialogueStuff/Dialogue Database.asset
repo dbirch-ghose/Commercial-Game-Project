@@ -1008,7 +1008,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: LuaChange(2);
+        value: LuaChange(12);
         type: 0
         typeString: 
       conversationID: 2
@@ -1326,7 +1326,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: LuaChange(3);
+        value: LuaChange(13);
         type: 0
         typeString: 
       conversationID: 2
@@ -1436,7 +1436,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: LuaChange(4);
+        value: 'LuaChange(14);
+
+          LibraryDoor();'
         type: 0
         typeString: 
       conversationID: 2
@@ -1630,7 +1632,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 313.328, y: 0}
+    canvasScrollPosition: {x: 395.8332, y: 0}
     canvasZoom: 0.64000034
   - id: 3
     fields:

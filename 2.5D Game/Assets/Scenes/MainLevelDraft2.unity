@@ -23476,9 +23476,7 @@ MonoBehaviour:
   anotherQuestEntryNumber: 1
   anotherQuestEntryState: 0
   luaCode: 
-  sequence: 'LeverChanger(3);
-
-    LibraryDoor();'
+  sequence: LeverChanger(3);
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
   waitOneFrameOnStartOrEnable: 1
