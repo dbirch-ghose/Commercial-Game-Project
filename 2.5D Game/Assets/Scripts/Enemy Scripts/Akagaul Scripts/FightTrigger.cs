@@ -9,7 +9,6 @@ public class FightTrigger : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //RPC_EnableAck();
-        if (!Object.HasStateAuthority) return;
         if (!other.CompareTag("Player")) return;
 
 
