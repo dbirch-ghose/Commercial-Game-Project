@@ -37,7 +37,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.944143, y: 1.38, z: 1.6216698}
-  m_LocalScale: {x: 1.8207371, y: 2.3794005, z: 0.79076236}
+  m_LocalScale: {x: 2.2118254, y: 2.6612606, z: 0.79076236}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6044235887785776200}
@@ -59,6 +59,11 @@ MonoBehaviour:
   maxHealth: 3
   hitCooldown: 2
   pp: {fileID: 0}
+  prefabRef:
+    RawGuidValue: 00000000000000000000000000000000
+  respawnText: {fileID: 0}
+  respawnTime: 3
+  _playerDead: 0
 --- !u!95 &3741168950452365179
 Animator:
   serializedVersion: 7
@@ -298,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boulderTrigger: {fileID: 0}
   pickup: 0
+  specActive: 0
   animator: {fileID: 0}
   sr: {fileID: 0}
 --- !u!114 &7344528362549657947
