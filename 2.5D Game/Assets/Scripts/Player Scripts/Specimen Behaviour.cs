@@ -31,22 +31,21 @@ public class SpecimenBehaviour : NetworkBehaviour
     private NetworkObject enemyNO;
     public NetworkObject thisDude;
 
-    
+    BasicSpawner BS;
 
 
 
-    private void Awake()
-    {
-        _cc = GetComponent<NetworkCharacterController>();
-        thisDude = GetComponent<NetworkObject>();
-    }
+
 
  
 
     public override void Spawned()
     {
+        BS = FindFirstObjectByType<BasicSpawner>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        _cc = GetComponent<NetworkCharacterController>();
+        thisDude = GetComponent<NetworkObject>();
     }
 
 
@@ -123,7 +122,6 @@ public class SpecimenBehaviour : NetworkBehaviour
             if (HasStateAuthority && canPossess == true && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("SA+canPosess+PressSpace");
-            BasicSpawner BS = FindFirstObjectByType<BasicSpawner>();
             NetworkPrefabRef creatureType = wm.creatureType;
             Vector3 spawnPoint = enemy.transform.position;
             BS.RPC_RequestDestroy(enemyNO);
@@ -134,6 +132,17 @@ public class SpecimenBehaviour : NetworkBehaviour
         
     }
 
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_catReversion()
+    {
+        if (!HasStateAuthority)
+        {
+            return;
+        }
+        Debug.Log("cat reverting");
+
+        BS.RPC_WMSpawnNow(GetComponent<NetworkObject>(), BS._player2Prefab, transform.position);
+    }
 
 
     void OnTriggerEnter(Collider other)
