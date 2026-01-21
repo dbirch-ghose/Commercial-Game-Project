@@ -18650,7 +18650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.6
+      value: 8.527
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b3324ffb12c88b44952ffef4c6890b1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -58113,6 +58113,7 @@ GameObject:
   - component: {fileID: 2092436024}
   - component: {fileID: 2092436023}
   - component: {fileID: 2092436022}
+  - component: {fileID: 2092436025}
   m_Layer: 0
   m_Name: NetworkReferencer
   m_TagString: Untagged
@@ -58170,6 +58171,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2092436025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092436021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7252620fb51414f9d9e2031c6267e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AB: {fileID: 738581838}
 --- !u!1 &2098621766
 GameObject:
   m_ObjectHideFlags: 0
