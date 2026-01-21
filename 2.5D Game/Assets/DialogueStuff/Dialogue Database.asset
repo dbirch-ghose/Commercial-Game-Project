@@ -2724,8 +2724,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 0, y: 341.66705}
+    canvasZoom: 0.8800001
   - id: 4
     fields:
     - title: Title
@@ -2965,7 +2965,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: AudioWait(brother/after ackergaul cat1)
+        value: 'AudioWait(brother/after ackergaul cat1);
+
+          EndScene();'
         type: 0
         typeString: 
       conversationID: 4
@@ -4876,8 +4878,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 6.6964417, y: 2302.282}
-    canvasZoom: 1.1199999
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 0.88
   - id: 5
     fields:
     - title: Title

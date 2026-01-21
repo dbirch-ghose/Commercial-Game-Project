@@ -1,13 +1,15 @@
 using UnityEngine;
 using Fusion;
 using UnityEngine.SceneManagement;
-public class EndGame : MonoBehaviour
+using PixelCrushers;
+using PixelCrushers.DialogueSystem;
+public class EndGame : NetworkBehaviour
 {
     public AkagaulBehaviour AB;
 
-    public void Update()
+    public override void FixedUpdateNetwork()
     {
-        if (AB.IsDead)
+        if (AB != null && AB.IsDead)
         {
             EndScene();
         }
@@ -15,6 +17,6 @@ public class EndGame : MonoBehaviour
 
     private void EndScene()
     {
-        SceneManager.LoadScene("menu possibility");
+        DialogueManager.StartConversation("After Ackergaul Fight");
     }
 }

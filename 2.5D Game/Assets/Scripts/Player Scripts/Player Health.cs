@@ -130,6 +130,7 @@ public class PlayerHealth : NetworkBehaviour
             timer -= Time.deltaTime;
             yield return null;
         }
+        respawnText.text = "";
         player = GetComponent<NetworkObject>().InputAuthority;
         RPC_CallRespawn(prefabRef, player);
         yield return null;

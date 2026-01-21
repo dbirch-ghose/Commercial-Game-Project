@@ -134,7 +134,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 NetworkObject networkPlayerObject = runner.Spawn(_player2Prefab, spawnPosition, Quaternion.identity, player);
                 _spawnedCharacters.Add(player, networkPlayerObject);
                 players.Add(networkPlayerObject);
-                //intro.Rpc_EnableIntroDialogue();
+                intro.Rpc_EnableIntroDialogue();
                 //bookSpawner.spawnBooks();
             }
             // Keep track of the player avatars for easy access
