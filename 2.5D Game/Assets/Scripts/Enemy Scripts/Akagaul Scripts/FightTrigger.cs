@@ -33,8 +33,13 @@ public class FightTrigger : NetworkBehaviour
         }
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     private void RPC_EnableAck()
+    {
+        RPC_EnableAck2();
+    }
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void RPC_EnableAck2()
     {
         Ack.SetActive(true);
     }
