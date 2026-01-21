@@ -32,7 +32,7 @@ public class OTTrigger : NetworkBehaviour
                 switchCameraPosition.MoveCamera(CamPos1);
                 storageTrigger.inStorage= false;
                 inOT = true;
-            string[] rooms = { "Operating Theatre" };
+            string[] rooms = { "Operating Theatre" , "Enemy"};
             switchCameraPosition.ShowRoom(rooms);
         }
             else
