@@ -149,7 +149,8 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_WMSpawnNow(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition) {
         _runner.Despawn(fallen);
-        _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
+        NetworkObject newPlayer2 = _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
+        players[1] = newPlayer2;
     }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
