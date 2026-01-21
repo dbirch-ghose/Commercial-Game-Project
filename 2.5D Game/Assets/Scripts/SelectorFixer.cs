@@ -1,15 +1,20 @@
 using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using Fusion;
+using Unity.VisualScripting;
 
 public class SelectorFixer : NetworkBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private Usable[] usables;
+    private GameObject usableGO;
+    private cageDoorController boulderCheck;
+    private SpecimenController specimenCheck;
     void Start()
     {
         usables = FindObjectsByType<Usable>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        
     }
 
     // Update is called once per frame
@@ -32,9 +37,14 @@ public class SelectorFixer : NetworkBehaviour
 
             foreach (var usable in usables)
             {
+                boulderCheck = null;
+                specimenCheck = null;
                 if (usable == null) continue;
                 usable.enabled = (usable == closest);
-
+                usableGO = usable.gameObject;
+                boulderCheck = usableGO.GetComponent<cageDoorController>();
+                specimenCheck = GetComponent<SpecimenController>();
+                if (boulderCheck!=null && specimenCheck==null) { usable.enabled = false; }
             }
         }
     }

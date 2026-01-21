@@ -34,7 +34,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isPickingUp
+    m_ConditionEvent: isOpen
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2696845477446481362}
@@ -85,7 +85,7 @@ AnimatorController:
   m_Name: Big Boulder
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isPickingUp
+  - m_Name: isOpen
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
