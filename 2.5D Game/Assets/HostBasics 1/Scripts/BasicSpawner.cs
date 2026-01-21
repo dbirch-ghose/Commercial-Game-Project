@@ -232,18 +232,16 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         Rpc_RequestUnlock(unlockId);
     }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     private void Rpc_RequestUnlock(int unlockId)
-    {
-        // Authority tells everyone (including itself)
-        Rpc_ApplyUnlock(unlockId);
-    }
-
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    private void Rpc_ApplyUnlock(int unlockId)
     {
         referencer.RPC_luaChange(unlockId);
     }
+
+    //[Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    //private void Rpc_ApplyUnlock(int unlockId)
+    //{
+    //    referencer.RPC_luaChange(unlockId);
+    //}
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void Rpc_RequestKillBlocks()

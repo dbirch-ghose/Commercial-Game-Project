@@ -40520,6 +40520,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 995ab620e997f4b478a633969b5b36ea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1770208834}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 995ab620e997f4b478a633969b5b36ea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770208835}
   m_SourcePrefab: {fileID: 100100000, guid: 995ab620e997f4b478a633969b5b36ea, type: 3}
 --- !u!1 &1770208829 stripped
 GameObject:
@@ -40668,6 +40671,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8dcf9996fae7f149b6732a5bd017d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1770208835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770208829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 55427794
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1770208834}
+  ForceRemoteRenderTimeframe: 0
 --- !u!4 &1776155839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e09fd5d22cb126445946022132785858, type: 3}
@@ -41725,7 +41747,7 @@ Transform:
   m_GameObject: {fileID: 1837907118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 22}
+  m_LocalPosition: {x: -10.76, y: 0.2, z: 33.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

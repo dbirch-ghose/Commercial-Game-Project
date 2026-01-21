@@ -10,7 +10,7 @@ public class RidOfInteractBox : NetworkBehaviour
     public LiterallyJustHoldsAReferenceToThisText interactPrompt;
     private Selector selector;
     private GameObject prompt;
-    void Start()
+    public override void Spawned()
     {
         interactPrompt = FindFirstObjectByType<LiterallyJustHoldsAReferenceToThisText>(FindObjectsInactive.Include);
         prompt = interactPrompt.text;
