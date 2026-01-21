@@ -17,8 +17,8 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
             referencer = FindFirstObjectByType<referencer>();
             cutscene = referencer.cutscene;
             cutscene.gameObject.SetActive(false);
-            netReferencer.brotherCanvas.SetActive(true);
-            netReferencer.sisterCanvas.SetActive(true);
+            //netReferencer.brotherCanvas.SetActive(true);
+            //netReferencer.sisterCanvas.SetActive(true);
             Stop();
             
         }
