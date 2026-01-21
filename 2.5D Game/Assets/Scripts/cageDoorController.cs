@@ -10,6 +10,11 @@ public class cageDoorController : NetworkBehaviour
     public bool DoorOpen { get; set; }
     private bool _lastDoorState;
 
+
+    private void Start()
+    {
+        animator=GetComponent<Animator>();
+    }
     public override void Render()
     {
         if (_lastDoorState == DoorOpen)
