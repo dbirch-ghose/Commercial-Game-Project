@@ -53,7 +53,7 @@ public class PlayerHealth : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (!Object.HasStateAuthority)
+        if (!Object.HasInputAuthority)
             return;
 
         if (firstFrame)
@@ -131,8 +131,13 @@ public class PlayerHealth : NetworkBehaviour
             yield return null;
         }
         player = GetComponent<NetworkObject>().InputAuthority;
-        runner.RPC_RequestRespawn(prefabRef, player);
+        RPC_CallRespawn(prefabRef, player);
         yield return null;
     }
 
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void RPC_CallRespawn(NetworkPrefabRef prefab, PlayerRef player1)
+    {
+        runner.Respawn(prefab, player);
+    }
 }
