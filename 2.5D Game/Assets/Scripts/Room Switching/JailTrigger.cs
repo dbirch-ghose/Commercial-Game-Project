@@ -32,14 +32,16 @@ public class JailTrigger : NetworkBehaviour
             switchCameraPosition.MoveCamera(CamPos1); //move cam
             infirmaryTrigger.inInfirmary = false;
             inInfirmary = true;
-            switchCameraPosition.ShowRoom("Jail"); //show jail and infirmary reception
+            string[] rooms = { "Jail" };
+            switchCameraPosition.ShowRoom(rooms);
 
         }
         else
         {
             switchCameraPosition.MoveCamera(CamPos2); //move cam
             infirmaryTrigger.inInfirmary = true;
-            switchCameraPosition.ShowRoom("Infirmary");
+            string[] rooms = { "Infirmary" };
+            switchCameraPosition.ShowRoom(rooms);
         }
         
     }

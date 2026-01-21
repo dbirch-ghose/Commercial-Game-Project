@@ -33,15 +33,17 @@ public class StudyTrigger : NetworkBehaviour
                 switchCameraPosition.MoveCamera(CamPos1);
                 stairwayTrigger.inStairway = false;
                 inStudy = true;
-                switchCameraPosition.ShowRoom("Study"); 
+                string[] rooms = { "Study" };
+                switchCameraPosition.ShowRoom(rooms); //show infirmary and hide reception
             }
             else
             {
                 switchCameraPosition.MoveCamera(CamPos2);
                 stairwayTrigger.inStairway = true;
-                switchCameraPosition.ShowRoom("Stairway"); 
+                string[] rooms = { "Stairway" };
+                switchCameraPosition.ShowRoom(rooms);
 
-            
+
         }
     }
     private IEnumerator Cooldown()

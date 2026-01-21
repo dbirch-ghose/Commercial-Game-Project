@@ -25,19 +25,21 @@ public class InfirmaryTrigger: NetworkBehaviour
         if (onCooldown) return;
 
         StartCoroutine(Cooldown());
-        
+
         if (receptionTrigger.inReception == true)
         {
             switchCameraPosition.MoveCamera(CamPos1); //move cam
             receptionTrigger.inReception = false;
             inInfirmary = true;
-            switchCameraPosition.ShowRoom("Infirmary"); //show infirmary and hide reception
+            string[] rooms = {"Infirmary", "Enemy"};
+            switchCameraPosition.ShowRoom(rooms); //show infirmary and hide reception
         }
         else
         {
             switchCameraPosition.MoveCamera(CamPos2); //move cam
             receptionTrigger.inReception = true;
-            switchCameraPosition.ShowRoom("Reception"); //show reception again
+            string[] rooms = { "Reception"};
+            switchCameraPosition.ShowRoom(rooms); //show reception again
 
         }
         

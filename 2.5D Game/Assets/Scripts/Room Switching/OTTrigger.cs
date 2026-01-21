@@ -32,15 +32,16 @@ public class OTTrigger : NetworkBehaviour
                 switchCameraPosition.MoveCamera(CamPos1);
                 storageTrigger.inStorage= false;
                 inOT = true;
-                switchCameraPosition.ShowRoom("Operating Theatre"); 
-            }
+            string[] rooms = { "Operating Theatre" };
+            switchCameraPosition.ShowRoom(rooms);
+        }
             else
             {
                 switchCameraPosition.MoveCamera(CamPos2);
                 storageTrigger.inStorage = true;
-                switchCameraPosition.ShowRoom("Storage"); 
-
-            }
+            string[] rooms = { "Storage " };
+            switchCameraPosition.ShowRoom(rooms);
+        }
         
     }
     private IEnumerator Cooldown()

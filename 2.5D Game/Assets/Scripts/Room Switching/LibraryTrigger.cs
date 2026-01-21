@@ -33,15 +33,16 @@ public class LibraryTrigger : NetworkBehaviour
                 switchCameraPosition.MoveCamera(CamPos1); //move cam
                 receptionTrigger.inReception = false;
                 inLibrary = true;
-                switchCameraPosition.ShowRoom("Library"); //show infirmary and hide reception
-            }
+            string[] rooms = { "Library" };
+            switchCameraPosition.ShowRoom(rooms);
+        }
             else
             {
                 switchCameraPosition.MoveCamera(CamPos2); //move cam
                 receptionTrigger.inReception = true;
-                switchCameraPosition.ShowRoom("Reception"); //show reception again
-
-            }
+            string[] rooms = { "Reception" };
+            switchCameraPosition.ShowRoom(rooms);
+        }
         
     }
     private IEnumerator Cooldown()

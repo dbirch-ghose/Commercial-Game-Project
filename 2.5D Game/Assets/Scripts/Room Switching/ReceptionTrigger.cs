@@ -22,8 +22,8 @@ public class ReceptionTrigger : NetworkBehaviour
         if (!playerNO.HasInputAuthority)
             return;
         switchCameraPosition.MoveCamera(CamPos); //move cam
-        switchCameraPosition.ShowRoom("Reception");
-        
+        string[] rooms = { "Reception" };
+        switchCameraPosition.ShowRoom(rooms);
 
         inReception = true;
         //Barrier.GetComponent<BoxCollider>().enabled = true;

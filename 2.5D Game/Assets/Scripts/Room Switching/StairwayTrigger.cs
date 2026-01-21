@@ -34,15 +34,16 @@ public class StairwayTrigger : NetworkBehaviour
                 switchCameraPosition.MoveCamera(CamPos1); 
                 libraryTrigger.inLibrary = false;
                 inStairway = true;
-                switchCameraPosition.ShowRoom("Stairway"); 
-            }
+            string[] rooms = { "Stairway" };
+            switchCameraPosition.ShowRoom(rooms);
+        }
             else
             {
                 switchCameraPosition.MoveCamera(CamPos2);
                 libraryTrigger.inLibrary = true;
-                switchCameraPosition.ShowRoom("Library"); 
+            string[] rooms = { "Library" };
+            switchCameraPosition.ShowRoom(rooms);
 
-            
         }
     }
     private IEnumerator Cooldown()
