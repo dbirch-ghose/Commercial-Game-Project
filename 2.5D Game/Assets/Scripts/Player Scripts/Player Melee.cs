@@ -43,9 +43,7 @@ public class PlayerMelee : NetworkBehaviour
 
         isAttacking = true;
 
-        animator.SetFloat("MoveX", brother.LastMoveDir.x);
-        animator.SetFloat("MoveY", brother.LastMoveDir.y);
-        animator.SetTrigger("Attack");
+        RPC_playAttackAnim();
 
         if (Mathf.Abs(brother.LastMoveDir.x) > 0.01f)
         {
@@ -80,5 +78,14 @@ public class PlayerMelee : NetworkBehaviour
     {
         if (attackPoint != null)
             Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void RPC_playAttackAnim()
+    {
+        animator.SetFloat("MoveX", brother.LastMoveDir.x);
+        animator.SetFloat("MoveY", brother.LastMoveDir.y);
+        animator.SetTrigger("Attack");
     }
 }

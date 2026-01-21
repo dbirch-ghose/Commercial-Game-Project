@@ -23805,7 +23805,9 @@ MonoBehaviour:
   anotherQuestEntryNumber: 1
   anotherQuestEntryState: 0
   luaCode: 
-  sequence: LeverChanger(3);
+  sequence: 'LeverChanger(3);
+
+    LibraryDoor();'
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
   waitOneFrameOnStartOrEnable: 1
@@ -38544,6 +38546,7 @@ MonoBehaviour:
   heartItem:
     RawGuidValue: 2a17fc0569e2b2542bd2924a450cb825
   waitText: {fileID: 762856285}
+  libraryDoor: {fileID: 919132148502303592}
 --- !u!1 &1700223502
 GameObject:
   m_ObjectHideFlags: 0
@@ -49913,6 +49916,8 @@ GameObject:
   - component: {fileID: 543450652239415773}
   - component: {fileID: 1494363705}
   - component: {fileID: 1494363706}
+  - component: {fileID: 919132148502303593}
+  - component: {fileID: 919132148502303592}
   m_Layer: 14
   m_Name: Library Door
   m_TagString: Untagged
@@ -49920,6 +49925,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132148502303592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148502303591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 105655165
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 919132148502303593}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &919132148502303593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148502303591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171c61ddb2ea307468312e19abd4d691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  _DoorOpen: 0
 --- !u!1 &1155298509210057947
 GameObject:
   m_ObjectHideFlags: 0
