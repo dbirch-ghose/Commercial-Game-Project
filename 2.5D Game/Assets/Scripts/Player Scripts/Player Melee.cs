@@ -58,16 +58,25 @@ public class PlayerMelee : NetworkBehaviour
                 attackRange,
                 enemyLayers
             );
-
+        
         foreach (Collider enemy in hitEnemies)
         {
-            EnemyTakeDamage etd = enemy.GetComponent<EnemyTakeDamage>();
-            if (etd != null)
-            {
-                // Call RPC directly on the enemy
+            if (enemy.TryGetComponent<EnemyTakeDamage>(out var etd))
                 etd.RPC_TakeDamage(damage);
-            }
+
+            else if (enemy.TryGetComponent<AkTakeDamage>(out var akd))
+                akd.RPC_TakeDamage(damage);
         }
+        //foreach (Collider enemy in hitEnemies)
+        //{
+        //    EnemyTakeDamage etd = enemy.GetComponent<EnemyTakeDamage>();
+        //    if (etd != null)
+        //    {
+        //        // Call RPC directly on the enemy
+        //        etd.RPC_TakeDamage(damage);
+        //    }
+
+        //}
 
         yield return new WaitForSeconds(attackDuration - attackHitDelay);
 

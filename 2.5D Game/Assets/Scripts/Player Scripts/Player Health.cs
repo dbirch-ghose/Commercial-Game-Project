@@ -79,6 +79,10 @@ public class PlayerHealth : NetworkBehaviour
             hasDied = true;
         }
            
+        if (health > 3)
+        {
+            health = 3;
+        }
     }
 
     // Enemy requests damage
