@@ -23,25 +23,30 @@ public class PlayerMelee : NetworkBehaviour
 
     private void Update()
     {
-        
+        // Only the player with input authority handles input
+        if (!Object.HasInputAuthority)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Space) && !isAttacking)
         {
-           
+            if (!Object.HasInputAuthority)
+                return;
             StartCoroutine(Attack());
         }
     }
 
     private IEnumerator Attack()
     {
-       
+
+        if (!Object.HasInputAuthority)
+            yield return null;
+
         isAttacking = true;
 
         animator.SetFloat("MoveX", brother.LastMoveDir.x);
         animator.SetFloat("MoveY", brother.LastMoveDir.y);
         animator.SetTrigger("Attack");
 
-        if (!Object.HasInputAuthority)
-            yield return null;
         if (Mathf.Abs(brother.LastMoveDir.x) > 0.01f)
         {
             brother.sr.flipX = brother.LastMoveDir.x > 0; // adjust depending on default sprite
