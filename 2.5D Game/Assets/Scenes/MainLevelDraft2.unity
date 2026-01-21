@@ -28089,7 +28089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1231241534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41930,7 +41930,7 @@ MonoBehaviour:
   bookSpawner: {fileID: 0}
   blockers: {fileID: 0}
   _playerPrefab:
-    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
+    RawGuidValue: 5797adf09924c5441991408ae90d941f
   _player2Prefab:
     RawGuidValue: 5797adf09924c5441991408ae90d941f
   players: []
@@ -41943,7 +41943,7 @@ Transform:
   m_GameObject: {fileID: 1837907118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.124, y: 3.71, z: 31.54}
+  m_LocalPosition: {x: 0, y: 0.2, z: 22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

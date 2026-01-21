@@ -1,7 +1,6 @@
+using Fusion;
 using PixelCrushers.DialogueSystem;
 using UnityEngine;
-using Fusion;
-using Unity.VisualScripting;
 
 public class SelectorFixer : NetworkBehaviour
 {
@@ -37,14 +36,25 @@ public class SelectorFixer : NetworkBehaviour
 
             foreach (var usable in usables)
             {
-                boulderCheck = null;
-                specimenCheck = null;
+                
                 if (usable == null) continue;
                 usable.enabled = (usable == closest);
-                usableGO = usable.gameObject;
-                boulderCheck = usableGO.GetComponent<cageDoorController>();
-                specimenCheck = GetComponent<SpecimenController>();
-                if (boulderCheck!=null && specimenCheck==null) { usable.enabled = false; }
+                
+            }
+            //boulder specific stuff
+            boulderCheck = null;
+            specimenCheck = null;
+            usableGO = closest.gameObject;
+            boulderCheck = usableGO.GetComponent<cageDoorController>();
+            specimenCheck = GetComponent<SpecimenController>();
+            Debug.Log("boulderCheck: " + boulderCheck);
+            Debug.Log("specimenCheck: " + specimenCheck);
+            if (boulderCheck != null)
+            {
+                if (specimenCheck == null)
+                {
+                    closest.enabled = false;
+                }
             }
         }
     }
