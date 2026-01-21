@@ -134,10 +134,10 @@ public class SisterBehaviour : NetworkBehaviour
         animator.SetBool("isWalkingUp", false);
 
 
-        
 
 
-        
+        _cc.transform.rotation = Quaternion.identity;
+
 
         if (data.direction.sqrMagnitude <= 0)
         {
@@ -201,7 +201,7 @@ public class SisterBehaviour : NetworkBehaviour
             canPossess = false;
         }
 
-        _cc.transform.rotation = Quaternion.identity;
+        
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]

@@ -64,7 +64,7 @@ public class SpecimenBehaviour : NetworkBehaviour
             _cc.Move(move * moveSpeed * Runner.DeltaTime);
 
         }
-
+        transform.rotation = Quaternion.identity;
         //sprite controller
         animator.SetBool("isIdle", false);
         animator.SetBool("isWalkingSide", false);
@@ -103,6 +103,8 @@ public class SpecimenBehaviour : NetworkBehaviour
             animator.SetBool("isWalkingUp", true);
         }
 
+        if (!HasInputAuthority) { return; }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (wm == null)
@@ -129,7 +131,7 @@ public class SpecimenBehaviour : NetworkBehaviour
             canPossess = false;
         }
 
-        transform.rotation = Quaternion.identity;
+        
     }
 
 
