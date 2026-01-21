@@ -1084,9 +1084,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
       insertIndex: -1
       addedObject: {fileID: 26106631}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 26106632}
   m_SourcePrefab: {fileID: 100100000, guid: a1ebf1b6608c0d1469345d040c54ea09, type: 3}
 --- !u!4 &26106626 stripped
 Transform:
@@ -1116,7 +1113,6 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 26106631}
-  - {fileID: 26106632}
   ForceRemoteRenderTimeframe: 0
 --- !u!65 &26106630
 BoxCollider:
@@ -1157,23 +1153,6 @@ MonoBehaviour:
   CamPos2: {fileID: 1271513822}
   inStudy: 0
   cooldown: 0.5
---- !u!114 &26106632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26106627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fcdd6bde1a776244b8638b2690e78fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 550869145}
-  enemyPrefab1:
-    RawGuidValue: 9173e56a144b69748acb4201056c3a9a
-  enemyPrefab2:
-    RawGuidValue: 0891fc971639d6541bccd4142558db2f
 --- !u!1 &33619297
 GameObject:
   m_ObjectHideFlags: 0
@@ -8171,7 +8150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 881072571462655927, guid: 16b6b6af2175c2446a838fc8e10d108c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.19344
+      value: 41.25
       objectReference: {fileID: 0}
     - target: {fileID: 881072571462655927, guid: 16b6b6af2175c2446a838fc8e10d108c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13331,37 +13310,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544939196}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &550869144
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 550869145}
-  m_Layer: 16
-  m_Name: Study Spawn Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &550869145
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550869144}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.71, y: -1.708, z: -3.22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1814398470}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &553964715
 GameObject:
   m_ObjectHideFlags: 0
@@ -41377,7 +41325,6 @@ Transform:
   - {fileID: 2044560783}
   - {fileID: 1369292865}
   - {fileID: 261285120}
-  - {fileID: 550869145}
   - {fileID: 1967866739}
   - {fileID: 369026741}
   - {fileID: 1311212720}
@@ -41794,7 +41741,7 @@ MonoBehaviour:
   bookSpawner: {fileID: 0}
   blockers: {fileID: 0}
   _playerPrefab:
-    RawGuidValue: 6f725eb5380c0674f970b3c03f1e8f7d
+    RawGuidValue: 5797adf09924c5441991408ae90d941f
   _player2Prefab:
     RawGuidValue: 5797adf09924c5441991408ae90d941f
   players: []
