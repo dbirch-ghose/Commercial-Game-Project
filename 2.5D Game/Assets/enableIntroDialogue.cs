@@ -17,8 +17,8 @@ public class enableIntroDialogue : NetworkBehaviour
     {
         introDialogue.gameObject.SetActive(true);
         waitText.SetActive(false);
-        brotherCanvas.SetActive(true);
-        sisterCanvas.SetActive(true);
+        //brotherCanvas.SetActive(true);
+        //sisterCanvas.SetActive(true);
     }
     // Update is called once per frame
     void Update()
