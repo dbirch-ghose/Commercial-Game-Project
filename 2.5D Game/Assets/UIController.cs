@@ -38,8 +38,4 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene("MainLevelDraft2");
     }
 
-    private void Update()
-    {
-        Debug.Log(roomCode);
-    }
 }
