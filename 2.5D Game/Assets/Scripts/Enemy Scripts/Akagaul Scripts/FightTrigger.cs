@@ -4,10 +4,11 @@ using UnityEngine;
 public class FightTrigger : NetworkBehaviour
 {
     public AkagaulBehaviour akagaulBehaviour;
-
+    public GameObject Ack;
 
     private void OnTriggerEnter(Collider other)
     {
+        RPC_EnableAck();
         if (!Object.HasStateAuthority) return;
         if (!other.CompareTag("Player")) return;
 
@@ -30,5 +31,11 @@ public class FightTrigger : NetworkBehaviour
         {
             Runner.Despawn(Object);
         }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    private void RPC_EnableAck()
+    {
+        Ack.SetActive(true);
     }
 }
