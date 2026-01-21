@@ -12,6 +12,7 @@ public class referencer : MonoBehaviour
     public NetworkObject cageDoor;
     public NetworkPrefabRef heartItem;
     public GameObject waitText;
+    public NetworkObject libraryDoor;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
