@@ -4,6 +4,8 @@ public class enableIntroDialogue : NetworkBehaviour
 {
     public GameObject introDialogue;
     public GameObject waitText;
+    public GameObject brotherCanvas;
+    public GameObject sisterCanvas;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,6 +17,8 @@ public class enableIntroDialogue : NetworkBehaviour
     {
         introDialogue.gameObject.SetActive(true);
         waitText.SetActive(false);
+        brotherCanvas.SetActive(true);
+        sisterCanvas.SetActive(true);
     }
     // Update is called once per frame
     void Update()

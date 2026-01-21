@@ -13,6 +13,8 @@ public class referencer : MonoBehaviour
     public NetworkPrefabRef heartItem;
     public GameObject waitText;
     public NetworkObject libraryDoor;
+    public GameObject brotherCanvas;
+    public GameObject sisterCanvas;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
