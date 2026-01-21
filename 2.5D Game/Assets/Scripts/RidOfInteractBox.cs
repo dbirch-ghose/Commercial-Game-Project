@@ -19,7 +19,7 @@ public class RidOfInteractBox : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
 
         if (HasInputAuthority)
