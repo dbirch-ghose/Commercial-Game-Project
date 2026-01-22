@@ -3,8 +3,8 @@ using Fusion;
 public class HorseBehaviour : NetworkBehaviour
 {
     [SerializeField] float moveSpeed = 30f;
-    [SerializeField] float leftBound = -20f;
-    [SerializeField] float rightBound = 20f;
+    [SerializeField] float leftBound = -2f;
+    [SerializeField] float rightBound = 2f;
 
     public SpriteRenderer sr;
 

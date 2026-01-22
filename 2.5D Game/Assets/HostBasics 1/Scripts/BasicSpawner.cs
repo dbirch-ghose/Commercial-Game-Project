@@ -4,10 +4,8 @@ using Fusion.Sockets;
 using MoreMountains.Feel;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Unity.Collections.Unicode;
 
 
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
@@ -143,13 +141,16 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     }
 
 
-    
+
+
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    public void RPC_WMSpawnNow(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition) {
+    public void RPC_WMSpawnNow(NetworkObject fallen, NetworkPrefabRef enemyType, Vector3 spawnPosition)
+    {
         _runner.Despawn(fallen);
         NetworkObject newPlayer2 = _runner.Spawn(enemyType, spawnPosition, Quaternion.identity, Possessor);
         players[1] = newPlayer2;
     }
+
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
         if (_spawnedCharacters.TryGetValue(player, out NetworkObject networkObject))
@@ -211,13 +212,46 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         _runner.Despawn(target);
     }
- 
-    public void Respawn(NetworkPrefabRef target, PlayerRef player)
+    
+    //despawns old player
+    public void Respawn(NetworkPrefabRef prefab, PlayerRef player)
     {
-        Vector3 spawnPosition = new Vector3();
-        spawnPosition = GetComponent<Transform>().position;
-        _runner.Spawn(target, spawnPosition, Quaternion.identity, player);
+        if (!_runner.IsServer) return;
+
+        NetworkObject oldNo = null;
+        _spawnedCharacters.TryGetValue(player, out oldNo);
+
+        if (oldNo != null)
+        {
+            // keep list consistent
+            int idx = players.IndexOf(oldNo);
+            _runner.Despawn(oldNo);
+
+            Vector3 spawnPosition = transform.position;
+            NetworkObject newNo = _runner.Spawn(prefab, spawnPosition, Quaternion.identity, player);
+
+            _spawnedCharacters[player] = newNo;
+
+            if (idx >= 0) players[idx] = newNo;
+            else players.Add(newNo);
+        }
+        else
+        {
+            Vector3 spawnPosition = transform.position;
+            NetworkObject newNo = _runner.Spawn(prefab, spawnPosition, Quaternion.identity, player);
+
+            _spawnedCharacters[player] = newNo;
+            players.Add(newNo);
+        }
     }
+
+
+    //public void Respawn(NetworkPrefabRef target, PlayerRef player)
+    //{
+    //    Vector3 spawnPosition = new Vector3();
+    //    spawnPosition = GetComponent<Transform>().position;
+    //    _runner.Spawn(target, spawnPosition, Quaternion.identity, player);
+    //}
     public void RequestUnlock(int unlockId)
     {
         referencer.RPC_luaChange(unlockId);

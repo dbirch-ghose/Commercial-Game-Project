@@ -41,8 +41,8 @@ public class AkagaulBehaviour : NetworkBehaviour
     // where to despawn, THESE BOUNDS MUST BE CHANGED TO FIT THE SIZE OF THE ROOM
     //public float leftBound = -20f;  
     //public float rightBound = 30f;
-    public float rightSpawnX = 21f; //right side spawn
-    public float leftSpawnX = -21f; //left side spawn
+    public float rightSpawnX = 2f; //right side spawn
+    public float leftSpawnX = -2f; //left side spawn
     //public float moveSpeed = 12f;
 
     //-------------------CHARGE----------------------
@@ -69,6 +69,9 @@ public class AkagaulBehaviour : NetworkBehaviour
        animator = GetComponent<Animator>();
        sr = GetComponent<SpriteRenderer>();
 
+        basicSpawner = FindFirstObjectByType<BasicSpawner>();
+
+
         meleeCollider = GetComponent<Collider>();
         if (meleeCollider != null)
             meleeCollider.enabled = false;
@@ -86,23 +89,20 @@ public class AkagaulBehaviour : NetworkBehaviour
 
         }
     }
+    private bool _waitingForPlayers;
 
     IEnumerator WaitForPlayer()
     {
-        while (basicSpawner.players.Count == 0)
-        {
+        while (basicSpawner == null || basicSpawner.players.Count < 1)
             yield return null;
-        }
-
-        //closestPlayer = basicSpawner.players[0].transform;
 
         player1 = basicSpawner.players[0].transform;
-
         if (basicSpawner.players.Count > 1)
-        {
             player2 = basicSpawner.players[1].transform;
-        }
+
+        _waitingForPlayers = false;
     }
+
 
     public override void FixedUpdateNetwork()
     {
@@ -116,10 +116,12 @@ public class AkagaulBehaviour : NetworkBehaviour
             return;
         }
 
-        if (Object.HasStateAuthority && basicSpawner.players.Count < 2)
+        if (Object.HasStateAuthority && !_waitingForPlayers && (player1 == null))
         {
-            StartCoroutine(WaitForPlayer()); //waits for player ref
+            _waitingForPlayers = true;
+            StartCoroutine(WaitForPlayer());
         }
+
 
 
         if (player1 == null) //check for player 
@@ -194,6 +196,14 @@ public class AkagaulBehaviour : NetworkBehaviour
             meleePoint.position = transform.position + direction;
         }
 
+        if (IsDead)
+        {
+            animator.SetBool("isDead", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isThrowing", false);
+            animator.SetBool("isSlashing", false);
+            return;
+        }
 
 
     }
@@ -334,7 +344,7 @@ public class AkagaulBehaviour : NetworkBehaviour
         {
             targetPos = closestPlayer.position.z; //gets the players z axis position
             bool spawnLeft = Random.value > 0.5f; //randomly choose left or right spawn each time                
-            Vector3 spawnPos = spawnLeft ? new Vector3(leftSpawnX, 1.5f, targetPos) : new Vector3(rightSpawnX, 1.5f, targetPos);
+            Vector3 spawnPos = spawnLeft ? new Vector3(leftSpawnX, 0.5f, targetPos) : new Vector3(rightSpawnX, 0.5f, targetPos);
             NetworkObject horse = Runner.Spawn(Horse, spawnPos, Quaternion.identity);
             horse.GetComponent<HorseBehaviour>().SetDirection(spawnLeft ? 1 : -1); //chooses movement direction based of the random spawn location
             yield return new WaitForSeconds(2f); // duration of attack
@@ -490,9 +500,12 @@ public class AkagaulBehaviour : NetworkBehaviour
             return;
         }
         IsDead = true;
+        // stop future attacks immediately on authority
         isAttacking = false;
         attackFinished = true;
-        animator.SetBool("isDead", true);    
+
+        // optional: hard stop coroutines on authority instance
+        StopAllCoroutines();
 
     }
 

@@ -6,6 +6,7 @@ public class AkTakeDamage : NetworkBehaviour
     public AkagaulBehaviour akBehaviour;
     [Networked] public int Health { get; set; }
     [Networked] private bool IsDead { get; set; }
+
     private bool _spawned;
     private SpriteRenderer spriteRenderer;
     [Networked] private TickTimer damageFlashTimer { get; set; }

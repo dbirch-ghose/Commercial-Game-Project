@@ -6,7 +6,8 @@ using TMPro;
 using System.Collections;
 public class PlayerHealth : NetworkBehaviour
 {
-    
+    public SwitchCameraPosition switchCameraPos;
+    public Transform camPos;
     [Networked] public int health { get; set; }
     public int maxHealth = 3;
 
@@ -47,6 +48,17 @@ public class PlayerHealth : NetworkBehaviour
         {
             vignette.intensity.overrideState = true;
         }
+
+        //assigns cam indiviually on respawn
+        GameObject camPosition = GameObject.Find("OverworldCamPos");
+        camPos = camPosition.transform;
+
+        SwitchCameraPosition switchCameraPos = Camera.main.GetComponent<SwitchCameraPosition>();
+
+        switchCameraPos.MoveCamera(camPos);
+
+        string[] rooms = { "Overwold" };
+        switchCameraPos.ShowRoom(rooms);
 
         respawnText = RespawnUIManager.Instance.respawnText; //assigns respawn text
     }
