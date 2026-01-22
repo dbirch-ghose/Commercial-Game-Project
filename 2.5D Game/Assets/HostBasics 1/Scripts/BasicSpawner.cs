@@ -53,8 +53,8 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         if (_runner == null)
         {
             // Display the current room ID at the top
-            string roomLabel = useRoomConfigFile ? $"Room ID: {_currentRoomName}" : $"Room ID: {_currentRoomName} (Default)";
-            GUI.Label(new Rect(210, 10, 400, 30), roomLabel);
+            //string roomLabel = useRoomConfigFile ? $"Room ID: {_currentRoomName}" : $"Room ID: {_currentRoomName} (Default)";
+            //GUI.Label(new Rect(210, 10, 400, 30), roomLabel);
 
             //if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
             //{
