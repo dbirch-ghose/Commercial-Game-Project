@@ -41,6 +41,7 @@ public class SpecimenBehaviour : NetworkBehaviour
             basicSpawner = FindFirstObjectByType<BasicSpawner>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        _cc = GetComponent<NetworkCharacterController>();
     }
 
 
