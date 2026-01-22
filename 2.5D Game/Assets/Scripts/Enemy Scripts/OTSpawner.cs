@@ -1,13 +1,16 @@
 using UnityEngine;
 using Fusion;
 
-public class jailSpawner : NetworkBehaviour
+public class OTSpawner : NetworkBehaviour
 {
     public Transform spawnPoint;
     public NetworkPrefabRef enemyPrefab1;
-    public NetworkPrefabRef enemyPrefab2;
     private bool hasTriggered = false;
-    
+
+    [Networked] private TickTimer spawnTimer { get; set; }
+    public float spawnInterval = 20f;
+
+
     public override void Spawned()
     {
         if (!Object.HasStateAuthority)
@@ -19,15 +22,23 @@ public class jailSpawner : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!Object.HasStateAuthority) return;
+        if (!other.CompareTag("Player")) return;
 
-        if (other.CompareTag("Player") && hasTriggered == false)
+        // If timer not running or has expired, allow spawn
+        if (!spawnTimer.IsRunning || spawnTimer.Expired(Runner))
         {
-            RPC_RequestSpawn();
-            Debug.Log("player hit trigger wall");
-            hasTriggered = true;
+            SpawnBoar();
+            spawnTimer = TickTimer.CreateFromSeconds(Runner, spawnInterval);
         }
     }
-    
+
+
+    private void SpawnBoar()
+    {
+
+        RPC_RequestSpawn();
+    }
+
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     private void RPC_RequestSpawn()
         {
@@ -40,6 +51,5 @@ public class jailSpawner : NetworkBehaviour
         if (!Object.HasStateAuthority) return;
 
         Runner.Spawn(enemyPrefab1, spawnPoint.position, spawnPoint.rotation);
-        Runner.Spawn(enemyPrefab2, spawnPoint.position, spawnPoint.rotation);
     }
 }

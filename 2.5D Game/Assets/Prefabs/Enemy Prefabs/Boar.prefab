@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 1852701822258074987}
   - component: {fileID: -737498313518983688}
   - component: {fileID: 2351158269850857265}
+  - component: {fileID: -4917666922745354789}
   m_Layer: 6
   m_Name: Boar
   m_TagString: Untagged
@@ -152,6 +153,7 @@ MonoBehaviour:
   - {fileID: 8997859700591429814}
   - {fileID: 7726629685439152115}
   - {fileID: 2351158269850857265}
+  - {fileID: -4917666922745354789}
   ForceRemoteRenderTimeframe: 0
 --- !u!212 &6765918275768450128
 SpriteRenderer:
@@ -425,3 +427,21 @@ MonoBehaviour:
   SyncParent: 0
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 0
+--- !u!114 &-4917666922745354789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632556834967718471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b6de59d41fdf54097b96231675c693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 4478904888170107638}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  closestPlayer: {fileID: 0}
+  basicSpawner: {fileID: 0}
+  sr: {fileID: 0}
