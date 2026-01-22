@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.AI;
 using Fusion;
 
-
+// Performance: Configure interpolation for responsive network gameplay
+[OrderBefore(typeof(NetworkTransform))]
 public class SlugBehaviour : NetworkBehaviour
 {
     public NavMeshAgent agent;
@@ -20,6 +21,9 @@ public class SlugBehaviour : NetworkBehaviour
     public BasicSpawner basicSpawner;
 
     public SpriteRenderer sr;
+
+    // Performance: Prevent coroutine spam
+    private bool isWaitingForPlayer = false;
 
 
     public override void Spawned()
@@ -45,20 +49,25 @@ public class SlugBehaviour : NetworkBehaviour
         {
             player2 = basicSpawner.players[1].transform;
         }
+
+        isWaitingForPlayer = false; // Reset flag when complete
     }
 
     public override void FixedUpdateNetwork()
     {
 
-        if (Object.HasStateAuthority)
+        if (Object.HasStateAuthority && !isWaitingForPlayer && player1 == null)
         {
-            StartCoroutine(WaitForPlayer()); //waits for player ref
+            isWaitingForPlayer = true;
+            StartCoroutine(WaitForPlayer()); //waits for player ref - only once
         }
 
 
         if (player1 == null) //check for player 
         {
+#if UNITY_EDITOR
             Debug.Log("waiting for player to be assigned");
+#endif
             return;
         }
 
@@ -69,13 +78,14 @@ public class SlugBehaviour : NetworkBehaviour
 
         if (player2 != null)
         {
-            float p1Distance = Vector3.Distance(player1.transform.position, transform.position); //calculates distance from the player
-            float p2Distance = Vector3.Distance(player2.transform.position, transform.position); //calculates distance from the player
-            if (p1Distance < p2Distance)
+            // Performance: Use SqrMagnitude to avoid expensive sqrt calculation
+            float p1SqrDistance = (player1.transform.position - transform.position).sqrMagnitude;
+            float p2SqrDistance = (player2.transform.position - transform.position).sqrMagnitude;
+            if (p1SqrDistance < p2SqrDistance)
             {
                 closestPlayer = player1;
             }
-            else if (p1Distance > p2Distance)
+            else if (p1SqrDistance > p2SqrDistance)
             {
 
                 closestPlayer = player2;
@@ -132,17 +142,20 @@ public class SlugBehaviour : NetworkBehaviour
     {
         if (closestPlayer == null)
         {
+#if UNITY_EDITOR
             Debug.Log("no close player for slime");
+#endif
             return;
         }  //checks for player 
 
-        float distance = Vector3.Distance(closestPlayer.transform.position, transform.position);
-        if (distance <= 5)
+        // Performance: Use SqrMagnitude (5*5 = 25) instead of Distance to avoid sqrt
+        float sqrDistance = (closestPlayer.transform.position - transform.position).sqrMagnitude;
+        if (sqrDistance <= 25f) // 5 * 5
         {
             agent.SetDestination(closestPlayer.position); //sets the agent destination to the player
             isPatrolling = false;
         }
-        else if (distance > 5)
+        else if (sqrDistance > 25f)
         {
             isPatrolling = true;
         }

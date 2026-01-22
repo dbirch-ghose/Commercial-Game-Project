@@ -2,6 +2,8 @@ using Fusion;
 using System.Collections;
 using UnityEngine;
 
+// Performance: Configure interpolation for responsive network gameplay
+[OrderBefore(typeof(NetworkTransform))]
 public class AkagaulBehaviour : NetworkBehaviour
 {
     public BasicSpawner spawner;
@@ -10,6 +12,9 @@ public class AkagaulBehaviour : NetworkBehaviour
     public Transform closestPlayer; //target
 
     [Networked] public bool IsDead { get; private set; }
+
+    // Performance: Prevent coroutine spam
+    private bool isWaitingForPlayer = false;
 
     //-------------------ATTACK-LOGIC--------------------
     [Networked] public bool attackFinished { get; set; }
@@ -102,6 +107,8 @@ public class AkagaulBehaviour : NetworkBehaviour
         {
             player2 = basicSpawner.players[1].transform;
         }
+
+        isWaitingForPlayer = false; // Reset flag when complete
     }
 
     public override void FixedUpdateNetwork()
@@ -116,18 +123,23 @@ public class AkagaulBehaviour : NetworkBehaviour
             return;
         }
 
-        if (Object.HasStateAuthority && basicSpawner.players.Count < 2)
+        if (Object.HasStateAuthority && !isWaitingForPlayer && basicSpawner.players.Count < 2 && player1 == null)
         {
-            StartCoroutine(WaitForPlayer()); //waits for player ref
+            isWaitingForPlayer = true;
+            StartCoroutine(WaitForPlayer()); //waits for player ref - only once
         }
 
 
         if (player1 == null) //check for player 
         {
+#if UNITY_EDITOR
             Debug.Log("waiting for player to be assigned");
+#endif
             return;
         }
-        Debug.Log("closest player is " + closestPlayer); 
+#if UNITY_EDITOR
+        Debug.Log("closest player is " + closestPlayer);
+#endif 
         
         if (player2 == null)
         {
@@ -136,13 +148,14 @@ public class AkagaulBehaviour : NetworkBehaviour
 
         if (player2 != null) 
         {
-            float p1Distance = Vector3.Distance(player1.transform.position, transform.position); //calculates distance from the player
-            float p2Distance = Vector3.Distance(player2.transform.position, transform.position); //calculates distance from the player
-            if (p1Distance < p2Distance)
+            // Performance: Use SqrMagnitude to avoid expensive sqrt calculation
+            float p1SqrDistance = (player1.transform.position - transform.position).sqrMagnitude;
+            float p2SqrDistance = (player2.transform.position - transform.position).sqrMagnitude;
+            if (p1SqrDistance < p2SqrDistance)
             {
                 closestPlayer = player1;
             }
-            else if (p1Distance > p2Distance)
+            else if (p1SqrDistance > p2SqrDistance)
             {
 
                 closestPlayer = player2;
