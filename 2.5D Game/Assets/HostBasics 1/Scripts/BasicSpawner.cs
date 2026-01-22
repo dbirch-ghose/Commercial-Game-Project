@@ -213,7 +213,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         _runner.Despawn(target);
     }
     
-    //despawns old player
     public void Respawn(NetworkPrefabRef prefab, PlayerRef player)
     {
         if (!_runner.IsServer) return;
@@ -223,7 +222,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
         if (oldNo != null)
         {
-            // keep list consistent
             int idx = players.IndexOf(oldNo);
             _runner.Despawn(oldNo);
 

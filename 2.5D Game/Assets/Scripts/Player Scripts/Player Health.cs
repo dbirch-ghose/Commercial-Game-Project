@@ -49,17 +49,6 @@ public class PlayerHealth : NetworkBehaviour
             vignette.intensity.overrideState = true;
         }
 
-        //assigns cam indiviually on respawn
-        GameObject camPosition = GameObject.Find("OverworldCamPos");
-        camPos = camPosition.transform;
-
-        SwitchCameraPosition switchCameraPos = Camera.main.GetComponent<SwitchCameraPosition>();
-
-        switchCameraPos.MoveCamera(camPos);
-
-        string[] rooms = { "Overworld" };
-        switchCameraPos.ShowRoom(rooms);
-
         respawnText = RespawnUIManager.Instance.respawnText; //assigns respawn text
     }
 
@@ -149,6 +138,16 @@ public class PlayerHealth : NetworkBehaviour
         respawnText.text = "";
         player = GetComponent<NetworkObject>().InputAuthority;
         RPC_CallRespawn(prefabRef, player);
+        //assigns cam indiviually on respawn
+        GameObject camPosition = GameObject.Find("OverworldCamPos");
+        camPos = camPosition.transform;
+
+        SwitchCameraPosition switchCameraPos = Camera.main.GetComponent<SwitchCameraPosition>();
+
+        switchCameraPos.MoveCamera(camPos);
+
+        string[] rooms = { "Overworld" };
+        switchCameraPos.ShowRoom(rooms);
         yield return null;
     }
 
