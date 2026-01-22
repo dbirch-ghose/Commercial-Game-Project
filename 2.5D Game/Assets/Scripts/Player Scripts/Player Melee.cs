@@ -39,7 +39,7 @@ public class PlayerMelee : NetworkBehaviour
     {
 
         if (!Object.HasInputAuthority)
-            yield return null;
+            yield break;
 
         isAttacking = true;
 
@@ -58,15 +58,29 @@ public class PlayerMelee : NetworkBehaviour
                 attackRange,
                 enemyLayers
             );
-        
-        foreach (Collider enemy in hitEnemies)
-        {
-            if (enemy.TryGetComponent<EnemyTakeDamage>(out var etd))
-                etd.RPC_TakeDamage(damage);
 
-            else if (enemy.TryGetComponent<AkTakeDamage>(out var akd))
+        foreach (Collider c in hitEnemies)
+        {
+            // Always resolve to the parent NetworkObject
+            var no = c.GetComponentInParent<NetworkObject>();
+            if (no == null)
+                continue;
+
+            var etd = no.GetComponent<EnemyTakeDamage>();
+            if (etd != null)
+            {
+                etd.RPC_TakeDamage(damage);
+                continue;
+            }
+
+            var akd = no.GetComponent<AkTakeDamage>();
+            if (akd != null)
+            {
                 akd.RPC_TakeDamage(damage);
+                continue;
+            }
         }
+
         //foreach (Collider enemy in hitEnemies)
         //{
         //    EnemyTakeDamage etd = enemy.GetComponent<EnemyTakeDamage>();

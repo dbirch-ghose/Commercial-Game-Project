@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5428677645142876481}
   - component: {fileID: 6644367547669024010}
   - component: {fileID: 3789769204681956025}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Acid Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.1919928, y: 0.8698859, z: 8.072589}
-  m_LocalScale: {x: 2.1124127, y: 2.1124127, z: 2.1124127}
+  m_LocalScale: {x: 1.7240456, y: 1.7240456, z: 1.7240456}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &3789769204681956025
