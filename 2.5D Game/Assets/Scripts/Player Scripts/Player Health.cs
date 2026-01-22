@@ -57,7 +57,7 @@ public class PlayerHealth : NetworkBehaviour
 
         switchCameraPos.MoveCamera(camPos);
 
-        string[] rooms = { "Overwold" };
+        string[] rooms = { "Overworld" };
         switchCameraPos.ShowRoom(rooms);
 
         respawnText = RespawnUIManager.Instance.respawnText; //assigns respawn text
