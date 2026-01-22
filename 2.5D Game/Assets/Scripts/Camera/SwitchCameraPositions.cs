@@ -1,7 +1,5 @@
-using NUnit.Framework;
+
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class SwitchCameraPosition : MonoBehaviour
