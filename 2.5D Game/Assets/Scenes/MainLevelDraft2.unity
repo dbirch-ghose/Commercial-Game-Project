@@ -14156,9 +14156,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 1836281769}
   enemyPrefab1:
-    RawGuidValue: 9173e56a144b69748acb4201056c3a9a
-  enemyPrefab2:
     RawGuidValue: 0891fc971639d6541bccd4142558db2f
+  enemyPrefab2:
+    RawGuidValue: 5100588d9ebab9546ba7e6bf74f657d7
 --- !u!1 &465872471
 GameObject:
   m_ObjectHideFlags: 0
@@ -21945,7 +21945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   akBehaviour: {fileID: 738581838}
-  _Health: 16
+  _Health: 2
 --- !u!114 &764843136 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7028788027444238098, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}

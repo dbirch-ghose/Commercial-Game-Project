@@ -121,7 +121,7 @@ public class SpecimenBehaviour : NetworkBehaviour
             Debug.Log("SA+canPosess+PressSpace");
             NetworkPrefabRef creatureType = wm.creatureType;
             Vector3 spawnPoint = enemy.transform.position;
-            BS.RPC_RequestDestroy(enemyNO);
+            basicSpawner.RPC_RequestDestroy(enemyNO);
             //BS.RPC_WMSpawn(thisDude, creatureType, spawnPoint);
             canPossess = false;
         }
@@ -138,7 +138,7 @@ public class SpecimenBehaviour : NetworkBehaviour
         }
         Debug.Log("cat reverting");
 
-        BS.RPC_WMSpawnNow(GetComponent<NetworkObject>(), BS._player2Prefab, transform.position);
+        basicSpawner.RPC_WMSpawnNow(GetComponent<NetworkObject>(), basicSpawner._player2Prefab, transform.position);
     }
 
 
