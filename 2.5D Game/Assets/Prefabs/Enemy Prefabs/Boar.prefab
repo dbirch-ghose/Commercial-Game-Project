@@ -72,7 +72,6 @@ GameObject:
   - component: {fileID: -7819401095198963635}
   - component: {fileID: 7726629685439152115}
   - component: {fileID: 1852701822258074987}
-  - component: {fileID: -737498313518983688}
   - component: {fileID: 2351158269850857265}
   - component: {fileID: 5657281549027155680}
   m_Layer: 6
@@ -396,20 +395,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 384f73976dbb4664396a32e0f39ac7f7, type: 3}
   minInterval: 4
   maxInterval: 8
---- !u!114 &-737498313518983688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2632556834967718471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa0f0a0c9c8a38428df87c04906065d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creatureType:
-    RawGuidValue: 29034b4120411a248b7ba5d70c6d1ea4
 --- !u!114 &2351158269850857265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,10 +425,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  range: 0
-  centerPoint: {fileID: 0}
-  player: {fileID: 0}
-  isPatrolling: 0
   player1: {fileID: 0}
   player2: {fileID: 0}
   closestPlayer: {fileID: 0}
