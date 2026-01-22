@@ -1,152 +1,114 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.AI;
 using Fusion;
-
+using System.Collections;
 
 public class BoarBehaviour : NetworkBehaviour
 {
     public NavMeshAgent agent;
-    public float range;
-    public Transform centerPoint;
-
-    public Transform player;
-    public bool isPatrolling = false;
 
     public Transform player1;
     public Transform player2;
-    public Transform closestPlayer; //target
+    public Transform closestPlayer;
 
     public BasicSpawner basicSpawner;
-
     public SpriteRenderer sr;
 
+    private bool navReady = false;
+    private bool waitingForPlayers = false;
 
     public override void Spawned()
     {
+        if (!Object.HasStateAuthority)
+            return;
+
         agent = GetComponent<NavMeshAgent>();
-        agent.enabled = Object.HasStateAuthority; //allows nav mesh to work with fusion
-        //player = GameObject.FindGameObjectWithTag("Player").transform; //assigns player to the player transform
+        agent.enabled = true;
+
         sr = GetComponent<SpriteRenderer>();
+        basicSpawner = FindFirstObjectByType<BasicSpawner>();
+
+        StartCoroutine(InitNavMesh());
     }
 
-    IEnumerator WaitForPlayer()
+    IEnumerator InitNavMesh()
     {
-        while (basicSpawner.players.Count == 0)
+        yield return null; //  wait one frame
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(transform.position, out hit, 2f, NavMesh.AllAreas))
         {
-            yield return null;
-        }
-
-        //closestPlayer = basicSpawner.players[0].transform;
-
-        player1 = basicSpawner.players[0].transform;
-
-        if (basicSpawner.players.Count > 1)
-        {
-            player2 = basicSpawner.players[1].transform;
+            agent.Warp(hit.position);
+            navReady = true;
         }
     }
 
     public override void FixedUpdateNetwork()
     {
+        if (!Object.HasStateAuthority || !navReady)
+            return;
 
-        if (Object.HasStateAuthority)
+        if (!waitingForPlayers && player1 == null)
         {
-            StartCoroutine(WaitForPlayer()); //waits for player ref
-        }
-
-
-        if (player1 == null) //check for player 
-        {
-            Debug.Log("waiting for player to be assigned");
+            waitingForPlayers = true;
+            StartCoroutine(WaitForPlayer());
             return;
         }
 
-        if (player2 == null)
-        {
-            closestPlayer = player1;
-        }
-
-        if (player2 != null)
-        {
-            float p1Distance = Vector3.Distance(player1.transform.position, transform.position); //calculates distance from the player
-            float p2Distance = Vector3.Distance(player2.transform.position, transform.position); //calculates distance from the player
-            if (p1Distance < p2Distance)
-            {
-                closestPlayer = player1;
-            }
-            else if (p1Distance > p2Distance)
-            {
-
-                closestPlayer = player2;
-            }
-        }
-
-        if (isPatrolling == true) //patrol is on by defualt
-        {
-            //Patrol();
-        }
-
-        Chase();
+        if (player1 == null)
+            return;
 
         agent.updateRotation = false; //locks rotation
 
-        Vector3 velocity = agent.velocity;
 
-        //flip sprite based on movement direction
-        if (velocity.x > 0.1f)
-            sr.flipX = false;
-        else if (velocity.x < -0.1f)
-            sr.flipX = true;
-
+        UpdateClosestPlayer();
+        Chase();
+        UpdateSprite();
     }
 
-    //bool RandomPoint(Vector3 center, float range, out Vector3 result)
-    //{
-    //    Vector3 randomPoint = center + Random.insideUnitSphere * range; //makes a random point in a sphere
-    //    NavMeshHit hit;
-    //    if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
-    //    {
-    //        result = hit.position;
-    //        return true;
-    //    }
-    //    result = Vector3.zero;
-    //    return false;
+    IEnumerator WaitForPlayer()
+    {
+        while (basicSpawner.players.Count == 0)
+            yield return null;
 
-    //}
+        player1 = basicSpawner.players[0].transform;
 
-    //void Patrol()
-    //{
-    //    if (agent.remainingDistance <= agent.stoppingDistance) 
-    //    {
-    //        Vector3 point;
-    //        if (RandomPoint(centerPoint.position, range, out point)) 
-    //        {
-    //            Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-    //            agent.SetDestination(point); //sets agent destination to the random point everytime it reaches it
-    //        }
-    //    }
-    //}
+        if (basicSpawner.players.Count > 1)
+            player2 = basicSpawner.players[1].transform;
+    }
+
+    void UpdateClosestPlayer()
+    {
+        if (player2 == null)
+        {
+            closestPlayer = player1;
+            return;
+        }
+
+        float d1 = Vector3.Distance(player1.position, transform.position);
+        float d2 = Vector3.Distance(player2.position, transform.position);
+
+        closestPlayer = d1 < d2 ? player1 : player2;
+    }
 
     void Chase()
     {
         if (closestPlayer == null)
-        {
-            Debug.Log("no close player for slime");
             return;
-        }  //checks for player 
 
-        float distance = Vector3.Distance(closestPlayer.transform.position, transform.position);
-        if (distance <= 5)
+        float distance = Vector3.Distance(closestPlayer.position, transform.position);
+
+        if (distance <= 5f)
         {
-            agent.SetDestination(closestPlayer.position); //sets the agent destination to the player
-            isPatrolling = false;
-        }
-        else if (distance > 5)
-        {
-            isPatrolling = true;
+            agent.SetDestination(closestPlayer.position);
         }
     }
 
+    void UpdateSprite()
+    {
+        Vector3 v = agent.velocity;
 
+        if (v.x > 0.1f) sr.flipX = false;
+        else if (v.x < -0.1f) sr.flipX = true;
+    }
 }
