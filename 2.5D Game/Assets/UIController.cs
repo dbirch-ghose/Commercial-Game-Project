@@ -19,7 +19,7 @@ public class UIController : MonoBehaviour
     public void playClick()
     {
         playButton.SetActive(false);
-        RoomCodeInputBox.SetActive(true);
+        RoomCodeTitle.SetActive(true);
         RoomCodeInputBox.SetActive(true);
         HostButton.SetActive(true);
         JoinButton.SetActive(true);

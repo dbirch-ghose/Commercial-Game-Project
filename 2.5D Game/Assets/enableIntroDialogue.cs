@@ -15,7 +15,7 @@ public class enableIntroDialogue : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void Rpc_EnableIntroDialogue()
     {
-        introDialogue.gameObject.SetActive(true);
+        introDialogue.SetActive(true);
         waitText.SetActive(false);
         //brotherCanvas.SetActive(true);
         //sisterCanvas.SetActive(true);

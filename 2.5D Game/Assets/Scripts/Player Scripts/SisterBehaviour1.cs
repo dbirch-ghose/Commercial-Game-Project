@@ -32,12 +32,14 @@ public class SisterBehaviour : NetworkBehaviour
     private NetworkObject enemyNO;
     public NetworkObject thisDude;
     private BasicSpawner BS;
+    private referencer referencer;
 
 
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
         thisDude = GetComponent<NetworkObject>();
+        referencer = FindFirstObjectByType<referencer>();
     }
 
 
@@ -186,9 +188,10 @@ public class SisterBehaviour : NetworkBehaviour
             }
 
             Debug.Log("Space Pressed");
-            Debug.Log("Is player 2: " + !HasStateAuthority);
             Debug.Log("canPossess: " + canPossess);
         }
+        if (canPossess == true) { referencer.posessionText.SetActive(true);}
+        else { referencer.posessionText.SetActive (false);}
 
         if (canPossess == true && Input.GetKeyDown(KeyCode.Space))
         {

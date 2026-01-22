@@ -16,6 +16,7 @@ public class referencer : MonoBehaviour
     public GameObject brotherCanvas;
     public GameObject sisterCanvas;
     public NetworkObject boulder;
+    public GameObject posessionText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -2,6 +2,7 @@
 using UnityEngine;
 
 
+
 public class SwitchCameraPosition : MonoBehaviour
 {
     public Camera cam;
