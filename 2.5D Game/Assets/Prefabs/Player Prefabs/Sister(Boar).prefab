@@ -57,6 +57,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec65819ce5444974aad61a81d65465bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  switchCameraPos: {fileID: 0}
+  camPos: {fileID: 0}
   _health: 0
   maxHealth: 3
   hitCooldown: 2
@@ -173,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 1655777407
+  SortKey: 488979771
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []

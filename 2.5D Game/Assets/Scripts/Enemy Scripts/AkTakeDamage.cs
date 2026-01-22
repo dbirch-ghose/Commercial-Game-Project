@@ -4,12 +4,21 @@ using UnityEngine;
 public class AkTakeDamage : NetworkBehaviour
 {
     public AkagaulBehaviour akBehaviour;
+
     [Networked] public int Health { get; set; }
     [Networked] private bool IsDead { get; set; }
 
-    private bool _spawned;
     private SpriteRenderer spriteRenderer;
+
     [Networked] private TickTimer damageFlashTimer { get; set; }
+
+    // Tune this
+    private const float FLASH_SECONDS = 0.12f;
+
+    public override void Spawned()
+    {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // or GetComponent<SpriteRenderer>()
+    }
 
     public override void FixedUpdateNetwork()
     {
@@ -22,12 +31,12 @@ public class AkTakeDamage : NetworkBehaviour
             akBehaviour.Die();
         }
     }
+
     public override void Render()
     {
-        if (!_spawned || spriteRenderer == null)
+        if (spriteRenderer == null)
             return;
 
-        // Visual flash logic (runs on all clients)
         bool flashing = damageFlashTimer.IsRunning && !damageFlashTimer.Expired(Runner);
         spriteRenderer.color = flashing ? Color.red : Color.white;
     }
@@ -39,6 +48,10 @@ public class AkTakeDamage : NetworkBehaviour
             return;
 
         Health -= damage;
+
+        // Start/refresh flash timer on StateAuthority so it replicates
+        damageFlashTimer = TickTimer.CreateFromSeconds(Runner, FLASH_SECONDS);
+
         Debug.Log($"Enemy took {damage} damage. Health now {Health}");
     }
 }
