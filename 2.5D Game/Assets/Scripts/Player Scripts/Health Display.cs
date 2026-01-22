@@ -19,11 +19,15 @@ public class HealthDisplay : MonoBehaviour
 
     private int lastHealth = -1;
 
-    public Transform canvasTransform;
+    // Performance: Use serialized field instead of FindWithTag
+    [SerializeField] private Transform canvasTransform;
 
     private void Start()
     {
-        canvasTransform = GameObject.FindWithTag("player1Canvas")?.transform;
+        // Performance: Only use FindWithTag as fallback if not assigned in inspector
+        if (canvasTransform == null)
+            canvasTransform = GameObject.FindWithTag("player1Canvas")?.transform;
+            
         if (canvasTransform == null)
         {
             Debug.LogError("No Canvas found with tag 'player1Canvas'");
@@ -70,5 +74,14 @@ public class HealthDisplay : MonoBehaviour
         twoHeart.SetActive(health == 2);
         oneHeart.SetActive(health == 1);
         deadHeart.SetActive(health <= 0);
+    }
+
+    // Performance: Cleanup to prevent memory leaks
+    private void OnDestroy()
+    {
+        if (fullHeart != null) Destroy(fullHeart);
+        if (twoHeart != null) Destroy(twoHeart);
+        if (oneHeart != null) Destroy(oneHeart);
+        if (deadHeart != null) Destroy(deadHeart);
     }
 }

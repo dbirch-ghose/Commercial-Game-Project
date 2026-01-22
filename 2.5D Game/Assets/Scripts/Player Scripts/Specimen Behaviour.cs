@@ -31,7 +31,8 @@ public class SpecimenBehaviour : NetworkBehaviour
     private NetworkObject enemyNO;
     public NetworkObject thisDude;
 
-    BasicSpawner BS;
+    // Performance: Use serialized field instead of FindFirstObjectByType
+    [SerializeField] private BasicSpawner basicSpawner;
 
 
 
@@ -41,7 +42,10 @@ public class SpecimenBehaviour : NetworkBehaviour
 
     public override void Spawned()
     {
-        BS = FindFirstObjectByType<BasicSpawner>();
+        // Performance: Only use Find as fallback if not assigned in inspector
+        if (basicSpawner == null)
+            basicSpawner = FindFirstObjectByType<BasicSpawner>();
+            
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         _cc = GetComponent<NetworkCharacterController>();

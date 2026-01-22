@@ -2,15 +2,6 @@ using UnityEngine;
 
 public class CameraStuff : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Performance: Removed empty Start() and Update() methods
+    // Unity still calls empty lifecycle methods which adds overhead
 }
