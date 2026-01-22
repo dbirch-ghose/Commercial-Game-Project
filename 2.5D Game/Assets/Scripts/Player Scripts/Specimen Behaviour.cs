@@ -28,25 +28,22 @@ public class SpecimenBehaviour : NetworkBehaviour
     private weakMind wm;
     private weakMind Twm;
     private GameObject enemy;
+   
+   
     private NetworkObject enemyNO;
     public NetworkObject thisDude;
-
-    BasicSpawner BS;
-
-
-
-
-
- 
-
+    // Performance: Use serialized field instead of FindFirstObjectByType
+    [SerializeField] private BasicSpawner basicSpawner;
     public override void Spawned()
     {
-        BS = FindFirstObjectByType<BasicSpawner>();
+        // Performance: Only use Find as fallback if not assigned in inspector
+        if (basicSpawner == null)
+            basicSpawner = FindFirstObjectByType<BasicSpawner>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
-        _cc = GetComponent<NetworkCharacterController>();
-        thisDude = GetComponent<NetworkObject>();
     }
+
+
 
 
     public override void FixedUpdateNetwork()
