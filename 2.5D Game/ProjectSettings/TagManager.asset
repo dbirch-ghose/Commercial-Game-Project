@@ -12,6 +12,7 @@ TagManager:
   - player2Canvas
   - SpawnTrigger
   - Boulder
+  - canvas
   layers:
   - Default
   - TransparentFX

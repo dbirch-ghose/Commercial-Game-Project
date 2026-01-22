@@ -23,19 +23,33 @@ public class HealthDisplay : MonoBehaviour
 
     private void Start()
     {
-        canvasTransform = GameObject.FindWithTag("player1Canvas")?.transform;
+        playerHealth = GetComponent<PlayerHealth>();
+        canvasTransform = GameObject.FindWithTag("canvas")?.transform;
         if (canvasTransform == null)
         {
-            Debug.LogError("No Canvas found with tag 'player1Canvas'");
+            Debug.LogError("No Canvas found with tag 'canvas'");
+            return;
+        }
+        var no = GetComponentInParent<NetworkObject>();
+        if (no == null || !no.HasInputAuthority)
+        {
+            enabled = false;
             return;
         }
 
-
         // Instantiate heart prefabs under the Canvas
         fullHeart = Instantiate(fullHeartPrefab, canvasTransform);
+        SetHeartPosition(fullHeart, new Vector2(-500, 70));
+
         twoHeart = Instantiate(twoHeartPrefab, canvasTransform);
+        SetHeartPosition(twoHeart, new Vector2(-500, 70));
+
         oneHeart = Instantiate(oneHeartPrefab, canvasTransform);
+        SetHeartPosition(oneHeart, new Vector2(-500, 70));
+
         deadHeart = Instantiate(deadHeartPrefab, canvasTransform);
+        SetHeartPosition(deadHeart, new Vector2(-500, 70));
+
 
         // Disable all hearts at start
         fullHeart.SetActive(false);
@@ -53,6 +67,8 @@ public class HealthDisplay : MonoBehaviour
 
     private void Update()
     {
+        
+
         if (playerHealth == null || playerHealth.Object == null) return;
 
         int currentHealth = playerHealth.health;
@@ -71,4 +87,12 @@ public class HealthDisplay : MonoBehaviour
         oneHeart.SetActive(health == 1);
         deadHeart.SetActive(health <= 0);
     }
+
+    private void SetHeartPosition(GameObject heart, Vector2 anchoredPos)
+    {
+        RectTransform rt = heart.GetComponent<RectTransform>();
+        rt.anchoredPosition = anchoredPos;
+    }
+
+
 }
