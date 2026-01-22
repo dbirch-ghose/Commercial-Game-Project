@@ -21945,7 +21945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   akBehaviour: {fileID: 738581838}
-  _Health: 2
+  _Health: 10
 --- !u!114 &764843136 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7028788027444238098, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
@@ -50458,7 +50458,7 @@ Transform:
   m_GameObject: {fileID: 1837907118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.157, y: 3.35, z: 33.58}
+  m_LocalPosition: {x: 0, y: 0.2, z: 22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

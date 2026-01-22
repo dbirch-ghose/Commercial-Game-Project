@@ -1,6 +1,5 @@
 using UnityEngine;
 using Fusion;
-using System;
 
 public class HealthDisplay : MonoBehaviour
 {
