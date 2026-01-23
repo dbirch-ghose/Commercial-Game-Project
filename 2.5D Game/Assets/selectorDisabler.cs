@@ -20,6 +20,7 @@ public class selectorDisabler : NetworkBehaviour
     public void RPC_disableSelector()
     {
         selectors = FindObjectsByType<Selector>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        if (selectors == null) return;
         foreach (Selector selector in selectors)
         {
             selector.enabled = false;
