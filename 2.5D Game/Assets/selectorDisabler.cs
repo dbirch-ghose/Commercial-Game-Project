@@ -33,8 +33,6 @@ public class selectorDisabler : NetworkBehaviour
 
         foreach (var netObj in players)
         {
-            if (!netObj.HasInputAuthority) continue;
-
             Selector selector = netObj.GetComponent<Selector>();
             if (selector != null)
             {
