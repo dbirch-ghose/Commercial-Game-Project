@@ -21945,7 +21945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   akBehaviour: {fileID: 738581838}
-  _Health: 10
+  _Health: 8
 --- !u!114 &764843136 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7028788027444238098, guid: df016adfc9a4f1043bcc4454d62baa96, type: 3}
@@ -32014,7 +32014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2868638151072610103, guid: 329a4bdf52b76154dbbe5f44fe90ffd1, type: 3}
       propertyPath: NetworkedBehaviours.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2868638151072610103, guid: 329a4bdf52b76154dbbe5f44fe90ffd1, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[0]'
@@ -32023,7 +32023,7 @@ PrefabInstance:
     - target: {fileID: 2868638151072610103, guid: 329a4bdf52b76154dbbe5f44fe90ffd1, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[1]'
       value: 
-      objectReference: {fileID: 1167567313}
+      objectReference: {fileID: 0}
     - target: {fileID: 3396219294053662320, guid: 329a4bdf52b76154dbbe5f44fe90ffd1, type: 3}
       propertyPath: CamPos
       value: 
@@ -32100,9 +32100,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7224188181637018986, guid: 329a4bdf52b76154dbbe5f44fe90ffd1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1167567309}
-    - targetCorrespondingSourceObject: {fileID: 7224188181637018986, guid: 329a4bdf52b76154dbbe5f44fe90ffd1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1167567313}
   m_SourcePrefab: {fileID: 100100000, guid: 329a4bdf52b76154dbbe5f44fe90ffd1, type: 3}
 --- !u!4 &1167567307 stripped
 Transform:
@@ -32128,22 +32125,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchCameraPosition: {fileID: 803771405}
   CamPos: {fileID: 2142347788}
---- !u!114 &1167567313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167567308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7be32d6a21d90794aa23d56443c30758, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 1825970613}
-  enemyPrefab1:
-    RawGuidValue: a6916f9e6c27f5e46b07f93c7a98458a
-  spawnInterval: 20
 --- !u!1 &1168771225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a807d7885805ec4b956719730f51e6a, type: 3}
