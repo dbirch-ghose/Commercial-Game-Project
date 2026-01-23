@@ -7,7 +7,7 @@ public class EnemyContactDamage : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!Object.HasStateAuthority)
+        if (!HasStateAuthority)
             return;
 
         if (!other.CompareTag("Player"))
