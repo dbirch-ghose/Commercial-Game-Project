@@ -4,26 +4,43 @@ using PixelCrushers.DialogueSystem;
 
 public class selectorDisabler : NetworkBehaviour
 {
-    Selector[] selectors;
+    private Selector[] selectors;
+    private bool done;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Spawned()
     {
-        
+        done = false;
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        RPC_disableSelector();
+        if (done) return;
+        if (!Object.HasStateAuthority) return;
+        RPC_DisableSelectorsForEveryone();
+        done = true;
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    public void RPC_disableSelector()
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    void RPC_DisableSelectorsForEveryone()
     {
-        selectors = FindObjectsByType<Selector>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        if (selectors == null) return;
-        foreach (Selector selector in selectors)
+        DisableLocalPlayerSelectors();
+    }
+
+    void DisableLocalPlayerSelectors()
+    {
+        // Get all player objects on THIS client
+        var players = FindObjectsOfType<NetworkObject>();
+
+        foreach (var netObj in players)
         {
-            selector.enabled = false;
+            if (!netObj.HasInputAuthority) continue;
+
+            Selector selector = netObj.GetComponent<Selector>();
+            if (selector != null)
+            {
+                selector.enabled = false;
+            }
         }
     }
+    
 }
