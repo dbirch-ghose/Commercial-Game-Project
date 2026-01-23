@@ -10,7 +10,7 @@ public class InfirmaryTrigger: NetworkBehaviour
     public Transform CamPos2; //recepetion
     public bool inInfirmary = false;
 
-    public float cooldown = 0.5f;
+    public float cooldown = 2f;
     private bool onCooldown = false;
 
     private void OnTriggerEnter(Collider other)
