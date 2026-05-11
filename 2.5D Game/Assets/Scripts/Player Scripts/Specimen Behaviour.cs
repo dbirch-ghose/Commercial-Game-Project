@@ -28,6 +28,7 @@ public class SpecimenBehaviour : NetworkBehaviour
     private weakMind wm;
     private weakMind Twm;
     private GameObject enemy;
+    public referencer referencer;
    
    
     private NetworkObject enemyNO;
@@ -42,6 +43,8 @@ public class SpecimenBehaviour : NetworkBehaviour
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         _cc = GetComponent<NetworkCharacterController>();
+        referencer = FindFirstObjectByType<referencer>();
+        referencer.posessionText.SetActive(false);
     }
 
 
