@@ -1,36 +1,42 @@
 using System.Collections;
 using UnityEngine;
 using Fusion;
+
 public class AcidProjectileBehaviour : NetworkBehaviour
 {
     public GameObject particlePrefab;
-    private GameObject particles;
-    public Vector3 contactPosition;
-
-    public PlayerHealth playerHealth;
-
     public int damage = 1;
-    
+
     void OnCollisionEnter(Collision collision)
     {
-        //instantiate particle effect
-        SpawnParticles();
-        Destroy(gameObject); //destroys vial
-        //glass breaking sound effect
+        // Only the host/StateAuthority should handle collision logic
+        if (!Object.HasStateAuthority) return;
 
-        //damage to player
+        Vector3 contactPosition = gameObject.transform.position;
+        float randomRotation = Random.Range(0f, 360f);
+
+        // Spawn particles networked so all clients see them
+        RPC_SpawnParticles(contactPosition, randomRotation);
+
+        // Damage to player
         if (collision.gameObject.tag == "Player")
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-
-            playerHealth.RPC_TakeDamage(1);
+            playerHealth.RPC_TakeDamage(damage);
         }
+
+        // Despawn this projectile across the network
+        Runner.Despawn(Object);
     }
 
-    private void SpawnParticles()
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void RPC_SpawnParticles(Vector3 contactPosition, float randomRotation)
     {
-        contactPosition = gameObject.transform.position;
-        particles = Instantiate(particlePrefab, contactPosition, Quaternion.Euler(70, 0, Random.Range(0f, 360f))); //spawns at contact position with a random Z rotation
+        GameObject particles = Instantiate(
+            particlePrefab,
+            contactPosition,
+            Quaternion.Euler(70, 0, randomRotation)
+        );
         Destroy(particles, 3f);
     }
 }
