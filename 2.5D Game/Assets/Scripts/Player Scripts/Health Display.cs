@@ -38,16 +38,16 @@ public class HealthDisplay : MonoBehaviour
 
         // Instantiate heart prefabs under the Canvas
         fullHeart = Instantiate(fullHeartPrefab, canvasTransform);
-        SetHeartPosition(fullHeart, new Vector2(-500, 70));
+        SetHeartPosition(fullHeart, new Vector2(-900, 470));
 
         twoHeart = Instantiate(twoHeartPrefab, canvasTransform);
-        SetHeartPosition(twoHeart, new Vector2(-500, 70));
+        SetHeartPosition(twoHeart, new Vector2(-900, 470));
 
         oneHeart = Instantiate(oneHeartPrefab, canvasTransform);
-        SetHeartPosition(oneHeart, new Vector2(-500, 70));
+        SetHeartPosition(oneHeart, new Vector2(-900, 470));
 
         deadHeart = Instantiate(deadHeartPrefab, canvasTransform);
-        SetHeartPosition(deadHeart, new Vector2(-500, 70));
+        SetHeartPosition(deadHeart, new Vector2(-900, 470));
 
 
         // Disable all hearts at start
